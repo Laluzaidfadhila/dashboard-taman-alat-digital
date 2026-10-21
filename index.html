@@ -35,7 +35,6 @@
             box-sizing: border-box; 
             margin: 0; 
             padding: 0;
-            /* Mencegah seleksi teks dan gambar */
             -webkit-user-select: none;
             -moz-user-select: none;
             -ms-user-select: none;
@@ -95,13 +94,8 @@
             margin-bottom: 24px; 
         }
 
-        @media (max-width: 1024px) {
-            .dashboard-grid { grid-template-columns: repeat(2, 1fr); }
-        }
-
-        @media (max-width: 600px) {
-            .dashboard-grid { grid-template-columns: 1fr; }
-        }
+        @media (max-width: 1024px) { .dashboard-grid { grid-template-columns: repeat(2, 1fr); } }
+        @media (max-width: 600px) { .dashboard-grid { grid-template-columns: 1fr; } }
 
         .gauge-card {
             background: var(--card-bg); backdrop-filter: blur(16px); border: 1px solid var(--card-border);
@@ -135,88 +129,42 @@
         .unit { font-size: 0.7rem; color: var(--text-muted); margin-top: 3px; font-weight: 700; text-transform: uppercase; }
         
         .panel-label { 
-            margin-top: 14px; 
-            font-family: 'Oswald', sans-serif; 
-            font-size: 0.85rem; 
-            color: #e2e8f0; 
-            letter-spacing: 1px; 
-            background: rgba(255,255,255,0.05); 
-            padding: 4px 12px; 
-            border-radius: 20px; 
-            border: 1px solid rgba(255,255,255,0.1); 
-            text-align: center;
+            margin-top: 14px; font-family: 'Oswald', sans-serif; font-size: 0.85rem; color: #e2e8f0; 
+            letter-spacing: 1px; background: rgba(255,255,255,0.05); padding: 4px 12px; border-radius: 20px; 
+            border: 1px solid rgba(255,255,255,0.1); text-align: center;
         }
 
         .system-diagnosis-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 20px;
-            margin-bottom: 30px;
+            display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; margin-bottom: 30px;
         }
-
-        @media (max-width: 600px) {
-            .system-diagnosis-grid { grid-template-columns: 1fr; }
-        }
+        @media (max-width: 600px) { .system-diagnosis-grid { grid-template-columns: 1fr; } }
 
         .tacho-box-card {
-            background: var(--card-bg);
-            border: 1px solid var(--card-border);
-            border-radius: 16px;
-            padding: 18px 24px;
-            backdrop-filter: blur(16px);
-            box-shadow: 0 8px 20px rgba(0,0,0,0.3);
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
+            background: var(--card-bg); border: 1px solid var(--card-border); border-radius: 16px;
+            padding: 18px 24px; backdrop-filter: blur(16px); box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+            display: flex; flex-direction: column; justify-content: space-between;
         }
-
-        .tacho-box-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 10px;
-        }
-
-        .tacho-box-title {
-            font-family: 'Oswald', sans-serif;
-            font-size: 0.95rem;
-            color: var(--text-muted);
-            letter-spacing: 1px;
-            text-transform: uppercase;
-        }
-
-        .tacho-box-value {
-            font-family: 'Oswald', sans-serif;
-            font-size: 1.8rem;
-            font-weight: 700;
-            color: #fff;
-        }
-
-        .tacho-bar-track {
-            width: 100%;
-            height: 10px;
-            background: #0f172a;
-            border-radius: 10px;
-            overflow: hidden;
-            border: 1px solid rgba(255,255,255,0.08);
-            margin-top: 8px;
-        }
-
-        .tacho-bar-fill {
-            height: 100%;
-            width: 0%;
-            border-radius: 10px;
-            transition: width 1s ease-in-out;
-        }
+        .tacho-box-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; }
+        .tacho-box-title { font-family: 'Oswald', sans-serif; font-size: 0.95rem; color: var(--text-muted); letter-spacing: 1px; text-transform: uppercase; }
+        .tacho-box-value { font-family: 'Oswald', sans-serif; font-size: 1.8rem; font-weight: 700; color: #fff; }
+        .tacho-bar-track { width: 100%; height: 10px; background: #0f172a; border-radius: 10px; overflow: hidden; border: 1px solid rgba(255,255,255,0.08); margin-top: 8px; }
+        .tacho-bar-fill { height: 100%; width: 0%; border-radius: 10px; transition: width 1s ease-in-out; }
 
         #fill-ram { background: linear-gradient(90deg, #d97706, #f59e0b); box-shadow: 0 0 8px var(--ram-yellow); }
         #fill-wifi { background: linear-gradient(90deg, #0d9488, #14b8a6); box-shadow: 0 0 8px var(--wifi-teal); }
 
         .log-section { background: var(--card-bg); border: 1px solid var(--card-border); border-radius: 16px; padding: 20px; margin-bottom: 30px; }
-        .log-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; flex-wrap: wrap; gap: 10px; }
+        .log-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; flex-wrap: wrap; gap: 12px; }
         .log-title { font-size: 1rem; color: var(--bmkg-gold); font-weight: 700; letter-spacing: 1px; }
 
-        .btn-download { background: rgba(255,255,255,0.08); color: #fff; border: 1px solid rgba(255,255,255,0.15); padding: 8px 16px; border-radius: 8px; cursor: pointer; font-size: 0.8rem; font-weight: 600; transition: background 0.2s ease; letter-spacing: 0.5px; }
+        /* FILTER & BUTTON STYLING */
+        .filter-controls { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+        .date-input { background: #0f172a; color: #fff; border: 1px solid var(--card-border); padding: 6px 10px; border-radius: 6px; font-size: 0.8rem; font-family: inherit; }
+        .btn-filter { background: var(--bmkg-blue); color: #0f172a; border: none; padding: 7px 12px; border-radius: 6px; cursor: pointer; font-size: 0.8rem; font-weight: 700; transition: 0.2s; }
+        .btn-filter:hover { opacity: 0.9; }
+        .btn-reset { background: rgba(255,255,255,0.1); color: #fff; border: none; padding: 7px 10px; border-radius: 6px; cursor: pointer; font-size: 0.8rem; font-weight: 600; }
+        .btn-reset:hover { background: rgba(255,255,255,0.2); }
+        .btn-download { background: rgba(255,255,255,0.08); color: #fff; border: 1px solid rgba(255,255,255,0.15); padding: 7px 14px; border-radius: 6px; cursor: pointer; font-size: 0.8rem; font-weight: 600; transition: background 0.2s ease; }
         .btn-download:hover { background: rgba(255,255,255,0.18); }
 
         .table-scroll-container { max-height: 350px; overflow-y: auto; border-radius: 10px; border: 1px solid var(--card-border); }
@@ -237,59 +185,26 @@
         @keyframes blink { 0% { opacity: 1; } 50% { opacity: 0.3; } 100% { opacity: 1; } }
     </style>
 
-    <!-- SCRIPT KEAMANAN KETAT (ANTI-KLIK KANAN & DEVTOOLS) -->
+    <!-- SCRIPT KEAMANAN ANTI-KLIK KANAN & DEVTOOLS -->
     <script>
-        // 1. Blokir Klik Kanan
-        document.addEventListener('contextmenu', function(e) {
-            e.preventDefault();
-            return false;
-        });
-
-        // 2. Blokir Shortcut DevTools & Inspect Element
-        document.addEventListener('keydown', function(e) {
-            // F12
-            if (e.keyCode === 123) {
-                e.preventDefault();
-                return false;
-            }
-            // Ctrl + Shift + I / J / C
-            if (e.ctrlKey && e.shiftKey && (e.keyCode === 73 || e.keyCode === 74 || e.keyCode === 67)) {
-                e.preventDefault();
-                return false;
-            }
-            // Ctrl + U (View Source)
-            if (e.ctrlKey && e.keyCode === 85) {
-                e.preventDefault();
-                return false;
-            }
-            // Ctrl + S (Save Page)
-            if (e.ctrlKey && e.keyCode === 83) {
-                e.preventDefault();
-                return false;
+        document.addEventListener('contextmenu', e => e.preventDefault());
+        document.addEventListener('keydown', e => {
+            if (e.keyCode === 123 || (e.ctrlKey && e.shiftKey && [73, 74, 67].includes(e.keyCode)) || (e.ctrlKey && [85, 83].includes(e.keyCode))) {
+                e.preventDefault(); return false;
             }
         });
-
-        // 3. Anti-Debugger Trap (Membekukan Console jika DevTools dibuka paksa)
-        setInterval(function() {
-            (function() {
-                return false;
-            })["constructor"]("debugger")();
-        }, 100);
+        setInterval(() => { (function() { return false; })["constructor"]("debugger")(); }, 100);
     </script>
 </head>
 <body>
 
     <div class="header">
         <div class="logo-container">
-            <div class="logo-crop">
-                <img class="bmkg-logo-img" src="logo-bmkg.png" alt="Logo BMKG">
-            </div>
+            <div class="logo-crop"><img class="bmkg-logo-img" src="logo-bmkg.png" alt="Logo BMKG"></div>
             <div class="bmkg-text">BMKG</div>
         </div>
-        
         <h1>STASIUN GEOFISIKA KELAS I DELI SERDANG</h1>
         <div class="subtitle">TAMAN ALAT METEOROLOGI PERMUKAAN DIGITAL</div>
-        
         <div class="digital-clock-container">
             <div id="digitalClock" class="clock-time">00:00:00 WIB</div>
             <div id="digitalDate" class="clock-date">Senin, 1 Januari 2026</div>
@@ -298,431 +213,428 @@
 
     <div class="main-container">
         
-        <!-- DASHBOARD GAUGE BULAT PRESISI -->
+        <!-- DASHBOARD GAUGE -->
         <div class="dashboard-grid">
             <div class="gauge-card">
-                <div class="gauge-panel" id="panel-suhu">
-                    <div class="tachometer"><svg viewBox="0 0 100 100"><circle class="tacho-track" cx="50" cy="50" r="40"></circle><circle class="tacho-bar" id="bar-suhu" cx="50" cy="50" r="40"></circle></svg></div>
-                    <div class="tacho-data"><div class="value-display"><span id="suhuVal">--</span></div><div class="unit">°C</div></div>
-                </div>
+                <div class="gauge-panel" id="panel-suhu"><div class="tachometer"><svg viewBox="0 0 100 100"><circle class="tacho-track" cx="50" cy="50" r="40"></circle><circle class="tacho-bar" id="bar-suhu" cx="50" cy="50" r="40"></circle></svg></div><div class="tacho-data"><div class="value-display"><span id="suhuVal">--</span></div><div class="unit">°C</div></div></div>
                 <div class="panel-label">BOLA KERING</div>
             </div>
-
             <div class="gauge-card">
-                <div class="gauge-panel" id="panel-hum">
-                    <div class="tachometer"><svg viewBox="0 0 100 100"><circle class="tacho-track" cx="50" cy="50" r="40"></circle><circle class="tacho-bar" id="bar-hum" cx="50" cy="50" r="40"></circle></svg></div>
-                    <div class="tacho-data"><div class="value-display"><span id="humVal">--</span></div><div class="unit">% RELATIF</div></div>
-                </div>
+                <div class="gauge-panel" id="panel-hum"><div class="tachometer"><svg viewBox="0 0 100 100"><circle class="tacho-track" cx="50" cy="50" r="40"></circle><circle class="tacho-bar" id="bar-hum" cx="50" cy="50" r="40"></circle></svg></div><div class="tacho-data"><div class="value-display"><span id="humVal">--</span></div><div class="unit">% RELATIF</div></div></div>
                 <div class="panel-label">KELEMBAPAN</div>
             </div>
-
             <div class="gauge-card">
-                <div class="gauge-panel" id="panel-wet">
-                    <div class="tachometer"><svg viewBox="0 0 100 100"><circle class="tacho-track" cx="50" cy="50" r="40"></circle><circle class="tacho-bar" id="bar-wet" cx="50" cy="50" r="40"></circle></svg></div>
-                    <div class="tacho-data"><div class="value-display"><span id="wetVal">--</span></div><div class="unit">°C</div></div>
-                </div>
+                <div class="gauge-panel" id="panel-wet"><div class="tachometer"><svg viewBox="0 0 100 100"><circle class="tacho-track" cx="50" cy="50" r="40"></circle><circle class="tacho-bar" id="bar-wet" cx="50" cy="50" r="40"></circle></svg></div><div class="tacho-data"><div class="value-display"><span id="wetVal">--</span></div><div class="unit">°C</div></div></div>
                 <div class="panel-label">BOLA BASAH</div>
             </div>
-
             <div class="gauge-card">
-                <div class="gauge-panel" id="panel-rain">
-                    <div class="tachometer"><svg viewBox="0 0 100 100"><circle class="tacho-track" cx="50" cy="50" r="40"></circle><circle class="tacho-bar" id="bar-rain" cx="50" cy="50" r="40"></circle></svg></div>
-                    <div class="tacho-data"><div class="value-display"><span id="rainVal">0.0</span></div><div class="unit">MM</div></div>
-                </div>
+                <div class="gauge-panel" id="panel-rain"><div class="tachometer"><svg viewBox="0 0 100 100"><circle class="tacho-track" cx="50" cy="50" r="40"></circle><circle class="tacho-bar" id="bar-rain" cx="50" cy="50" r="40"></circle></svg></div><div class="tacho-data"><div class="value-display"><span id="rainVal">0.0</span></div><div class="unit">MM</div></div></div>
                 <div class="panel-label">CURAH HUJAN</div>
             </div>
-
             <div class="gauge-card">
-                <div class="gauge-panel" id="panel-rain3">
-                    <div class="tachometer"><svg viewBox="0 0 100 100"><circle class="tacho-track" cx="50" cy="50" r="40"></circle><circle class="tacho-bar" id="bar-rain3" cx="50" cy="50" r="40"></circle></svg></div>
-                    <div class="tacho-data"><div class="value-display"><span id="rain3Val">0.0</span></div><div class="unit">MM</div></div>
-                </div>
+                <div class="gauge-panel" id="panel-rain3"><div class="tachometer"><svg viewBox="0 0 100 100"><circle class="tacho-track" cx="50" cy="50" r="40"></circle><circle class="tacho-bar" id="bar-rain3" cx="50" cy="50" r="40"></circle></svg></div><div class="tacho-data"><div class="value-display"><span id="rain3Val">0.0</span></div><div class="unit">MM</div></div></div>
                 <div class="panel-label">HUJAN 3 JAM</div>
             </div>
-
             <div class="gauge-card">
-                <div class="gauge-panel" id="panel-rain24">
-                    <div class="tachometer"><svg viewBox="0 0 100 100"><circle class="tacho-track" cx="50" cy="50" r="40"></circle><circle class="tacho-bar" id="bar-rain24" cx="50" cy="50" r="40"></circle></svg></div>
-                    <div class="tacho-data"><div class="value-display"><span id="rain24Val">0.0</span></div><div class="unit">MM</div></div>
-                </div>
+                <div class="gauge-panel" id="panel-rain24"><div class="tachometer"><svg viewBox="0 0 100 100"><circle class="tacho-track" cx="50" cy="50" r="40"></circle><circle class="tacho-bar" id="bar-rain24" cx="50" cy="50" r="40"></circle></svg></div><div class="tacho-data"><div class="value-display"><span id="rain24Val">0.0</span></div><div class="unit">MM</div></div></div>
                 <div class="panel-label">HUJAN 24 JAM</div>
             </div>
-
             <div class="gauge-card">
-                <div class="gauge-panel" id="panel-max">
-                    <div class="tachometer"><svg viewBox="0 0 100 100"><circle class="tacho-track" cx="50" cy="50" r="40"></circle><circle class="tacho-bar" id="bar-max" cx="50" cy="50" r="40"></circle></svg></div>
-                    <div class="tacho-data"><div class="value-display"><span id="maxSuhuVal">--</span></div><div class="unit">°C</div></div>
-                </div>
+                <div class="gauge-panel" id="panel-max"><div class="tachometer"><svg viewBox="0 0 100 100"><circle class="tacho-track" cx="50" cy="50" r="40"></circle><circle class="tacho-bar" id="bar-max" cx="50" cy="50" r="40"></circle></svg></div><div class="tacho-data"><div class="value-display"><span id="maxSuhuVal">--</span></div><div class="unit">°C</div></div></div>
                 <div class="panel-label">SUHU MAX (07-19)</div>
             </div>
-
             <div class="gauge-card">
-                <div class="gauge-panel" id="panel-min">
-                    <div class="tachometer"><svg viewBox="0 0 100 100"><circle class="tacho-track" cx="50" cy="50" r="40"></circle><circle class="tacho-bar" id="bar-min" cx="50" cy="50" r="40"></circle></svg></div>
-                    <div class="tacho-data"><div class="value-display"><span id="minSuhuVal">--</span></div><div class="unit">°C</div></div>
-                </div>
+                <div class="gauge-panel" id="panel-min"><div class="tachometer"><svg viewBox="0 0 100 100"><circle class="tacho-track" cx="50" cy="50" r="40"></circle><circle class="tacho-bar" id="bar-min" cx="50" cy="50" r="40"></circle></svg></div><div class="tacho-data"><div class="value-display"><span id="minSuhuVal">--</span></div><div class="unit">°C</div></div></div>
                 <div class="panel-label">SUHU MIN (19-07)</div>
             </div>
         </div>
 
-        <!-- PANEL DIAGNOSIS SISTEM KOTAK -->
+        <!-- DIAGNOSIS SISTEM -->
         <div class="system-diagnosis-grid">
             <div class="tacho-box-card">
                 <div class="tacho-box-header">
                     <span class="tacho-box-title">SISA MEMORI SISTEM (ESP8266 RAM)</span>
                     <span class="tacho-box-value" style="color: var(--ram-yellow);"><span id="ramVal">--</span> <small style="font-size: 0.9rem;">KB</small></span>
                 </div>
-                <div class="tacho-bar-track">
-                    <div class="tacho-bar-fill" id="fill-ram"></div>
-                </div>
+                <div class="tacho-bar-track"><div class="tacho-bar-fill" id="fill-ram"></div></div>
             </div>
-
             <div class="tacho-box-card">
                 <div class="tacho-box-header">
                     <span class="tacho-box-title">KUALITAS SINYAL WI-FI</span>
                     <span class="tacho-box-value" style="color: var(--wifi-teal);"><span id="wifiVal">--</span> <small style="font-size: 0.85rem; color: var(--text-muted);" id="wifiDbmVal">(-- dBm)</small></span>
                 </div>
-                <div class="tacho-bar-track">
-                    <div class="tacho-bar-fill" id="fill-wifi"></div>
-                </div>
+                <div class="tacho-bar-track"><div class="tacho-bar-fill" id="fill-wifi"></div></div>
             </div>
         </div>
 
-        <!-- STATUS FOOTER -->
+        <!-- FOOTER STATUS -->
         <div class="footer-status" id="footerPanel">
             <div style="font-weight: 700; margin-bottom: 4px;">
-                <span class="led" id="statusIndicator"></span>
-                <span id="statusText">STATUS: MENUNGGU TRANSMISI DATA...</span>
+                <span class="led" id="statusIndicator"></span><span id="statusText">STATUS: MENUNGGU TRANSMISI DATA...</span>
             </div>
-            <div style="font-size: 0.8rem; color: var(--text-muted);" id="timeContainer">
-                PEMBARUAN TERAKHIR: <span id="timeVal">--:--:--</span>
-            </div>
+            <div style="font-size: 0.8rem; color: var(--text-muted);" id="timeContainer">PEMBARUAN TERAKHIR: <span id="timeVal">--:--:--</span></div>
         </div>
 
-        <!-- TABEL 1: LAPORAN HUJAN 24 JAM BMKG -->
+        <!-- TABEL 1: HUJAN 24 JAM -->
         <div class="log-section">
             <div class="log-header">
-                <h3 class="log-title">REKAPITULASI CURAH HUJAN 24 JAM BMKG (07.00 - 07.00 WIB)</h3>
-                <button class="btn-download" onclick="downloadRain24hCSV()">UNDUH CSV</button>
+                <h3 class="log-title">REKAPITULASI CURAH HUJAN 24 JAM BMKG (07.00 – 07.00 WIB)</h3>
+                <div class="filter-controls">
+                    <input type="date" id="start-rain24" class="date-input">
+                    <input type="date" id="end-rain24" class="date-input">
+                    <button class="btn-filter" onclick="applyFilter('rain24')">Filter</button>
+                    <button class="btn-reset" onclick="resetFilter('rain24')">Reset</button>
+                    <button class="btn-download" onclick="downloadCSV('rain24')">UNDUH CSV</button>
+                </div>
             </div>
             <div class="table-scroll-container">
                 <table class="log-table">
-                    <thead>
-                        <tr><th>NO</th><th>TANGGAL OBSERVASI</th><th>WAKTU CETAK</th><th>TOTAL CURAH HUJAN 24 JAM (MM)</th></tr>
-                    </thead>
-                    <tbody id="rain24TableBody"><tr><td colspan="4">Memuat rekapitulasi 24 jam...</td></tr></tbody>
+                    <thead><tr><th>NO</th><th>TANGGAL OBSERVASI</th><th>WAKTU CETAK</th><th>TOTAL CURAH HUJAN 24 JAM (MM)</th></tr></thead>
+                    <tbody id="rain24TableBody"><tr><td colspan="4">Memuat data...</td></tr></tbody>
                 </table>
             </div>
         </div>
 
-        <!-- TABEL 2: LAPORAN HUJAN 3 JAM-JAMAN -->
+        <!-- TABEL 2: HUJAN 3 JAM -->
         <div class="log-section">
             <div class="log-header">
                 <h3 class="log-title">LOG CURAH HUJAN 3 JAM-JAMAN (10.00, 13.00, 16.00, 19.00 WIB)</h3>
-                <button class="btn-download" onclick="downloadRain3hCSV()">UNDUH CSV</button>
+                <div class="filter-controls">
+                    <input type="date" id="start-rain3" class="date-input">
+                    <input type="date" id="end-rain3" class="date-input">
+                    <button class="btn-filter" onclick="applyFilter('rain3')">Filter</button>
+                    <button class="btn-reset" onclick="resetFilter('rain3')">Reset</button>
+                    <button class="btn-download" onclick="downloadCSV('rain3')">UNDUH CSV</button>
+                </div>
             </div>
             <div class="table-scroll-container">
                 <table class="log-table">
-                    <thead>
-                        <tr><th>NO</th><th>WAKTU PENGAMATAN</th><th>JAM OBSERVASI</th><th>CURAH HUJAN 3 JAM (MM)</th></tr>
-                    </thead>
-                    <tbody id="rain3TableBody"><tr><td colspan="4">Memuat log 3 jam-jaman...</td></tr></tbody>
+                    <thead><tr><th>NO</th><th>WAKTU PENGAMATAN</th><th>JAM OBSERVASI</th><th>CURAH HUJAN 3 JAM (MM)</th></tr></thead>
+                    <tbody id="rain3TableBody"><tr><td colspan="4">Memuat data...</td></tr></tbody>
                 </table>
             </div>
         </div>
 
-        <!-- TABEL 3: LOG SUHU EKSTREM -->
+        <!-- TABEL 3: SUHU EKSTREM -->
         <div class="log-section">
             <div class="log-header">
                 <h3 class="log-title">LAPORAN SUHU EKSTREM BMKG (HARIAN)</h3>
-                <button class="btn-download" onclick="downloadEkstremCSV()">UNDUH CSV</button>
+                <div class="filter-controls">
+                    <input type="date" id="start-ekstrem" class="date-input">
+                    <input type="date" id="end-ekstrem" class="date-input">
+                    <button class="btn-filter" onclick="applyFilter('ekstrem')">Filter</button>
+                    <button class="btn-reset" onclick="resetFilter('ekstrem')">Reset</button>
+                    <button class="btn-download" onclick="downloadCSV('ekstrem')">UNDUH CSV</button>
+                </div>
             </div>
             <div class="table-scroll-container">
                 <table class="log-table">
-                    <thead>
-                        <tr><th>NO</th><th>TANGGAL OBSERVASI</th><th>SUHU MAKSIMUM (07-19 WIB)</th><th>SUHU MINIMUM (19-07 WIB)</th></tr>
-                    </thead>
-                    <tbody id="ekstremTableBody"><tr><td colspan="4">Memuat data rekor harian...</td></tr></tbody>
+                    <thead><tr><th>NO</th><th>TANGGAL OBSERVASI</th><th>SUHU MAKSIMUM (07-19 WIB)</th><th>SUHU MINIMUM (19-07 WIB)</th></tr></thead>
+                    <tbody id="ekstremTableBody"><tr><td colspan="4">Memuat data...</td></tr></tbody>
                 </table>
             </div>
         </div>
 
-        <!-- TABEL 4: LOG JAM-JAMAN -->
+        <!-- TABEL 4: HOURLY -->
         <div class="log-section">
             <div class="log-header">
-                <h3 class="log-title">LOG PENGAMATAN SUHU PER JAM (30 DATA TERAKHIR)</h3>
-                <button class="btn-download" onclick="downloadHourlyCSV()">UNDUH CSV</button>
+                <h3 class="log-title">LOG PENGAMATAN SUHU PER JAM</h3>
+                <div class="filter-controls">
+                    <input type="date" id="start-hourly" class="date-input">
+                    <input type="date" id="end-hourly" class="date-input">
+                    <button class="btn-filter" onclick="applyFilter('hourly')">Filter</button>
+                    <button class="btn-reset" onclick="resetFilter('hourly')">Reset</button>
+                    <button class="btn-download" onclick="downloadCSV('hourly')">UNDUH CSV</button>
+                </div>
             </div>
             <div class="table-scroll-container">
                 <table class="log-table">
-                    <thead>
-                        <tr><th>NO</th><th>WAKTU PENGAMATAN</th><th>BOLA KERING (°C)</th><th>KELEMBAPAN (%)</th><th>BOLA BASAH (°C)</th><th>AKUMULASI HUJAN (MM)</th></tr>
-                    </thead>
-                    <tbody id="hourlyTableBody"><tr><td colspan="6">Memuat data observasi...</td></tr></tbody>
+                    <thead><tr><th>NO</th><th>WAKTU PENGAMATAN</th><th>BOLA KERING (°C)</th><th>KELEMBAPAN (%)</th><th>BOLA BASAH (°C)</th><th>AKUMULASI HUJAN (MM)</th></tr></thead>
+                    <tbody id="hourlyTableBody"><tr><td colspan="6">Memuat data...</td></tr></tbody>
                 </table>
             </div>
         </div>
 
-        <!-- TABEL 5: LOG DATA LOSS -->
+        <!-- TABEL 5: DATA LOSS -->
         <div class="log-section">
             <div class="log-header">
-                <h3 class="log-title">LOG RIWAYAT DATA LOSS (30 DATA TERAKHIR)</h3>
-                <button class="btn-download" onclick="downloadLossCSV()">UNDUH CSV</button>
+                <h3 class="log-title">LOG RIWAYAT DATA LOSS</h3>
+                <div class="filter-controls">
+                    <input type="date" id="start-loss" class="date-input">
+                    <input type="date" id="end-loss" class="date-input">
+                    <button class="btn-filter" onclick="applyFilter('loss')">Filter</button>
+                    <button class="btn-reset" onclick="resetFilter('loss')">Reset</button>
+                    <button class="btn-download" onclick="downloadCSV('loss')">UNDUH CSV</button>
+                </div>
             </div>
             <div class="table-scroll-container">
                 <table class="log-table">
-                    <thead>
-                        <tr><th>NO</th><th>WAKTU MULAI LOSS</th><th>WAKTU PULIH</th><th>DURASI PUTUS</th><th>SUHU TERAKHIR</th><th>KELEMBAPAN TERAKHIR</th><th>CURAH HUJAN TERAKHIR</th></tr>
-                    </thead>
-                    <tbody id="lossTableBody"><tr><td colspan="7">Memuat data riwayat loss...</td></tr></tbody>
+                    <thead><tr><th>NO</th><th>WAKTU MULAI LOSS</th><th>WAKTU PULIH</th><th>DURASI PUTUS</th><th>SUHU TERAKHIR</th><th>KELEMBAPAN TERAKHIR</th><th>CURAH HUJAN TERAKHIR</th></tr></thead>
+                    <tbody id="lossTableBody"><tr><td colspan="7">Memuat data...</td></tr></tbody>
                 </table>
             </div>
         </div>
 
     </div>
 
-    <!-- JAM DIGITAL -->
     <script>
         function updateDigitalClock() {
             const now = new Date();
-            const hours = String(now.getHours()).padStart(2, '0');
-            const minutes = String(now.getMinutes()).padStart(2, '0');
-            const seconds = String(now.getSeconds()).padStart(2, '0');
-            document.getElementById('digitalClock').textContent = `${hours}:${minutes}:${seconds} WIB`;
-
-            const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
-            document.getElementById('digitalDate').textContent = now.toLocaleDateString('id-ID', options);
+            document.getElementById('digitalClock').textContent = `${String(now.getHours()).padStart(2,'0')}:${String(now.getMinutes()).padStart(2,'0')}:${String(now.getSeconds()).padStart(2,'0')} WIB`;
+            document.getElementById('digitalDate').textContent = now.toLocaleDateString('id-ID', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
         }
-        setInterval(updateDigitalClock, 1000);
-        updateDigitalClock();
+        setInterval(updateDigitalClock, 1000); updateDigitalClock();
     </script>
 
-    <!-- FIREBASE LISTENERS -->
     <script>
         const firebaseConfig = {
             apiKey: "AIzaSyBjH29bATrVn5vEVHFi1mgjwbe0jv5als8",
             databaseURL: "https://meteo-sangkar-default-rtdb.asia-southeast1.firebasedatabase.app"
         };
 
-        const TIMEOUT_LIMIT_SECONDS = 45; 
-        const MAX_ROWS_TO_SHOW = 30;
+        const TIMEOUT_LIMIT_SECONDS = 45;
+        const DEFAULT_DISPLAY_LIMIT = 30;
 
-        let globalHourlyArray = [];
-        let globalLossArray = [];
-        let globalEkstremArray = [];
-        let globalRain3hArray = [];
-        let globalRain24hArray = [];
+        let rawData = { rain24: [], rain3: [], ekstrem: [], hourly: [], loss: [] };
+        let activeFilter = { rain24: false, rain3: false, ekstrem: false, hourly: false, loss: false };
+
+        function formatDisplayDate(dateStr) {
+            if (!dateStr) return '-';
+            if (dateStr.includes('/')) return dateStr;
+            if (dateStr.includes('-')) {
+                const parts = dateStr.split('-');
+                if (parts.length === 3) return `${parts[2]}/${parts[1]}/${parts[0]}`;
+            }
+            return dateStr;
+        }
+
+        function extractDateObj(str) {
+            if (!str) return null;
+            if (str.includes('-')) {
+                const parts = str.split('-');
+                if (parts.length === 3) return new Date(parts[0], parts[1] - 1, parts[2]);
+            }
+            if (str.includes('/')) {
+                const datePart = str.split(',')[0].trim();
+                const parts = datePart.split('/');
+                if (parts.length === 3) return new Date(parts[2], parts[1] - 1, parts[0]);
+            }
+            return null;
+        }
 
         function calculateWetBulb(t, rh) {
-            if(rh < 0 || rh > 100 || isNaN(t) || isNaN(rh)) return null;
+            if (rh < 0 || rh > 100 || isNaN(t) || isNaN(rh)) return null;
             return t * Math.atan(0.151977 * Math.pow(rh + 8.313659, 0.5)) + Math.atan(t + rh) - Math.atan(rh - 1.676331) + 0.00391838 * Math.pow(rh, 1.5) * Math.atan(0.023101 * rh) - 4.686035;
         }
 
         function updateTacho(barId, value, min, max) {
             const bar = document.getElementById(barId);
             if (!bar || isNaN(value)) return;
-            let val = Math.max(min, Math.min(value, max));
-            let percent = (val - min) / (max - min);
+            let percent = (Math.max(min, Math.min(value, max)) - min) / (max - min);
             bar.style.strokeDashoffset = 188.5 - (percent * 188.5);
         }
 
-        function getFormattedDate(date) {
-            const yyyy = date.getFullYear();
-            const mm = String(date.getMonth() + 1).padStart(2, '0');
-            const dd = String(date.getDate()).padStart(2, '0');
-            return `${yyyy}-${mm}-${dd}`;
+        function filterDataset(type) {
+            let dataset = rawData[type];
+            if (!activeFilter[type]) return dataset.slice(0, DEFAULT_DISPLAY_LIMIT);
+
+            const startVal = document.getElementById(`start-${type}`).value;
+            const endVal = document.getElementById(`end-${type}`).value;
+            if (!startVal && !endVal) return dataset.slice(0, DEFAULT_DISPLAY_LIMIT);
+
+            const startDate = startVal ? new Date(startVal) : new Date('2000-01-01');
+            const endDate = endVal ? new Date(endVal) : new Date('2099-12-31');
+            endDate.setHours(23, 59, 59);
+
+            return dataset.filter(item => {
+                let itemDate = extractDateObj(item.tanggal || item.waktu || item.startTime);
+                return itemDate && itemDate >= startDate && itemDate <= endDate;
+            });
         }
 
-        function getFormattedTimeStr(date) {
-            const dd = String(date.getDate()).padStart(2, '0');
-            const mm = String(date.getMonth() + 1).padStart(2, '0');
-            const yyyy = date.getFullYear();
-            const hh = String(date.getHours()).padStart(2, '0');
-            const min = String(date.getMinutes()).padStart(2, '0');
-            const ss = String(date.getSeconds()).padStart(2, '0');
-            return `${dd}/${mm}/${yyyy}, ${hh}.${min}.${ss}`;
-        }
-
-        function renderRain24Table(logs) {
+        function renderRain24Table() {
+            const list = filterDataset('rain24');
             const tbody = document.getElementById('rain24TableBody');
-            if (!logs || Object.keys(logs).length === 0) { tbody.innerHTML = `<tr><td colspan="4">Belum ada rekapitulasi 24 jam tersimpan.</td></tr>`; return; }
-            let html = '', count = 1; globalRain24hArray = [];
-            Object.keys(logs).reverse().slice(0, MAX_ROWS_TO_SHOW).forEach(key => {
-                const log = logs[key]; globalRain24hArray.push(log);
-                html += `<tr><td>${count++}</td><td style="font-weight: 700; color: var(--bmkg-blue);">${log.tanggal}</td><td>${log.waktuCetak || '-'}</td><td style="color: var(--rain-purple); font-weight: 700;">${log.totalHujan24Jam !== undefined ? Number(log.totalHujan24Jam).toFixed(1) + ' mm' : '0.0 mm'}</td></tr>`;
+            if (list.length === 0) { tbody.innerHTML = `<tr><td colspan="4">Tidak ada data terdeteksi.</td></tr>`; return; }
+            let html = '', count = 1;
+            list.forEach(log => {
+                html += `<tr><td>${count++}</td><td style="font-weight: 700; color: var(--bmkg-blue);">${formatDisplayDate(log.tanggal)}</td><td>${log.waktuCetak || '-'}</td><td style="color: var(--rain-purple); font-weight: 700;">${log.totalHujan24Jam !== undefined ? Number(log.totalHujan24Jam).toFixed(1) + ' mm' : '0.0 mm'}</td></tr>`;
             });
             tbody.innerHTML = html;
         }
 
-        function renderRain3Table(logs) {
+        function renderRain3Table() {
+            const list = filterDataset('rain3');
             const tbody = document.getElementById('rain3TableBody');
-            if (!logs || Object.keys(logs).length === 0) { tbody.innerHTML = `<tr><td colspan="4">Belum ada log 3 jam-jaman tersimpan.</td></tr>`; return; }
-            let html = '', count = 1; globalRain3hArray = [];
-            Object.keys(logs).reverse().slice(0, MAX_ROWS_TO_SHOW).forEach(key => {
-                const log = logs[key]; globalRain3hArray.push(log);
-                
+            if (list.length === 0) { tbody.innerHTML = `<tr><td colspan="4">Tidak ada data terdeteksi.</td></tr>`; return; }
+            let html = '', count = 1;
+            list.forEach(log => {
                 if (count === 1 && log.curahHujan3Jam !== undefined) {
                     document.getElementById('rain3Val').innerText = Number(log.curahHujan3Jam).toFixed(1);
                     updateTacho('bar-rain3', log.curahHujan3Jam, 0, 50);
                 }
-
                 html += `<tr><td>${count++}</td><td style="font-weight: 700; color: var(--bmkg-blue);">${log.waktu}</td><td>${log.jamObservasi || '-'}</td><td style="color: var(--rain-purple); font-weight: 700;">${log.curahHujan3Jam !== undefined ? Number(log.curahHujan3Jam).toFixed(1) + ' mm' : '0.0 mm'}</td></tr>`;
             });
             tbody.innerHTML = html;
         }
 
-        function renderEkstremTable(logs) {
+        function renderEkstremTable() {
+            const list = filterDataset('ekstrem');
             const tbody = document.getElementById('ekstremTableBody');
-            if (!logs || Object.keys(logs).length === 0) { tbody.innerHTML = `<tr><td colspan="4">Belum ada rekor harian tersimpan.</td></tr>`; return; }
-            let html = '', count = 1; globalEkstremArray = []; const isoDatePattern = /^\d{4}-\d{2}-\d{2}$/;
-            Object.keys(logs).reverse().slice(0, MAX_ROWS_TO_SHOW).forEach(key => {
-                if (!isoDatePattern.test(key)) return;
-                const log = logs[key]; globalEkstremArray.push(log);
-                html += `<tr><td>${count++}</td><td style="font-weight: 700; color: var(--bmkg-blue);">${log.tanggal}</td><td style="color: var(--temp-red); font-weight: 700;">${log.maxSuhu !== undefined && log.maxSuhu !== null ? Number(log.maxSuhu).toFixed(1) + ' °C' : 'Sedang Berjalan...'}</td><td style="color: var(--hum-blue); font-weight: 700;">${log.minSuhu !== undefined && log.minSuhu !== null ? Number(log.minSuhu).toFixed(1) + ' °C' : 'Sedang Berjalan...'}</td></tr>`;
+            if (list.length === 0) { tbody.innerHTML = `<tr><td colspan="4">Tidak ada data terdeteksi.</td></tr>`; return; }
+            let html = '', count = 1;
+            list.forEach(log => {
+                html += `<tr><td>${count++}</td><td style="font-weight: 700; color: var(--bmkg-blue);">${formatDisplayDate(log.tanggal)}</td><td style="color: var(--temp-red); font-weight: 700;">${log.maxSuhu !== undefined && log.maxSuhu !== null ? Number(log.maxSuhu).toFixed(1) + ' °C' : 'Sedang Berjalan...'}</td><td style="color: var(--hum-blue); font-weight: 700;">${log.minSuhu !== undefined && log.minSuhu !== null ? Number(log.minSuhu).toFixed(1) + ' °C' : 'Sedang Berjalan...'}</td></tr>`;
             });
-            tbody.innerHTML = html || `<tr><td colspan="4">Memproses data...</td></tr>`;
+            tbody.innerHTML = html;
         }
 
-        function renderHourlyTable(logs) {
+        function renderHourlyTable() {
+            const list = filterDataset('hourly');
             const tbody = document.getElementById('hourlyTableBody');
-            if (!logs || Object.keys(logs).length === 0) { tbody.innerHTML = `<tr><td colspan="6">Belum ada rekaman jam-jaman tersimpan.</td></tr>`; return; }
-            let html = '', count = 1; globalHourlyArray = []; const uniqueLogsMap = new Map();
-            Object.keys(logs).forEach(key => {
-                const log = logs[key];
-                if (log && log.waktu) {
-                    const cleanWaktu = log.waktu.replace(/\s+/g, ''); const parts = cleanWaktu.split(',');
-                    const datePart = parts[0] ? parts[0].trim() : ''; const timePart = parts[1] ? parts[1].trim() : '';
-                    const hour = timePart.split('.')[0]; const dateComponents = datePart.split('/');
-                    if (dateComponents.length === 3) {
-                        const d = dateComponents[0].padStart(2, '0'), m = dateComponents[1].padStart(2, '0'), y = dateComponents[2];
-                        const uniqueKey = `${y}-${m}-${d}_H${hour.padStart(2, '0')}`;
-                        if (!uniqueLogsMap.has(uniqueKey) || log.waktu.includes(`/${m}/`)) {
-                            log.waktu = `${d}/${m}/${y}, ${timePart}`; uniqueLogsMap.set(uniqueKey, log);
-                        }
-                    }
-                }
-            });
-            const sortedUniqueLogs = Array.from(uniqueLogsMap.values()).reverse().slice(0, MAX_ROWS_TO_SHOW);
-            sortedUniqueLogs.forEach(log => {
-                globalHourlyArray.push(log);
+            if (list.length === 0) { tbody.innerHTML = `<tr><td colspan="6">Tidak ada data terdeteksi.</td></tr>`; return; }
+            let html = '', count = 1;
+            list.forEach(log => {
                 html += `<tr><td>${count++}</td><td style="font-weight: 700; color: var(--bmkg-blue);">${log.waktu}</td><td style="color: var(--temp-red); font-weight: 700;">${Number(log.suhuKering).toFixed(1)} °C</td><td style="color: var(--hum-blue); font-weight: 700;">${Number(log.kelembapan).toFixed(1)} %</td><td style="color: var(--wet-green); font-weight: 700;">${log.suhuBasah ? Number(log.suhuBasah).toFixed(1) + ' °C' : '-'}</td><td style="color: var(--rain-purple); font-weight: 700;">${log.curahHujan !== undefined ? Number(log.curahHujan).toFixed(1) + ' mm' : '0.0 mm'}</td></tr>`;
             });
             tbody.innerHTML = html;
         }
 
-        function renderLossTable(logs) {
+        function renderLossTable() {
+            const list = filterDataset('loss');
             const tbody = document.getElementById('lossTableBody');
-            if (!logs || Object.keys(logs).length === 0) { tbody.innerHTML = `<tr><td colspan="7">Belum ada riwayat Data Loss tersimpan.</td></tr>`; return; }
-            let html = '', count = 1; globalLossArray = [];
-            const fixDateFormat = (str) => {
-                if (!str) return '-'; const parts = str.split(','); if (parts.length < 2) return str;
-                const dateParts = parts[0].trim().split('/'); if (dateParts.length === 3) {
-                    return `${dateParts[0].padStart(2, '0')}/${dateParts[1].padStart(2, '0')}/${dateParts[2]}, ${parts[1].trim()}`;
-                }
-                return str;
-            };
-            Object.keys(logs).reverse().slice(0, MAX_ROWS_TO_SHOW).forEach(key => {
-                const log = logs[key];
-                globalLossArray.push(log);
-                html += `<tr><td>${count++}</td><td style="color: var(--temp-red); font-weight: 700;">${fixDateFormat(log.startTime)}</td><td style="color: var(--wet-green); font-weight: 700;">${fixDateFormat(log.recoveredTime)}</td><td>${log.duration || '-'}</td><td>${log.lastTemp !== undefined && log.lastTemp !== null ? Number(log.lastTemp).toFixed(1) + ' °C' : '-'}</td><td>${log.lastHum !== undefined && log.lastHum !== null ? Number(log.lastHum).toFixed(1) + ' %' : '-'}</td><td style="color: var(--rain-purple); font-weight: 700;">${log.lastRain !== undefined && log.lastRain !== null ? Number(log.lastRain).toFixed(1) + ' mm' : '0.0 mm'}</td></tr>`;
+            if (list.length === 0) { tbody.innerHTML = `<tr><td colspan="7">Tidak ada data terdeteksi.</td></tr>`; return; }
+            let html = '', count = 1;
+            list.forEach(log => {
+                html += `<tr><td>${count++}</td><td style="color: var(--temp-red); font-weight: 700;">${log.startTime}</td><td style="color: var(--wet-green); font-weight: 700;">${log.recoveredTime || '-'}</td><td>${log.duration || '-'}</td><td>${log.lastTemp ? Number(log.lastTemp).toFixed(1) + ' °C' : '-'}</td><td>${log.lastHum ? Number(log.lastHum).toFixed(1) + ' %' : '-'}</td><td style="color: var(--rain-purple); font-weight: 700;">${log.lastRain !== undefined ? Number(log.lastRain).toFixed(1) + ' mm' : '0.0 mm'}</td></tr>`;
             });
             tbody.innerHTML = html;
         }
 
-        function downloadRain24hCSV() {
-            if (globalRain24hArray.length === 0) return alert("Belum ada data!");
-            let csv = "data:text/csv;charset=utf-8,No,Tanggal Observasi,Waktu Cetak,Total Hujan 24 Jam (mm)\n";
-            globalRain24hArray.forEach((log, index) => { csv += [index + 1, `"${log.tanggal}"`, `"${log.waktuCetak || '-'}"`, log.totalHujan24Jam ? Number(log.totalHujan24Jam).toFixed(1) : '0.0'].join(",") + "\n"; });
-            const link = document.createElement("a"); link.setAttribute("href", encodeURI(csv)); link.setAttribute("download", `Laporan_Hujan_24Jam_BMKG.csv`); document.body.appendChild(link); link.click(); document.body.removeChild(link);
+        function applyFilter(type) {
+            activeFilter[type] = true;
+            if (type === 'rain24') renderRain24Table();
+            if (type === 'rain3') renderRain3Table();
+            if (type === 'ekstrem') renderEkstremTable();
+            if (type === 'hourly') renderHourlyTable();
+            if (type === 'loss') renderLossTable();
         }
 
-        function downloadRain3hCSV() {
-            if (globalRain3hArray.length === 0) return alert("Belum ada data!");
-            let csv = "data:text/csv;charset=utf-8,No,Waktu,Jam Observasi,Curah Hujan 3 Jam (mm)\n";
-            globalRain3hArray.forEach((log, index) => { csv += [index + 1, `"${log.waktu}"`, `"${log.jamObservasi || '-'}"`, log.curahHujan3Jam ? Number(log.curahHujan3Jam).toFixed(1) : '0.0'].join(",") + "\n"; });
-            const link = document.createElement("a"); link.setAttribute("href", encodeURI(csv)); link.setAttribute("download", `Laporan_Hujan_3Jam_BMKG.csv`); document.body.appendChild(link); link.click(); document.body.removeChild(link);
+        function resetFilter(type) {
+            document.getElementById(`start-${type}`).value = '';
+            document.getElementById(`end-${type}`).value = '';
+            activeFilter[type] = false;
+            if (type === 'rain24') renderRain24Table();
+            if (type === 'rain3') renderRain3Table();
+            if (type === 'ekstrem') renderEkstremTable();
+            if (type === 'hourly') renderHourlyTable();
+            if (type === 'loss') renderLossTable();
         }
 
-        function downloadEkstremCSV() {
-            if (globalEkstremArray.length === 0) return alert("Belum ada data!");
-            let csv = "data:text/csv;charset=utf-8,No,Tanggal Observasi,Suhu Maksimum,Suhu Minimum\n";
-            globalEkstremArray.forEach((log, index) => { csv += [index + 1, `"${log.tanggal}"`, log.maxSuhu ? Number(log.maxSuhu).toFixed(1) : '-', log.minSuhu ? Number(log.minSuhu).toFixed(1) : '-'].join(",") + "\n"; });
-            const link = document.createElement("a"); link.setAttribute("href", encodeURI(csv)); link.setAttribute("download", `Laporan_Ekstrem_BMKG.csv`); document.body.appendChild(link); link.click(); document.body.removeChild(link);
-        }
+        function downloadCSV(type) {
+            let list = activeFilter[type] ? filterDataset(type) : rawData[type];
+            if (!list || list.length === 0) return alert("Data kosong!");
 
-        function downloadHourlyCSV() {
-            if (globalHourlyArray.length === 0) return alert("Belum ada data!");
-            let csv = "data:text/csv;charset=utf-8,No,Waktu,Bola Kering (C),Kelembapan (%),Bola Basah (C),Curah Hujan (mm)\n";
-            globalHourlyArray.forEach((log, index) => { csv += [index + 1, `"${log.waktu}"`, Number(log.suhuKering).toFixed(1), Number(log.kelembapan).toFixed(1), log.suhuBasah ? Number(log.suhuBasah).toFixed(1) : '-', log.curahHujan ? Number(log.curahHujan).toFixed(1) : '0.0'].join(",") + "\n"; });
-            const link = document.createElement("a"); link.setAttribute("href", encodeURI(csv)); link.setAttribute("download", `Laporan_Pengamatan_Jam.csv`); document.body.appendChild(link); link.click(); document.body.removeChild(link);
-        }
+            let csv = "data:text/csv;charset=utf-8,";
+            if (type === 'rain24') {
+                csv += "No,Tanggal Observasi,Waktu Cetak,Total Hujan 24 Jam (mm)\n";
+                list.forEach((log, i) => { csv += [i + 1, `"${formatDisplayDate(log.tanggal)}"`, `"${log.waktuCetak || '-'}"`, log.totalHujan24Jam ? Number(log.totalHujan24Jam).toFixed(1) : '0.0'].join(",") + "\n"; });
+            } else if (type === 'rain3') {
+                csv += "No,Waktu,Jam Observasi,Curah Hujan 3 Jam (mm)\n";
+                list.forEach((log, i) => { csv += [i + 1, `"${log.waktu}"`, `"${log.jamObservasi || '-'}"`, log.curahHujan3Jam ? Number(log.curahHujan3Jam).toFixed(1) : '0.0'].join(",") + "\n"; });
+            } else if (type === 'ekstrem') {
+                csv += "No,Tanggal Observasi,Suhu Maksimum (C),Suhu Minimum (C)\n";
+                list.forEach((log, i) => { csv += [i + 1, `"${formatDisplayDate(log.tanggal)}"`, log.maxSuhu ? Number(log.maxSuhu).toFixed(1) : '-', log.minSuhu ? Number(log.minSuhu).toFixed(1) : '-'].join(",") + "\n"; });
+            } else if (type === 'hourly') {
+                csv += "No,Waktu,Bola Kering (C),Kelembapan (%),Bola Basah (C),Curah Hujan (mm)\n";
+                list.forEach((log, i) => { csv += [i + 1, `"${log.waktu}"`, Number(log.suhuKering).toFixed(1), Number(log.kelembapan).toFixed(1), log.suhuBasah ? Number(log.suhuBasah).toFixed(1) : '-', log.curahHujan ? Number(log.curahHujan).toFixed(1) : '0.0'].join(",") + "\n"; });
+            } else if (type === 'loss') {
+                csv += "No,Waktu Mulai Loss,Waktu Pulih,Durasi Putus,Suhu Terakhir (C),Kelembapan Terakhir (%),Curah Hujan Terakhir (mm)\n";
+                list.forEach((log, i) => { csv += [i + 1, `"${log.startTime}"`, `"${log.recoveredTime || 'Terputus'}"`, `"${log.duration || '-'}"`, log.lastTemp ? Number(log.lastTemp).toFixed(1) : '-', log.lastHum ? Number(log.lastHum).toFixed(1) : '-', log.lastRain ? Number(log.lastRain).toFixed(1) : '0.0'].join(",") + "\n"; });
+            }
 
-        function downloadLossCSV() {
-            if (globalLossArray.length === 0) return alert("Belum ada data!");
-            let csv = "data:text/csv;charset=utf-8,No,Waktu Mulai Loss,Waktu Pulih,Durasi Putus,Suhu Terakhir,Kelembapan Terakhir,Curah Hujan Terakhir\n";
-            globalLossArray.forEach((log, index) => { csv += [index + 1, `"${log.startTime}"`, `"${log.recoveredTime || 'Terputus'}"`, `"${log.duration || '-'}"`, log.lastTemp ? Number(log.lastTemp).toFixed(1) : '-', log.lastHum ? Number(log.lastHum).toFixed(1) : '-', log.lastRain ? Number(log.lastRain).toFixed(1) : '0.0'].join(",") + "\n"; });
-            const link = document.createElement("a"); link.setAttribute("href", encodeURI(csv)); link.setAttribute("download", `Laporan_Data_Loss.csv`); document.body.appendChild(link); link.click(); document.body.removeChild(link);
+            const link = document.createElement("a");
+            link.setAttribute("href", encodeURI(csv));
+            link.setAttribute("download", `Laporan_${type}_BMKG.csv`);
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
         }
 
         try {
             firebase.initializeApp(firebaseConfig);
             const database = firebase.database();
-            const dbRef = database.ref('cuaca'), lossRef = database.ref('logs_dataloss'), hourlyRef = database.ref('logs_pengamatan_jam'), ekstremRef = database.ref('logs_ekstrem_bmkg');
-            const rain3Ref = database.ref('logs_hujan_3jam'), rain24Ref = database.ref('logs_hujan_24jam');
+            
+            database.ref('logs_hujan_24jam').on('value', snap => {
+                const data = snap.val() || {};
+                rawData.rain24 = Object.keys(data).reverse().map(k => data[k]);
+                renderRain24Table();
+            });
 
-            let currentSuhu = null, currentHum = null, currentRain = 0.0, lastDataTime = null, isDataLoss = false, currentLogKey = null, lossStartTimestamp = null;
+            database.ref('logs_hujan_3jam').on('value', snap => {
+                const data = snap.val() || {};
+                rawData.rain3 = Object.keys(data).reverse().map(k => data[k]);
+                renderRain3Table();
+            });
 
-            hourlyRef.on('value', (snapshot) => { renderHourlyTable(snapshot.val()); });
-            lossRef.on('value', (snapshot) => { renderLossTable(snapshot.val()); });
-            rain3Ref.on('value', (snapshot) => { renderRain3Table(snapshot.val()); });
-            rain24Ref.on('value', (snapshot) => { renderRain24Table(snapshot.val()); });
+            database.ref('logs_ekstrem_bmkg').on('value', snap => {
+                const data = snap.val() || {};
+                const isoPattern = /^\d{4}-\d{2}-\d{2}$/;
+                rawData.ekstrem = Object.keys(data).filter(k => isoPattern.test(k)).reverse().map(k => data[k]);
+                renderEkstremTable();
 
-            ekstremRef.on('value', (snapshot) => { 
-                const data = snapshot.val(); 
-                renderEkstremTable(data); 
-                const todayKey = getFormattedDate(new Date());
+                const todayKey = new Date().toISOString().split('T')[0];
                 if (data && data[todayKey]) {
                     if (data[todayKey].maxSuhu !== undefined) {
-                        const maxVal = Number(data[todayKey].maxSuhu);
-                        document.getElementById('maxSuhuVal').innerText = maxVal.toFixed(1);
-                        updateTacho('bar-max', maxVal, 0, 50);
+                        document.getElementById('maxSuhuVal').innerText = Number(data[todayKey].maxSuhu).toFixed(1);
+                        updateTacho('bar-max', Number(data[todayKey].maxSuhu), 0, 50);
                     }
                     if (data[todayKey].minSuhu !== undefined) {
-                        const minVal = Number(data[todayKey].minSuhu);
-                        document.getElementById('minSuhuVal').innerText = minVal.toFixed(1);
-                        updateTacho('bar-min', minVal, 0, 50);
+                        document.getElementById('minSuhuVal').innerText = Number(data[todayKey].minSuhu).toFixed(1);
+                        updateTacho('bar-min', Number(data[todayKey].minSuhu), 0, 50);
                     }
                 }
             });
 
+            database.ref('logs_pengamatan_jam').on('value', snap => {
+                const data = snap.val() || {};
+                rawData.hourly = Object.keys(data).reverse().map(k => data[k]);
+                renderHourlyTable();
+            });
+
+            database.ref('logs_dataloss').on('value', snap => {
+                const data = snap.val() || {};
+                rawData.loss = Object.keys(data).reverse().map(k => data[k]);
+                renderLossTable();
+            });
+
+            let currentSuhu = null, currentHum = null, currentRain = 0.0, lastDataTime = null, isDataLoss = false, currentLogKey = null, lossStartTimestamp = null;
+
             setInterval(() => {
                 const now = new Date();
-                if (lastDataTime !== null) {
-                    const secondsDiff = Math.floor((now - lastDataTime) / 1000);
-                    if (secondsDiff >= TIMEOUT_LIMIT_SECONDS && !isDataLoss) {
-                        isDataLoss = true; lossStartTimestamp = now.getTime();
-                        document.getElementById('statusIndicator').className = "led loss"; document.getElementById('footerPanel').classList.add('dataloss');
-                        document.getElementById('statusText').innerText = "STATUS: DATA LOSS (PERANGKAT TERPUTUS)";
-                        const lossTimeStr = getFormattedTimeStr(now);
-                        document.getElementById('timeContainer').innerHTML = `DATA LOSS TERDETEKSI PADA: <span style="text-decoration: underline;">${lossTimeStr}</span>`;
-                        const newLogRef = lossRef.push(); currentLogKey = newLogRef.key;
-                        newLogRef.set({ startTime: lossTimeStr, startTimestamp: lossStartTimestamp, recoveredTime: null, duration: null, lastTemp: currentSuhu, lastHum: currentHum, lastRain: currentRain });
-                    }
+                if (lastDataTime !== null && (Math.floor((now - lastDataTime) / 1000) >= TIMEOUT_LIMIT_SECONDS) && !isDataLoss) {
+                    isDataLoss = true; lossStartTimestamp = now.getTime();
+                    document.getElementById('statusIndicator').className = "led loss"; document.getElementById('footerPanel').classList.add('dataloss');
+                    document.getElementById('statusText').innerText = "STATUS: DATA LOSS (PERANGKAT TERPUTUS)";
+                    const lossTimeStr = now.toLocaleString('id-ID');
+                    document.getElementById('timeContainer').innerHTML = `DATA LOSS TERDETEKSI PADA: <span style="text-decoration: underline;">${lossTimeStr}</span>`;
+                    const newLogRef = firebase.database().ref('logs_dataloss').push(); currentLogKey = newLogRef.key;
+                    newLogRef.set({ startTime: lossTimeStr, startTimestamp: lossStartTimestamp, recoveredTime: null, duration: null, lastTemp: currentSuhu, lastHum: currentHum, lastRain: currentRain });
                 }
             }, 1000);
 
-            dbRef.on('value', (snapshot) => {
-                const data = snapshot.val();
+            database.ref('cuaca').on('value', snap => {
+                const data = snap.val();
                 if (data) {
-                    const now = new Date(); lastDataTime = now; 
+                    const now = new Date(); lastDataTime = now;
                     if (isDataLoss) {
                         isDataLoss = false; document.getElementById('footerPanel').classList.remove('dataloss');
                         if (currentLogKey && lossStartTimestamp) {
                             const durationSec = Math.floor((now.getTime() - lossStartTimestamp) / 1000);
                             if (durationSec >= 15) {
                                 const mins = Math.floor(durationSec / 60), secs = durationSec % 60;
-                                lossRef.child(currentLogKey).update({ recoveredTime: getFormattedTimeStr(now), duration: `${mins > 0 ? mins + ' m ' : ''}${secs} s` });
-                            } else { lossRef.child(currentLogKey).remove(); }
+                                firebase.database().ref('logs_dataloss').child(currentLogKey).update({ recoveredTime: now.toLocaleString('id-ID'), duration: `${mins > 0 ? mins + ' m ' : ''}${secs} s` });
+                            } else { firebase.database().ref('logs_dataloss').child(currentLogKey).remove(); }
                             currentLogKey = null; lossStartTimestamp = null;
                         }
                     }
@@ -745,9 +657,7 @@
                     }
                     if (data.wifiQuality !== undefined) {
                         document.getElementById('wifiVal').innerText = data.wifiQuality + "%";
-                        if (data.rssi !== undefined) {
-                            document.getElementById('wifiDbmVal').innerText = `(${data.rssi} dBm)`;
-                        }
+                        if (data.rssi !== undefined) document.getElementById('wifiDbmVal').innerText = `(${data.rssi} dBm)`;
                         document.getElementById('fill-wifi').style.width = Math.min(100, Math.max(0, data.wifiQuality)) + '%';
                     }
                     if (currentSuhu !== null && currentHum !== null) {
@@ -758,7 +668,6 @@
             });
         } catch (error) {
             console.error("Error Firebase:", error);
-            document.getElementById('statusText').innerText = "STATUS: GAGAL MENGHUBUNGKAN SERVER";
         }
     </script>
 </body>
