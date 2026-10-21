@@ -402,7 +402,6 @@
         let rawData = { rain24: [], rain3: [], ekstrem: [], hourly: [], loss: [] };
         let activeFilter = { rain24: false, rain3: false, ekstrem: false, hourly: false, loss: false };
 
-        // Konversi penulisan YYYY-MM-DD -> DD/MM/YYYY
         function formatDisplayDate(dateStr) {
             if (!dateStr) return '-';
             if (dateStr.includes('/')) {
@@ -416,7 +415,6 @@
             return dateStr;
         }
 
-        // Ekstrak Objek Date untuk Komparasi Pengurutan & Filter
         function extractDateObj(str) {
             if (!str) return null;
             if (str.includes('-')) {
@@ -475,14 +473,35 @@
         function renderRain3Table() {
             const list = filterDataset('rain3');
             const tbody = document.getElementById('rain3TableBody');
-            if (list.length === 0) { tbody.innerHTML = `<tr><td colspan="4">Tidak ada data terdeteksi.</td></tr>`; return; }
+            if (list.length === 0) { 
+                tbody.innerHTML = `<tr><td colspan="4">Tidak ada data terdeteksi.</td></tr>`; 
+                document.getElementById('rain3Val').innerText = "0.0";
+                updateTacho('bar-rain3', 0, 0, 50);
+                return; 
+            }
+
+            // Validasi tanggal saat ini untuk Gauge
+            const now = new Date();
+            const todayStr = `${String(now.getDate()).padStart(2, '0')}/${String(now.getMonth() + 1).padStart(2, '0')}/${now.getFullYear()}`;
+            const latestLog = list[0];
+
+            if (latestLog && latestLog.waktu && latestLog.waktu.includes(todayStr)) {
+                const val = latestLog.curahHujan3Jam !== undefined ? Number(latestLog.curahHujan3Jam) : 0.0;
+                document.getElementById('rain3Val').innerText = val.toFixed(1);
+                updateTacho('bar-rain3', val, 0, 50);
+            } else {
+                document.getElementById('rain3Val').innerText = "0.0";
+                updateTacho('bar-rain3', 0, 0, 50);
+            }
+
             let html = '', count = 1;
             list.forEach(log => {
-                if (count === 1 && log.curahHujan3Jam !== undefined) {
-                    document.getElementById('rain3Val').innerText = Number(log.curahHujan3Jam).toFixed(1);
-                    updateTacho('bar-rain3', log.curahHujan3Jam, 0, 50);
-                }
-                html += `<tr><td>${count++}</td><td style="font-weight: 700; color: var(--bmkg-blue);">${log.waktu}</td><td>${log.jamObservasi || '-'}</td><td style="color: var(--rain-purple); font-weight: 700;">${log.curahHujan3Jam !== undefined ? Number(log.curahHujan3Jam).toFixed(1) + ' mm' : '0.0 mm'}</td></tr>`;
+                html += `<tr>
+                    <td>${count++}</td>
+                    <td style="font-weight: 700; color: var(--bmkg-blue);">${log.waktu}</td>
+                    <td>${log.jamObservasi || '-'}</td>
+                    <td style="color: var(--rain-purple); font-weight: 700;">${log.curahHujan3Jam !== undefined ? Number(log.curahHujan3Jam).toFixed(1) + ' mm' : '0.0 mm'}</td>
+                </tr>`;
             });
             tbody.innerHTML = html;
         }
