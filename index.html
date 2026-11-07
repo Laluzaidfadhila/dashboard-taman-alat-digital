@@ -91,7 +91,7 @@
 
         .main-container { width: 100%; max-width: 1540px; margin: 0 auto; padding: 0 16px; }
 
-        /* GRADIENT SHAPE DIVIDERS (MURNI TEKS) */
+        /* GRADIENT SHAPE DIVIDERS */
         .section-separator {
             display: flex;
             align-items: center;
@@ -145,25 +145,7 @@
         }
 
         .grid-3 { grid-template-columns: repeat(3, 1fr); }
-        .grid-2 { grid-template-columns: repeat(2, 1fr); max-width: 900px; margin: 0 auto; }
-
-        @media (max-width: 768px) {
-            .grid-3 { grid-template-columns: repeat(2, 1fr); }
-            .grid-3 > .gauge-card:last-child {
-                grid-column: span 2;
-                max-width: 320px;
-                margin: 0 auto;
-                width: 100%;
-            }
-            .grid-2 { grid-template-columns: repeat(2, 1fr); width: 100%; }
-            h1 { font-size: 1.3rem; }
-            .header { padding: 18px 12px; }
-        }
-
-        @media (max-width: 480px) {
-            .gauge-group-grid { gap: 10px; }
-            .section-badge { font-size: 0.8rem; padding: 5px 16px; }
-        }
+        .grid-2 { grid-template-columns: repeat(2, 1fr); max-width: 900px; margin: 0 auto; width: 100%; }
 
         /* GAUGE CARD */
         .gauge-card {
@@ -178,6 +160,7 @@
             align-items: center;
             box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
             transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+            min-width: 0;
         }
 
         .gauge-card:hover {
@@ -199,13 +182,7 @@
             justify-content: center;
         }
 
-        @media (max-width: 480px) {
-            .gauge-panel { width: 115px; height: 115px; border-width: 4px; }
-        }
-
         .tachometer { position: absolute; width: 110px; height: 110px; top: 7px; }
-        @media (max-width: 480px) { .tachometer { width: 95px; height: 95px; top: 6px; } }
-
         .tachometer svg { width: 100%; height: 100%; transform: rotate(135deg); }
         .tacho-track { fill: none; stroke: #151f38; stroke-width: 12; stroke-dasharray: 188.5 251.2; }
         .tacho-bar { fill: none; stroke-width: 12; stroke-linecap: round; stroke-dasharray: 188.5 251.2; stroke-dashoffset: 188.5; transition: stroke-dashoffset 1.2s cubic-bezier(0.4, 0, 0.2, 1); }
@@ -224,7 +201,6 @@
 
         .tacho-data { z-index: 10; text-align: center; }
         .value-display { font-family: 'Oswald', sans-serif; font-size: 1.85rem; font-weight: 700; color: #fff; line-height: 1; }
-        @media (max-width: 480px) { .value-display { font-size: 1.45rem; } }
         .unit { font-size: 0.65rem; color: var(--text-muted); margin-top: 3px; font-weight: 700; text-transform: uppercase; }
         
         .panel-label { 
@@ -234,7 +210,54 @@
             overflow: hidden; text-overflow: ellipsis;
         }
 
-        /* DIAGNOSIS SYSTEM */
+        /* MEDIA QUERY RESPONSIVE UNTUK PONSEL */
+        @media (max-width: 768px) {
+            .main-container { padding: 0 10px; }
+            .gauge-group-grid { gap: 10px; }
+            .grid-3 { grid-template-columns: repeat(2, 1fr); }
+            .grid-3 > .gauge-card:last-child {
+                grid-column: span 2;
+                max-width: 250px;
+                margin: 0 auto;
+                width: 100%;
+            }
+            .grid-2 {
+                grid-template-columns: repeat(2, 1fr);
+                width: 100%;
+                max-width: 100%;
+            }
+            .gauge-card {
+                padding: 12px 4px;
+                min-width: 0;
+            }
+            .gauge-panel {
+                width: 108px;
+                height: 108px;
+                border-width: 4px;
+            }
+            .tachometer {
+                width: 88px;
+                height: 88px;
+                top: 6px;
+            }
+            .value-display {
+                font-size: 1.4rem;
+            }
+            .panel-label {
+                font-size: 0.68rem;
+                padding: 4px 6px;
+                max-width: 96%;
+                letter-spacing: 0.3px;
+            }
+            .section-badge {
+                font-size: 0.76rem;
+                padding: 5px 14px;
+            }
+            h1 { font-size: 1.25rem; }
+            .header { padding: 18px 10px; }
+        }
+
+        /* DIAGNOSIS SISTEM */
         .system-diagnosis-grid {
             display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px; margin: 30px 0 20px 0;
         }
