@@ -9,24 +9,28 @@
     <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-database.js"></script>
 
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&family=Oswald:wght@500;700&display=swap" rel="stylesheet">
+    <!-- Google Fonts: Plus Jakarta Sans & Oswald -->
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Oswald:wght@500;600;700&display=swap" rel="stylesheet">
 
     <style>
         :root {
-            --card-bg: rgba(30, 41, 59, 0.75);
-            --card-border: rgba(255, 255, 255, 0.08);
+            --bg-body: #070d1e;
+            --card-bg: rgba(18, 26, 47, 0.7);
+            --card-border: rgba(255, 255, 255, 0.07);
+            --card-hover-border: rgba(56, 189, 248, 0.35);
             --bmkg-gold: #fbbf24;
             --bmkg-blue: #38bdf8;
             --temp-red: #f87171;
-            --hum-blue: #38bdf8;
             --wet-green: #34d399;
+            --hum-blue: #0284c7;
             --rain-purple: #c084fc;
-            --max-red: #ef4444;
-            --min-blue: #06b6d4;
-            --press-qfe: #0284c7;
+            --rain-3h: #a855f7;
+            --rain-24h: #ec4899;
+            --press-qfe: #38bdf8;
             --press-qff: #6366f1;
             --press-qnh: #8b5cf6;
+            --max-red: #ef4444;
+            --min-blue: #06b6d4;
             --ram-yellow: #f59e0b;
             --wifi-teal: #14b8a6;
             --text-main: #f8fafc;
@@ -40,69 +44,164 @@
 
         body {
             font-family: 'Plus Jakarta Sans', sans-serif;
-            background: #0b1329; color: var(--text-main);
-            min-height: 100vh; padding-bottom: 40px; overflow-x: hidden;
+            background: radial-gradient(circle at 50% 0%, #132247 0%, #070d1e 75%);
+            color: var(--text-main);
+            min-height: 100vh;
+            padding-bottom: 50px;
+            overflow-x: hidden;
         }
 
+        /* HEADER */
         .header {
-            width: 100%; background: rgba(15, 23, 42, 0.95); backdrop-filter: blur(12px);
-            padding: 20px 15px 16px 15px; text-align: center; box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-            margin-bottom: 20px; display: flex; flex-direction: column; align-items: center;
+            width: 100%;
+            background: rgba(11, 19, 43, 0.85);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            padding: 24px 16px 20px 16px;
+            text-align: center;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+            box-shadow: 0 10px 35px rgba(0,0,0,0.6);
+            margin-bottom: 25px;
+            display: flex; flex-direction: column; align-items: center;
         }
 
-        .logo-container { display: flex; flex-direction: column; align-items: center; margin-bottom: 8px; }
+        .logo-container { display: flex; flex-direction: column; align-items: center; margin-bottom: 10px; }
         .logo-crop {
-            width: 55px; height: 55px; overflow: hidden; display: flex;
+            width: 60px; height: 60px; overflow: hidden; display: flex;
             justify-content: center; align-items: flex-start; border-radius: 50%;
-            box-shadow: 0 0 15px rgba(255, 255, 255, 0.2);
+            box-shadow: 0 0 20px rgba(56, 189, 248, 0.35);
+            border: 2px solid rgba(255, 255, 255, 0.15);
         }
-        .bmkg-logo-img { width: 55px; height: auto; object-fit: cover; pointer-events: none; }
+        .bmkg-logo-img { width: 60px; height: auto; object-fit: cover; pointer-events: none; }
         .bmkg-text {
-            font-family: 'Oswald', sans-serif; font-size: 1.05rem; font-weight: 700;
-            color: #ffffff; letter-spacing: 2px; margin-top: 3px; text-shadow: 0 0 8px rgba(255, 255, 255, 0.3);
+            font-family: 'Oswald', sans-serif; font-size: 1.1rem; font-weight: 700;
+            color: #ffffff; letter-spacing: 3px; margin-top: 5px; text-shadow: 0 0 10px rgba(255, 255, 255, 0.4);
         }
 
-        h1 { font-family: 'Oswald', sans-serif; font-size: 1.5rem; color: var(--bmkg-gold); letter-spacing: 1.5px; text-transform: uppercase; }
-        .subtitle { font-size: 0.75rem; color: var(--text-muted); letter-spacing: 2px; margin-top: 3px; font-weight: 600; }
+        h1 { font-family: 'Oswald', sans-serif; font-size: 1.65rem; color: var(--bmkg-gold); letter-spacing: 1.5px; text-transform: uppercase; }
+        .subtitle { font-size: 0.8rem; color: var(--text-muted); letter-spacing: 2.5px; margin-top: 4px; font-weight: 600; text-transform: uppercase; }
 
         .digital-clock-container {
-            margin-top: 12px; display: inline-flex; flex-direction: column; align-items: center;
-            background: rgba(15, 23, 42, 0.8); border: 1px solid rgba(251, 191, 36, 0.3);
-            padding: 6px 18px; border-radius: 10px; box-shadow: 0 4px 15px rgba(0,0,0,0.4);
+            margin-top: 14px; display: inline-flex; flex-direction: column; align-items: center;
+            background: rgba(7, 13, 30, 0.7); border: 1px solid rgba(251, 191, 36, 0.35);
+            padding: 6px 22px; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.5);
         }
-        .clock-time { font-family: 'Oswald', sans-serif; font-size: 1.5rem; font-weight: 700; color: #ffffff; letter-spacing: 1.5px; line-height: 1.1; }
-        .clock-date { font-size: 0.75rem; font-weight: 600; color: var(--bmkg-gold); letter-spacing: 0.5px; text-transform: uppercase; margin-top: 2px; }
+        .clock-time { font-family: 'Oswald', sans-serif; font-size: 1.6rem; font-weight: 700; color: #ffffff; letter-spacing: 2px; line-height: 1.1; text-shadow: 0 0 10px rgba(56, 189, 248, 0.5); }
+        .clock-date { font-size: 0.75rem; font-weight: 600; color: var(--bmkg-gold); letter-spacing: 0.8px; text-transform: uppercase; margin-top: 2px; }
 
-        .main-container { width: 100%; max-width: 1540px; margin: 0 auto; padding: 0 14px; }
-        
-        /* GRID GAUGE BERDASARKAN BREAKPOINT */
-        .dashboard-grid { 
-            display: grid; 
-            grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); 
-            gap: 16px; 
-            width: 100%; 
-            margin-bottom: 20px; 
-        }
+        .main-container { width: 100%; max-width: 1540px; margin: 0 auto; padding: 0 16px; }
 
-        @media (max-width: 768px) { 
-            .dashboard-grid { 
-                grid-template-columns: repeat(2, 1fr); /* 2 Kolom pas di layar Ponsel */
-                gap: 10px; 
-            } 
-            h1 { font-size: 1.25rem; }
-            .header { padding: 16px 10px; }
+        /* GRADIENT SHAPE DIVIDERS */
+        .section-separator {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 28px 0 18px 0;
+            position: relative;
         }
 
+        .section-separator .shape-line {
+            flex: 1;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, rgba(56, 189, 248, 0.4), transparent);
+        }
+
+        .section-separator.purple .shape-line {
+            background: linear-gradient(90deg, transparent, rgba(192, 132, 252, 0.45), transparent);
+        }
+        .section-separator.blue .shape-line {
+            background: linear-gradient(90deg, transparent, rgba(99, 102, 241, 0.45), transparent);
+        }
+        .section-separator.red .shape-line {
+            background: linear-gradient(90deg, transparent, rgba(239, 68, 68, 0.45), transparent);
+        }
+
+        .section-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 6px 18px;
+            border-radius: 30px;
+            background: rgba(15, 23, 42, 0.85);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(12px);
+            font-family: 'Oswald', sans-serif;
+            font-size: 0.85rem;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+            white-space: nowrap;
+        }
+
+        .section-badge.temp { color: #fca5a5; border-color: rgba(248, 113, 113, 0.3); box-shadow: 0 0 15px rgba(248, 113, 113, 0.15); }
+        .section-badge.rain { color: #d8b4fe; border-color: rgba(192, 132, 252, 0.3); box-shadow: 0 0 15px rgba(192, 132, 252, 0.15); }
+        .section-badge.press { color: #93c5fd; border-color: rgba(99, 102, 241, 0.3); box-shadow: 0 0 15px rgba(99, 102, 241, 0.15); }
+        .section-badge.ekstrem { color: #fdba74; border-color: rgba(239, 68, 68, 0.3); box-shadow: 0 0 15px rgba(239, 68, 68, 0.15); }
+
+        /* GRID GAUGE CATEGORIES */
+        .gauge-group-grid {
+            display: grid;
+            gap: 14px;
+            width: 100%;
+        }
+
+        .grid-3 { grid-template-columns: repeat(3, 1fr); }
+        .grid-2 { grid-template-columns: repeat(2, 1fr); max-width: 900px; margin: 0 auto; }
+
+        @media (max-width: 900px) {
+            .grid-3 { grid-template-columns: repeat(3, 1fr); }
+        }
+
+        @media (max-width: 768px) {
+            .grid-3 { grid-template-columns: repeat(2, 1fr); }
+            .grid-3 > .gauge-card:last-child {
+                grid-column: span 2;
+                max-width: 320px;
+                margin: 0 auto;
+                width: 100%;
+            }
+            .grid-2 { grid-template-columns: repeat(2, 1fr); width: 100%; }
+            h1 { font-size: 1.3rem; }
+            .header { padding: 18px 12px; }
+        }
+
+        @media (max-width: 480px) {
+            .gauge-group-grid { gap: 10px; }
+            .section-badge { font-size: 0.78rem; padding: 5px 14px; }
+        }
+
+        /* GAUGE CARD & TACHOMETER STYLES */
         .gauge-card {
-            background: var(--card-bg); backdrop-filter: blur(16px); border: 1px solid var(--card-border);
-            border-radius: 16px; padding: 14px 6px; display: flex; flex-direction: column; align-items: center;
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+            background: var(--card-bg);
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
+            border: 1px solid var(--card-border);
+            border-radius: 18px;
+            padding: 16px 8px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
+            transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+        }
+
+        .gauge-card:hover {
+            transform: translateY(-4px);
+            border-color: var(--card-hover-border);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.5);
         }
 
         .gauge-panel {
-            background: #0f172a; border-radius: 50%; width: 135px; height: 135px; position: relative;
-            border: 5px solid #1e293b; box-shadow: inset 0 0 16px rgba(0,0,0,0.8), 0 0 12px rgba(0,0,0,0.5);
-            display: flex; align-items: center; justify-content: center;
+            background: #091024;
+            border-radius: 50%;
+            width: 135px;
+            height: 135px;
+            position: relative;
+            border: 5px solid #16203a;
+            box-shadow: inset 0 0 18px rgba(0,0,0,0.85), 0 0 14px rgba(0,0,0,0.5);
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
         @media (max-width: 480px) {
@@ -113,77 +212,80 @@
         @media (max-width: 480px) { .tachometer { width: 95px; height: 95px; top: 6px; } }
 
         .tachometer svg { width: 100%; height: 100%; transform: rotate(135deg); }
-        .tacho-track { fill: none; stroke: #1e293b; stroke-width: 12; stroke-dasharray: 188.5 251.2; }
+        .tacho-track { fill: none; stroke: #151f38; stroke-width: 12; stroke-dasharray: 188.5 251.2; }
         .tacho-bar { fill: none; stroke-width: 12; stroke-linecap: round; stroke-dasharray: 188.5 251.2; stroke-dashoffset: 188.5; transition: stroke-dashoffset 1.2s cubic-bezier(0.4, 0, 0.2, 1); }
 
-        #panel-suhu .tacho-bar { stroke: var(--temp-red); filter: drop-shadow(0 0 5px var(--temp-red)); }
-        #panel-hum .tacho-bar { stroke: var(--hum-blue); filter: drop-shadow(0 0 5px var(--hum-blue)); }
-        #panel-wet .tacho-bar { stroke: var(--wet-green); filter: drop-shadow(0 0 5px var(--wet-green)); }
-        #panel-rain .tacho-bar { stroke: var(--rain-purple); filter: drop-shadow(0 0 5px var(--rain-purple)); }
-        #panel-rain3 .tacho-bar { stroke: #a855f7; filter: drop-shadow(0 0 5px #a855f7); }
-        #panel-rain24 .tacho-bar { stroke: #ec4899; filter: drop-shadow(0 0 5px #ec4899); }
-        #panel-qfe .tacho-bar { stroke: var(--press-qfe); filter: drop-shadow(0 0 5px var(--press-qfe)); }
-        #panel-qff .tacho-bar { stroke: var(--press-qff); filter: drop-shadow(0 0 5px var(--press-qff)); }
-        #panel-qnh .tacho-bar { stroke: var(--press-qnh); filter: drop-shadow(0 0 5px var(--press-qnh)); }
-        #panel-max .tacho-bar { stroke: var(--max-red); filter: drop-shadow(0 0 5px var(--max-red)); }
-        #panel-min .tacho-bar { stroke: var(--min-blue); filter: drop-shadow(0 0 5px var(--min-blue)); }
+        #panel-suhu .tacho-bar { stroke: var(--temp-red); filter: drop-shadow(0 0 6px var(--temp-red)); }
+        #panel-wet .tacho-bar { stroke: var(--wet-green); filter: drop-shadow(0 0 6px var(--wet-green)); }
+        #panel-hum .tacho-bar { stroke: var(--hum-blue); filter: drop-shadow(0 0 6px var(--hum-blue)); }
+        #panel-rain .tacho-bar { stroke: var(--rain-purple); filter: drop-shadow(0 0 6px var(--rain-purple)); }
+        #panel-rain3 .tacho-bar { stroke: var(--rain-3h); filter: drop-shadow(0 0 6px var(--rain-3h)); }
+        #panel-rain24 .tacho-bar { stroke: var(--rain-24h); filter: drop-shadow(0 0 6px var(--rain-24h)); }
+        #panel-qfe .tacho-bar { stroke: var(--press-qfe); filter: drop-shadow(0 0 6px var(--press-qfe)); }
+        #panel-qff .tacho-bar { stroke: var(--press-qff); filter: drop-shadow(0 0 6px var(--press-qff)); }
+        #panel-qnh .tacho-bar { stroke: var(--press-qnh); filter: drop-shadow(0 0 6px var(--press-qnh)); }
+        #panel-max .tacho-bar { stroke: var(--max-red); filter: drop-shadow(0 0 6px var(--max-red)); }
+        #panel-min .tacho-bar { stroke: var(--min-blue); filter: drop-shadow(0 0 6px var(--min-blue)); }
 
         .tacho-data { z-index: 10; text-align: center; }
-        .value-display { font-family: 'Oswald', sans-serif; font-size: 1.8rem; font-weight: 700; color: #fff; line-height: 1; }
+        .value-display { font-family: 'Oswald', sans-serif; font-size: 1.85rem; font-weight: 700; color: #fff; line-height: 1; }
         @media (max-width: 480px) { .value-display { font-size: 1.45rem; } }
         .unit { font-size: 0.65rem; color: var(--text-muted); margin-top: 3px; font-weight: 700; text-transform: uppercase; }
         
         .panel-label { 
-            margin-top: 10px; font-family: 'Oswald', sans-serif; font-size: 0.75rem; color: #e2e8f0; 
-            letter-spacing: 0.5px; background: rgba(255,255,255,0.05); padding: 4px 8px; border-radius: 20px; 
-            border: 1px solid rgba(255,255,255,0.1); text-align: center; white-space: nowrap; max-width: 90%;
+            margin-top: 12px; font-family: 'Oswald', sans-serif; font-size: 0.78rem; color: #e2e8f0; 
+            letter-spacing: 0.8px; background: rgba(255,255,255,0.04); padding: 5px 12px; border-radius: 20px; 
+            border: 1px solid rgba(255,255,255,0.08); text-align: center; white-space: nowrap; max-width: 90%;
             overflow: hidden; text-overflow: ellipsis;
         }
 
+        /* DIAGNOSIS SYSTEM */
         .system-diagnosis-grid {
-            display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px; margin-bottom: 20px;
+            display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px; margin: 30px 0 20px 0;
         }
         @media (max-width: 600px) { .system-diagnosis-grid { grid-template-columns: 1fr; gap: 10px; } }
 
         .tacho-box-card {
             background: var(--card-bg); border: 1px solid var(--card-border); border-radius: 14px;
-            padding: 14px 18px; backdrop-filter: blur(16px); box-shadow: 0 6px 16px rgba(0,0,0,0.3);
+            padding: 14px 18px; backdrop-filter: blur(14px); box-shadow: 0 6px 16px rgba(0,0,0,0.3);
             display: flex; flex-direction: column; justify-content: space-between;
         }
         .tacho-box-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; }
-        .tacho-box-title { font-family: 'Oswald', sans-serif; font-size: 0.85rem; color: var(--text-muted); letter-spacing: 0.5px; text-transform: uppercase; }
+        .tacho-box-title { font-family: 'Oswald', sans-serif; font-size: 0.85rem; color: var(--text-muted); letter-spacing: 0.8px; text-transform: uppercase; }
         .tacho-box-value { font-family: 'Oswald', sans-serif; font-size: 1.5rem; font-weight: 700; color: #fff; }
-        .tacho-bar-track { width: 100%; height: 8px; background: #0f172a; border-radius: 10px; overflow: hidden; border: 1px solid rgba(255,255,255,0.08); margin-top: 6px; }
+        .tacho-bar-track { width: 100%; height: 8px; background: #091024; border-radius: 10px; overflow: hidden; border: 1px solid rgba(255,255,255,0.08); margin-top: 6px; }
         .tacho-bar-fill { height: 100%; width: 0%; border-radius: 10px; transition: width 1s ease-in-out; }
 
         #fill-ram { background: linear-gradient(90deg, #d97706, #f59e0b); }
         #fill-wifi { background: linear-gradient(90deg, #0d9488, #14b8a6); }
 
-        .log-section { background: var(--card-bg); border: 1px solid var(--card-border); border-radius: 14px; padding: 16px; margin-bottom: 20px; }
+        /* FOOTER STATUS */
+        .footer-status { background: var(--card-bg); border: 1px solid var(--card-border); border-radius: 14px; padding: 14px; text-align: center; margin-bottom: 24px; }
+        .footer-status.dataloss { border-color: var(--temp-red); background: rgba(248, 113, 113, 0.1); }
+
+        .led { width: 10px; height: 10px; border-radius: 50%; display: inline-block; margin-right: 8px; background: #64748b; }
+        .led.active { background: #34d399; box-shadow: 0 0 10px #34d399; }
+        .led.loss { background: #f87171; box-shadow: 0 0 10px #f87171; animation: blink 1s infinite; }
+        @keyframes blink { 0% { opacity: 1; } 50% { opacity: 0.3; } 100% { opacity: 1; } }
+
+        /* LOG SECTIONS & TABLES */
+        .log-section { background: var(--card-bg); border: 1px solid var(--card-border); border-radius: 16px; padding: 18px; margin-bottom: 20px; }
         .log-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; flex-wrap: wrap; gap: 8px; }
         .log-title { font-size: 0.9rem; color: var(--bmkg-gold); font-weight: 700; letter-spacing: 0.5px; }
 
         .filter-controls { display: flex; align-items: center; gap: 6px; flex-wrap: wrap; width: 100%; }
-        .date-input { background: #0f172a; color: #fff; border: 1px solid var(--card-border); padding: 5px 8px; border-radius: 6px; font-size: 0.75rem; font-family: inherit; flex: 1 1 120px; }
-        .btn-filter { background: var(--bmkg-blue); color: #0f172a; border: none; padding: 6px 12px; border-radius: 6px; cursor: pointer; font-size: 0.75rem; font-weight: 700; }
-        .btn-reset { background: rgba(255,255,255,0.1); color: #fff; border: none; padding: 6px 10px; border-radius: 6px; cursor: pointer; font-size: 0.75rem; font-weight: 600; }
-        .btn-download { background: rgba(255,255,255,0.08); color: #fff; border: 1px solid rgba(255,255,255,0.15); padding: 6px 12px; border-radius: 6px; cursor: pointer; font-size: 0.75rem; font-weight: 600; margin-left: auto; }
+        .date-input { background: #091024; color: #fff; border: 1px solid var(--card-border); padding: 6px 8px; border-radius: 6px; font-size: 0.75rem; font-family: inherit; flex: 1 1 120px; }
+        .btn-filter { background: var(--bmkg-blue); color: #070d1e; border: none; padding: 6px 14px; border-radius: 6px; cursor: pointer; font-size: 0.75rem; font-weight: 700; }
+        .btn-reset { background: rgba(255,255,255,0.08); color: #fff; border: none; padding: 6px 10px; border-radius: 6px; cursor: pointer; font-size: 0.75rem; font-weight: 600; }
+        .btn-download { background: rgba(255,255,255,0.08); color: #fff; border: 1px solid rgba(255,255,255,0.15); padding: 6px 14px; border-radius: 6px; cursor: pointer; font-size: 0.75rem; font-weight: 600; margin-left: auto; }
 
-        .table-scroll-container { max-height: 320px; overflow-x: auto; overflow-y: auto; border-radius: 8px; border: 1px solid var(--card-border); }
+        .table-scroll-container { max-height: 320px; overflow-x: auto; overflow-y: auto; border-radius: 10px; border: 1px solid var(--card-border); }
         .log-table { width: 100%; min-width: 650px; border-collapse: collapse; font-size: 0.8rem; text-align: center; }
-        .log-table th { background: #0f172a; color: var(--bmkg-blue); padding: 10px 8px; position: sticky; top: 0; z-index: 2; font-size: 0.75rem; }
-        .log-table td { padding: 8px; border-bottom: 1px solid var(--card-border); color: var(--text-main); }
-
-        .footer-status { background: var(--card-bg); border: 1px solid var(--card-border); border-radius: 12px; padding: 14px; text-align: center; margin-bottom: 20px; }
-        .footer-status.dataloss { border-color: var(--temp-red); background: rgba(248, 113, 113, 0.1); }
-
-        .led { width: 9px; height: 9px; border-radius: 50%; display: inline-block; margin-right: 6px; background: #64748b; }
-        .led.active { background: #34d399; box-shadow: 0 0 8px #34d399; }
-        .led.loss { background: #f87171; box-shadow: 0 0 8px #f87171; animation: blink 1s infinite; }
-        @keyframes blink { 0% { opacity: 1; } 50% { opacity: 0.3; } 100% { opacity: 1; } }
+        .log-table th { background: #091024; color: var(--bmkg-blue); padding: 11px 8px; position: sticky; top: 0; z-index: 2; font-size: 0.75rem; letter-spacing: 0.5px; }
+        .log-table td { padding: 9px 8px; border-bottom: 1px solid var(--card-border); color: var(--text-main); }
     </style>
 
-    <!-- ANTI KLIK KANAN -->
+    <!-- SCRIPT PROTEKSI CLIENT-SIDE -->
     <script>
         document.addEventListener('contextmenu', e => e.preventDefault());
         document.addEventListener('keydown', e => {
@@ -202,7 +304,7 @@
             <div class="bmkg-text">BMKG</div>
         </div>
         <h1>STASIUN GEOFISIKA DELI SERDANG</h1>
-        <div class="subtitle">TAMAN ALAT METEOROLOGI DIGITAL</div>
+        <div class="subtitle">TAMAN ALAT METEOROLOGI DIGITAL TERINTEGRASI</div>
         <div class="digital-clock-container">
             <div id="digitalClock" class="clock-time">00:00:00 WIB</div>
             <div id="digitalDate" class="clock-date">Senin, 1 Januari 2026</div>
@@ -211,54 +313,127 @@
 
     <div class="main-container">
         
-        <!-- DASHBOARD GAUGE (11 GAUGE TERMASUK QNH) -->
-        <div class="dashboard-grid">
+        <!-- SECTION 1: TEMPERATUR & KELEMBAPAN -->
+        <div class="section-separator">
+            <div class="shape-line"></div>
+            <div class="section-badge temp">🌡️ TEMPERATUR & KELEMBAPAN</div>
+            <div class="shape-line"></div>
+        </div>
+
+        <div class="gauge-group-grid grid-3">
             <div class="gauge-card">
-                <div class="gauge-panel" id="panel-suhu"><div class="tachometer"><svg viewBox="0 0 100 100"><circle class="tacho-track" cx="50" cy="50" r="40"></circle><circle class="tacho-bar" id="bar-suhu" cx="50" cy="50" r="40"></circle></svg></div><div class="tacho-data"><div class="value-display"><span id="suhuVal">--</span></div><div class="unit">°C</div></div></div>
+                <div class="gauge-panel" id="panel-suhu">
+                    <div class="tachometer"><svg viewBox="0 0 100 100"><circle class="tacho-track" cx="50" cy="50" r="40"></circle><circle class="tacho-bar" id="bar-suhu" cx="50" cy="50" r="40"></circle></svg></div>
+                    <div class="tacho-data"><div class="value-display"><span id="suhuVal">--</span></div><div class="unit">°C</div></div>
+                </div>
                 <div class="panel-label">BOLA KERING</div>
-            </div>
-            <div class="gauge-card">
-                <div class="gauge-panel" id="panel-hum"><div class="tachometer"><svg viewBox="0 0 100 100"><circle class="tacho-track" cx="50" cy="50" r="40"></circle><circle class="tacho-bar" id="bar-hum" cx="50" cy="50" r="40"></circle></svg></div><div class="tacho-data"><div class="value-display"><span id="humVal">--</span></div><div class="unit">% RELATIF</div></div></div>
-                <div class="panel-label">KELEMBAPAN</div>
-            </div>
-            <div class="gauge-card">
-                <div class="gauge-panel" id="panel-wet"><div class="tachometer"><svg viewBox="0 0 100 100"><circle class="tacho-track" cx="50" cy="50" r="40"></circle><circle class="tacho-bar" id="bar-wet" cx="50" cy="50" r="40"></circle></svg></div><div class="tacho-data"><div class="value-display"><span id="wetVal">--</span></div><div class="unit">°C</div></div></div>
-                <div class="panel-label">BOLA BASAH</div>
-            </div>
-            <div class="gauge-card">
-                <div class="gauge-panel" id="panel-rain"><div class="tachometer"><svg viewBox="0 0 100 100"><circle class="tacho-track" cx="50" cy="50" r="40"></circle><circle class="tacho-bar" id="bar-rain" cx="50" cy="50" r="40"></circle></svg></div><div class="tacho-data"><div class="value-display"><span id="rainVal">0.0</span></div><div class="unit">MM</div></div></div>
-                <div class="panel-label">CURAH HUJAN</div>
-            </div>
-            <div class="gauge-card">
-                <div class="gauge-panel" id="panel-rain3"><div class="tachometer"><svg viewBox="0 0 100 100"><circle class="tacho-track" cx="50" cy="50" r="40"></circle><circle class="tacho-bar" id="bar-rain3" cx="50" cy="50" r="40"></circle></svg></div><div class="tacho-data"><div class="value-display"><span id="rain3Val">0.0</span></div><div class="unit">MM</div></div></div>
-                <div class="panel-label">HUJAN 3 JAM</div>
-            </div>
-            <div class="gauge-card">
-                <div class="gauge-panel" id="panel-rain24"><div class="tachometer"><svg viewBox="0 0 100 100"><circle class="tacho-track" cx="50" cy="50" r="40"></circle><circle class="tacho-bar" id="bar-rain24" cx="50" cy="50" r="40"></circle></svg></div><div class="tacho-data"><div class="value-display"><span id="rain24Val">0.0</span></div><div class="unit">MM</div></div></div>
-                <div class="panel-label">HUJAN 24 JAM</div>
-            </div>
-            
-            <!-- GAUGE TEKANAN: QFE, QFF, & QNH -->
-            <div class="gauge-card">
-                <div class="gauge-panel" id="panel-qfe"><div class="tachometer"><svg viewBox="0 0 100 100"><circle class="tacho-track" cx="50" cy="50" r="40"></circle><circle class="tacho-bar" id="bar-qfe" cx="50" cy="50" r="40"></circle></svg></div><div class="tacho-data"><div class="value-display"><span id="qfeVal">--</span></div><div class="unit">HPA</div></div></div>
-                <div class="panel-label">QFE (STASIUN)</div>
-            </div>
-            <div class="gauge-card">
-                <div class="gauge-panel" id="panel-qff"><div class="tachometer"><svg viewBox="0 0 100 100"><circle class="tacho-track" cx="50" cy="50" r="40"></circle><circle class="tacho-bar" id="bar-qff" cx="50" cy="50" r="40"></circle></svg></div><div class="tacho-data"><div class="value-display"><span id="qffVal">--</span></div><div class="unit">HPA</div></div></div>
-                <div class="panel-label">QFF (SEA LEVEL)</div>
-            </div>
-            <div class="gauge-card">
-                <div class="gauge-panel" id="panel-qnh"><div class="tachometer"><svg viewBox="0 0 100 100"><circle class="tacho-track" cx="50" cy="50" r="40"></circle><circle class="tacho-bar" id="bar-qnh" cx="50" cy="50" r="40"></circle></svg></div><div class="tacho-data"><div class="value-display"><span id="qnhVal">--</span></div><div class="unit">HPA</div></div></div>
-                <div class="panel-label">QNH (AVIATION)</div>
             </div>
 
             <div class="gauge-card">
-                <div class="gauge-panel" id="panel-max"><div class="tachometer"><svg viewBox="0 0 100 100"><circle class="tacho-track" cx="50" cy="50" r="40"></circle><circle class="tacho-bar" id="bar-max" cx="50" cy="50" r="40"></circle></svg></div><div class="tacho-data"><div class="value-display"><span id="maxSuhuVal">--</span></div><div class="unit">°C</div></div></div>
-                <div class="panel-label">SUHU MAX (07-19)</div>
+                <div class="gauge-panel" id="panel-wet">
+                    <div class="tachometer"><svg viewBox="0 0 100 100"><circle class="tacho-track" cx="50" cy="50" r="40"></circle><circle class="tacho-bar" id="bar-wet" cx="50" cy="50" r="40"></circle></svg></div>
+                    <div class="tacho-data"><div class="value-display"><span id="wetVal">--</span></div><div class="unit">°C</div></div>
+                </div>
+                <div class="panel-label">BOLA BASAH</div>
             </div>
+
             <div class="gauge-card">
-                <div class="gauge-panel" id="panel-min"><div class="tachometer"><svg viewBox="0 0 100 100"><circle class="tacho-track" cx="50" cy="50" r="40"></circle><circle class="tacho-bar" id="bar-min" cx="50" cy="50" r="40"></circle></svg></div><div class="tacho-data"><div class="value-display"><span id="minSuhuVal">--</span></div><div class="unit">°C</div></div></div>
-                <div class="panel-label">SUHU MIN (19-07)</div>
+                <div class="gauge-panel" id="panel-hum">
+                    <div class="tachometer"><svg viewBox="0 0 100 100"><circle class="tacho-track" cx="50" cy="50" r="40"></circle><circle class="tacho-bar" id="bar-hum" cx="50" cy="50" r="40"></circle></svg></div>
+                    <div class="tacho-data"><div class="value-display"><span id="humVal">--</span></div><div class="unit">% RELATIF</div></div>
+                </div>
+                <div class="panel-label">KELEMBAPAN</div>
+            </div>
+        </div>
+
+        <!-- SECTION 2: HUJAN -->
+        <div class="section-separator purple">
+            <div class="shape-line"></div>
+            <div class="section-badge rain">🌧️ PRESIPITASI / HUJAN</div>
+            <div class="shape-line"></div>
+        </div>
+
+        <div class="gauge-group-grid grid-3">
+            <div class="gauge-card">
+                <div class="gauge-panel" id="panel-rain">
+                    <div class="tachometer"><svg viewBox="0 0 100 100"><circle class="tacho-track" cx="50" cy="50" r="40"></circle><circle class="tacho-bar" id="bar-rain" cx="50" cy="50" r="40"></circle></svg></div>
+                    <div class="tacho-data"><div class="value-display"><span id="rainVal">0.0</span></div><div class="unit">MM</div></div>
+                </div>
+                <div class="panel-label">CURAH HUJAN (REAL-TIME)</div>
+            </div>
+
+            <div class="gauge-card">
+                <div class="gauge-panel" id="panel-rain3">
+                    <div class="tachometer"><svg viewBox="0 0 100 100"><circle class="tacho-track" cx="50" cy="50" r="40"></circle><circle class="tacho-bar" id="bar-rain3" cx="50" cy="50" r="40"></circle></svg></div>
+                    <div class="tacho-data"><div class="value-display"><span id="rain3Val">0.0</span></div><div class="unit">MM</div></div>
+                </div>
+                <div class="panel-label">HUJAN 3 JAM</div>
+            </div>
+
+            <div class="gauge-card">
+                <div class="gauge-panel" id="panel-rain24">
+                    <div class="tachometer"><svg viewBox="0 0 100 100"><circle class="tacho-track" cx="50" cy="50" r="40"></circle><circle class="tacho-bar" id="bar-rain24" cx="50" cy="50" r="40"></circle></svg></div>
+                    <div class="tacho-data"><div class="value-display"><span id="rain24Val">0.0</span></div><div class="unit">MM</div></div>
+                </div>
+                <div class="panel-label">HUJAN 24 JAM</div>
+            </div>
+        </div>
+
+        <!-- SECTION 3: TEKANAN BAROMETRIK -->
+        <div class="section-separator blue">
+            <div class="shape-line"></div>
+            <div class="section-badge press">🧭 TEKANAN UDARA BAROMETRIK</div>
+            <div class="shape-line"></div>
+        </div>
+
+        <div class="gauge-group-grid grid-3">
+            <div class="gauge-card">
+                <div class="gauge-panel" id="panel-qfe">
+                    <div class="tachometer"><svg viewBox="0 0 100 100"><circle class="tacho-track" cx="50" cy="50" r="40"></circle><circle class="tacho-bar" id="bar-qfe" cx="50" cy="50" r="40"></circle></svg></div>
+                    <div class="tacho-data"><div class="value-display"><span id="qfeVal">--</span></div><div class="unit">HPA</div></div>
+                </div>
+                <div class="panel-label">QFE (STASIUN)</div>
+            </div>
+
+            <div class="gauge-card">
+                <div class="gauge-panel" id="panel-qff">
+                    <div class="tachometer"><svg viewBox="0 0 100 100"><circle class="tacho-track" cx="50" cy="50" r="40"></circle><circle class="tacho-bar" id="bar-qff" cx="50" cy="50" r="40"></circle></svg></div>
+                    <div class="tacho-data"><div class="value-display"><span id="qffVal">--</span></div><div class="unit">HPA</div></div>
+                </div>
+                <div class="panel-label">QFF (SEA LEVEL)</div>
+            </div>
+
+            <div class="gauge-card">
+                <div class="gauge-panel" id="panel-qnh">
+                    <div class="tachometer"><svg viewBox="0 0 100 100"><circle class="tacho-track" cx="50" cy="50" r="40"></circle><circle class="tacho-bar" id="bar-qnh" cx="50" cy="50" r="40"></circle></svg></div>
+                    <div class="tacho-data"><div class="value-display"><span id="qnhVal">--</span></div><div class="unit">HPA</div></div>
+                </div>
+                <div class="panel-label">QNH (AVIATION)</div>
+            </div>
+        </div>
+
+        <!-- SECTION 4: SUHU EKSTREM -->
+        <div class="section-separator red">
+            <div class="shape-line"></div>
+            <div class="section-badge ekstrem">📊 SUHU EKSTREM HARIAN</div>
+            <div class="shape-line"></div>
+        </div>
+
+        <div class="gauge-group-grid grid-2">
+            <div class="gauge-card">
+                <div class="gauge-panel" id="panel-max">
+                    <div class="tachometer"><svg viewBox="0 0 100 100"><circle class="tacho-track" cx="50" cy="50" r="40"></circle><circle class="tacho-bar" id="bar-max" cx="50" cy="50" r="40"></circle></svg></div>
+                    <div class="tacho-data"><div class="value-display"><span id="maxSuhuVal">--</span></div><div class="unit">°C</div></div>
+                </div>
+                <div class="panel-label">SUHU MAKSIMUM (07-19 WIB)</div>
+            </div>
+
+            <div class="gauge-card">
+                <div class="gauge-panel" id="panel-min">
+                    <div class="tachometer"><svg viewBox="0 0 100 100"><circle class="tacho-track" cx="50" cy="50" r="40"></circle><circle class="tacho-bar" id="bar-min" cx="50" cy="50" r="40"></circle></svg></div>
+                    <div class="tacho-data"><div class="value-display"><span id="minSuhuVal">--</span></div><div class="unit">°C</div></div>
+                </div>
+                <div class="panel-label">SUHU MINIMUM (19-07 WIB)</div>
             </div>
         </div>
 
@@ -280,6 +455,7 @@
             </div>
         </div>
 
+        <!-- STATUS PANEL -->
         <div class="footer-status" id="footerPanel">
             <div style="font-weight: 700; margin-bottom: 4px; font-size: 0.85rem;">
                 <span class="led" id="statusIndicator"></span><span id="statusText">STATUS: MENUNGGU TRANSMISI DATA...</span>
@@ -296,7 +472,7 @@
                     <input type="date" id="end-rain24" class="date-input">
                     <button class="btn-filter" onclick="applyFilter('rain24')">Filter</button>
                     <button class="btn-reset" onclick="resetFilter('rain24')">Reset</button>
-                    <button class="btn-download" onclick="downloadCSV('rain24')">Unduh</button>
+                    <button class="btn-download" onclick="downloadCSV('rain24')">Unduh CSV</button>
                 </div>
             </div>
             <div class="table-scroll-container">
@@ -316,7 +492,7 @@
                     <input type="date" id="end-rain3" class="date-input">
                     <button class="btn-filter" onclick="applyFilter('rain3')">Filter</button>
                     <button class="btn-reset" onclick="resetFilter('rain3')">Reset</button>
-                    <button class="btn-download" onclick="downloadCSV('rain3')">Unduh</button>
+                    <button class="btn-download" onclick="downloadCSV('rain3')">Unduh CSV</button>
                 </div>
             </div>
             <div class="table-scroll-container">
@@ -336,7 +512,7 @@
                     <input type="date" id="end-ekstrem" class="date-input">
                     <button class="btn-filter" onclick="applyFilter('ekstrem')">Filter</button>
                     <button class="btn-reset" onclick="resetFilter('ekstrem')">Reset</button>
-                    <button class="btn-download" onclick="downloadCSV('ekstrem')">Unduh</button>
+                    <button class="btn-download" onclick="downloadCSV('ekstrem')">Unduh CSV</button>
                 </div>
             </div>
             <div class="table-scroll-container">
@@ -347,7 +523,7 @@
             </div>
         </div>
 
-        <!-- TABEL 4: HOURLY (TERMASUK QFE, QFF, & QNH) -->
+        <!-- TABEL 4: HOURLY -->
         <div class="log-section">
             <div class="log-header">
                 <h3 class="log-title">LOG PENGAMATAN SUHU & TEKANAN PER JAM</h3>
@@ -356,14 +532,14 @@
                     <input type="date" id="end-hourly" class="date-input">
                     <button class="btn-filter" onclick="applyFilter('hourly')">Filter</button>
                     <button class="btn-reset" onclick="resetFilter('hourly')">Reset</button>
-                    <button class="btn-download" onclick="downloadCSV('hourly')">Unduh</button>
+                    <button class="btn-download" onclick="downloadCSV('hourly')">Unduh CSV</button>
                 </div>
             </div>
             <div class="table-scroll-container">
                 <table class="log-table">
                     <thead>
                         <tr>
-                            <th>NO</th><th>WAKTU</th><th>KERING (°C)</th><th>HUM (%)</th><th>BASAH (°C)</th><th>QFE (HPA)</th><th>QFF (HPA)</th><th>QNH (HPA)</th><th>HUJAN (MM)</th>
+                            <th>NO</th><th>WAKTU</th><th>KERING (°C)</th><th>BASAH (°C)</th><th>HUM (%)</th><th>QFE (HPA)</th><th>QFF (HPA)</th><th>QNH (HPA)</th><th>HUJAN (MM)</th>
                         </tr>
                     </thead>
                     <tbody id="hourlyTableBody"><tr><td colspan="9">Memuat data...</td></tr></tbody>
@@ -380,7 +556,7 @@
                     <input type="date" id="end-loss" class="date-input">
                     <button class="btn-filter" onclick="applyFilter('loss')">Filter</button>
                     <button class="btn-reset" onclick="resetFilter('loss')">Reset</button>
-                    <button class="btn-download" onclick="downloadCSV('loss')">Unduh</button>
+                    <button class="btn-download" onclick="downloadCSV('loss')">Unduh CSV</button>
                 </div>
             </div>
             <div class="table-scroll-container">
@@ -393,6 +569,7 @@
 
     </div>
 
+    <!-- SCRIPT CLOCK -->
     <script>
         function updateDigitalClock() {
             const now = new Date();
@@ -402,6 +579,7 @@
         setInterval(updateDigitalClock, 1000); updateDigitalClock();
     </script>
 
+    <!-- CORE SCRIPT & FIREBASE -->
     <script>
         const firebaseConfig = {
             apiKey: "AIzaSyBjH29bATrVn5vEVHFi1mgjwbe0jv5als8",
@@ -409,7 +587,7 @@
         };
 
         const TIMEOUT_LIMIT_SECONDS = 45;
-        const OFFLINE_CLEAR_SECONDS = 2 * 24 * 3600;
+        const OFFLINE_CLEAR_SECONDS = 2 * 24 * 3600; // 48 Jam
         const DEFAULT_DISPLAY_LIMIT = 30;
 
         let rawData = { rain24: [], rain3: [], ekstrem: [], hourly: [], loss: [] };
@@ -417,21 +595,23 @@
 
         function resetAllGaugesToEmpty() {
             document.getElementById('suhuVal').innerText = "--";
-            document.getElementById('humVal').innerText = "--";
             document.getElementById('wetVal').innerText = "--";
+            document.getElementById('humVal').innerText = "--";
+            document.getElementById('rainVal').innerText = "0.0";
+            document.getElementById('rain3Val').innerText = "0.0";
+            document.getElementById('rain24Val').innerText = "0.0";
             document.getElementById('qfeVal').innerText = "--";
             document.getElementById('qffVal').innerText = "--";
             document.getElementById('qnhVal').innerText = "--";
-            document.getElementById('rainVal').innerText = "0.0";
-            document.getElementById('rain24Val').innerText = "0.0";
             document.getElementById('ramVal').innerText = "--";
             document.getElementById('wifiVal').innerText = "--";
             document.getElementById('wifiDbmVal').innerText = "(-- dBm)";
 
             updateTacho('bar-suhu', 0, 0, 50);
-            updateTacho('bar-hum', 0, 0, 100);
             updateTacho('bar-wet', 0, 0, 50);
+            updateTacho('bar-hum', 0, 0, 100);
             updateTacho('bar-rain', 0, 0, 50);
+            updateTacho('bar-rain3', 0, 0, 50);
             updateTacho('bar-rain24', 0, 0, 100);
             updateTacho('bar-qfe', 950, 950, 1050);
             updateTacho('bar-qff', 950, 950, 1050);
@@ -561,8 +741,8 @@
                     <td>${count++}</td>
                     <td style="font-weight: 700; color: var(--bmkg-blue);">${log.waktu}</td>
                     <td style="color: var(--temp-red); font-weight: 700;">${Number(log.suhuKering).toFixed(1)}</td>
-                    <td style="color: var(--hum-blue); font-weight: 700;">${Number(log.kelembapan).toFixed(1)}</td>
                     <td style="color: var(--wet-green); font-weight: 700;">${log.suhuBasah ? Number(log.suhuBasah).toFixed(1) : '-'}</td>
+                    <td style="color: var(--hum-blue); font-weight: 700;">${Number(log.kelembapan).toFixed(1)}</td>
                     <td style="color: var(--press-qfe); font-weight: 700;">${log.qfe ? Number(log.qfe).toFixed(1) : '-'}</td>
                     <td style="color: var(--press-qff); font-weight: 700;">${log.qff ? Number(log.qff).toFixed(1) : '-'}</td>
                     <td style="color: var(--press-qnh); font-weight: 700;">${log.qnh ? Number(log.qnh).toFixed(1) : '-'}</td>
@@ -609,9 +789,9 @@
 
             let csv = "data:text/csv;charset=utf-8,";
             if (type === 'hourly') {
-                csv += "No,Waktu,Bola Kering (C),Kelembapan (%),Bola Basah (C),QFE (hPa),QFF (hPa),QNH (hPa),Curah Hujan (mm)\n";
+                csv += "No,Waktu,Bola Kering (C),Bola Basah (C),Kelembapan (%),QFE (hPa),QFF (hPa),QNH (hPa),Curah Hujan (mm)\n";
                 list.forEach((log, i) => {
-                    csv += [i + 1, `"${log.waktu}"`, Number(log.suhuKering).toFixed(1), Number(log.kelembapan).toFixed(1), log.suhuBasah ? Number(log.suhuBasah).toFixed(1) : '-', log.qfe ? Number(log.qfe).toFixed(1) : '-', log.qff ? Number(log.qff).toFixed(1) : '-', log.qnh ? Number(log.qnh).toFixed(1) : '-', log.curahHujan ? Number(log.curahHujan).toFixed(1) : '0.0'].join(",") + "\n";
+                    csv += [i + 1, `"${log.waktu}"`, Number(log.suhuKering).toFixed(1), log.suhuBasah ? Number(log.suhuBasah).toFixed(1) : '-', Number(log.kelembapan).toFixed(1), log.qfe ? Number(log.qfe).toFixed(1) : '-', log.qff ? Number(log.qff).toFixed(1) : '-', log.qnh ? Number(log.qnh).toFixed(1) : '-', log.curahHujan ? Number(log.curahHujan).toFixed(1) : '0.0'].join(",") + "\n";
                 });
             } else if (type === 'rain24') {
                 csv += "No,Tanggal Observasi,Waktu Cetak,Total Hujan 24 Jam (mm)\n";
