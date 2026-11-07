@@ -91,7 +91,7 @@
 
         .main-container { width: 100%; max-width: 1540px; margin: 0 auto; padding: 0 16px; }
 
-        /* GRADIENT SHAPE DIVIDERS */
+        /* GRADIENT SHAPE DIVIDERS (MURNI TEKS) */
         .section-separator {
             display: flex;
             align-items: center;
@@ -119,15 +119,14 @@
         .section-badge {
             display: inline-flex;
             align-items: center;
-            gap: 8px;
-            padding: 6px 18px;
+            padding: 6px 20px;
             border-radius: 30px;
             background: rgba(15, 23, 42, 0.85);
             border: 1px solid rgba(255, 255, 255, 0.1);
             backdrop-filter: blur(12px);
             font-family: 'Oswald', sans-serif;
-            font-size: 0.85rem;
-            letter-spacing: 1.5px;
+            font-size: 0.88rem;
+            letter-spacing: 2px;
             text-transform: uppercase;
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
             white-space: nowrap;
@@ -148,10 +147,6 @@
         .grid-3 { grid-template-columns: repeat(3, 1fr); }
         .grid-2 { grid-template-columns: repeat(2, 1fr); max-width: 900px; margin: 0 auto; }
 
-        @media (max-width: 900px) {
-            .grid-3 { grid-template-columns: repeat(3, 1fr); }
-        }
-
         @media (max-width: 768px) {
             .grid-3 { grid-template-columns: repeat(2, 1fr); }
             .grid-3 > .gauge-card:last-child {
@@ -167,10 +162,10 @@
 
         @media (max-width: 480px) {
             .gauge-group-grid { gap: 10px; }
-            .section-badge { font-size: 0.78rem; padding: 5px 14px; }
+            .section-badge { font-size: 0.8rem; padding: 5px 16px; }
         }
 
-        /* GAUGE CARD & TACHOMETER STYLES */
+        /* GAUGE CARD */
         .gauge-card {
             background: var(--card-bg);
             backdrop-filter: blur(14px);
@@ -285,7 +280,7 @@
         .log-table td { padding: 9px 8px; border-bottom: 1px solid var(--card-border); color: var(--text-main); }
     </style>
 
-    <!-- SCRIPT PROTEKSI CLIENT-SIDE -->
+    <!-- SCRIPT PROTEKSI -->
     <script>
         document.addEventListener('contextmenu', e => e.preventDefault());
         document.addEventListener('keydown', e => {
@@ -316,7 +311,7 @@
         <!-- SECTION 1: TEMPERATUR & KELEMBAPAN -->
         <div class="section-separator">
             <div class="shape-line"></div>
-            <div class="section-badge temp">🌡️ TEMPERATUR & KELEMBAPAN</div>
+            <div class="section-badge temp">TEMPERATUR & KELEMBAPAN</div>
             <div class="shape-line"></div>
         </div>
 
@@ -349,7 +344,7 @@
         <!-- SECTION 2: HUJAN -->
         <div class="section-separator purple">
             <div class="shape-line"></div>
-            <div class="section-badge rain">🌧️ PRESIPITASI / HUJAN</div>
+            <div class="section-badge rain">PRESIPITASI / HUJAN</div>
             <div class="shape-line"></div>
         </div>
 
@@ -382,7 +377,7 @@
         <!-- SECTION 3: TEKANAN BAROMETRIK -->
         <div class="section-separator blue">
             <div class="shape-line"></div>
-            <div class="section-badge press">🧭 TEKANAN UDARA BAROMETRIK</div>
+            <div class="section-badge press">TEKANAN UDARA BAROMETRIK</div>
             <div class="shape-line"></div>
         </div>
 
@@ -415,7 +410,7 @@
         <!-- SECTION 4: SUHU EKSTREM -->
         <div class="section-separator red">
             <div class="shape-line"></div>
-            <div class="section-badge ekstrem">📊 SUHU EKSTREM HARIAN</div>
+            <div class="section-badge ekstrem">SUHU EKSTREM HARIAN</div>
             <div class="shape-line"></div>
         </div>
 
@@ -587,7 +582,7 @@
         };
 
         const TIMEOUT_LIMIT_SECONDS = 45;
-        const OFFLINE_CLEAR_SECONDS = 2 * 24 * 3600; // 48 Jam
+        const OFFLINE_CLEAR_SECONDS = 2 * 24 * 3600;
         const DEFAULT_DISPLAY_LIMIT = 30;
 
         let rawData = { rain24: [], rain3: [], ekstrem: [], hourly: [], loss: [] };
@@ -758,7 +753,7 @@
             if (list.length === 0) { tbody.innerHTML = `<tr><td colspan="7">Tidak ada data.</td></tr>`; return; }
             let html = '', count = 1;
             list.forEach(log => {
-                html += `<tr><td>${count++}</td><td style="color: var(--temp-red); font-weight: 700;">${log.startTime}</td><td style="color: var(--wet-green); font-weight: 700;">${log.recoveredTime || '-'}</td><td>${log.duration || '-'}</td><td>${log.lastTemp ? Number(log.lastTemp).toFixed(1) + ' °C' : '-'}</td><td>${log.lastHum ? Number(log.lastHum).toFixed(1) + ' %' : '-'}</td><td style="color: var(--rain-purple); font-weight: 700;">${log.lastRain !== undefined ? Number(log.lastRain).toFixed(1) + ' mm' : '0.0 mm'}</td></tr>`;
+                html += `<tr><td>${count++}</td><td style="color: var(--temp-red); font-weight: 700;">${log.startTime}</td><td style="color: var(--wet-green); font-weight: 700;">${log.recoveredTime || '-'}</td><td>${log.duration || '-'}</td><td>${log.lastTemp ? Number(log.lastTemp).toFixed(1) : '-'}</td><td>${log.lastHum ? Number(log.lastHum).toFixed(1) : '-'}</td><td style="color: var(--rain-purple); font-weight: 700;">${log.lastRain !== undefined ? Number(log.lastRain).toFixed(1) + ' mm' : '0.0 mm'}</td></tr>`;
             });
             tbody.innerHTML = html;
         }
