@@ -51,7 +51,7 @@
             padding-bottom: 50px;
         }
 
-        /* HEADER STYLING */
+        /* HEADER */
         .header {
             width: 100%;
             background: rgba(15, 23, 42, 0.95);
@@ -88,7 +88,7 @@
 
         .main-container { width: 100%; max-width: 1540px; margin: 0 auto; padding: 0 20px; }
         
-        /* DASHBOARD GAUGE GRID (5 Kolom per Baris di Desktop) */
+        /* DASHBOARD GAUGE (5 Kolom per Baris di Desktop) */
         .dashboard-grid { 
             display: grid; 
             grid-template-columns: repeat(5, 1fr); 
@@ -140,7 +140,7 @@
             border: 1px solid rgba(255,255,255,0.1); text-align: center; white-space: nowrap;
         }
 
-        /* DIAGNOSIS SYSTEM GRID */
+        /* DIAGNOSIS SYSTEM */
         .system-diagnosis-grid {
             display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; margin-bottom: 30px;
         }
@@ -160,7 +160,7 @@
         #fill-ram { background: linear-gradient(90deg, #d97706, #f59e0b); box-shadow: 0 0 8px var(--ram-yellow); }
         #fill-wifi { background: linear-gradient(90deg, #0d9488, #14b8a6); box-shadow: 0 0 8px var(--wifi-teal); }
 
-        /* LOG SECTION & TABLES */
+        /* LOG SECTIONS & TABLES */
         .log-section { background: var(--card-bg); border: 1px solid var(--card-border); border-radius: 16px; padding: 20px; margin-bottom: 30px; }
         .log-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; flex-wrap: wrap; gap: 12px; }
         .log-title { font-size: 1rem; color: var(--bmkg-gold); font-weight: 700; letter-spacing: 1px; }
@@ -220,7 +220,7 @@
 
     <div class="main-container">
         
-        <!-- DASHBOARD GAUGE (10 INDIKATOR LENGKAP) -->
+        <!-- DASHBOARD GAUGE (10 INDIKATOR) -->
         <div class="dashboard-grid">
             <div class="gauge-card">
                 <div class="gauge-panel" id="panel-suhu"><div class="tachometer"><svg viewBox="0 0 100 100"><circle class="tacho-track" cx="50" cy="50" r="40"></circle><circle class="tacho-bar" id="bar-suhu" cx="50" cy="50" r="40"></circle></svg></div><div class="tacho-data"><div class="value-display"><span id="suhuVal">--</span></div><div class="unit">°C</div></div></div>
@@ -353,7 +353,7 @@
             </div>
         </div>
 
-        <!-- TABEL 4: HOURLY (DIPERKAYA DENGAN QFE & QFF) -->
+        <!-- TABEL 4: HOURLY (DILENGKAPI QFE & QFF) -->
         <div class="log-section">
             <div class="log-header">
                 <h3 class="log-title">LOG PENGAMATAN SUHU & TEKANAN PER JAM</h3>
@@ -406,7 +406,7 @@
 
     </div>
 
-    <!-- SCRIPT CLOCK -->
+    <!-- SCRIPT JAM -->
     <script>
         function updateDigitalClock() {
             const now = new Date();
@@ -423,18 +423,40 @@
             databaseURL: "https://meteo-sangkar-default-rtdb.asia-southeast1.firebasedatabase.app"
         };
 
-        const TIMEOUT_LIMIT_SECONDS = 45;
+        const TIMEOUT_LIMIT_SECONDS = 45;               // Peringatan disconnect sementara (45 detik)
+        const OFFLINE_CLEAR_SECONDS = 2 * 24 * 3600;     // Batas alat nonaktif > 2 hari (172.800 detik)
         const DEFAULT_DISPLAY_LIMIT = 30;
 
         let rawData = { rain24: [], rain3: [], ekstrem: [], hourly: [], loss: [] };
         let activeFilter = { rain24: false, rain3: false, ekstrem: false, hourly: false, loss: false };
 
+        function resetAllGaugesToEmpty() {
+            document.getElementById('suhuVal').innerText = "--";
+            document.getElementById('humVal').innerText = "--";
+            document.getElementById('wetVal').innerText = "--";
+            document.getElementById('qfeVal').innerText = "--";
+            document.getElementById('qffVal').innerText = "--";
+            document.getElementById('rainVal').innerText = "0.0";
+            document.getElementById('rain24Val').innerText = "0.0";
+            document.getElementById('ramVal').innerText = "--";
+            document.getElementById('wifiVal').innerText = "--";
+            document.getElementById('wifiDbmVal').innerText = "(-- dBm)";
+
+            updateTacho('bar-suhu', 0, 0, 50);
+            updateTacho('bar-hum', 0, 0, 100);
+            updateTacho('bar-wet', 0, 0, 50);
+            updateTacho('bar-rain', 0, 0, 50);
+            updateTacho('bar-rain24', 0, 0, 100);
+            updateTacho('bar-qfe', 950, 950, 1050);
+            updateTacho('bar-qff', 950, 950, 1050);
+            
+            document.getElementById('fill-ram').style.width = '0%';
+            document.getElementById('fill-wifi').style.width = '0%';
+        }
+
         function formatDisplayDate(dateStr) {
             if (!dateStr) return '-';
-            if (dateStr.includes('/')) {
-                const parts = dateStr.split(',');
-                return parts[0].trim();
-            }
+            if (dateStr.includes('/')) return dateStr.split(',')[0].trim();
             if (dateStr.includes('-')) {
                 const parts = dateStr.split('-');
                 if (parts.length === 3) return `${parts[2]}/${parts[1]}/${parts[0]}`;
@@ -676,39 +698,91 @@
 
             let currentSuhu = null, currentHum = null, currentRain = 0.0, lastDataTime = null, isDataLoss = false, currentLogKey = null, lossStartTimestamp = null;
 
+            // Pengecekan status koneksi & kondisi nonaktif > 2 hari
             setInterval(() => {
                 const now = new Date();
                 if (lastDataTime !== null && (Math.floor((now - lastDataTime) / 1000) >= TIMEOUT_LIMIT_SECONDS) && !isDataLoss) {
-                    isDataLoss = true; lossStartTimestamp = now.getTime();
-                    document.getElementById('statusIndicator').className = "led loss"; document.getElementById('footerPanel').classList.add('dataloss');
+                    isDataLoss = true; 
+                    lossStartTimestamp = now.getTime();
+                    document.getElementById('statusIndicator').className = "led loss"; 
+                    document.getElementById('footerPanel').classList.add('dataloss');
                     document.getElementById('statusText').innerText = "STATUS: DATA LOSS (PERANGKAT TERPUTUS)";
                     const lossTimeStr = now.toLocaleString('id-ID');
                     document.getElementById('timeContainer').innerHTML = `DATA LOSS TERDETEKSI PADA: <span style="text-decoration: underline;">${lossTimeStr}</span>`;
-                    const newLogRef = firebase.database().ref('logs_dataloss').push(); currentLogKey = newLogRef.key;
-                    newLogRef.set({ startTime: lossTimeStr, startTimestamp: lossStartTimestamp, recoveredTime: null, duration: null, lastTemp: currentSuhu, lastHum: currentHum, lastRain: currentRain });
+                    
+                    const newLogRef = firebase.database().ref('logs_dataloss').push(); 
+                    currentLogKey = newLogRef.key;
+                    newLogRef.set({ 
+                        startTime: lossTimeStr, 
+                        startTimestamp: lossStartTimestamp, 
+                        recoveredTime: null, 
+                        duration: null, 
+                        lastTemp: currentSuhu, 
+                        lastHum: currentHum, 
+                        lastRain: currentRain 
+                    });
+                }
+
+                // Jika halaman tetap terbuka dan alat sudah mati lebih dari 2 hari
+                if (lastDataTime !== null && (Math.floor((now - lastDataTime) / 1000) >= OFFLINE_CLEAR_SECONDS)) {
+                    resetAllGaugesToEmpty();
+                    document.getElementById('statusText').innerText = "STATUS: ALAT NONAKTIF (> 2 HARI)";
                 }
             }, 1000);
 
             database.ref('cuaca').on('value', snap => {
                 const data = snap.val();
                 if (data) {
-                    const now = new Date(); lastDataTime = now;
+                    const now = new Date();
+                    const nowSec = Math.floor(now.getTime() / 1000);
+
+                    // Validasi: Jika timestamp data di Firebase lebih lama dari 2 hari, kosongkan tampilan
+                    if (data.timestamp !== undefined && (nowSec - Number(data.timestamp)) > OFFLINE_CLEAR_SECONDS) {
+                        resetAllGaugesToEmpty();
+                        document.getElementById('statusIndicator').className = "led loss";
+                        document.getElementById('footerPanel').classList.add('dataloss');
+                        document.getElementById('statusText').innerText = "STATUS: ALAT NONAKTIF (> 2 HARI)";
+                        
+                        const lastActiveDate = new Date(Number(data.timestamp) * 1000);
+                        document.getElementById('timeContainer').innerHTML = `TERAKHIR AKTIF: <span style="text-decoration: underline;">${lastActiveDate.toLocaleString('id-ID')}</span>`;
+                        return;
+                    }
+
+                    // Render normal jika data masih aktif/segar
+                    lastDataTime = now;
                     if (isDataLoss) {
-                        isDataLoss = false; document.getElementById('footerPanel').classList.remove('dataloss');
+                        isDataLoss = false; 
+                        document.getElementById('footerPanel').classList.remove('dataloss');
                         if (currentLogKey && lossStartTimestamp) {
                             const durationSec = Math.floor((now.getTime() - lossStartTimestamp) / 1000);
                             if (durationSec >= 15) {
                                 const mins = Math.floor(durationSec / 60), secs = durationSec % 60;
-                                firebase.database().ref('logs_dataloss').child(currentLogKey).update({ recoveredTime: now.toLocaleString('id-ID'), duration: `${mins > 0 ? mins + ' m ' : ''}${secs} s` });
-                            } else { firebase.database().ref('logs_dataloss').child(currentLogKey).remove(); }
-                            currentLogKey = null; lossStartTimestamp = null;
+                                firebase.database().ref('logs_dataloss').child(currentLogKey).update({ 
+                                    recoveredTime: now.toLocaleString('id-ID'), 
+                                    duration: `${mins > 0 ? mins + ' m ' : ''}${secs} s` 
+                                });
+                            } else { 
+                                firebase.database().ref('logs_dataloss').child(currentLogKey).remove(); 
+                            }
+                            currentLogKey = null; 
+                            lossStartTimestamp = null;
                         }
                     }
-                    document.getElementById('statusIndicator').className = "led active"; document.getElementById('statusText').innerText = "STATUS: TRANSMISI DATA AKTIF";
+
+                    document.getElementById('statusIndicator').className = "led active"; 
+                    document.getElementById('statusText').innerText = "STATUS: TRANSMISI DATA AKTIF";
                     document.getElementById('timeContainer').innerHTML = `PEMBARUAN TERAKHIR: <span id="timeVal">${now.toLocaleTimeString('id-ID')}</span>`;
                     
-                    if (data.suhu !== undefined) { currentSuhu = Number(data.suhu); document.getElementById('suhuVal').innerText = currentSuhu.toFixed(1); updateTacho('bar-suhu', currentSuhu, 0, 50); }
-                    if (data.kelembapan !== undefined) { currentHum = Number(data.kelembapan); document.getElementById('humVal').innerText = currentHum.toFixed(1); updateTacho('bar-hum', currentHum, 0, 100); }
+                    if (data.suhu !== undefined) { 
+                        currentSuhu = Number(data.suhu); 
+                        document.getElementById('suhuVal').innerText = currentSuhu.toFixed(1); 
+                        updateTacho('bar-suhu', currentSuhu, 0, 50); 
+                    }
+                    if (data.kelembapan !== undefined) { 
+                        currentHum = Number(data.kelembapan); 
+                        document.getElementById('humVal').innerText = currentHum.toFixed(1); 
+                        updateTacho('bar-hum', currentHum, 0, 100); 
+                    }
                     if (data.rainfall !== undefined) {
                         currentRain = Number(data.rainfall);
                         document.getElementById('rainVal').innerText = currentRain.toFixed(1);
@@ -738,8 +812,13 @@
                     }
                     if (currentSuhu !== null && currentHum !== null) {
                         const wetBulb = calculateWetBulb(currentSuhu, currentHum);
-                        if (wetBulb !== null) { document.getElementById('wetVal').innerText = wetBulb.toFixed(1); updateTacho('bar-wet', wetBulb, 0, 50); }
+                        if (wetBulb !== null) { 
+                            document.getElementById('wetVal').innerText = wetBulb.toFixed(1); 
+                            updateTacho('bar-wet', wetBulb, 0, 50); 
+                        }
                     }
+                } else {
+                    resetAllGaugesToEmpty();
                 }
             });
         } catch (error) {
