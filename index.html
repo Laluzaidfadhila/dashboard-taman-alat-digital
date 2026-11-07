@@ -9,12 +9,11 @@
     <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-database.js"></script>
 
-    <!-- Google Fonts: Plus Jakarta Sans & Oswald -->
+    <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&family=Oswald:wght@500;700&display=swap" rel="stylesheet">
 
     <style>
         :root {
-            --bg-gradient: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
             --card-bg: rgba(30, 41, 59, 0.75);
             --card-border: rgba(255, 255, 255, 0.08);
             --bmkg-gold: #fbbf24;
@@ -27,6 +26,7 @@
             --min-blue: #06b6d4;
             --press-qfe: #0284c7;
             --press-qff: #6366f1;
+            --press-qnh: #8b5cf6;
             --ram-yellow: #f59e0b;
             --wifi-teal: #14b8a6;
             --text-main: #f8fafc;
@@ -34,34 +34,20 @@
         }
 
         * { 
-            box-sizing: border-box; 
-            margin: 0; 
-            padding: 0;
-            -webkit-user-select: none;
-            -moz-user-select: none;
-            -ms-user-select: none;
-            user-select: none;
+            box-sizing: border-box; margin: 0; padding: 0;
+            -webkit-user-select: none; -moz-user-select: none; -ms-user-select: none; user-select: none;
         }
 
         body {
             font-family: 'Plus Jakarta Sans', sans-serif;
-            background: #0b1329;
-            color: var(--text-main);
-            min-height: 100vh;
-            padding-bottom: 40px;
-            overflow-x: hidden;
+            background: #0b1329; color: var(--text-main);
+            min-height: 100vh; padding-bottom: 40px; overflow-x: hidden;
         }
 
-        /* HEADER */
         .header {
-            width: 100%;
-            background: rgba(15, 23, 42, 0.95);
-            backdrop-filter: blur(12px);
-            padding: 20px 15px 16px 15px;
-            text-align: center;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-            margin-bottom: 20px;
-            display: flex; flex-direction: column; align-items: center;
+            width: 100%; background: rgba(15, 23, 42, 0.95); backdrop-filter: blur(12px);
+            padding: 20px 15px 16px 15px; text-align: center; box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            margin-bottom: 20px; display: flex; flex-direction: column; align-items: center;
         }
 
         .logo-container { display: flex; flex-direction: column; align-items: center; margin-bottom: 8px; }
@@ -84,24 +70,23 @@
             background: rgba(15, 23, 42, 0.8); border: 1px solid rgba(251, 191, 36, 0.3);
             padding: 6px 18px; border-radius: 10px; box-shadow: 0 4px 15px rgba(0,0,0,0.4);
         }
-        .clock-time { font-family: 'Oswald', sans-serif; font-size: 1.5rem; font-weight: 700; color: #ffffff; letter-spacing: 1.5px; line-height: 1.1; text-shadow: 0 0 10px rgba(56, 189, 248, 0.5); }
+        .clock-time { font-family: 'Oswald', sans-serif; font-size: 1.5rem; font-weight: 700; color: #ffffff; letter-spacing: 1.5px; line-height: 1.1; }
         .clock-date { font-size: 0.75rem; font-weight: 600; color: var(--bmkg-gold); letter-spacing: 0.5px; text-transform: uppercase; margin-top: 2px; }
 
         .main-container { width: 100%; max-width: 1540px; margin: 0 auto; padding: 0 14px; }
         
-        /* RESPONSIVE DASHBOARD GRID */
+        /* GRID GAUGE BERDASARKAN BREAKPOINT */
         .dashboard-grid { 
             display: grid; 
-            grid-template-columns: repeat(5, 1fr); 
+            grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); 
             gap: 16px; 
             width: 100%; 
             margin-bottom: 20px; 
         }
 
-        @media (max-width: 1200px) { .dashboard-grid { grid-template-columns: repeat(3, 1fr); gap: 14px; } }
         @media (max-width: 768px) { 
             .dashboard-grid { 
-                grid-template-columns: repeat(2, 1fr); /* 2 Kolom rapi di Ponsel */
+                grid-template-columns: repeat(2, 1fr); /* 2 Kolom pas di layar Ponsel */
                 gap: 10px; 
             } 
             h1 { font-size: 1.25rem; }
@@ -111,7 +96,7 @@
         .gauge-card {
             background: var(--card-bg); backdrop-filter: blur(16px); border: 1px solid var(--card-border);
             border-radius: 16px; padding: 14px 6px; display: flex; flex-direction: column; align-items: center;
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3); transition: transform 0.2s ease;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
         }
 
         .gauge-panel {
@@ -139,6 +124,7 @@
         #panel-rain24 .tacho-bar { stroke: #ec4899; filter: drop-shadow(0 0 5px #ec4899); }
         #panel-qfe .tacho-bar { stroke: var(--press-qfe); filter: drop-shadow(0 0 5px var(--press-qfe)); }
         #panel-qff .tacho-bar { stroke: var(--press-qff); filter: drop-shadow(0 0 5px var(--press-qff)); }
+        #panel-qnh .tacho-bar { stroke: var(--press-qnh); filter: drop-shadow(0 0 5px var(--press-qnh)); }
         #panel-max .tacho-bar { stroke: var(--max-red); filter: drop-shadow(0 0 5px var(--max-red)); }
         #panel-min .tacho-bar { stroke: var(--min-blue); filter: drop-shadow(0 0 5px var(--min-blue)); }
 
@@ -154,7 +140,6 @@
             overflow: hidden; text-overflow: ellipsis;
         }
 
-        /* DIAGNOSIS SYSTEM */
         .system-diagnosis-grid {
             display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px; margin-bottom: 20px;
         }
@@ -171,10 +156,9 @@
         .tacho-bar-track { width: 100%; height: 8px; background: #0f172a; border-radius: 10px; overflow: hidden; border: 1px solid rgba(255,255,255,0.08); margin-top: 6px; }
         .tacho-bar-fill { height: 100%; width: 0%; border-radius: 10px; transition: width 1s ease-in-out; }
 
-        #fill-ram { background: linear-gradient(90deg, #d97706, #f59e0b); box-shadow: 0 0 6px var(--ram-yellow); }
-        #fill-wifi { background: linear-gradient(90deg, #0d9488, #14b8a6); box-shadow: 0 0 6px var(--wifi-teal); }
+        #fill-ram { background: linear-gradient(90deg, #d97706, #f59e0b); }
+        #fill-wifi { background: linear-gradient(90deg, #0d9488, #14b8a6); }
 
-        /* LOG SECTIONS & TABLES */
         .log-section { background: var(--card-bg); border: 1px solid var(--card-border); border-radius: 14px; padding: 16px; margin-bottom: 20px; }
         .log-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; flex-wrap: wrap; gap: 8px; }
         .log-title { font-size: 0.9rem; color: var(--bmkg-gold); font-weight: 700; letter-spacing: 0.5px; }
@@ -186,7 +170,7 @@
         .btn-download { background: rgba(255,255,255,0.08); color: #fff; border: 1px solid rgba(255,255,255,0.15); padding: 6px 12px; border-radius: 6px; cursor: pointer; font-size: 0.75rem; font-weight: 600; margin-left: auto; }
 
         .table-scroll-container { max-height: 320px; overflow-x: auto; overflow-y: auto; border-radius: 8px; border: 1px solid var(--card-border); }
-        .log-table { width: 100%; min-width: 580px; border-collapse: collapse; font-size: 0.8rem; text-align: center; }
+        .log-table { width: 100%; min-width: 650px; border-collapse: collapse; font-size: 0.8rem; text-align: center; }
         .log-table th { background: #0f172a; color: var(--bmkg-blue); padding: 10px 8px; position: sticky; top: 0; z-index: 2; font-size: 0.75rem; }
         .log-table td { padding: 8px; border-bottom: 1px solid var(--card-border); color: var(--text-main); }
 
@@ -199,7 +183,7 @@
         @keyframes blink { 0% { opacity: 1; } 50% { opacity: 0.3; } 100% { opacity: 1; } }
     </style>
 
-    <!-- SCRIPT KEAMANAN -->
+    <!-- ANTI KLIK KANAN -->
     <script>
         document.addEventListener('contextmenu', e => e.preventDefault());
         document.addEventListener('keydown', e => {
@@ -217,8 +201,8 @@
             <div class="logo-crop"><img class="bmkg-logo-img" src="logo-bmkg.png" alt="Logo BMKG"></div>
             <div class="bmkg-text">BMKG</div>
         </div>
-        <h1>STASIUN GEOFISIKA KELAS I DELI SERDANG</h1>
-        <div class="subtitle">TAMAN ALAT METEOROLOGI SYNOPTIK DIGITAL</div>
+        <h1>STASIUN GEOFISIKA DELI SERDANG</h1>
+        <div class="subtitle">TAMAN ALAT METEOROLOGI DIGITAL</div>
         <div class="digital-clock-container">
             <div id="digitalClock" class="clock-time">00:00:00 WIB</div>
             <div id="digitalDate" class="clock-date">Senin, 1 Januari 2026</div>
@@ -227,7 +211,7 @@
 
     <div class="main-container">
         
-        <!-- DASHBOARD GAUGE (10 INDIKATOR) -->
+        <!-- DASHBOARD GAUGE (11 GAUGE TERMASUK QNH) -->
         <div class="dashboard-grid">
             <div class="gauge-card">
                 <div class="gauge-panel" id="panel-suhu"><div class="tachometer"><svg viewBox="0 0 100 100"><circle class="tacho-track" cx="50" cy="50" r="40"></circle><circle class="tacho-bar" id="bar-suhu" cx="50" cy="50" r="40"></circle></svg></div><div class="tacho-data"><div class="value-display"><span id="suhuVal">--</span></div><div class="unit">°C</div></div></div>
@@ -254,6 +238,7 @@
                 <div class="panel-label">HUJAN 24 JAM</div>
             </div>
             
+            <!-- GAUGE TEKANAN: QFE, QFF, & QNH -->
             <div class="gauge-card">
                 <div class="gauge-panel" id="panel-qfe"><div class="tachometer"><svg viewBox="0 0 100 100"><circle class="tacho-track" cx="50" cy="50" r="40"></circle><circle class="tacho-bar" id="bar-qfe" cx="50" cy="50" r="40"></circle></svg></div><div class="tacho-data"><div class="value-display"><span id="qfeVal">--</span></div><div class="unit">HPA</div></div></div>
                 <div class="panel-label">QFE (STASIUN)</div>
@@ -261,6 +246,10 @@
             <div class="gauge-card">
                 <div class="gauge-panel" id="panel-qff"><div class="tachometer"><svg viewBox="0 0 100 100"><circle class="tacho-track" cx="50" cy="50" r="40"></circle><circle class="tacho-bar" id="bar-qff" cx="50" cy="50" r="40"></circle></svg></div><div class="tacho-data"><div class="value-display"><span id="qffVal">--</span></div><div class="unit">HPA</div></div></div>
                 <div class="panel-label">QFF (SEA LEVEL)</div>
+            </div>
+            <div class="gauge-card">
+                <div class="gauge-panel" id="panel-qnh"><div class="tachometer"><svg viewBox="0 0 100 100"><circle class="tacho-track" cx="50" cy="50" r="40"></circle><circle class="tacho-bar" id="bar-qnh" cx="50" cy="50" r="40"></circle></svg></div><div class="tacho-data"><div class="value-display"><span id="qnhVal">--</span></div><div class="unit">HPA</div></div></div>
+                <div class="panel-label">QNH (AVIATION)</div>
             </div>
 
             <div class="gauge-card">
@@ -291,7 +280,6 @@
             </div>
         </div>
 
-        <!-- FOOTER STATUS -->
         <div class="footer-status" id="footerPanel">
             <div style="font-weight: 700; margin-bottom: 4px; font-size: 0.85rem;">
                 <span class="led" id="statusIndicator"></span><span id="statusText">STATUS: MENUNGGU TRANSMISI DATA...</span>
@@ -359,7 +347,7 @@
             </div>
         </div>
 
-        <!-- TABEL 4: HOURLY -->
+        <!-- TABEL 4: HOURLY (TERMASUK QFE, QFF, & QNH) -->
         <div class="log-section">
             <div class="log-header">
                 <h3 class="log-title">LOG PENGAMATAN SUHU & TEKANAN PER JAM</h3>
@@ -375,10 +363,10 @@
                 <table class="log-table">
                     <thead>
                         <tr>
-                            <th>NO</th><th>WAKTU</th><th>KERING (°C)</th><th>HUM (%)</th><th>BASAH (°C)</th><th>QFE (HPA)</th><th>QFF (HPA)</th><th>HUJAN (MM)</th>
+                            <th>NO</th><th>WAKTU</th><th>KERING (°C)</th><th>HUM (%)</th><th>BASAH (°C)</th><th>QFE (HPA)</th><th>QFF (HPA)</th><th>QNH (HPA)</th><th>HUJAN (MM)</th>
                         </tr>
                     </thead>
-                    <tbody id="hourlyTableBody"><tr><td colspan="8">Memuat data...</td></tr></tbody>
+                    <tbody id="hourlyTableBody"><tr><td colspan="9">Memuat data...</td></tr></tbody>
                 </table>
             </div>
         </div>
@@ -405,7 +393,6 @@
 
     </div>
 
-    <!-- SCRIPT JAM DIGITAL -->
     <script>
         function updateDigitalClock() {
             const now = new Date();
@@ -415,7 +402,6 @@
         setInterval(updateDigitalClock, 1000); updateDigitalClock();
     </script>
 
-    <!-- FIREBASE & CORE LOGIC -->
     <script>
         const firebaseConfig = {
             apiKey: "AIzaSyBjH29bATrVn5vEVHFi1mgjwbe0jv5als8",
@@ -423,7 +409,7 @@
         };
 
         const TIMEOUT_LIMIT_SECONDS = 45;
-        const OFFLINE_CLEAR_SECONDS = 2 * 24 * 3600; // 48 Jam (2 Hari)
+        const OFFLINE_CLEAR_SECONDS = 2 * 24 * 3600;
         const DEFAULT_DISPLAY_LIMIT = 30;
 
         let rawData = { rain24: [], rain3: [], ekstrem: [], hourly: [], loss: [] };
@@ -435,6 +421,7 @@
             document.getElementById('wetVal').innerText = "--";
             document.getElementById('qfeVal').innerText = "--";
             document.getElementById('qffVal').innerText = "--";
+            document.getElementById('qnhVal').innerText = "--";
             document.getElementById('rainVal').innerText = "0.0";
             document.getElementById('rain24Val').innerText = "0.0";
             document.getElementById('ramVal').innerText = "--";
@@ -448,6 +435,7 @@
             updateTacho('bar-rain24', 0, 0, 100);
             updateTacho('bar-qfe', 950, 950, 1050);
             updateTacho('bar-qff', 950, 950, 1050);
+            updateTacho('bar-qnh', 950, 950, 1050);
             
             document.getElementById('fill-ram').style.width = '0%';
             document.getElementById('fill-wifi').style.width = '0%';
@@ -566,7 +554,7 @@
         function renderHourlyTable() {
             const list = filterDataset('hourly');
             const tbody = document.getElementById('hourlyTableBody');
-            if (list.length === 0) { tbody.innerHTML = `<tr><td colspan="8">Tidak ada data.</td></tr>`; return; }
+            if (list.length === 0) { tbody.innerHTML = `<tr><td colspan="9">Tidak ada data.</td></tr>`; return; }
             let html = '', count = 1;
             list.forEach(log => {
                 html += `<tr>
@@ -577,6 +565,7 @@
                     <td style="color: var(--wet-green); font-weight: 700;">${log.suhuBasah ? Number(log.suhuBasah).toFixed(1) : '-'}</td>
                     <td style="color: var(--press-qfe); font-weight: 700;">${log.qfe ? Number(log.qfe).toFixed(1) : '-'}</td>
                     <td style="color: var(--press-qff); font-weight: 700;">${log.qff ? Number(log.qff).toFixed(1) : '-'}</td>
+                    <td style="color: var(--press-qnh); font-weight: 700;">${log.qnh ? Number(log.qnh).toFixed(1) : '-'}</td>
                     <td style="color: var(--rain-purple); font-weight: 700;">${log.curahHujan !== undefined ? Number(log.curahHujan).toFixed(1) : '0.0'}</td>
                 </tr>`;
             });
@@ -620,9 +609,9 @@
 
             let csv = "data:text/csv;charset=utf-8,";
             if (type === 'hourly') {
-                csv += "No,Waktu,Bola Kering (C),Kelembapan (%),Bola Basah (C),QFE (hPa),QFF (hPa),Curah Hujan (mm)\n";
+                csv += "No,Waktu,Bola Kering (C),Kelembapan (%),Bola Basah (C),QFE (hPa),QFF (hPa),QNH (hPa),Curah Hujan (mm)\n";
                 list.forEach((log, i) => {
-                    csv += [i + 1, `"${log.waktu}"`, Number(log.suhuKering).toFixed(1), Number(log.kelembapan).toFixed(1), log.suhuBasah ? Number(log.suhuBasah).toFixed(1) : '-', log.qfe ? Number(log.qfe).toFixed(1) : '-', log.qff ? Number(log.qff).toFixed(1) : '-', log.curahHujan ? Number(log.curahHujan).toFixed(1) : '0.0'].join(",") + "\n";
+                    csv += [i + 1, `"${log.waktu}"`, Number(log.suhuKering).toFixed(1), Number(log.kelembapan).toFixed(1), log.suhuBasah ? Number(log.suhuBasah).toFixed(1) : '-', log.qfe ? Number(log.qfe).toFixed(1) : '-', log.qff ? Number(log.qff).toFixed(1) : '-', log.qnh ? Number(log.qnh).toFixed(1) : '-', log.curahHujan ? Number(log.curahHujan).toFixed(1) : '0.0'].join(",") + "\n";
                 });
             } else if (type === 'rain24') {
                 csv += "No,Tanggal Observasi,Waktu Cetak,Total Hujan 24 Jam (mm)\n";
@@ -721,7 +710,6 @@
                 }
             }, 1000);
 
-            // LOGIKA FILTER OTOMATIS BERDASARKAN LOG JAM TERAKHIR ATAU TIMESTAMP
             database.ref('cuaca').on('value', snap => {
                 const data = snap.val();
                 if (!data) {
@@ -732,7 +720,6 @@
                 const now = new Date();
                 const nowSec = Math.floor(now.getTime() / 1000);
 
-                // PENGECEKAN 1: Jika firmware sudah mengirimkan field timestamp
                 if (data.timestamp !== undefined) {
                     if ((nowSec - Number(data.timestamp)) > OFFLINE_CLEAR_SECONDS) {
                         resetAllGaugesToEmpty();
@@ -743,34 +730,8 @@
                         document.getElementById('timeContainer').innerHTML = `TERAKHIR AKTIF: <span style="text-decoration: underline;">${lastActiveDate.toLocaleString('id-ID')}</span>`;
                         return;
                     }
-                } 
-                // PENGECEKAN 2: Jika data lama belum ada timestamp, periksa waktu log terakhir di logs_pengamatan_jam
-                else {
-                    if (rawData.hourly && rawData.hourly.length > 0) {
-                        const latestLog = rawData.hourly[0];
-                        const logDate = extractDateObj(latestLog.waktu);
-                        if (logDate && ((now.getTime() - logDate.getTime()) / 1000) > OFFLINE_CLEAR_SECONDS) {
-                            resetAllGaugesToEmpty();
-                            document.getElementById('statusIndicator').className = "led loss";
-                            document.getElementById('footerPanel').classList.add('dataloss');
-                            document.getElementById('statusText').innerText = "STATUS: ALAT NONAKTIF (> 2 HARI)";
-                            document.getElementById('timeContainer').innerHTML = `DATA LAMA DIABAIKAN (> 48 JAM)`;
-                            return;
-                        }
-                    } else {
-                        // Jika tidak ada timestamp dan gauge tekanan masih kosong (--), bersihkan data sisa
-                        if (data.qfe === undefined || data.qff === undefined) {
-                            resetAllGaugesToEmpty();
-                            document.getElementById('statusIndicator').className = "led loss";
-                            document.getElementById('footerPanel').classList.add('dataloss');
-                            document.getElementById('statusText').innerText = "STATUS: ALAT NONAKTIF / MENUNGGU UPDATE";
-                            document.getElementById('timeContainer').innerHTML = `PEMBARUAN TERAKHIR: DATA TIDAK SEGAR`;
-                            return;
-                        }
-                    }
                 }
 
-                // JALANKAN RENDER NORMAL JIKA ALAT AKTIF
                 lastDataTime = now;
                 if (isDataLoss) {
                     isDataLoss = false; 
@@ -821,6 +782,11 @@
                     const qffVal = Number(data.qff);
                     document.getElementById('qffVal').innerText = qffVal.toFixed(1);
                     updateTacho('bar-qff', qffVal, 950, 1050);
+                }
+                if (data.qnh !== undefined) {
+                    const qnhVal = Number(data.qnh);
+                    document.getElementById('qnhVal').innerText = qnhVal.toFixed(1);
+                    updateTacho('bar-qnh', qnhVal, 950, 1050);
                 }
                 if (data.freeRam !== undefined) {
                     const ramKb = (Number(data.freeRam) / 1024).toFixed(1);
