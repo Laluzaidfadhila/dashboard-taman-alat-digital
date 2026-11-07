@@ -25,6 +25,8 @@
             --rain-purple: #c084fc;
             --max-red: #ef4444;
             --min-blue: #06b6d4;
+            --press-qfe: #0284c7;
+            --press-qff: #6366f1;
             --ram-yellow: #f59e0b;
             --wifi-teal: #14b8a6;
             --text-main: #f8fafc;
@@ -84,34 +86,35 @@
         .clock-time { font-family: 'Oswald', sans-serif; font-size: 1.8rem; font-weight: 700; color: #ffffff; letter-spacing: 2px; line-height: 1.1; text-shadow: 0 0 10px rgba(56, 189, 248, 0.5); }
         .clock-date { font-size: 0.8rem; font-weight: 600; color: var(--bmkg-gold); letter-spacing: 1px; text-transform: uppercase; margin-top: 2px; }
 
-        .main-container { width: 100%; max-width: 1480px; margin: 0 auto; padding: 0 20px; }
+        .main-container { width: 100%; max-width: 1540px; margin: 0 auto; padding: 0 20px; }
         
-        /* DASHBOARD GRID GAUGE */
+        /* DASHBOARD GAUGE GRID (5 Kolom per Baris di Desktop) */
         .dashboard-grid { 
             display: grid; 
-            grid-template-columns: repeat(4, 1fr); 
-            gap: 20px; 
+            grid-template-columns: repeat(5, 1fr); 
+            gap: 18px; 
             width: 100%; 
             margin-bottom: 24px; 
         }
 
-        @media (max-width: 1024px) { .dashboard-grid { grid-template-columns: repeat(2, 1fr); } }
-        @media (max-width: 600px) { .dashboard-grid { grid-template-columns: 1fr; } }
+        @media (max-width: 1200px) { .dashboard-grid { grid-template-columns: repeat(3, 1fr); } }
+        @media (max-width: 768px) { .dashboard-grid { grid-template-columns: repeat(2, 1fr); } }
+        @media (max-width: 480px) { .dashboard-grid { grid-template-columns: 1fr; } }
 
         .gauge-card {
             background: var(--card-bg); backdrop-filter: blur(16px); border: 1px solid var(--card-border);
-            border-radius: 20px; padding: 20px 10px; display: flex; flex-direction: column; align-items: center;
+            border-radius: 20px; padding: 18px 8px; display: flex; flex-direction: column; align-items: center;
             box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3); transition: transform 0.3s ease, border-color 0.3s ease;
         }
         .gauge-card:hover { transform: translateY(-5px); border-color: rgba(255, 255, 255, 0.2); }
 
         .gauge-panel {
-            background: #0f172a; border-radius: 50%; width: 160px; height: 160px; position: relative;
+            background: #0f172a; border-radius: 50%; width: 150px; height: 150px; position: relative;
             border: 6px solid #1e293b; box-shadow: inset 0 0 20px rgba(0,0,0,0.8), 0 0 15px rgba(0,0,0,0.5);
             display: flex; align-items: center; justify-content: center;
         }
 
-        .tachometer { position: absolute; width: 135px; height: 135px; top: 7px; }
+        .tachometer { position: absolute; width: 125px; height: 125px; top: 6px; }
         .tachometer svg { width: 100%; height: 100%; transform: rotate(135deg); }
         .tacho-track { fill: none; stroke: #1e293b; stroke-width: 12; stroke-dasharray: 188.5 251.2; }
         .tacho-bar { fill: none; stroke-width: 12; stroke-linecap: round; stroke-dasharray: 188.5 251.2; stroke-dashoffset: 188.5; transition: stroke-dashoffset 1.2s cubic-bezier(0.4, 0, 0.2, 1); }
@@ -122,17 +125,19 @@
         #panel-rain .tacho-bar { stroke: var(--rain-purple); filter: drop-shadow(0 0 6px var(--rain-purple)); }
         #panel-rain3 .tacho-bar { stroke: #a855f7; filter: drop-shadow(0 0 6px #a855f7); }
         #panel-rain24 .tacho-bar { stroke: #ec4899; filter: drop-shadow(0 0 6px #ec4899); }
+        #panel-qfe .tacho-bar { stroke: var(--press-qfe); filter: drop-shadow(0 0 6px var(--press-qfe)); }
+        #panel-qff .tacho-bar { stroke: var(--press-qff); filter: drop-shadow(0 0 6px var(--press-qff)); }
         #panel-max .tacho-bar { stroke: var(--max-red); filter: drop-shadow(0 0 6px var(--max-red)); }
         #panel-min .tacho-bar { stroke: var(--min-blue); filter: drop-shadow(0 0 6px var(--min-blue)); }
 
         .tacho-data { z-index: 10; text-align: center; }
-        .value-display { font-family: 'Oswald', sans-serif; font-size: 2.2rem; font-weight: 700; color: #fff; line-height: 1; }
-        .unit { font-size: 0.7rem; color: var(--text-muted); margin-top: 3px; font-weight: 700; text-transform: uppercase; }
+        .value-display { font-family: 'Oswald', sans-serif; font-size: 1.95rem; font-weight: 700; color: #fff; line-height: 1; }
+        .unit { font-size: 0.65rem; color: var(--text-muted); margin-top: 3px; font-weight: 700; text-transform: uppercase; }
         
         .panel-label { 
-            margin-top: 14px; font-family: 'Oswald', sans-serif; font-size: 0.85rem; color: #e2e8f0; 
-            letter-spacing: 1px; background: rgba(255,255,255,0.05); padding: 4px 12px; border-radius: 20px; 
-            border: 1px solid rgba(255,255,255,0.1); text-align: center;
+            margin-top: 14px; font-family: 'Oswald', sans-serif; font-size: 0.8rem; color: #e2e8f0; 
+            letter-spacing: 1px; background: rgba(255,255,255,0.05); padding: 4px 10px; border-radius: 20px; 
+            border: 1px solid rgba(255,255,255,0.1); text-align: center; white-space: nowrap;
         }
 
         /* DIAGNOSIS SYSTEM GRID */
@@ -215,7 +220,7 @@
 
     <div class="main-container">
         
-        <!-- DASHBOARD GAUGE -->
+        <!-- DASHBOARD GAUGE (10 INDIKATOR LENGKAP) -->
         <div class="dashboard-grid">
             <div class="gauge-card">
                 <div class="gauge-panel" id="panel-suhu"><div class="tachometer"><svg viewBox="0 0 100 100"><circle class="tacho-track" cx="50" cy="50" r="40"></circle><circle class="tacho-bar" id="bar-suhu" cx="50" cy="50" r="40"></circle></svg></div><div class="tacho-data"><div class="value-display"><span id="suhuVal">--</span></div><div class="unit">°C</div></div></div>
@@ -241,6 +246,17 @@
                 <div class="gauge-panel" id="panel-rain24"><div class="tachometer"><svg viewBox="0 0 100 100"><circle class="tacho-track" cx="50" cy="50" r="40"></circle><circle class="tacho-bar" id="bar-rain24" cx="50" cy="50" r="40"></circle></svg></div><div class="tacho-data"><div class="value-display"><span id="rain24Val">0.0</span></div><div class="unit">MM</div></div></div>
                 <div class="panel-label">HUJAN 24 JAM</div>
             </div>
+            
+            <!-- GAUGE TEKANAN BAROMETRIK BMKG -->
+            <div class="gauge-card">
+                <div class="gauge-panel" id="panel-qfe"><div class="tachometer"><svg viewBox="0 0 100 100"><circle class="tacho-track" cx="50" cy="50" r="40"></circle><circle class="tacho-bar" id="bar-qfe" cx="50" cy="50" r="40"></circle></svg></div><div class="tacho-data"><div class="value-display"><span id="qfeVal">--</span></div><div class="unit">HPA</div></div></div>
+                <div class="panel-label">QFE (STASIUN)</div>
+            </div>
+            <div class="gauge-card">
+                <div class="gauge-panel" id="panel-qff"><div class="tachometer"><svg viewBox="0 0 100 100"><circle class="tacho-track" cx="50" cy="50" r="40"></circle><circle class="tacho-bar" id="bar-qff" cx="50" cy="50" r="40"></circle></svg></div><div class="tacho-data"><div class="value-display"><span id="qffVal">--</span></div><div class="unit">HPA</div></div></div>
+                <div class="panel-label">QFF (SEA LEVEL)</div>
+            </div>
+
             <div class="gauge-card">
                 <div class="gauge-panel" id="panel-max"><div class="tachometer"><svg viewBox="0 0 100 100"><circle class="tacho-track" cx="50" cy="50" r="40"></circle><circle class="tacho-bar" id="bar-max" cx="50" cy="50" r="40"></circle></svg></div><div class="tacho-data"><div class="value-display"><span id="maxSuhuVal">--</span></div><div class="unit">°C</div></div></div>
                 <div class="panel-label">SUHU MAX (07-19)</div>
@@ -337,10 +353,10 @@
             </div>
         </div>
 
-        <!-- TABEL 4: HOURLY -->
+        <!-- TABEL 4: HOURLY (DIPERKAYA DENGAN QFE & QFF) -->
         <div class="log-section">
             <div class="log-header">
-                <h3 class="log-title">LOG PENGAMATAN SUHU PER JAM</h3>
+                <h3 class="log-title">LOG PENGAMATAN SUHU & TEKANAN PER JAM</h3>
                 <div class="filter-controls">
                     <input type="date" id="start-hourly" class="date-input">
                     <input type="date" id="end-hourly" class="date-input">
@@ -351,8 +367,19 @@
             </div>
             <div class="table-scroll-container">
                 <table class="log-table">
-                    <thead><tr><th>NO</th><th>WAKTU PENGAMATAN</th><th>BOLA KERING (°C)</th><th>KELEMBAPAN (%)</th><th>BOLA BASAH (°C)</th><th>AKUMULASI HUJAN (MM)</th></tr></thead>
-                    <tbody id="hourlyTableBody"><tr><td colspan="6">Memuat data...</td></tr></tbody>
+                    <thead>
+                        <tr>
+                            <th>NO</th>
+                            <th>WAKTU PENGAMATAN</th>
+                            <th>BOLA KERING (°C)</th>
+                            <th>KELEMBAPAN (%)</th>
+                            <th>BOLA BASAH (°C)</th>
+                            <th>QFE (HPA)</th>
+                            <th>QFF (HPA)</th>
+                            <th>AKUMULASI HUJAN (MM)</th>
+                        </tr>
+                    </thead>
+                    <tbody id="hourlyTableBody"><tr><td colspan="8">Memuat data...</td></tr></tbody>
                 </table>
             </div>
         </div>
@@ -480,7 +507,6 @@
                 return; 
             }
 
-            // Validasi tanggal saat ini untuk Gauge
             const now = new Date();
             const todayStr = `${String(now.getDate()).padStart(2, '0')}/${String(now.getMonth() + 1).padStart(2, '0')}/${now.getFullYear()}`;
             const latestLog = list[0];
@@ -520,10 +546,19 @@
         function renderHourlyTable() {
             const list = filterDataset('hourly');
             const tbody = document.getElementById('hourlyTableBody');
-            if (list.length === 0) { tbody.innerHTML = `<tr><td colspan="6">Tidak ada data terdeteksi.</td></tr>`; return; }
+            if (list.length === 0) { tbody.innerHTML = `<tr><td colspan="8">Tidak ada data terdeteksi.</td></tr>`; return; }
             let html = '', count = 1;
             list.forEach(log => {
-                html += `<tr><td>${count++}</td><td style="font-weight: 700; color: var(--bmkg-blue);">${log.waktu}</td><td style="color: var(--temp-red); font-weight: 700;">${Number(log.suhuKering).toFixed(1)} °C</td><td style="color: var(--hum-blue); font-weight: 700;">${Number(log.kelembapan).toFixed(1)} %</td><td style="color: var(--wet-green); font-weight: 700;">${log.suhuBasah ? Number(log.suhuBasah).toFixed(1) + ' °C' : '-'}</td><td style="color: var(--rain-purple); font-weight: 700;">${log.curahHujan !== undefined ? Number(log.curahHujan).toFixed(1) + ' mm' : '0.0 mm'}</td></tr>`;
+                html += `<tr>
+                    <td>${count++}</td>
+                    <td style="font-weight: 700; color: var(--bmkg-blue);">${log.waktu}</td>
+                    <td style="color: var(--temp-red); font-weight: 700;">${Number(log.suhuKering).toFixed(1)} °C</td>
+                    <td style="color: var(--hum-blue); font-weight: 700;">${Number(log.kelembapan).toFixed(1)} %</td>
+                    <td style="color: var(--wet-green); font-weight: 700;">${log.suhuBasah ? Number(log.suhuBasah).toFixed(1) + ' °C' : '-'}</td>
+                    <td style="color: var(--press-qfe); font-weight: 700;">${log.qfe ? Number(log.qfe).toFixed(1) + ' hPa' : '-'}</td>
+                    <td style="color: var(--press-qff); font-weight: 700;">${log.qff ? Number(log.qff).toFixed(1) + ' hPa' : '-'}</td>
+                    <td style="color: var(--rain-purple); font-weight: 700;">${log.curahHujan !== undefined ? Number(log.curahHujan).toFixed(1) + ' mm' : '0.0 mm'}</td>
+                </tr>`;
             });
             tbody.innerHTML = html;
         }
@@ -564,7 +599,12 @@
             if (!list || list.length === 0) return alert("Data kosong!");
 
             let csv = "data:text/csv;charset=utf-8,";
-            if (type === 'rain24') {
+            if (type === 'hourly') {
+                csv += "No,Waktu,Bola Kering (C),Kelembapan (%),Bola Basah (C),QFE (hPa),QFF (hPa),Curah Hujan (mm)\n";
+                list.forEach((log, i) => {
+                    csv += [i + 1, `"${log.waktu}"`, Number(log.suhuKering).toFixed(1), Number(log.kelembapan).toFixed(1), log.suhuBasah ? Number(log.suhuBasah).toFixed(1) : '-', log.qfe ? Number(log.qfe).toFixed(1) : '-', log.qff ? Number(log.qff).toFixed(1) : '-', log.curahHujan ? Number(log.curahHujan).toFixed(1) : '0.0'].join(",") + "\n";
+                });
+            } else if (type === 'rain24') {
                 csv += "No,Tanggal Observasi,Waktu Cetak,Total Hujan 24 Jam (mm)\n";
                 list.forEach((log, i) => { csv += [i + 1, `"${formatDisplayDate(log.tanggal)}"`, `"${log.waktuCetak || '-'}"`, log.totalHujan24Jam ? Number(log.totalHujan24Jam).toFixed(1) : '0.0'].join(",") + "\n"; });
             } else if (type === 'rain3') {
@@ -573,9 +613,6 @@
             } else if (type === 'ekstrem') {
                 csv += "No,Tanggal Observasi,Suhu Maksimum (C),Suhu Minimum (C)\n";
                 list.forEach((log, i) => { csv += [i + 1, `"${formatDisplayDate(log.tanggal)}"`, log.maxSuhu ? Number(log.maxSuhu).toFixed(1) : '-', log.minSuhu ? Number(log.minSuhu).toFixed(1) : '-'].join(",") + "\n"; });
-            } else if (type === 'hourly') {
-                csv += "No,Waktu,Bola Kering (C),Kelembapan (%),Bola Basah (C),Curah Hujan (mm)\n";
-                list.forEach((log, i) => { csv += [i + 1, `"${log.waktu}"`, Number(log.suhuKering).toFixed(1), Number(log.kelembapan).toFixed(1), log.suhuBasah ? Number(log.suhuBasah).toFixed(1) : '-', log.curahHujan ? Number(log.curahHujan).toFixed(1) : '0.0'].join(",") + "\n"; });
             } else if (type === 'loss') {
                 csv += "No,Waktu Mulai Loss,Waktu Pulih,Durasi Putus,Suhu Terakhir (C),Kelembapan Terakhir (%),Curah Hujan Terakhir (mm)\n";
                 list.forEach((log, i) => { csv += [i + 1, `"${log.startTime}"`, `"${log.recoveredTime || 'Terputus'}"`, `"${log.duration || '-'}"`, log.lastTemp ? Number(log.lastTemp).toFixed(1) : '-', log.lastHum ? Number(log.lastHum).toFixed(1) : '-', log.lastRain ? Number(log.lastRain).toFixed(1) : '0.0'].join(",") + "\n"; });
@@ -678,6 +715,16 @@
                         document.getElementById('rain24Val').innerText = currentRain.toFixed(1);
                         updateTacho('bar-rain', currentRain, 0, 50);
                         updateTacho('bar-rain24', currentRain, 0, 100);
+                    }
+                    if (data.qfe !== undefined) {
+                        const qfeVal = Number(data.qfe);
+                        document.getElementById('qfeVal').innerText = qfeVal.toFixed(1);
+                        updateTacho('bar-qfe', qfeVal, 950, 1050);
+                    }
+                    if (data.qff !== undefined) {
+                        const qffVal = Number(data.qff);
+                        document.getElementById('qffVal').innerText = qffVal.toFixed(1);
+                        updateTacho('bar-qff', qffVal, 950, 1050);
                     }
                     if (data.freeRam !== undefined) {
                         const ramKb = (Number(data.freeRam) / 1024).toFixed(1);
