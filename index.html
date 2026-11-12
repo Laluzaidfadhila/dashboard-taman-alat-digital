@@ -42,6 +42,19 @@
         linear-gradient(90deg, rgba(30, 41, 59, 0.2) 1px, transparent 1px);
       background-size: 100% 100%, 100% 100%, 32px 32px, 32px 32px;
       color: #f8fafc;
+      /* Proteksi Anti Seleksi Teks & Anti Copy */
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+      user-select: none;
+    }
+
+    /* Izinkan interaksi normal khusus pada input tanggal */
+    input[type="date"] {
+      -webkit-user-select: auto;
+      -moz-user-select: auto;
+      -ms-user-select: auto;
+      user-select: auto;
     }
 
     .glass-card {
@@ -85,7 +98,6 @@
     .glow-indigo { filter: drop-shadow(0 0 6px rgba(129, 140, 248, 0.45)); }
     .glow-fuchsia { filter: drop-shadow(0 0 6px rgba(232, 121, 249, 0.45)); }
 
-    /* Hilangkan scrollbar pada tab geser HP */
     .no-scrollbar::-webkit-scrollbar { display: none; }
     .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
 
@@ -95,7 +107,7 @@
     ::-webkit-scrollbar-thumb:hover { background: #0284c7; }
   </style>
 </head>
-<body class="min-h-screen antialiased selection:bg-sky-500 selection:text-white pb-24 md:pb-12">
+<body class="min-h-screen antialiased pb-24 md:pb-12" oncontextmenu="return false;" ondragstart="return false;">
 
   <!-- HEADER STASIUN -->
   <header id="topHeader" class="pt-6 sm:pt-7 pb-4 px-4 text-center">
@@ -108,7 +120,7 @@
             src="./logo-bmkg.png"
             onerror="this.onerror=null; this.src='https://raw.githubusercontent.com/Laluzaidfadhila/dashboard-taman-alat-digital/main/logo-bmkg.png';"
             alt="Logo Resmi BMKG"
-            class="w-full h-full object-contain"
+            class="w-full h-full object-contain pointer-events-none"
           />
         </div>
 
@@ -433,41 +445,47 @@
       </span>
     </div>
 
-    <!-- 6. PANEL ARSIP & LOG LENGKAP (RESPONSIF INTERAKTIF HP & DESKTOP) -->
+    <!-- 6. PANEL ARSIP & LOG LENGKAP (TATA LETAK PRESISI 2 BARIS RAPI) -->
     <section id="secArchive" class="glass-card rounded-2xl p-4 sm:p-6">
-      <div class="flex flex-col xl:flex-row xl:items-center justify-between gap-3.5 pb-4 border-b border-slate-800">
+      <div class="space-y-3.5 pb-4 border-b border-slate-800">
         
-        <!-- Tab Switcher (Bisa digeser menyamping secara interaktif di HP) -->
-        <div class="flex items-center gap-2 overflow-x-auto no-scrollbar pb-1 xl:pb-0">
-          <button onclick="switchArchiveTab('hourly')" id="tabHourly" class="h-9 px-3.5 rounded-xl bg-amber-500/20 border border-amber-500/40 text-amber-300 text-[11px] font-bold uppercase tracking-wider whitespace-nowrap flex-shrink-0 transition cursor-pointer">
+        <!-- BARIS 1: 5 TAB ARSIP PROPORSI PRESISI -->
+        <div class="flex lg:grid lg:grid-cols-5 items-center gap-2 overflow-x-auto no-scrollbar pb-1 lg:pb-0">
+          <button onclick="switchArchiveTab('hourly')" id="tabHourly" class="h-10 px-3 rounded-xl bg-amber-500/20 border border-amber-500/40 text-amber-300 text-[10px] xl:text-[11px] font-bold uppercase tracking-wider whitespace-nowrap flex-shrink-0 text-center transition cursor-pointer">
             Log Suhu &amp; Tekanan Per Jam
           </button>
-          <button onclick="switchArchiveTab('24h')" id="tab24h" class="h-9 px-3.5 rounded-xl bg-slate-900 border border-slate-700 text-slate-400 hover:text-slate-200 text-[11px] font-bold uppercase tracking-wider whitespace-nowrap flex-shrink-0 transition cursor-pointer">
-            Rekap Hujan 24 Jam (07–07 WIB)
+          <button onclick="switchArchiveTab('24h')" id="tab24h" class="h-10 px-3 rounded-xl bg-slate-900 border border-slate-700 text-slate-400 hover:text-slate-200 text-[10px] xl:text-[11px] font-bold uppercase tracking-wider whitespace-nowrap flex-shrink-0 text-center transition cursor-pointer">
+            Rekap Hujan 24 Jam (07–07)
           </button>
-          <button onclick="switchArchiveTab('3h')" id="tab3h" class="h-9 px-3.5 rounded-xl bg-slate-900 border border-slate-700 text-slate-400 hover:text-slate-200 text-[11px] font-bold uppercase tracking-wider whitespace-nowrap flex-shrink-0 transition cursor-pointer">
+          <button onclick="switchArchiveTab('3h')" id="tab3h" class="h-10 px-3 rounded-xl bg-slate-900 border border-slate-700 text-slate-400 hover:text-slate-200 text-[10px] xl:text-[11px] font-bold uppercase tracking-wider whitespace-nowrap flex-shrink-0 text-center transition cursor-pointer">
             Log Hujan 3 Jam-Jaman
           </button>
-          <button onclick="switchArchiveTab('ekstrem')" id="tabEkstrem" class="h-9 px-3.5 rounded-xl bg-slate-900 border border-slate-700 text-slate-400 hover:text-slate-200 text-[11px] font-bold uppercase tracking-wider whitespace-nowrap flex-shrink-0 transition cursor-pointer">
+          <button onclick="switchArchiveTab('ekstrem')" id="tabEkstrem" class="h-10 px-3 rounded-xl bg-slate-900 border border-slate-700 text-slate-400 hover:text-slate-200 text-[10px] xl:text-[11px] font-bold uppercase tracking-wider whitespace-nowrap flex-shrink-0 text-center transition cursor-pointer">
             Suhu Ekstrem Harian
           </button>
-          <button onclick="switchArchiveTab('loss')" id="tabLoss" class="h-9 px-3.5 rounded-xl bg-slate-900 border border-slate-700 text-slate-400 hover:text-slate-200 text-[11px] font-bold uppercase tracking-wider whitespace-nowrap flex-shrink-0 transition cursor-pointer">
+          <button onclick="switchArchiveTab('loss')" id="tabLoss" class="h-10 px-3 rounded-xl bg-slate-900 border border-slate-700 text-slate-400 hover:text-slate-200 text-[10px] xl:text-[11px] font-bold uppercase tracking-wider whitespace-nowrap flex-shrink-0 text-center transition cursor-pointer">
             Riwayat Data Loss
           </button>
         </div>
 
-        <!-- Kontrol Filter Tanggal, Reset & Unduh CSV -->
-        <div class="grid grid-cols-2 sm:flex sm:flex-wrap items-center gap-2">
-          <input type="date" id="filterDateInput" class="col-span-2 h-9 bg-slate-900 border border-slate-700 text-slate-200 text-xs rounded-xl px-3 font-mono focus:outline-none focus:border-sky-500" />
-          <button onclick="applyDateFilter()" class="h-9 px-4 rounded-xl bg-sky-600 hover:bg-sky-500 active:bg-sky-700 text-white text-xs font-bold transition cursor-pointer">
-            Filter
-          </button>
-          <button onclick="resetDateFilter()" class="h-9 px-4 rounded-xl bg-slate-800 hover:bg-slate-700 active:bg-slate-600 text-slate-300 text-xs font-bold border border-slate-700 transition cursor-pointer">
-            Reset
-          </button>
-          <button onclick="downloadCSV()" class="col-span-2 sm:col-span-1 h-9 px-4 rounded-xl bg-emerald-600 hover:bg-emerald-500 active:bg-emerald-700 text-white text-xs font-bold transition cursor-pointer shadow-lg shadow-emerald-600/20">
-            Unduh CSV
-          </button>
+        <!-- BARIS 2: KONTROL FILTER TANGGAL, RESET & UNDUH CSV SEJAJAR RAPI -->
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2.5 pt-1">
+          <span id="activeTabSubtitle" class="text-[11px] font-mono text-slate-400 uppercase tracking-wider">
+            Menampilkan: Log Pengamatan Suhu &amp; Tekanan Per Jam
+          </span>
+
+          <div class="grid grid-cols-2 sm:flex items-center gap-2">
+            <input type="date" id="filterDateInput" class="col-span-2 h-9 bg-slate-900 border border-slate-700 text-slate-200 text-xs rounded-xl px-3 font-mono focus:outline-none focus:border-sky-500" />
+            <button onclick="applyDateFilter()" class="h-9 px-4 rounded-xl bg-sky-600 hover:bg-sky-500 active:bg-sky-700 text-white text-xs font-bold transition cursor-pointer">
+              Filter
+            </button>
+            <button onclick="resetDateFilter()" class="h-9 px-4 rounded-xl bg-slate-800 hover:bg-slate-700 active:bg-slate-600 text-slate-300 text-xs font-bold border border-slate-700 transition cursor-pointer">
+              Reset
+            </button>
+            <button onclick="downloadCSV()" class="col-span-2 sm:col-span-1 h-9 px-4 rounded-xl bg-emerald-600 hover:bg-emerald-500 active:bg-emerald-700 text-white text-xs font-bold transition cursor-pointer shadow-lg shadow-emerald-600/20">
+              Unduh CSV
+            </button>
+          </div>
         </div>
       </div>
 
@@ -512,6 +530,47 @@
   </nav>
 
   <script>
+    // =========================================================================
+    // PROTEKSI KEAMANAN: ANTI KLIK KANAN, ANTI INSPECT ELEMENT, & ANTI COPY CODE
+    // =========================================================================
+    document.addEventListener('contextmenu', function (e) {
+      e.preventDefault();
+    });
+
+    document.addEventListener('copy', function (e) {
+      e.preventDefault();
+    });
+
+    document.addEventListener('cut', function (e) {
+      e.preventDefault();
+    });
+
+    document.addEventListener('keydown', function (e) {
+      // Blokir F12
+      if (e.key === 'F12' || e.keyCode === 123) {
+        e.preventDefault();
+        return false;
+      }
+      // Blokir Ctrl+Shift+I / Ctrl+Shift+J / Ctrl+Shift+C (Inspect Element & Console)
+      if (e.ctrlKey && e.shiftKey && ['I', 'i', 'J', 'j', 'C', 'c'].includes(e.key)) {
+        e.preventDefault();
+        return false;
+      }
+      // Blokir Ctrl+U (View Source), Ctrl+S (Save Page), Ctrl+C (Copy), Ctrl+A (Select All)
+      if (e.ctrlKey && ['U', 'u', 'S', 's', 'C', 'c', 'A', 'a'].includes(e.key)) {
+        e.preventDefault();
+        return false;
+      }
+      // Blokir Cmd+Option+I / Cmd+U (Mac)
+      if (e.metaKey && ['U', 'u', 'S', 's', 'C', 'c', 'A', 'a', 'I', 'i'].includes(e.key)) {
+        e.preventDefault();
+        return false;
+      }
+    });
+
+    // =========================================================================
+    // KONFIGURASI FIREBASE & TELEMETRI REAL-TIME
+    // =========================================================================
     const FIREBASE_BASE_URL = "https://meteo-sangkar-default-rtdb.asia-southeast1.firebasedatabase.app";
     
     let latestTelemetry = {};
@@ -524,7 +583,6 @@
     let recordsLoss = [];
     let currentFilteredData = [];
 
-    // Jadwal Pengiriman Wajib WMO: 00.00, 03.00, 06.00, 09.00, 12.00 UTC
     const WMO_REPORT_HOURS_UTC = [0, 3, 6, 9, 12];
     let lastTriggeredWmoKey = "";
 
@@ -778,9 +836,8 @@
       } catch (e) {}
     }
 
-    // 5. DETEKSI OTOMATIS RIWAYAT DATA LOSS DARI LOG PENGAMATAN JAM-JAMAN
+    // 5. DETEKSI OTOMATIS RIWAYAT DATA LOSS
     function parseIndoTimestamp(str) {
-      // Format: "13/11/2026, 02.21.36" atau "13/11/2026, 02:21:36"
       if (!str) return null;
       const match = str.match(/(\d{2})\/(\d{2})\/(\d{4}),\s*(\d{2})[.:](\d{2})[.:](\d{2})/);
       if (!match) return null;
@@ -800,7 +857,6 @@
     function computeDataLossFromHourly(hourlyList, explicitLossList) {
       const detected = [...explicitLossList];
       if (hourlyList && hourlyList.length >= 2) {
-        // Urutkan kronologis dari terlama ke terbaru untuk mendeteksi jeda (> 65 menit)
         const asc = [...hourlyList].reverse();
         for (let i = 1; i < asc.length; i++) {
           const prev = asc[i - 1];
@@ -809,7 +865,6 @@
           const tCurr = parseIndoTimestamp(curr.waktu);
           if (tPrev && tCurr) {
             const gapMs = tCurr - tPrev;
-            // Jika jeda antar-log lebih dari 65 menit (melewatkan minimal 1 jadwal jam)
             if (gapMs > 65 * 60 * 1000) {
               const alreadyExists = detected.some(d => d.mulaiLoss === prev.waktu);
               if (!alreadyExists) {
@@ -829,7 +884,7 @@
       return detected;
     }
 
-    // 6. MULTI-TAB ARCHIVE VIEWER (DESKTOP TABEL + MOBILE INTERACTIVE CARDS)
+    // 6. MULTI-TAB ARCHIVE VIEWER
     function formatDisplayDate(isoDate) {
       if (!isoDate || !isoDate.includes('-')) return isoDate || '-';
       const parts = isoDate.split('-');
@@ -845,12 +900,21 @@
         'ekstrem': 'tabEkstrem',
         'loss': 'tabLoss'
       };
+      const subtitles = {
+        'hourly': 'Menampilkan: Log Pengamatan Suhu & Tekanan Per Jam',
+        '24h': 'Menampilkan: Rekapitulasi Curah Hujan 24 Jam (07.00 – 07.00 WIB)',
+        '3h': 'Menampilkan: Log Curah Hujan 3 Jam-Jaman',
+        'ekstrem': 'Menampilkan: Laporan Suhu Ekstrem Harian',
+        'loss': 'Menampilkan: Log Riwayat Data Loss'
+      };
+      document.getElementById('activeTabSubtitle').textContent = subtitles[tabName];
+
       Object.keys(tabs).forEach(key => {
         const el = document.getElementById(tabs[key]);
         if (key === tabName) {
-          el.className = "h-9 px-3.5 rounded-xl bg-amber-500/20 border border-amber-500/40 text-amber-300 text-[11px] font-bold uppercase tracking-wider whitespace-nowrap flex-shrink-0 transition cursor-pointer";
+          el.className = "h-10 px-3 rounded-xl bg-amber-500/20 border border-amber-500/40 text-amber-300 text-[10px] xl:text-[11px] font-bold uppercase tracking-wider whitespace-nowrap flex-shrink-0 text-center transition cursor-pointer";
         } else {
-          el.className = "h-9 px-3.5 rounded-xl bg-slate-900 border border-slate-700 text-slate-400 hover:text-slate-200 text-[11px] font-bold uppercase tracking-wider whitespace-nowrap flex-shrink-0 transition cursor-pointer";
+          el.className = "h-10 px-3 rounded-xl bg-slate-900 border border-slate-700 text-slate-400 hover:text-slate-200 text-[10px] xl:text-[11px] font-bold uppercase tracking-wider whitespace-nowrap flex-shrink-0 text-center transition cursor-pointer";
         }
       });
       applyDateFilter();
