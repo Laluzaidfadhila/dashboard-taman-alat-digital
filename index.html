@@ -5,8 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>BMKG — Surface Synoptic Observations | Stasiun Geofisika Kelas I Deli Serdang</title>
 
-  <!-- Favicon Tab Browser: Logo BMKG Saja -->
-  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cdefs%3E%3ClinearGradient id='sky' x1='0' y1='0' x2='0' y2='1'%3E%3Cstop offset='0%25' stop-color='%230284c7'/%3E%3Cstop offset='100%25' stop-color='%230369a1'/%3E%3C/linearGradient%3E%3ClinearGradient id='earth' x1='0' y1='0' x2='0' y2='1'%3E%3Cstop offset='0%25' stop-color='%2316a34a'/%3E%3Cstop offset='100%25' stop-color='%2315803d'/%3E%3C/linearGradient%3E%3C/defs%3E%3Ccircle cx='50' cy='50' r='47' fill='%23ffffff' stroke='%230284c7' stroke-width='4'/%3E%3Cpath d='M8 46 A42 42 0 0 1 92 46 Z' fill='url(%23sky)'/%3E%3Cpath d='M8 54 A42 42 0 0 0 92 54 Z' fill='url(%23earth)'/%3E%3Cpath d='M12 43 Q32 35 50 43 T88 43' fill='none' stroke='%23ffffff' stroke-width='3.5' stroke-linecap='round'/%3E%3Cpath d='M10 50 L28 50 L35 37 L44 63 L53 41 L60 55 L67 50 L90 50' fill='none' stroke='%230f172a' stroke-width='4' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cpath d='M14 58 Q35 66 52 58 T86 58' fill='none' stroke='%23ffffff' stroke-width='3.5' stroke-linecap='round'/%3E%3C/svg%3E" />
+  <!-- Favicon Resmi BMKG di Tab Browser -->
+  <link rel="icon" type="image/png" href="https://upload.wikimedia.org/wikipedia/commons/thumb/1/12/Logo_BMKG_%282010%29.png/240px-Logo_BMKG_%282010%29.png" />
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -31,33 +31,33 @@
     body {
       background-color: #050a18;
       background-image:
-        radial-gradient(circle at 50% 0%, rgba(14, 165, 233, 0.14) 0%, transparent 50%),
+        radial-gradient(circle at 50% 0%, rgba(14, 165, 233, 0.13) 0%, transparent 50%),
         radial-gradient(circle at 85% 90%, rgba(16, 185, 129, 0.08) 0%, transparent 45%),
-        linear-gradient(rgba(30, 41, 59, 0.22) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(30, 41, 59, 0.22) 1px, transparent 1px);
+        linear-gradient(rgba(30, 41, 59, 0.2) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(30, 41, 59, 0.2) 1px, transparent 1px);
       background-size: 100% 100%, 100% 100%, 32px 32px, 32px 32px;
       color: #f8fafc;
     }
 
     .glass-card {
-      background: linear-gradient(160deg, rgba(15, 23, 42, 0.86) 0%, rgba(9, 14, 28, 0.94) 100%);
+      background: linear-gradient(165deg, rgba(15, 23, 42, 0.88) 0%, rgba(8, 13, 26, 0.95) 100%);
       backdrop-filter: blur(16px);
       -webkit-backdrop-filter: blur(16px);
-      border: 1px solid rgba(56, 189, 248, 0.15);
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.45), inset 0 1px 0 rgba(255, 255, 255, 0.06);
-      transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+      border: 1px solid rgba(56, 189, 248, 0.16);
+      box-shadow: 0 10px 28px rgba(0, 0, 0, 0.45), inset 0 1px 0 rgba(255, 255, 255, 0.06);
+      transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
     }
 
     .glass-card:hover {
       transform: translateY(-2px);
-      border-color: rgba(56, 189, 248, 0.38);
-      box-shadow: 0 14px 36px rgba(2, 132, 199, 0.16), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+      border-color: rgba(56, 189, 248, 0.36);
+      box-shadow: 0 14px 34px rgba(2, 132, 199, 0.15), inset 0 1px 0 rgba(255, 255, 255, 0.1);
     }
 
     .section-pill {
-      background: rgba(15, 23, 42, 0.92);
-      border: 1px solid rgba(56, 189, 248, 0.24);
-      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.35);
+      background: rgba(13, 21, 38, 0.95);
+      border: 1px solid rgba(56, 189, 248, 0.25);
+      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.35);
     }
 
     .gauge-progress {
@@ -82,43 +82,40 @@
 <body class="min-h-screen antialiased selection:bg-sky-500 selection:text-white pb-12">
 
   <!-- HEADER STASIUN -->
-  <header class="pt-6 pb-4 px-4 text-center">
+  <header class="pt-7 pb-4 px-4 text-center">
     <div class="max-w-5xl mx-auto flex flex-col items-center">
-      
-      <!-- Logo BMKG & Bendera Merah Putih Berdampingan -->
-      <div class="flex items-center justify-center gap-3.5 mb-3">
-        <!-- Logo BMKG -->
-        <div class="w-14 h-14 sm:w-16 sm:h-16 rounded-2xl bg-slate-900/90 border border-sky-400/30 p-2 shadow-xl shadow-sky-500/10 flex items-center justify-center">
-          <svg viewBox="0 0 100 100" class="w-full h-full">
-            <circle cx="50" cy="50" r="46" fill="#ffffff" />
-            <path d="M9 46 A41 41 0 0 1 91 46 Z" fill="#0284c7" />
-            <path d="M9 54 A41 41 0 0 0 91 54 Z" fill="#16a34a" />
-            <path d="M13 43 Q32 35 50 43 T87 43" fill="none" stroke="#ffffff" stroke-width="3.5" stroke-linecap="round"/>
-            <path d="M11 50 L28 50 L35 37 L44 63 L53 41 L60 55 L67 50 L89 50" fill="none" stroke="#0f172a" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
-            <path d="M15 58 Q35 66 52 58 T85 58" fill="none" stroke="#ffffff" stroke-width="3.5" stroke-linecap="round"/>
-          </svg>
+
+      <!-- Logo Resmi BMKG & Bendera Merah Putih -->
+      <div class="flex items-center justify-center gap-4 mb-3.5">
+        <!-- Logo Resmi BMKG -->
+        <div class="w-16 h-16 sm:w-[68px] sm:h-[68px] rounded-2xl bg-white/95 border border-sky-400/40 p-1.5 shadow-xl shadow-sky-500/10 flex items-center justify-center">
+          <img
+            src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/12/Logo_BMKG_%282010%29.png/240px-Logo_BMKG_%282010%29.png"
+            alt="Logo Resmi BMKG"
+            class="w-full h-full object-contain"
+          />
         </div>
 
         <!-- Bendera Merah Putih -->
-        <div class="w-16 h-11 sm:w-20 sm:h-14 rounded-xl overflow-hidden border border-slate-600/70 shadow-xl flex flex-col">
+        <div class="w-20 h-[52px] sm:w-[88px] sm:h-[58px] rounded-xl overflow-hidden border border-slate-600/80 shadow-xl flex flex-col">
           <div class="w-full h-1/2 bg-[#dc2626]"></div>
           <div class="w-full h-1/2 bg-[#ffffff]"></div>
         </div>
       </div>
 
-      <span class="text-xs font-extrabold tracking-[0.35em] text-sky-400 uppercase">BMKG</span>
+      <span class="text-xs font-extrabold tracking-[0.38em] text-sky-400 uppercase">BMKG</span>
       <h1 class="text-xl sm:text-2xl md:text-3xl font-extrabold tracking-wide text-amber-400 uppercase mt-1 leading-tight">
         Surface Synoptic Observations
       </h1>
-      <p class="text-xs sm:text-sm font-bold tracking-[0.18em] text-slate-200 uppercase mt-1">
+      <p class="text-xs sm:text-sm font-bold tracking-[0.2em] text-slate-200 uppercase mt-1">
         Stasiun Geofisika Kelas I Deli Serdang
       </p>
 
-      <!-- Kotak Jam WIB & Kotak Jam UTC Terpisah -->
-      <div class="mt-4 flex flex-wrap items-center justify-center gap-3">
+      <!-- Kotak Jam WIB & Kotak Jam UTC Terpisah (Ukuran Presisi Simetris) -->
+      <div class="mt-5 grid grid-cols-1 sm:grid-cols-2 gap-3.5 w-full max-w-lg">
         <!-- Kotak Waktu WIB -->
-        <div class="px-5 py-2.5 rounded-2xl bg-slate-900/95 border border-sky-500/35 shadow-lg shadow-sky-950/40 text-center min-w-[190px]">
-          <span class="text-[9px] font-bold uppercase tracking-[0.2em] text-sky-400 block">Waktu Lokal (WIB)</span>
+        <div class="px-5 py-3 rounded-2xl bg-slate-900/95 border border-sky-500/35 shadow-lg shadow-sky-950/40 flex flex-col items-center justify-center">
+          <span class="text-[9px] font-bold uppercase tracking-[0.22em] text-sky-400">Waktu Lokal (WIB)</span>
           <div id="liveClockWIB" class="font-mono text-xl sm:text-2xl font-extrabold text-white tracking-wider mt-0.5">
             --:--:-- WIB
           </div>
@@ -128,8 +125,8 @@
         </div>
 
         <!-- Kotak Waktu UTC -->
-        <div class="px-5 py-2.5 rounded-2xl bg-slate-900/95 border border-emerald-500/35 shadow-lg shadow-emerald-950/40 text-center min-w-[190px]">
-          <span class="text-[9px] font-bold uppercase tracking-[0.2em] text-emerald-400 block">Standar WMO (UTC)</span>
+        <div class="px-5 py-3 rounded-2xl bg-slate-900/95 border border-emerald-500/35 shadow-lg shadow-emerald-950/40 flex flex-col items-center justify-center">
+          <span class="text-[9px] font-bold uppercase tracking-[0.22em] text-emerald-400">Standar WMO (UTC)</span>
           <div id="liveClockUTC" class="font-mono text-xl sm:text-2xl font-extrabold text-emerald-300 tracking-wider mt-0.5">
             --:--:-- UTC
           </div>
@@ -139,8 +136,8 @@
         </div>
       </div>
 
-      <!-- Indikator Alarm Otomatis Pengiriman WMO (00, 03, 06, 09, 12 UTC) -->
-      <div class="mt-3 flex flex-wrap items-center justify-center gap-2">
+      <!-- Status Alarm Otomatis WMO Tanpa Ikon -->
+      <div class="mt-3.5 flex flex-wrap items-center justify-center gap-2">
         <div id="wmoAlarmBanner" class="px-4 py-1.5 rounded-full bg-slate-900/90 border border-amber-500/30 text-[11px] font-mono text-slate-300 flex items-center gap-2">
           <span class="relative flex h-2 w-2">
             <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-amber-400 opacity-75"></span>
@@ -148,21 +145,21 @@
           </span>
           <span>Alarm WMO Otomatis Aktif (00, 03, 06, 09, 12 UTC) • Berikutnya: <strong id="nextWmoTarget" class="text-amber-300">--:-- UTC</strong></span>
         </div>
-        <button onclick="testWmoAlarmSound()" class="px-3 py-1.5 rounded-full bg-slate-800 hover:bg-slate-700 text-slate-300 border border-slate-700 text-[11px] font-semibold transition cursor-pointer" title="Klik untuk mengizinkan & menguji suara alarm browser">
-          🔔 Tes Suara Alarm
+        <button onclick="testWmoAlarmSound()" class="px-3.5 py-1.5 rounded-full bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700 text-[11px] font-semibold tracking-wide transition cursor-pointer">
+          Uji Audio Alarm
         </button>
       </div>
     </div>
   </header>
 
   <!-- KONTEN UTAMA -->
-  <main class="max-w-6xl mx-auto px-4 sm:px-6 space-y-8 mt-2">
+  <main class="max-w-6xl mx-auto px-4 sm:px-6 space-y-8 mt-3">
 
     <!-- 1. TEMPERATUR & KELEMBAPAN -->
     <section>
       <div class="flex justify-center mb-4">
-        <div class="section-pill px-5 py-1.5 rounded-full">
-          <h2 class="text-[11px] font-bold uppercase tracking-[0.22em] text-sky-300">
+        <div class="section-pill px-6 py-1.5 rounded-full">
+          <h2 class="text-[11px] font-bold uppercase tracking-[0.24em] text-sky-300">
             Temperatur &amp; Kelembapan
           </h2>
         </div>
@@ -170,7 +167,7 @@
 
       <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
         <!-- Bola Kering -->
-        <div class="glass-card rounded-2xl p-6 flex flex-col items-center justify-center relative">
+        <div class="glass-card rounded-2xl p-6 min-h-[210px] flex flex-col items-center justify-center">
           <div class="relative w-32 h-32 flex items-center justify-center">
             <svg class="w-32 h-32" viewBox="0 0 120 120">
               <circle cx="60" cy="60" r="50" stroke="rgba(255,255,255,0.07)" stroke-width="9" fill="none" />
@@ -181,11 +178,11 @@
               <span class="text-[11px] font-mono text-slate-400 mt-0.5">°C</span>
             </div>
           </div>
-          <span class="mt-4 text-[11px] font-bold uppercase tracking-[0.18em] text-slate-300">Bola Kering</span>
+          <span class="mt-4 text-[11px] font-bold uppercase tracking-[0.2em] text-slate-300">Bola Kering</span>
         </div>
 
         <!-- Bola Basah -->
-        <div class="glass-card rounded-2xl p-6 flex flex-col items-center justify-center relative">
+        <div class="glass-card rounded-2xl p-6 min-h-[210px] flex flex-col items-center justify-center">
           <div class="relative w-32 h-32 flex items-center justify-center">
             <svg class="w-32 h-32" viewBox="0 0 120 120">
               <circle cx="60" cy="60" r="50" stroke="rgba(255,255,255,0.07)" stroke-width="9" fill="none" />
@@ -196,11 +193,11 @@
               <span class="text-[11px] font-mono text-slate-400 mt-0.5">°C</span>
             </div>
           </div>
-          <span class="mt-4 text-[11px] font-bold uppercase tracking-[0.18em] text-slate-300">Bola Basah</span>
+          <span class="mt-4 text-[11px] font-bold uppercase tracking-[0.2em] text-slate-300">Bola Basah</span>
         </div>
 
         <!-- Kelembapan -->
-        <div class="glass-card rounded-2xl p-6 flex flex-col items-center justify-center relative">
+        <div class="glass-card rounded-2xl p-6 min-h-[210px] flex flex-col items-center justify-center">
           <div class="relative w-32 h-32 flex items-center justify-center">
             <svg class="w-32 h-32" viewBox="0 0 120 120">
               <circle cx="60" cy="60" r="50" stroke="rgba(255,255,255,0.07)" stroke-width="9" fill="none" />
@@ -211,7 +208,7 @@
               <span class="text-[10px] font-mono text-slate-400 mt-0.5">% RELATIF</span>
             </div>
           </div>
-          <span class="mt-4 text-[11px] font-bold uppercase tracking-[0.18em] text-slate-300">Kelembapan</span>
+          <span class="mt-4 text-[11px] font-bold uppercase tracking-[0.2em] text-slate-300">Kelembapan</span>
         </div>
       </div>
     </section>
@@ -219,8 +216,8 @@
     <!-- 2. PRESIPITASI / HUJAN -->
     <section>
       <div class="flex justify-center mb-4">
-        <div class="section-pill px-5 py-1.5 rounded-full">
-          <h2 class="text-[11px] font-bold uppercase tracking-[0.22em] text-sky-300">
+        <div class="section-pill px-6 py-1.5 rounded-full">
+          <h2 class="text-[11px] font-bold uppercase tracking-[0.24em] text-sky-300">
             Presipitasi / Hujan
           </h2>
         </div>
@@ -228,7 +225,7 @@
 
       <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
         <!-- Curah Hujan (Real-Time) -->
-        <div class="glass-card rounded-2xl p-6 flex flex-col items-center justify-center relative">
+        <div class="glass-card rounded-2xl p-6 min-h-[210px] flex flex-col items-center justify-center">
           <div class="relative w-32 h-32 flex items-center justify-center">
             <svg class="w-32 h-32" viewBox="0 0 120 120">
               <circle cx="60" cy="60" r="50" stroke="rgba(255,255,255,0.07)" stroke-width="9" fill="none" />
@@ -239,11 +236,11 @@
               <span class="text-[11px] font-mono text-slate-400 mt-0.5">MM</span>
             </div>
           </div>
-          <span class="mt-4 text-[11px] font-bold uppercase tracking-[0.18em] text-slate-300">Curah Hujan (Real-Time)</span>
+          <span class="mt-4 text-[11px] font-bold uppercase tracking-[0.2em] text-slate-300">Curah Hujan (Real-Time)</span>
         </div>
 
         <!-- Hujan 3 Jam -->
-        <div class="glass-card rounded-2xl p-6 flex flex-col items-center justify-center relative">
+        <div class="glass-card rounded-2xl p-6 min-h-[210px] flex flex-col items-center justify-center">
           <div class="relative w-32 h-32 flex items-center justify-center">
             <svg class="w-32 h-32" viewBox="0 0 120 120">
               <circle cx="60" cy="60" r="50" stroke="rgba(255,255,255,0.07)" stroke-width="9" fill="none" />
@@ -254,11 +251,11 @@
               <span class="text-[11px] font-mono text-slate-400 mt-0.5">MM</span>
             </div>
           </div>
-          <span class="mt-4 text-[11px] font-bold uppercase tracking-[0.18em] text-slate-300">Hujan 3 Jam</span>
+          <span class="mt-4 text-[11px] font-bold uppercase tracking-[0.2em] text-slate-300">Hujan 3 Jam</span>
         </div>
 
         <!-- Hujan 24 Jam -->
-        <div class="glass-card rounded-2xl p-6 flex flex-col items-center justify-center relative">
+        <div class="glass-card rounded-2xl p-6 min-h-[210px] flex flex-col items-center justify-center">
           <div class="relative w-32 h-32 flex items-center justify-center">
             <svg class="w-32 h-32" viewBox="0 0 120 120">
               <circle cx="60" cy="60" r="50" stroke="rgba(255,255,255,0.07)" stroke-width="9" fill="none" />
@@ -269,7 +266,7 @@
               <span class="text-[11px] font-mono text-slate-400 mt-0.5">MM</span>
             </div>
           </div>
-          <span class="mt-4 text-[11px] font-bold uppercase tracking-[0.18em] text-slate-300">Hujan 24 Jam</span>
+          <span class="mt-4 text-[11px] font-bold uppercase tracking-[0.2em] text-slate-300">Hujan 24 Jam</span>
         </div>
       </div>
     </section>
@@ -277,8 +274,8 @@
     <!-- 3. TEKANAN UDARA BAROMETRIK -->
     <section>
       <div class="flex justify-center mb-4">
-        <div class="section-pill px-5 py-1.5 rounded-full">
-          <h2 class="text-[11px] font-bold uppercase tracking-[0.22em] text-sky-300">
+        <div class="section-pill px-6 py-1.5 rounded-full">
+          <h2 class="text-[11px] font-bold uppercase tracking-[0.24em] text-sky-300">
             Tekanan Udara Barometrik
           </h2>
         </div>
@@ -286,7 +283,7 @@
 
       <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
         <!-- QFE (Stasiun) -->
-        <div class="glass-card rounded-2xl p-6 flex flex-col items-center justify-center relative">
+        <div class="glass-card rounded-2xl p-6 min-h-[210px] flex flex-col items-center justify-center">
           <div class="relative w-32 h-32 flex items-center justify-center">
             <svg class="w-32 h-32" viewBox="0 0 120 120">
               <circle cx="60" cy="60" r="50" stroke="rgba(255,255,255,0.07)" stroke-width="9" fill="none" />
@@ -297,11 +294,11 @@
               <span class="text-[10px] font-mono text-slate-400 mt-0.5">HPA</span>
             </div>
           </div>
-          <span class="mt-4 text-[11px] font-bold uppercase tracking-[0.18em] text-slate-300">QFE (Stasiun)</span>
+          <span class="mt-4 text-[11px] font-bold uppercase tracking-[0.2em] text-slate-300">QFE (Stasiun)</span>
         </div>
 
         <!-- QFF (Sea Level) -->
-        <div class="glass-card rounded-2xl p-6 flex flex-col items-center justify-center relative">
+        <div class="glass-card rounded-2xl p-6 min-h-[210px] flex flex-col items-center justify-center">
           <div class="relative w-32 h-32 flex items-center justify-center">
             <svg class="w-32 h-32" viewBox="0 0 120 120">
               <circle cx="60" cy="60" r="50" stroke="rgba(255,255,255,0.07)" stroke-width="9" fill="none" />
@@ -312,11 +309,11 @@
               <span class="text-[10px] font-mono text-slate-400 mt-0.5">HPA</span>
             </div>
           </div>
-          <span class="mt-4 text-[11px] font-bold uppercase tracking-[0.18em] text-slate-300">QFF (Sea Level)</span>
+          <span class="mt-4 text-[11px] font-bold uppercase tracking-[0.2em] text-slate-300">QFF (Sea Level)</span>
         </div>
 
         <!-- QNH (Aviation) -->
-        <div class="glass-card rounded-2xl p-6 flex flex-col items-center justify-center relative">
+        <div class="glass-card rounded-2xl p-6 min-h-[210px] flex flex-col items-center justify-center">
           <div class="relative w-32 h-32 flex items-center justify-center">
             <svg class="w-32 h-32" viewBox="0 0 120 120">
               <circle cx="60" cy="60" r="50" stroke="rgba(255,255,255,0.07)" stroke-width="9" fill="none" />
@@ -327,16 +324,16 @@
               <span class="text-[10px] font-mono text-slate-400 mt-0.5">HPA</span>
             </div>
           </div>
-          <span class="mt-4 text-[11px] font-bold uppercase tracking-[0.18em] text-slate-300">QNH (Aviation)</span>
+          <span class="mt-4 text-[11px] font-bold uppercase tracking-[0.2em] text-slate-300">QNH (Aviation)</span>
         </div>
       </div>
     </section>
 
-    <!-- 4. SUHU EKSTREM HARIAN (SHAPE BULAT TAKOMETER) -->
+    <!-- 4. SUHU EKSTREM HARIAN (SHAPE BULAT TAKOMETER PRESISI) -->
     <section>
       <div class="flex justify-center mb-4">
-        <div class="section-pill px-5 py-1.5 rounded-full">
-          <h2 class="text-[11px] font-bold uppercase tracking-[0.22em] text-sky-300">
+        <div class="section-pill px-6 py-1.5 rounded-full">
+          <h2 class="text-[11px] font-bold uppercase tracking-[0.24em] text-sky-300">
             Suhu Ekstrem Harian
           </h2>
         </div>
@@ -344,7 +341,7 @@
 
       <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
         <!-- Suhu Maksimum (07-19 WIB) -->
-        <div class="glass-card rounded-2xl p-6 flex flex-col items-center justify-center relative">
+        <div class="glass-card rounded-2xl p-6 min-h-[210px] flex flex-col items-center justify-center">
           <div class="relative w-32 h-32 flex items-center justify-center">
             <svg class="w-32 h-32" viewBox="0 0 120 120">
               <circle cx="60" cy="60" r="50" stroke="rgba(255,255,255,0.07)" stroke-width="9" fill="none" />
@@ -355,13 +352,13 @@
               <span class="text-[11px] font-mono text-slate-400 mt-0.5">°C</span>
             </div>
           </div>
-          <span class="mt-4 text-[11px] font-bold uppercase tracking-[0.18em] text-slate-300">
+          <span class="mt-4 text-[11px] font-bold uppercase tracking-[0.2em] text-slate-300">
             Suhu Maksimum (07–19 WIB)
           </span>
         </div>
 
         <!-- Suhu Minimum (19-07 WIB) -->
-        <div class="glass-card rounded-2xl p-6 flex flex-col items-center justify-center relative">
+        <div class="glass-card rounded-2xl p-6 min-h-[210px] flex flex-col items-center justify-center">
           <div class="relative w-32 h-32 flex items-center justify-center">
             <svg class="w-32 h-32" viewBox="0 0 120 120">
               <circle cx="60" cy="60" r="50" stroke="rgba(255,255,255,0.07)" stroke-width="9" fill="none" />
@@ -372,7 +369,7 @@
               <span class="text-[11px] font-mono text-slate-400 mt-0.5">°C</span>
             </div>
           </div>
-          <span class="mt-4 text-[11px] font-bold uppercase tracking-[0.18em] text-slate-300">
+          <span class="mt-4 text-[11px] font-bold uppercase tracking-[0.2em] text-slate-300">
             Suhu Minimum (19–07 WIB)
           </span>
         </div>
@@ -382,10 +379,10 @@
     <!-- 5. DIAGNOSTIK PERANGKAT (SISA MEMORI & WI-FI) -->
     <section class="grid grid-cols-1 md:grid-cols-2 gap-5">
       <!-- Sisa Memori (ESP8266 RAM) -->
-      <div class="glass-card rounded-2xl p-5">
+      <div class="glass-card rounded-2xl p-5 flex flex-col justify-center">
         <div class="flex items-center justify-between mb-2.5">
-          <span class="text-[11px] font-bold uppercase tracking-[0.16em] text-slate-300">Sisa Memori (ESP8266 RAM)</span>
-          <span id="ramValue" class="font-mono text-lg font-extrabold text-amber-400">--.- KB</span>
+          <span class="text-[11px] font-bold uppercase tracking-[0.18em] text-slate-300">Sisa Memori (ESP8266 RAM)</span>
+          <span id="ramValue" class="font-mono text-base sm:text-lg font-extrabold text-amber-400">--.- KB</span>
         </div>
         <div class="w-full h-2.5 bg-slate-800/90 rounded-full overflow-hidden">
           <div id="ramBar" class="h-full bg-gradient-to-r from-amber-500 to-yellow-400 rounded-full transition-all duration-500" style="width: 75%"></div>
@@ -393,10 +390,10 @@
       </div>
 
       <!-- Kualitas Sinyal Wi-Fi -->
-      <div class="glass-card rounded-2xl p-5">
+      <div class="glass-card rounded-2xl p-5 flex flex-col justify-center">
         <div class="flex items-center justify-between mb-2.5">
-          <span class="text-[11px] font-bold uppercase tracking-[0.16em] text-slate-300">Kualitas Sinyal Wi-Fi</span>
-          <span id="wifiValue" class="font-mono text-lg font-extrabold text-emerald-400">--% (-- dBm)</span>
+          <span class="text-[11px] font-bold uppercase tracking-[0.18em] text-slate-300">Kualitas Sinyal Wi-Fi</span>
+          <span id="wifiValue" class="font-mono text-base sm:text-lg font-extrabold text-emerald-400">--% (-- dBm)</span>
         </div>
         <div class="w-full h-2.5 bg-slate-800/90 rounded-full overflow-hidden">
           <div id="wifiBar" class="h-full bg-gradient-to-r from-emerald-500 to-teal-400 rounded-full transition-all duration-500" style="width: 100%"></div>
@@ -405,13 +402,13 @@
     </section>
 
     <!-- STATUS TRANSMISI DATA -->
-    <div class="glass-card rounded-2xl py-3 px-4 flex flex-col items-center justify-center text-center">
+    <div class="glass-card rounded-2xl py-3.5 px-4 flex flex-col items-center justify-center text-center">
       <div class="flex items-center gap-2">
         <span class="relative flex h-2.5 w-2.5">
           <span id="connPing" class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
           <span id="connDot" class="relative inline-flex rounded-full h-2.5 w-2.5 bg-emerald-500"></span>
         </span>
-        <span id="connStatusText" class="text-xs font-bold uppercase tracking-[0.18em] text-emerald-400">
+        <span id="connStatusText" class="text-xs font-bold uppercase tracking-[0.2em] text-emerald-400">
           STATUS: TRANSMISI DATA AKTIF
         </span>
       </div>
@@ -420,52 +417,52 @@
       </span>
     </div>
 
-    <!-- 6. PANEL ARSIP & LOG LENGKAP (RINGKAS DALAM TAB MODERN) -->
+    <!-- 6. PANEL ARSIP & LOG LENGKAP (DEFAULT: DATA TIAP JAM SELURUH PARAMETER) -->
     <section class="glass-card rounded-2xl p-5 sm:p-6">
       <div class="flex flex-col xl:flex-row xl:items-center justify-between gap-4 pb-4 border-b border-slate-800">
         
-        <!-- 5 Tab Lengkap Sesuai Data Sebelumnya -->
+        <!-- Tab Switcher (Default Aktif: Log Suhu & Tekanan Per Jam) -->
         <div class="flex flex-wrap items-center gap-2">
-          <button onclick="switchArchiveTab('24h')" id="tab24h" class="px-3.5 py-2 rounded-xl bg-amber-500/20 border border-amber-500/40 text-amber-300 text-[11px] font-bold uppercase tracking-wider transition cursor-pointer">
-            Rekap Hujan 24 Jam (07–07 WIB)
-          </button>
-          <button onclick="switchArchiveTab('3h')" id="tab3h" class="px-3.5 py-2 rounded-xl bg-slate-900 border border-slate-700 text-slate-400 hover:text-slate-200 text-[11px] font-bold uppercase tracking-wider transition cursor-pointer">
-            Log Hujan 3 Jam-Jaman
-          </button>
-          <button onclick="switchArchiveTab('ekstrem')" id="tabEkstrem" class="px-3.5 py-2 rounded-xl bg-slate-900 border border-slate-700 text-slate-400 hover:text-slate-200 text-[11px] font-bold uppercase tracking-wider transition cursor-pointer">
-            Suhu Ekstrem Harian
-          </button>
-          <button onclick="switchArchiveTab('hourly')" id="tabHourly" class="px-3.5 py-2 rounded-xl bg-slate-900 border border-slate-700 text-slate-400 hover:text-slate-200 text-[11px] font-bold uppercase tracking-wider transition cursor-pointer">
+          <button onclick="switchArchiveTab('hourly')" id="tabHourly" class="h-9 px-3.5 rounded-xl bg-amber-500/20 border border-amber-500/40 text-amber-300 text-[11px] font-bold uppercase tracking-wider transition cursor-pointer">
             Log Suhu &amp; Tekanan Per Jam
           </button>
-          <button onclick="switchArchiveTab('loss')" id="tabLoss" class="px-3.5 py-2 rounded-xl bg-slate-900 border border-slate-700 text-slate-400 hover:text-slate-200 text-[11px] font-bold uppercase tracking-wider transition cursor-pointer">
+          <button onclick="switchArchiveTab('24h')" id="tab24h" class="h-9 px-3.5 rounded-xl bg-slate-900 border border-slate-700 text-slate-400 hover:text-slate-200 text-[11px] font-bold uppercase tracking-wider transition cursor-pointer">
+            Rekap Hujan 24 Jam (07–07 WIB)
+          </button>
+          <button onclick="switchArchiveTab('3h')" id="tab3h" class="h-9 px-3.5 rounded-xl bg-slate-900 border border-slate-700 text-slate-400 hover:text-slate-200 text-[11px] font-bold uppercase tracking-wider transition cursor-pointer">
+            Log Hujan 3 Jam-Jaman
+          </button>
+          <button onclick="switchArchiveTab('ekstrem')" id="tabEkstrem" class="h-9 px-3.5 rounded-xl bg-slate-900 border border-slate-700 text-slate-400 hover:text-slate-200 text-[11px] font-bold uppercase tracking-wider transition cursor-pointer">
+            Suhu Ekstrem Harian
+          </button>
+          <button onclick="switchArchiveTab('loss')" id="tabLoss" class="h-9 px-3.5 rounded-xl bg-slate-900 border border-slate-700 text-slate-400 hover:text-slate-200 text-[11px] font-bold uppercase tracking-wider transition cursor-pointer">
             Riwayat Data Loss
           </button>
         </div>
 
-        <!-- Kontrol Filter Tanggal, Reset & Unduh CSV -->
+        <!-- Kontrol Filter Tanggal, Reset & Unduh CSV (Tinggi Presisi Seragam h-9) -->
         <div class="flex flex-wrap items-center gap-2">
-          <input type="date" id="filterDateInput" class="bg-slate-900 border border-slate-700 text-slate-200 text-xs rounded-xl px-3 py-2 font-mono focus:outline-none focus:border-sky-500" />
-          <button onclick="applyDateFilter()" class="px-4 py-2 rounded-xl bg-sky-600 hover:bg-sky-500 text-white text-xs font-bold transition cursor-pointer">
+          <input type="date" id="filterDateInput" class="h-9 bg-slate-900 border border-slate-700 text-slate-200 text-xs rounded-xl px-3 font-mono focus:outline-none focus:border-sky-500" />
+          <button onclick="applyDateFilter()" class="h-9 px-4 rounded-xl bg-sky-600 hover:bg-sky-500 text-white text-xs font-bold transition cursor-pointer">
             Filter
           </button>
-          <button onclick="resetDateFilter()" class="px-4 py-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-300 text-xs font-bold border border-slate-700 transition cursor-pointer">
+          <button onclick="resetDateFilter()" class="h-9 px-4 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-300 text-xs font-bold border border-slate-700 transition cursor-pointer">
             Reset
           </button>
-          <button onclick="downloadCSV()" class="px-4 py-2 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-bold transition cursor-pointer shadow-lg shadow-emerald-600/20">
+          <button onclick="downloadCSV()" class="h-9 px-4 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-bold transition cursor-pointer shadow-lg shadow-emerald-600/20">
             Unduh CSV
           </button>
         </div>
       </div>
 
       <!-- Tabel Data Lengkap -->
-      <div class="overflow-x-auto mt-4 rounded-xl border border-slate-800/90 max-h-96">
+      <div class="overflow-x-auto mt-4 rounded-xl border border-slate-800/90 max-h-[420px]">
         <table class="w-full text-left border-collapse">
           <thead id="archiveTableHead" class="sticky top-0 bg-slate-900 border-b border-slate-800 text-[11px] font-bold uppercase tracking-wider text-sky-400">
           </thead>
           <tbody id="archiveTableBody" class="divide-y divide-slate-800/70 text-xs font-mono text-slate-300">
             <tr>
-              <td colspan="4" class="py-6 text-center text-slate-500 font-sans">Memuat data rekapitulasi dari server...</td>
+              <td colspan="9" class="py-6 text-center text-slate-500 font-sans">Memuat data pengamatan per jam dari server...</td>
             </tr>
           </tbody>
         </table>
@@ -478,12 +475,13 @@
     const FIREBASE_BASE_URL = "https://meteo-sangkar-default-rtdb.asia-southeast1.firebasedatabase.app";
     
     let latestTelemetry = {};
-    let activeTab = '24h';
+    // Default terbuka: Data tiap jam seluruh parameter ('hourly')
+    let activeTab = 'hourly';
 
+    let recordsHourly = [];
     let records24h = [];
     let records3h = [];
     let recordsEkstrem = [];
-    let recordsHourly = [];
     let recordsLoss = [];
     let currentFilteredData = [];
 
@@ -528,7 +526,10 @@
       if (nextWmoHour === undefined) {
         nextWmoHour = WMO_REPORT_HOURS_UTC[0]; // 00:00 UTC hari berikutnya
       }
-      document.getElementById('nextWmoTarget').textContent = `${String(nextWmoHour).padStart(2, '0')}:00 UTC`;
+      const nextTargetEl = document.getElementById('nextWmoTarget');
+      if (nextTargetEl) {
+        nextTargetEl.textContent = `${String(nextWmoHour).padStart(2, '0')}:00 UTC`;
+      }
 
       // Alarm Menyala Otomatis tepat pada jam pengiriman ke WMO (00.00, 03.00, 06.00, 09.00, 12.00 UTC)
       if (WMO_REPORT_HOURS_UTC.includes(utcH) && utcM === 0 && utcS < 15) {
@@ -565,7 +566,7 @@
       playAlarmTone();
       const banner = document.getElementById('wmoAlarmBanner');
       banner.className = "px-4 py-1.5 rounded-full bg-rose-600/30 border border-rose-500 text-[11px] font-mono text-rose-200 flex items-center gap-2 animate-pulse";
-      banner.innerHTML = `🚨 <strong>WAKTU PENGIRIMAN WMO (${String(utcHour).padStart(2, '0')}.00 UTC)!</strong> Segera kirim sandi sinoptik.`;
+      banner.innerHTML = `<strong>WAKTU PENGIRIMAN WMO (${String(utcHour).padStart(2, '0')}.00 UTC) — SEGERA KIRIM LAPORAN SINOPTIK</strong>`;
       setTimeout(() => {
         banner.className = "px-4 py-1.5 rounded-full bg-slate-900/90 border border-amber-500/30 text-[11px] font-mono text-slate-300 flex items-center gap-2";
         banner.innerHTML = `<span class="relative flex h-2 w-2"><span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-amber-400 opacity-75"></span><span class="relative inline-flex rounded-full h-2 w-2 bg-amber-500"></span></span><span>Alarm WMO Otomatis Aktif (00, 03, 06, 09, 12 UTC) • Berikutnya: <strong id="nextWmoTarget" class="text-amber-300">--:-- UTC</strong></span>`;
@@ -703,12 +704,12 @@
 
       if (latestTelemetry.timestamp && diffSec <= 45) {
         connText.textContent = "STATUS: TRANSMISI DATA AKTIF";
-        connText.className = "text-xs font-bold uppercase tracking-[0.18em] text-emerald-400";
+        connText.className = "text-xs font-bold uppercase tracking-[0.2em] text-emerald-400";
         connDot.className = "relative inline-flex rounded-full h-2.5 w-2.5 bg-emerald-500";
         connPing.className = "animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75";
       } else {
         connText.textContent = "STATUS: MENUNGGU SINKRONISASI PERANGKAT";
-        connText.className = "text-xs font-bold uppercase tracking-[0.18em] text-amber-400";
+        connText.className = "text-xs font-bold uppercase tracking-[0.2em] text-amber-400";
         connDot.className = "relative inline-flex rounded-full h-2.5 w-2.5 bg-amber-500";
         connPing.className = "hidden";
       }
@@ -747,7 +748,7 @@
       } catch (e) {}
     }
 
-    // 5. MULTI-TAB ARCHIVE VIEWER (5 TAB DATA LENGKAP SEBELUMNYA)
+    // 5. MULTI-TAB ARCHIVE VIEWER (DEFAULT: DATA TIAP JAM SELURUH PARAMETER)
     function formatDisplayDate(isoDate) {
       if (!isoDate || !isoDate.includes('-')) return isoDate || '-';
       const parts = isoDate.split('-');
@@ -757,18 +758,18 @@
     function switchArchiveTab(tabName) {
       activeTab = tabName;
       const tabs = {
+        'hourly': 'tabHourly',
         '24h': 'tab24h',
         '3h': 'tab3h',
         'ekstrem': 'tabEkstrem',
-        'hourly': 'tabHourly',
         'loss': 'tabLoss'
       };
       Object.keys(tabs).forEach(key => {
         const el = document.getElementById(tabs[key]);
         if (key === tabName) {
-          el.className = "px-3.5 py-2 rounded-xl bg-amber-500/20 border border-amber-500/40 text-amber-300 text-[11px] font-bold uppercase tracking-wider transition cursor-pointer";
+          el.className = "h-9 px-3.5 rounded-xl bg-amber-500/20 border border-amber-500/40 text-amber-300 text-[11px] font-bold uppercase tracking-wider transition cursor-pointer";
         } else {
-          el.className = "px-3.5 py-2 rounded-xl bg-slate-900 border border-slate-700 text-slate-400 hover:text-slate-200 text-[11px] font-bold uppercase tracking-wider transition cursor-pointer";
+          el.className = "h-9 px-3.5 rounded-xl bg-slate-900 border border-slate-700 text-slate-400 hover:text-slate-200 text-[11px] font-bold uppercase tracking-wider transition cursor-pointer";
         }
       });
       applyDateFilter();
@@ -778,7 +779,37 @@
       const thead = document.getElementById('archiveTableHead');
       const tbody = document.getElementById('archiveTableBody');
 
-      if (activeTab === '24h') {
+      if (activeTab === 'hourly') {
+        thead.innerHTML = `
+          <tr>
+            <th class="py-3.5 px-4 w-14">No</th>
+            <th class="py-3.5 px-4">Waktu</th>
+            <th class="py-3.5 px-4 text-right">Kering (°C)</th>
+            <th class="py-3.5 px-4 text-right">Basah (°C)</th>
+            <th class="py-3.5 px-4 text-right">Hum (%)</th>
+            <th class="py-3.5 px-4 text-right">QFE (hPa)</th>
+            <th class="py-3.5 px-4 text-right">QFF (hPa)</th>
+            <th class="py-3.5 px-4 text-right">QNH (hPa)</th>
+            <th class="py-3.5 px-4 text-right">Hujan (mm)</th>
+          </tr>`;
+        if (!currentFilteredData.length) {
+          tbody.innerHTML = `<tr><td colspan="9" class="py-6 text-center text-slate-500 font-sans">Tidak ada log pengamatan suhu & tekanan per jam.</td></tr>`;
+          return;
+        }
+        tbody.innerHTML = currentFilteredData.map((item, idx) => `
+          <tr class="hover:bg-sky-500/5 transition">
+            <td class="py-3 px-4 text-slate-400">${idx + 1}</td>
+            <td class="py-3 px-4 text-sky-400 font-semibold">${item.waktu || '-'}</td>
+            <td class="py-3 px-4 text-right text-rose-400">${parseFloat(item.suhuKering ?? 0).toFixed(1)}</td>
+            <td class="py-3 px-4 text-right text-emerald-400">${parseFloat(item.suhuBasah ?? 0).toFixed(1)}</td>
+            <td class="py-3 px-4 text-right text-sky-300">${parseFloat(item.kelembapan ?? 0).toFixed(1)}</td>
+            <td class="py-3 px-4 text-right">${parseFloat(item.qfe ?? 0).toFixed(1)}</td>
+            <td class="py-3 px-4 text-right">${parseFloat(item.qff ?? 0).toFixed(1)}</td>
+            <td class="py-3 px-4 text-right">${parseFloat(item.qnh ?? 0).toFixed(1)}</td>
+            <td class="py-3 px-4 text-right font-bold text-indigo-400">${parseFloat(item.curahHujan ?? 0).toFixed(1)}</td>
+          </tr>`).join('');
+      }
+      else if (activeTab === '24h') {
         thead.innerHTML = `
           <tr>
             <th class="py-3.5 px-4 w-16">No</th>
@@ -846,36 +877,6 @@
             </tr>`;
         }).join('');
       }
-      else if (activeTab === 'hourly') {
-        thead.innerHTML = `
-          <tr>
-            <th class="py-3.5 px-4 w-14">No</th>
-            <th class="py-3.5 px-4">Waktu</th>
-            <th class="py-3.5 px-4 text-right">Kering (°C)</th>
-            <th class="py-3.5 px-4 text-right">Basah (°C)</th>
-            <th class="py-3.5 px-4 text-right">Hum (%)</th>
-            <th class="py-3.5 px-4 text-right">QFE (hPa)</th>
-            <th class="py-3.5 px-4 text-right">QFF (hPa)</th>
-            <th class="py-3.5 px-4 text-right">QNH (hPa)</th>
-            <th class="py-3.5 px-4 text-right">Hujan (mm)</th>
-          </tr>`;
-        if (!currentFilteredData.length) {
-          tbody.innerHTML = `<tr><td colspan="9" class="py-6 text-center text-slate-500 font-sans">Tidak ada log pengamatan suhu & tekanan per jam.</td></tr>`;
-          return;
-        }
-        tbody.innerHTML = currentFilteredData.map((item, idx) => `
-          <tr class="hover:bg-sky-500/5 transition">
-            <td class="py-3 px-4 text-slate-400">${idx + 1}</td>
-            <td class="py-3 px-4 text-sky-400 font-semibold">${item.waktu || '-'}</td>
-            <td class="py-3 px-4 text-right text-rose-400">${parseFloat(item.suhuKering ?? 0).toFixed(1)}</td>
-            <td class="py-3 px-4 text-right text-emerald-400">${parseFloat(item.suhuBasah ?? 0).toFixed(1)}</td>
-            <td class="py-3 px-4 text-right text-sky-300">${parseFloat(item.kelembapan ?? 0).toFixed(1)}</td>
-            <td class="py-3 px-4 text-right">${parseFloat(item.qfe ?? 0).toFixed(1)}</td>
-            <td class="py-3 px-4 text-right">${parseFloat(item.qff ?? 0).toFixed(1)}</td>
-            <td class="py-3 px-4 text-right">${parseFloat(item.qnh ?? 0).toFixed(1)}</td>
-            <td class="py-3 px-4 text-right font-bold text-indigo-400">${parseFloat(item.curahHujan ?? 0).toFixed(1)}</td>
-          </tr>`).join('');
-      } 
       else if (activeTab === 'loss') {
         thead.innerHTML = `
           <tr>
@@ -906,18 +907,18 @@
 
     async function fetchAllArchives() {
       try {
-        const [res24, res3h, resEkstrem, resHourly, resLoss] = await Promise.all([
+        const [resHourly, res24, res3h, resEkstrem, resLoss] = await Promise.all([
+          fetch(`${FIREBASE_BASE_URL}/logs_pengamatan_jam.json`).then(r => r.json()).catch(() => null),
           fetch(`${FIREBASE_BASE_URL}/logs_hujan_24jam.json`).then(r => r.json()).catch(() => null),
           fetch(`${FIREBASE_BASE_URL}/logs_hujan_3jam.json`).then(r => r.json()).catch(() => null),
           fetch(`${FIREBASE_BASE_URL}/logs_ekstrem_bmkg.json`).then(r => r.json()).catch(() => null),
-          fetch(`${FIREBASE_BASE_URL}/logs_pengamatan_jam.json`).then(r => r.json()).catch(() => null),
           fetch(`${FIREBASE_BASE_URL}/logs_data_loss.json`).then(r => r.json()).catch(() => null)
         ]);
 
+        recordsHourly = resHourly ? Object.values(resHourly).reverse() : [];
         records24h = res24 ? Object.keys(res24).map(k => ({ tanggal: k, ...res24[k] })).sort((a, b) => b.tanggal.localeCompare(a.tanggal)) : [];
         records3h = res3h ? Object.values(res3h).reverse() : [];
         recordsEkstrem = resEkstrem ? Object.keys(resEkstrem).map(k => ({ tanggal: k, ...resEkstrem[k] })).sort((a, b) => b.tanggal.localeCompare(a.tanggal)) : [];
-        recordsHourly = resHourly ? Object.values(resHourly).reverse() : [];
         recordsLoss = resLoss ? Object.values(resLoss).reverse() : [];
 
         applyDateFilter();
@@ -928,14 +929,14 @@
       const val = document.getElementById('filterDateInput').value; // YYYY-MM-DD
       const dmyFilter = val ? formatDisplayDate(val) : '';
 
-      if (activeTab === '24h') {
+      if (activeTab === 'hourly') {
+        currentFilteredData = dmyFilter ? recordsHourly.filter(r => (r.waktu || '').startsWith(dmyFilter)) : [...recordsHourly];
+      } else if (activeTab === '24h') {
         currentFilteredData = val ? records24h.filter(r => r.tanggal === val) : [...records24h];
       } else if (activeTab === '3h') {
         currentFilteredData = dmyFilter ? records3h.filter(r => (r.waktu || '').startsWith(dmyFilter)) : [...records3h];
       } else if (activeTab === 'ekstrem') {
         currentFilteredData = val ? recordsEkstrem.filter(r => r.tanggal === val) : [...recordsEkstrem];
-      } else if (activeTab === 'hourly') {
-        currentFilteredData = dmyFilter ? recordsHourly.filter(r => (r.waktu || '').startsWith(dmyFilter)) : [...recordsHourly];
       } else if (activeTab === 'loss') {
         currentFilteredData = dmyFilter ? recordsLoss.filter(r => (r.mulaiLoss || '').startsWith(dmyFilter)) : [...recordsLoss];
       }
@@ -956,7 +957,11 @@
       let rows = [];
       let filePrefix = "";
 
-      if (activeTab === '24h') {
+      if (activeTab === 'hourly') {
+        filePrefix = "Log_Suhu_Tekanan_PerJam";
+        headers = ["No", "Waktu", "Kering (C)", "Basah (C)", "Hum (%)", "QFE (hPa)", "QFF (hPa)", "QNH (hPa)", "Hujan (mm)"];
+        rows = currentFilteredData.map((r, i) => [i + 1, `"${r.waktu || '-'}"`, r.suhuKering, r.suhuBasah, r.kelembapan, r.qfe, r.qff, r.qnh, r.curahHujan]);
+      } else if (activeTab === '24h') {
         filePrefix = "Rekap_Hujan_24Jam";
         headers = ["No", "Tanggal Observasi", "Waktu Cetak", "Total Hujan 24 Jam (mm)"];
         rows = currentFilteredData.map((r, i) => [i + 1, `"${formatDisplayDate(r.tanggal)}"`, `"${r.waktuCetak || '-'}"`, parseFloat(r.totalHujan24Jam ?? 0).toFixed(1)]);
@@ -968,10 +973,6 @@
         filePrefix = "Suhu_Ekstrem_Harian";
         headers = ["No", "Tanggal Observasi", "Suhu Maksimum (C)", "Suhu Minimum (C)"];
         rows = currentFilteredData.map((r, i) => [i + 1, `"${formatDisplayDate(r.tanggal)}"`, r.maxSuhu ?? "Sedang Berjalan", r.minSuhu ?? "Sedang Berjalan"]);
-      } else if (activeTab === 'hourly') {
-        filePrefix = "Log_Suhu_Tekanan_PerJam";
-        headers = ["No", "Waktu", "Kering (C)", "Basah (C)", "Hum (%)", "QFE (hPa)", "QFF (hPa)", "QNH (hPa)", "Hujan (mm)"];
-        rows = currentFilteredData.map((r, i) => [i + 1, `"${r.waktu || '-'}"`, r.suhuKering, r.suhuBasah, r.kelembapan, r.qfe, r.qff, r.qnh, r.curahHujan]);
       } else {
         filePrefix = "Log_Riwayat_Data_Loss";
         headers = ["No", "Mulai Loss", "Waktu Pulih", "Durasi", "Suhu Terakhir", "Hum Terakhir", "Hujan Terakhir"];
