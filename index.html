@@ -3,9 +3,9 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>BMKG — Stasiun Pemantauan Meteorologi Sinoptik Geofisika Kelas I Deli Serdang</title>
+  <title>BMKG — Surface Synoptic Observations | Stasiun Geofisika Kelas I Deli Serdang</title>
 
-  <!-- Favicon Logo BMKG di Tab Browser -->
+  <!-- Favicon Tab Browser: Logo BMKG Saja -->
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cdefs%3E%3ClinearGradient id='sky' x1='0' y1='0' x2='0' y2='1'%3E%3Cstop offset='0%25' stop-color='%230284c7'/%3E%3Cstop offset='100%25' stop-color='%230369a1'/%3E%3C/linearGradient%3E%3ClinearGradient id='earth' x1='0' y1='0' x2='0' y2='1'%3E%3Cstop offset='0%25' stop-color='%2316a34a'/%3E%3Cstop offset='100%25' stop-color='%2315803d'/%3E%3C/linearGradient%3E%3C/defs%3E%3Ccircle cx='50' cy='50' r='47' fill='%23ffffff' stroke='%230284c7' stroke-width='4'/%3E%3Cpath d='M8 46 A42 42 0 0 1 92 46 Z' fill='url(%23sky)'/%3E%3Cpath d='M8 54 A42 42 0 0 0 92 54 Z' fill='url(%23earth)'/%3E%3Cpath d='M12 43 Q32 35 50 43 T88 43' fill='none' stroke='%23ffffff' stroke-width='3.5' stroke-linecap='round'/%3E%3Cpath d='M10 50 L28 50 L35 37 L44 63 L53 41 L60 55 L67 50 L90 50' fill='none' stroke='%230f172a' stroke-width='4' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cpath d='M14 58 Q35 66 52 58 T86 58' fill='none' stroke='%23ffffff' stroke-width='3.5' stroke-linecap='round'/%3E%3C/svg%3E" />
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -69,6 +69,7 @@
     .glow-cyan { filter: drop-shadow(0 0 6px rgba(56, 189, 248, 0.45)); }
     .glow-emerald { filter: drop-shadow(0 0 6px rgba(16, 185, 129, 0.45)); }
     .glow-rose { filter: drop-shadow(0 0 6px rgba(244, 63, 94, 0.45)); }
+    .glow-orange { filter: drop-shadow(0 0 6px rgba(249, 115, 22, 0.45)); }
     .glow-indigo { filter: drop-shadow(0 0 6px rgba(129, 140, 248, 0.45)); }
     .glow-fuchsia { filter: drop-shadow(0 0 6px rgba(232, 121, 249, 0.45)); }
 
@@ -83,67 +84,72 @@
   <!-- HEADER STASIUN -->
   <header class="pt-6 pb-4 px-4 text-center">
     <div class="max-w-5xl mx-auto flex flex-col items-center">
-      <!-- Logo BMKG -->
-      <div class="w-16 h-16 rounded-2xl bg-slate-900/90 border border-sky-400/30 p-2 shadow-xl shadow-sky-500/10 mb-3 flex items-center justify-center">
-        <svg viewBox="0 0 100 100" class="w-full h-full">
-          <circle cx="50" cy="50" r="46" fill="#ffffff" />
-          <path d="M9 46 A41 41 0 0 1 91 46 Z" fill="#0284c7" />
-          <path d="M9 54 A41 41 0 0 0 91 54 Z" fill="#16a34a" />
-          <path d="M13 43 Q32 35 50 43 T87 43" fill="none" stroke="#ffffff" stroke-width="3.5" stroke-linecap="round"/>
-          <path d="M11 50 L28 50 L35 37 L44 63 L53 41 L60 55 L67 50 L89 50" fill="none" stroke="#0f172a" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
-          <path d="M15 58 Q35 66 52 58 T85 58" fill="none" stroke="#ffffff" stroke-width="3.5" stroke-linecap="round"/>
-        </svg>
+      
+      <!-- Logo BMKG & Bendera Merah Putih Berdampingan -->
+      <div class="flex items-center justify-center gap-3.5 mb-3">
+        <!-- Logo BMKG -->
+        <div class="w-14 h-14 sm:w-16 sm:h-16 rounded-2xl bg-slate-900/90 border border-sky-400/30 p-2 shadow-xl shadow-sky-500/10 flex items-center justify-center">
+          <svg viewBox="0 0 100 100" class="w-full h-full">
+            <circle cx="50" cy="50" r="46" fill="#ffffff" />
+            <path d="M9 46 A41 41 0 0 1 91 46 Z" fill="#0284c7" />
+            <path d="M9 54 A41 41 0 0 0 91 54 Z" fill="#16a34a" />
+            <path d="M13 43 Q32 35 50 43 T87 43" fill="none" stroke="#ffffff" stroke-width="3.5" stroke-linecap="round"/>
+            <path d="M11 50 L28 50 L35 37 L44 63 L53 41 L60 55 L67 50 L89 50" fill="none" stroke="#0f172a" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M15 58 Q35 66 52 58 T85 58" fill="none" stroke="#ffffff" stroke-width="3.5" stroke-linecap="round"/>
+          </svg>
+        </div>
+
+        <!-- Bendera Merah Putih -->
+        <div class="w-16 h-11 sm:w-20 sm:h-14 rounded-xl overflow-hidden border border-slate-600/70 shadow-xl flex flex-col">
+          <div class="w-full h-1/2 bg-[#dc2626]"></div>
+          <div class="w-full h-1/2 bg-[#ffffff]"></div>
+        </div>
       </div>
 
       <span class="text-xs font-extrabold tracking-[0.35em] text-sky-400 uppercase">BMKG</span>
-      <h1 class="text-lg sm:text-2xl md:text-[26px] font-extrabold tracking-wide text-amber-400 uppercase mt-1 leading-snug max-w-4xl">
-        STASIUN PEMANTAUAN METEOROLOGI SINOPTIK GEOFISIKA KELAS I DELI SERDANG
+      <h1 class="text-xl sm:text-2xl md:text-3xl font-extrabold tracking-wide text-amber-400 uppercase mt-1 leading-tight">
+        Surface Synoptic Observations
       </h1>
-      <p class="text-[11px] sm:text-xs font-semibold tracking-[0.2em] text-slate-400 uppercase mt-1">
-        TAMAN ALAT METEOROLOGI DIGITAL TERINTEGRASI
+      <p class="text-xs sm:text-sm font-bold tracking-[0.18em] text-slate-200 uppercase mt-1">
+        Stasiun Geofisika Kelas I Deli Serdang
       </p>
 
-      <!-- Jam Digital WIB + UTC & Kontrol Operasional -->
+      <!-- Kotak Jam WIB & Kotak Jam UTC Terpisah -->
       <div class="mt-4 flex flex-wrap items-center justify-center gap-3">
-        <div class="px-5 py-2.5 rounded-2xl bg-slate-900/95 border border-sky-500/30 shadow-lg shadow-sky-950/50 text-center">
-          <div class="flex items-center justify-center gap-3">
-            <span id="liveClockWIB" class="font-mono text-xl sm:text-2xl font-extrabold text-white tracking-wider">
-              --:--:-- WIB
-            </span>
-            <span class="text-slate-600">|</span>
-            <span id="liveClockUTC" class="font-mono text-base sm:text-lg font-bold text-sky-400 tracking-wider">
-              --:-- UTC
-            </span>
+        <!-- Kotak Waktu WIB -->
+        <div class="px-5 py-2.5 rounded-2xl bg-slate-900/95 border border-sky-500/35 shadow-lg shadow-sky-950/40 text-center min-w-[190px]">
+          <span class="text-[9px] font-bold uppercase tracking-[0.2em] text-sky-400 block">Waktu Lokal (WIB)</span>
+          <div id="liveClockWIB" class="font-mono text-xl sm:text-2xl font-extrabold text-white tracking-wider mt-0.5">
+            --:--:-- WIB
           </div>
-          <div id="liveDate" class="text-[10px] sm:text-[11px] font-mono font-bold text-amber-400 tracking-[0.16em] uppercase mt-1">
+          <div id="liveDateWIB" class="text-[10px] font-mono font-semibold text-amber-400 tracking-wider uppercase mt-0.5">
             MEMUAT TANGGAL...
           </div>
         </div>
 
-        <!-- Hitung Mundur Pengamatan Sinoptik -->
-        <div class="px-4 py-2.5 rounded-2xl bg-slate-900/95 border border-emerald-500/25 shadow-lg text-center">
-          <span class="text-[10px] font-bold uppercase tracking-widest text-slate-400 block">
-            Observasi Sinoptik Berikutnya
-          </span>
-          <div id="nextObsCountdown" class="font-mono text-lg sm:text-xl font-extrabold text-emerald-400 mt-0.5">
-            --:--:--
+        <!-- Kotak Waktu UTC -->
+        <div class="px-5 py-2.5 rounded-2xl bg-slate-900/95 border border-emerald-500/35 shadow-lg shadow-emerald-950/40 text-center min-w-[190px]">
+          <span class="text-[9px] font-bold uppercase tracking-[0.2em] text-emerald-400 block">Standar WMO (UTC)</span>
+          <div id="liveClockUTC" class="font-mono text-xl sm:text-2xl font-extrabold text-emerald-300 tracking-wider mt-0.5">
+            --:--:-- UTC
           </div>
-          <span id="nextObsLabel" class="text-[10px] font-mono text-slate-400 block">
-            Target: --.00 WIB (-- UTC)
-          </span>
+          <div id="liveDateUTC" class="text-[10px] font-mono font-semibold text-slate-400 tracking-wider uppercase mt-0.5">
+            MEMUAT UTC...
+          </div>
         </div>
       </div>
 
-      <!-- Toolbar Aksi Cepat Petugas -->
-      <div class="mt-4 flex flex-wrap items-center justify-center gap-2">
-        <button onclick="copySynopticReport()" id="btnCopyReport" class="px-3.5 py-1.5 rounded-xl bg-sky-600/90 hover:bg-sky-500 text-white text-xs font-semibold flex items-center gap-1.5 transition cursor-pointer shadow">
-          <span>📋</span> Salin Laporan Sinoptik
-        </button>
-        <button onclick="toggleAlarm()" id="btnToggleAlarm" class="px-3.5 py-1.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-300 border border-slate-700 text-xs font-semibold flex items-center gap-1.5 transition cursor-pointer">
-          <span id="alarmIcon">🔕</span> <span id="alarmText">Alarm Jam Obs: OFF</span>
-        </button>
-        <button onclick="toggleFullscreen()" class="px-3.5 py-1.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-300 border border-slate-700 text-xs font-semibold flex items-center gap-1.5 transition cursor-pointer">
-          <span>🖥️</span> Mode Monitor
+      <!-- Indikator Alarm Otomatis Pengiriman WMO (00, 03, 06, 09, 12 UTC) -->
+      <div class="mt-3 flex flex-wrap items-center justify-center gap-2">
+        <div id="wmoAlarmBanner" class="px-4 py-1.5 rounded-full bg-slate-900/90 border border-amber-500/30 text-[11px] font-mono text-slate-300 flex items-center gap-2">
+          <span class="relative flex h-2 w-2">
+            <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-amber-400 opacity-75"></span>
+            <span class="relative inline-flex rounded-full h-2 w-2 bg-amber-500"></span>
+          </span>
+          <span>Alarm WMO Otomatis Aktif (00, 03, 06, 09, 12 UTC) • Berikutnya: <strong id="nextWmoTarget" class="text-amber-300">--:-- UTC</strong></span>
+        </div>
+        <button onclick="testWmoAlarmSound()" class="px-3 py-1.5 rounded-full bg-slate-800 hover:bg-slate-700 text-slate-300 border border-slate-700 text-[11px] font-semibold transition cursor-pointer" title="Klik untuk mengizinkan & menguji suara alarm browser">
+          🔔 Tes Suara Alarm
         </button>
       </div>
     </div>
@@ -326,7 +332,7 @@
       </div>
     </section>
 
-    <!-- 4. SUHU EKSTREM HARIAN -->
+    <!-- 4. SUHU EKSTREM HARIAN (SHAPE BULAT TAKOMETER) -->
     <section>
       <div class="flex justify-center mb-4">
         <div class="section-pill px-5 py-1.5 rounded-full">
@@ -338,23 +344,35 @@
 
       <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
         <!-- Suhu Maksimum (07-19 WIB) -->
-        <div class="glass-card rounded-2xl p-6 flex flex-col items-center justify-center border-t-2 border-t-orange-500/70">
-          <div class="flex items-baseline gap-1.5">
-            <span id="valMaxTemp" class="font-mono text-4xl sm:text-5xl font-extrabold text-white">--.-</span>
-            <span class="text-sm font-mono text-orange-400 font-bold">°C</span>
+        <div class="glass-card rounded-2xl p-6 flex flex-col items-center justify-center relative">
+          <div class="relative w-32 h-32 flex items-center justify-center">
+            <svg class="w-32 h-32" viewBox="0 0 120 120">
+              <circle cx="60" cy="60" r="50" stroke="rgba(255,255,255,0.07)" stroke-width="9" fill="none" />
+              <circle id="ringMaxTemp" class="gauge-progress glow-orange" cx="60" cy="60" r="50" stroke="#f97316" stroke-width="9" stroke-linecap="round" stroke-dasharray="314" stroke-dashoffset="314" fill="none" />
+            </svg>
+            <div class="absolute inset-0 flex flex-col items-center justify-center">
+              <span id="valMaxTemp" class="font-mono text-2xl sm:text-3xl font-extrabold text-white">--.-</span>
+              <span class="text-[11px] font-mono text-slate-400 mt-0.5">°C</span>
+            </div>
           </div>
-          <span class="mt-3 text-[11px] font-bold uppercase tracking-[0.18em] text-slate-300">
+          <span class="mt-4 text-[11px] font-bold uppercase tracking-[0.18em] text-slate-300">
             Suhu Maksimum (07–19 WIB)
           </span>
         </div>
 
         <!-- Suhu Minimum (19-07 WIB) -->
-        <div class="glass-card rounded-2xl p-6 flex flex-col items-center justify-center border-t-2 border-t-cyan-400/70">
-          <div class="flex items-baseline gap-1.5">
-            <span id="valMinTemp" class="font-mono text-4xl sm:text-5xl font-extrabold text-white">--.-</span>
-            <span class="text-sm font-mono text-cyan-400 font-bold">°C</span>
+        <div class="glass-card rounded-2xl p-6 flex flex-col items-center justify-center relative">
+          <div class="relative w-32 h-32 flex items-center justify-center">
+            <svg class="w-32 h-32" viewBox="0 0 120 120">
+              <circle cx="60" cy="60" r="50" stroke="rgba(255,255,255,0.07)" stroke-width="9" fill="none" />
+              <circle id="ringMinTemp" class="gauge-progress glow-cyan" cx="60" cy="60" r="50" stroke="#22d3ee" stroke-width="9" stroke-linecap="round" stroke-dasharray="314" stroke-dashoffset="314" fill="none" />
+            </svg>
+            <div class="absolute inset-0 flex flex-col items-center justify-center">
+              <span id="valMinTemp" class="font-mono text-2xl sm:text-3xl font-extrabold text-white">--.-</span>
+              <span class="text-[11px] font-mono text-slate-400 mt-0.5">°C</span>
+            </div>
           </div>
-          <span class="mt-3 text-[11px] font-bold uppercase tracking-[0.18em] text-slate-300">
+          <span class="mt-4 text-[11px] font-bold uppercase tracking-[0.18em] text-slate-300">
             Suhu Minimum (19–07 WIB)
           </span>
         </div>
@@ -394,7 +412,7 @@
           <span id="connDot" class="relative inline-flex rounded-full h-2.5 w-2.5 bg-emerald-500"></span>
         </span>
         <span id="connStatusText" class="text-xs font-bold uppercase tracking-[0.18em] text-emerald-400">
-          STATUS: TRANSMISI DATA AKTIF (LIVE STREAM)
+          STATUS: TRANSMISI DATA AKTIF
         </span>
       </div>
       <span class="text-[11px] font-mono text-slate-400 mt-1">
@@ -402,24 +420,30 @@
       </span>
     </div>
 
-    <!-- 6. ARSIP & REKAPITULASI DATA SINOPTIK (TAB VIEWER) -->
+    <!-- 6. PANEL ARSIP & LOG LENGKAP (RINGKAS DALAM TAB MODERN) -->
     <section class="glass-card rounded-2xl p-5 sm:p-6">
-      <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-4 pb-4 border-b border-slate-800">
+      <div class="flex flex-col xl:flex-row xl:items-center justify-between gap-4 pb-4 border-b border-slate-800">
         
-        <!-- Tab Switcher -->
+        <!-- 5 Tab Lengkap Sesuai Data Sebelumnya -->
         <div class="flex flex-wrap items-center gap-2">
-          <button onclick="switchArchiveTab('24h')" id="tab24h" class="px-3.5 py-2 rounded-xl bg-amber-500/20 border border-amber-500/40 text-amber-300 text-xs font-bold uppercase tracking-wider transition cursor-pointer">
+          <button onclick="switchArchiveTab('24h')" id="tab24h" class="px-3.5 py-2 rounded-xl bg-amber-500/20 border border-amber-500/40 text-amber-300 text-[11px] font-bold uppercase tracking-wider transition cursor-pointer">
             Rekap Hujan 24 Jam (07–07 WIB)
           </button>
-          <button onclick="switchArchiveTab('hourly')" id="tabHourly" class="px-3.5 py-2 rounded-xl bg-slate-900 border border-slate-700 text-slate-400 hover:text-slate-200 text-xs font-bold uppercase tracking-wider transition cursor-pointer">
-            Pengamatan Jam-Jaman
+          <button onclick="switchArchiveTab('3h')" id="tab3h" class="px-3.5 py-2 rounded-xl bg-slate-900 border border-slate-700 text-slate-400 hover:text-slate-200 text-[11px] font-bold uppercase tracking-wider transition cursor-pointer">
+            Log Hujan 3 Jam-Jaman
           </button>
-          <button onclick="switchArchiveTab('3h')" id="tab3h" class="px-3.5 py-2 rounded-xl bg-slate-900 border border-slate-700 text-slate-400 hover:text-slate-200 text-xs font-bold uppercase tracking-wider transition cursor-pointer">
-            Hujan 3 Jam-Jaman
+          <button onclick="switchArchiveTab('ekstrem')" id="tabEkstrem" class="px-3.5 py-2 rounded-xl bg-slate-900 border border-slate-700 text-slate-400 hover:text-slate-200 text-[11px] font-bold uppercase tracking-wider transition cursor-pointer">
+            Suhu Ekstrem Harian
+          </button>
+          <button onclick="switchArchiveTab('hourly')" id="tabHourly" class="px-3.5 py-2 rounded-xl bg-slate-900 border border-slate-700 text-slate-400 hover:text-slate-200 text-[11px] font-bold uppercase tracking-wider transition cursor-pointer">
+            Log Suhu &amp; Tekanan Per Jam
+          </button>
+          <button onclick="switchArchiveTab('loss')" id="tabLoss" class="px-3.5 py-2 rounded-xl bg-slate-900 border border-slate-700 text-slate-400 hover:text-slate-200 text-[11px] font-bold uppercase tracking-wider transition cursor-pointer">
+            Riwayat Data Loss
           </button>
         </div>
 
-        <!-- Kontrol Filter & Unduh CSV -->
+        <!-- Kontrol Filter Tanggal, Reset & Unduh CSV -->
         <div class="flex flex-wrap items-center gap-2">
           <input type="date" id="filterDateInput" class="bg-slate-900 border border-slate-700 text-slate-200 text-xs rounded-xl px-3 py-2 font-mono focus:outline-none focus:border-sky-500" />
           <button onclick="applyDateFilter()" class="px-4 py-2 rounded-xl bg-sky-600 hover:bg-sky-500 text-white text-xs font-bold transition cursor-pointer">
@@ -434,7 +458,7 @@
         </div>
       </div>
 
-      <!-- Tabel Dinamis -->
+      <!-- Tabel Data Lengkap -->
       <div class="overflow-x-auto mt-4 rounded-xl border border-slate-800/90 max-h-96">
         <table class="w-full text-left border-collapse">
           <thead id="archiveTableHead" class="sticky top-0 bg-slate-900 border-b border-slate-800 text-[11px] font-bold uppercase tracking-wider text-sky-400">
@@ -454,22 +478,24 @@
     const FIREBASE_BASE_URL = "https://meteo-sangkar-default-rtdb.asia-southeast1.firebasedatabase.app";
     
     let latestTelemetry = {};
-    let latestExtremes = { maxSuhu: null, minSuhu: null };
     let activeTab = '24h';
 
     let records24h = [];
-    let recordsHourly = [];
     let records3h = [];
+    let recordsEkstrem = [];
+    let recordsHourly = [];
+    let recordsLoss = [];
     let currentFilteredData = [];
 
-    let alarmEnabled = false;
-    let lastAlarmHour = -1;
+    // Jadwal Pengiriman Wajib WMO: 00.00, 03.00, 06.00, 09.00, 12.00 UTC
+    const WMO_REPORT_HOURS_UTC = [0, 3, 6, 9, 12];
+    let lastTriggeredWmoKey = "";
 
-    // 1. JAM REAL-TIME WIB & UTC + COUNTDOWN SINOPTIK
-    function updateClockAndSynopticTimer() {
+    // 1. JAM WIB & JAM UTC TERPISAH + ALARM OTOMATIS WMO
+    function updateClocksAndWmoAlarm() {
       const now = new Date();
 
-      // WIB (GMT+7)
+      // WIB (Asia/Jakarta)
       const wibTime = new Intl.DateTimeFormat('id-ID', {
         timeZone: 'Asia/Jakarta',
         hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: false
@@ -481,127 +507,76 @@
       }).format(now);
 
       // UTC (GMT+0)
-      const utcH = String(now.getUTCHours()).padStart(2, '0');
-      const utcM = String(now.getUTCMinutes()).padStart(2, '0');
+      const utcH = now.getUTCHours();
+      const utcM = now.getUTCMinutes();
+      const utcS = now.getUTCSeconds();
+      const utcTimeStr = `${String(utcH).padStart(2, '0')}:${String(utcM).padStart(2, '0')}:${String(utcS).padStart(2, '0')} UTC`;
+      
+      const utcDateStr = new Intl.DateTimeFormat('en-GB', {
+        timeZone: 'UTC',
+        weekday: 'short', day: '2-digit', month: 'short', year: 'numeric'
+      }).format(now);
 
       document.getElementById('liveClockWIB').textContent = `${wibTime} WIB`;
-      document.getElementById('liveClockUTC').textContent = `${utcH}:${utcM} UTC`;
-      document.getElementById('liveDate').textContent = wibDate.toUpperCase();
+      document.getElementById('liveDateWIB').textContent = wibDate.toUpperCase();
 
-      // Hitung Mundur ke Jam Sinoptik Utama (Setiap 3 jam UTC: 00, 03, 06, 09, 12, 15, 18, 21 UTC)
-      const currentUtcHour = now.getUTCHours();
-      const nextSynopticUtcHour = (Math.floor(currentUtcHour / 3) + 1) * 3;
-      const targetTime = new Date(Date.UTC(
-        now.getUTCFullYear(), now.getUTCMonth(), now.getUTCDate(), nextSynopticUtcHour, 0, 0
-      ));
+      document.getElementById('liveClockUTC').textContent = utcTimeStr;
+      document.getElementById('liveDateUTC').textContent = utcDateStr.toUpperCase();
 
-      const diffMs = targetTime - now;
-      const remH = String(Math.floor(diffMs / 3600000)).padStart(2, '0');
-      const remM = String(Math.floor((diffMs % 3600000) / 60000)).padStart(2, '0');
-      const remS = String(Math.floor((diffMs % 60000) / 1000)).padStart(2, '0');
+      // Tentukan Jadwal WMO Berikutnya (00, 03, 06, 09, 12 UTC)
+      let nextWmoHour = WMO_REPORT_HOURS_UTC.find(h => h > utcH || (h === utcH && utcM === 0 && utcS === 0));
+      if (nextWmoHour === undefined) {
+        nextWmoHour = WMO_REPORT_HOURS_UTC[0]; // 00:00 UTC hari berikutnya
+      }
+      document.getElementById('nextWmoTarget').textContent = `${String(nextWmoHour).padStart(2, '0')}:00 UTC`;
 
-      const targetWibHour = String((nextSynopticUtcHour + 7) % 24).padStart(2, '0');
-      const targetUtcDisplay = String(nextSynopticUtcHour % 24).padStart(2, '0');
-
-      document.getElementById('nextObsCountdown').textContent = `${remH}:${remM}:${remS}`;
-      document.getElementById('nextObsLabel').textContent = `Target: ${targetWibHour}.00 WIB (${targetUtcDisplay}.00 UTC)`;
-
-      // Alarm Pengingat 5 menit sebelum jam sinoptik (menit ke-55)
-      if (alarmEnabled && now.getUTCMinutes() === 55 && (nextSynopticUtcHour - currentUtcHour === 1)) {
-        if (lastAlarmHour !== nextSynopticUtcHour) {
-          lastAlarmHour = nextSynopticUtcHour;
-          playBeepSound();
+      // Alarm Menyala Otomatis tepat pada jam pengiriman ke WMO (00.00, 03.00, 06.00, 09.00, 12.00 UTC)
+      if (WMO_REPORT_HOURS_UTC.includes(utcH) && utcM === 0 && utcS < 15) {
+        const triggerKey = `${now.toISOString().slice(0, 10)}-${utcH}`;
+        if (lastTriggeredWmoKey !== triggerKey) {
+          lastTriggeredWmoKey = triggerKey;
+          triggerWmoAlarmVisualAndSound(utcH);
         }
       }
     }
-    setInterval(updateClockAndSynopticTimer, 1000);
-    updateClockAndSynopticTimer();
+    setInterval(updateClocksAndWmoAlarm, 1000);
+    updateClocksAndWmoAlarm();
 
-    // 2. AUDIO BEEP PENGINGAT OBSERVASI (WEB AUDIO API TANPA FILE EKSTERNAL)
-    function playBeepSound() {
+    function playAlarmTone() {
       try {
         const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
-        const oscillator = audioCtx.createOscillator();
-        const gainNode = audioCtx.createGain();
-        oscillator.type = 'sine';
-        oscillator.frequency.setValueAtTime(880, audioCtx.currentTime);
-        gainNode.gain.setValueAtTime(0.15, audioCtx.currentTime);
-        oscillator.connect(gainNode);
-        gainNode.connect(audioCtx.destination);
-        oscillator.start();
-        oscillator.stop(audioCtx.currentTime + 0.4);
+        const notes = [880, 1108.73, 1318.51, 880, 1318.51];
+        notes.forEach((freq, idx) => {
+          const osc = audioCtx.createOscillator();
+          const gain = audioCtx.createGain();
+          osc.type = 'sine';
+          osc.frequency.setValueAtTime(freq, audioCtx.currentTime + idx * 0.22);
+          gain.gain.setValueAtTime(0.2, audioCtx.currentTime + idx * 0.22);
+          gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + idx * 0.22 + 0.2);
+          osc.connect(gain);
+          gain.connect(audioCtx.destination);
+          osc.start(audioCtx.currentTime + idx * 0.22);
+          osc.stop(audioCtx.currentTime + idx * 0.22 + 0.21);
+        });
       } catch (e) {}
     }
 
-    function toggleAlarm() {
-      alarmEnabled = !alarmEnabled;
-      const icon = document.getElementById('alarmIcon');
-      const text = document.getElementById('alarmText');
-      const btn  = document.getElementById('btnToggleAlarm');
-
-      if (alarmEnabled) {
-        icon.textContent = '🔔';
-        text.textContent = 'Alarm Jam Obs: ON';
-        btn.className = "px-3.5 py-1.5 rounded-xl bg-amber-500/20 text-amber-300 border border-amber-500/40 text-xs font-semibold flex items-center gap-1.5 transition cursor-pointer";
-        playBeepSound();
-      } else {
-        icon.textContent = '🔕';
-        text.textContent = 'Alarm Jam Obs: OFF';
-        btn.className = "px-3.5 py-1.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-300 border border-slate-700 text-xs font-semibold flex items-center gap-1.5 transition cursor-pointer";
-      }
+    function triggerWmoAlarmVisualAndSound(utcHour) {
+      playAlarmTone();
+      const banner = document.getElementById('wmoAlarmBanner');
+      banner.className = "px-4 py-1.5 rounded-full bg-rose-600/30 border border-rose-500 text-[11px] font-mono text-rose-200 flex items-center gap-2 animate-pulse";
+      banner.innerHTML = `🚨 <strong>WAKTU PENGIRIMAN WMO (${String(utcHour).padStart(2, '0')}.00 UTC)!</strong> Segera kirim sandi sinoptik.`;
+      setTimeout(() => {
+        banner.className = "px-4 py-1.5 rounded-full bg-slate-900/90 border border-amber-500/30 text-[11px] font-mono text-slate-300 flex items-center gap-2";
+        banner.innerHTML = `<span class="relative flex h-2 w-2"><span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-amber-400 opacity-75"></span><span class="relative inline-flex rounded-full h-2 w-2 bg-amber-500"></span></span><span>Alarm WMO Otomatis Aktif (00, 03, 06, 09, 12 UTC) • Berikutnya: <strong id="nextWmoTarget" class="text-amber-300">--:-- UTC</strong></span>`;
+      }, 60000);
     }
 
-    // 3. MODE MONITOR / FULLSCREEN + WAKE LOCK
-    async function toggleFullscreen() {
-      if (!document.fullscreenElement) {
-        await document.documentElement.requestFullscreen().catch(() => {});
-        if ('wakeLock' in navigator) {
-          navigator.wakeLock.request('screen').catch(() => {});
-        }
-      } else {
-        await document.exitFullscreen().catch(() => {});
-      }
+    function testWmoAlarmSound() {
+      playAlarmTone();
     }
 
-    // 4. SALIN LAPORAN SINOPTIK SEKALI KLIK
-    function copySynopticReport() {
-      const t = parseFloat(latestTelemetry.suhu ?? 0);
-      const rh = parseFloat(latestTelemetry.kelembapan ?? 0);
-      const tw = calcWetBulb(t, rh);
-      const qfe = parseFloat(latestTelemetry.qfe ?? 0);
-      const qff = parseFloat(latestTelemetry.qff ?? 0);
-      const qnh = parseFloat(latestTelemetry.qnh ?? 0);
-      const rain3 = parseFloat(latestTelemetry.rainfall3h ?? 0);
-      const rain24 = parseFloat(latestTelemetry.rainfall ?? 0);
-      const timeWIB = document.getElementById('liveClockWIB').textContent;
-      const dateWIB = document.getElementById('liveDate').textContent;
-
-      const report = [
-        `LAPORAN OBSERVASI METEOROLOGI SINOPTIK`,
-        `STASIUN GEOFISIKA KELAS I DELI SERDANG`,
-        `Waktu: ${dateWIB} | ${timeWIB}`,
-        `----------------------------------------`,
-        `• Bola Kering : ${t.toFixed(1)} °C`,
-        `• Bola Basah  : ${tw.toFixed(1)} °C`,
-        `• Kelembapan  : ${rh.toFixed(1)} %`,
-        `• QFE Stasiun : ${qfe.toFixed(1)} hPa`,
-        `• QFF Laut    : ${qff.toFixed(1)} hPa`,
-        `• QNH Aviasi  : ${qnh.toFixed(1)} hPa`,
-        `• Hujan 3 Jam : ${rain3.toFixed(1)} mm`,
-        `• Hujan 24Jam : ${rain24.toFixed(1)} mm`,
-        latestExtremes.maxSuhu !== null ? `• Suhu Maks   : ${parseFloat(latestExtremes.maxSuhu).toFixed(1)} °C` : null,
-        latestExtremes.minSuhu !== null ? `• Suhu Min    : ${parseFloat(latestExtremes.minSuhu).toFixed(1)} °C` : null
-      ].filter(Boolean).join('\n');
-
-      navigator.clipboard.writeText(report).then(() => {
-        const btn = document.getElementById('btnCopyReport');
-        const orig = btn.innerHTML;
-        btn.innerHTML = `<span>✅</span> Laporan Tersalin!`;
-        setTimeout(() => btn.innerHTML = orig, 2000);
-      });
-    }
-
-    // 5. KALKULASI BOLA BASAH & GAUGE RING
+    // 2. KALKULASI BOLA BASAH (FORMULA STULL) & GAUGE TAKOMETER
     function calcWetBulb(t, rh) {
       if (isNaN(t) || isNaN(rh) || rh <= 0) return 0;
       return t * Math.atan(0.151977 * Math.sqrt(rh + 8.313659)) +
@@ -614,7 +589,7 @@
     function setGauge(elementId, value, min, max) {
       const circle = document.getElementById(elementId);
       if (!circle) return;
-      const circumference = 314;
+      const circumference = 314; // 2 * PI * 50
       const clamped = Math.max(min, Math.min(max, value));
       const pct = (clamped - min) / (max - min);
       circle.style.strokeDashoffset = circumference - (pct * circumference);
@@ -639,6 +614,7 @@
       const rssi      = data.rssi ?? 0;
       const wifiPct   = data.wifiQuality ?? 0;
 
+      // Temperatur & Kelembapan
       document.getElementById('valDryTemp').textContent = t.toFixed(1);
       document.getElementById('valWetTemp').textContent = tw.toFixed(1);
       document.getElementById('valHumidity').textContent = rh.toFixed(1);
@@ -647,6 +623,7 @@
       setGauge('ringWetTemp', tw, 15, 35);
       setGauge('ringHumidity', rh, 0, 100);
 
+      // Presipitasi / Hujan
       document.getElementById('valRainRealtime').textContent = rain24.toFixed(1);
       document.getElementById('valRain3h').textContent = rain3.toFixed(1);
       document.getElementById('valRain24h').textContent = rain24.toFixed(1);
@@ -655,6 +632,7 @@
       setGauge('ringRain3h', rain3, 0, 30);
       setGauge('ringRain24h', rain24, 0, 100);
 
+      // Tekanan Barometrik
       document.getElementById('valQfe').textContent = qfe.toFixed(1);
       document.getElementById('valQff').textContent = qff.toFixed(1);
       document.getElementById('valQnh').textContent = qnh.toFixed(1);
@@ -663,6 +641,7 @@
       setGauge('ringQff', qff, 995, 1025);
       setGauge('ringQnh', qnh, 995, 1025);
 
+      // Diagnostik ESP8266
       document.getElementById('ramValue').textContent = `${freeRamKB.toFixed(1)} KB`;
       document.getElementById('ramBar').style.width = `${Math.max(10, Math.min(100, (freeRamKB / 55) * 100))}%`;
 
@@ -676,11 +655,10 @@
       document.getElementById('lastUpdateText').textContent = timeLabel;
     }
 
-    // 6. REAL-TIME STREAMING (FIREBASE SSE) + FALLBACK POLLING
+    // 3. REAL-TIME STREAMING (FIREBASE SSE)
     function initRealtimeStream() {
       if (typeof EventSource !== "undefined") {
         const evtSource = new EventSource(`${FIREBASE_BASE_URL}/cuaca.json`);
-        
         evtSource.addEventListener("put", (e) => {
           const parsed = JSON.parse(e.data);
           if (parsed && parsed.data) {
@@ -693,7 +671,6 @@
             }
           }
         });
-
         evtSource.addEventListener("patch", (e) => {
           const parsed = JSON.parse(e.data);
           if (parsed && parsed.data) {
@@ -701,10 +678,7 @@
             renderTelemetryUI(latestTelemetry);
           }
         });
-
-        evtSource.onerror = () => {
-          fetchTelemetryFallback();
-        };
+        evtSource.onerror = () => fetchTelemetryFallback();
       } else {
         setInterval(fetchTelemetryFallback, 5000);
       }
@@ -719,7 +693,7 @@
       } catch (e) {}
     }
 
-    // Cek Status Koneksi Alat Secara Berkala
+    // Status Transmisi Data
     setInterval(() => {
       const nowSec = Math.floor(Date.now() / 1000);
       const diffSec = latestTelemetry.timestamp ? (nowSec - latestTelemetry.timestamp) : 0;
@@ -728,7 +702,7 @@
       const connPing = document.getElementById('connPing');
 
       if (latestTelemetry.timestamp && diffSec <= 45) {
-        connText.textContent = "STATUS: TRANSMISI DATA AKTIF (LIVE STREAM)";
+        connText.textContent = "STATUS: TRANSMISI DATA AKTIF";
         connText.className = "text-xs font-bold uppercase tracking-[0.18em] text-emerald-400";
         connDot.className = "relative inline-flex rounded-full h-2.5 w-2.5 bg-emerald-500";
         connPing.className = "animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75";
@@ -740,7 +714,7 @@
       }
     }, 5000);
 
-    // 7. SUHU EKSTREM HARIAN
+    // 4. SUHU EKSTREM HARIAN (GAUGE TAKOMETER BULAT)
     async function fetchExtremeTemps() {
       try {
         const now = new Date();
@@ -752,19 +726,28 @@
         const res = await fetch(`${FIREBASE_BASE_URL}/logs_ekstrem_bmkg/${todayKey}.json`);
         const data = await res.json();
         if (data) {
-          if (data.maxSuhu !== undefined) {
-            latestExtremes.maxSuhu = data.maxSuhu;
-            document.getElementById('valMaxTemp').textContent = parseFloat(data.maxSuhu).toFixed(1);
+          if (data.maxSuhu !== undefined && data.maxSuhu !== null) {
+            const maxVal = parseFloat(data.maxSuhu);
+            document.getElementById('valMaxTemp').textContent = maxVal.toFixed(1);
+            setGauge('ringMaxTemp', maxVal, 20, 42);
+          } else {
+            document.getElementById('valMaxTemp').textContent = "--.-";
+            setGauge('ringMaxTemp', 20, 20, 42);
           }
-          if (data.minSuhu !== undefined) {
-            latestExtremes.minSuhu = data.minSuhu;
-            document.getElementById('valMinTemp').textContent = parseFloat(data.minSuhu).toFixed(1);
+
+          if (data.minSuhu !== undefined && data.minSuhu !== null) {
+            const minVal = parseFloat(data.minSuhu);
+            document.getElementById('valMinTemp').textContent = minVal.toFixed(1);
+            setGauge('ringMinTemp', minVal, 15, 32);
+          } else {
+            document.getElementById('valMinTemp').textContent = "--.-";
+            setGauge('ringMinTemp', 15, 15, 32);
           }
         }
       } catch (e) {}
     }
 
-    // 8. MULTI-TAB ARCHIVE VIEWER (24 JAM, JAM-JAMAN, 3 JAM)
+    // 5. MULTI-TAB ARCHIVE VIEWER (5 TAB DATA LENGKAP SEBELUMNYA)
     function formatDisplayDate(isoDate) {
       if (!isoDate || !isoDate.includes('-')) return isoDate || '-';
       const parts = isoDate.split('-');
@@ -773,13 +756,19 @@
 
     function switchArchiveTab(tabName) {
       activeTab = tabName;
-      const tabs = { '24h': 'tab24h', 'hourly': 'tabHourly', '3h': 'tab3h' };
+      const tabs = {
+        '24h': 'tab24h',
+        '3h': 'tab3h',
+        'ekstrem': 'tabEkstrem',
+        'hourly': 'tabHourly',
+        'loss': 'tabLoss'
+      };
       Object.keys(tabs).forEach(key => {
         const el = document.getElementById(tabs[key]);
         if (key === tabName) {
-          el.className = "px-3.5 py-2 rounded-xl bg-amber-500/20 border border-amber-500/40 text-amber-300 text-xs font-bold uppercase tracking-wider transition cursor-pointer";
+          el.className = "px-3.5 py-2 rounded-xl bg-amber-500/20 border border-amber-500/40 text-amber-300 text-[11px] font-bold uppercase tracking-wider transition cursor-pointer";
         } else {
-          el.className = "px-3.5 py-2 rounded-xl bg-slate-900 border border-slate-700 text-slate-400 hover:text-slate-200 text-xs font-bold uppercase tracking-wider transition cursor-pointer";
+          el.className = "px-3.5 py-2 rounded-xl bg-slate-900 border border-slate-700 text-slate-400 hover:text-slate-200 text-[11px] font-bold uppercase tracking-wider transition cursor-pointer";
         }
       });
       applyDateFilter();
@@ -798,80 +787,138 @@
             <th class="py-3.5 px-4 text-right">Total Hujan 24 Jam (mm)</th>
           </tr>`;
         if (!currentFilteredData.length) {
-          tbody.innerHTML = `<tr><td colspan="4" class="py-6 text-center text-slate-500 font-sans">Tidak ada data rekapitulasi 24 jam.</td></tr>`;
+          tbody.innerHTML = `<tr><td colspan="4" class="py-6 text-center text-slate-500 font-sans">Tidak ada data rekapitulasi curah hujan 24 jam.</td></tr>`;
           return;
         }
         tbody.innerHTML = currentFilteredData.map((item, idx) => `
           <tr class="hover:bg-sky-500/5 transition">
             <td class="py-3 px-4 text-slate-400">${idx + 1}</td>
-            <td class="py-3 px-4 text-sky-300 font-semibold">${formatDisplayDate(item.tanggal)}</td>
+            <td class="py-3 px-4 text-sky-400 font-semibold">${formatDisplayDate(item.tanggal)}</td>
             <td class="py-3 px-4 text-slate-300">${item.waktuCetak || '-'}</td>
             <td class="py-3 px-4 text-right font-bold text-amber-400">${parseFloat(item.totalHujan24Jam ?? 0).toFixed(1)} mm</td>
-          </tr>`).join('');
-      } 
-      else if (activeTab === 'hourly') {
-        thead.innerHTML = `
-          <tr>
-            <th class="py-3.5 px-4 w-14">No</th>
-            <th class="py-3.5 px-4">Waktu</th>
-            <th class="py-3.5 px-4 text-right">Bola Kering</th>
-            <th class="py-3.5 px-4 text-right">Bola Basah</th>
-            <th class="py-3.5 px-4 text-right">RH</th>
-            <th class="py-3.5 px-4 text-right">QFE</th>
-            <th class="py-3.5 px-4 text-right">QFF</th>
-            <th class="py-3.5 px-4 text-right">QNH</th>
-            <th class="py-3.5 px-4 text-right">Hujan</th>
-          </tr>`;
-        if (!currentFilteredData.length) {
-          tbody.innerHTML = `<tr><td colspan="9" class="py-6 text-center text-slate-500 font-sans">Tidak ada log pengamatan jam-jaman.</td></tr>`;
-          return;
-        }
-        tbody.innerHTML = currentFilteredData.map((item, idx) => `
-          <tr class="hover:bg-sky-500/5 transition">
-            <td class="py-3 px-4 text-slate-400">${idx + 1}</td>
-            <td class="py-3 px-4 text-sky-300">${item.waktu || '-'}</td>
-            <td class="py-3 px-4 text-right">${parseFloat(item.suhuKering ?? 0).toFixed(1)} °C</td>
-            <td class="py-3 px-4 text-right text-emerald-400">${parseFloat(item.suhuBasah ?? 0).toFixed(1)} °C</td>
-            <td class="py-3 px-4 text-right text-sky-400">${parseFloat(item.kelembapan ?? 0).toFixed(1)} %</td>
-            <td class="py-3 px-4 text-right">${parseFloat(item.qfe ?? 0).toFixed(1)}</td>
-            <td class="py-3 px-4 text-right">${parseFloat(item.qff ?? 0).toFixed(1)}</td>
-            <td class="py-3 px-4 text-right">${parseFloat(item.qnh ?? 0).toFixed(1)}</td>
-            <td class="py-3 px-4 text-right font-bold text-amber-400">${parseFloat(item.curahHujan ?? 0).toFixed(1)} mm</td>
           </tr>`).join('');
       } 
       else if (activeTab === '3h') {
         thead.innerHTML = `
           <tr>
             <th class="py-3.5 px-4 w-16">No</th>
-            <th class="py-3.5 px-4">Waktu Pencatatan</th>
+            <th class="py-3.5 px-4">Waktu Pengamatan</th>
             <th class="py-3.5 px-4">Jam Observasi</th>
             <th class="py-3.5 px-4 text-right">Curah Hujan 3 Jam (mm)</th>
           </tr>`;
         if (!currentFilteredData.length) {
-          tbody.innerHTML = `<tr><td colspan="4" class="py-6 text-center text-slate-500 font-sans">Tidak ada data hujan 3 jam-jaman.</td></tr>`;
+          tbody.innerHTML = `<tr><td colspan="4" class="py-6 text-center text-slate-500 font-sans">Tidak ada log curah hujan 3 jam-jaman.</td></tr>`;
           return;
         }
         tbody.innerHTML = currentFilteredData.map((item, idx) => `
           <tr class="hover:bg-sky-500/5 transition">
             <td class="py-3 px-4 text-slate-400">${idx + 1}</td>
-            <td class="py-3 px-4 text-sky-300">${item.waktu || '-'}</td>
+            <td class="py-3 px-4 text-sky-400 font-semibold">${item.waktu || '-'}</td>
             <td class="py-3 px-4 text-slate-300">${item.jamObservasi || '-'}</td>
-            <td class="py-3 px-4 text-right font-bold text-cyan-400">${parseFloat(item.curahHujan3Jam ?? 0).toFixed(1)} mm</td>
+            <td class="py-3 px-4 text-right font-bold text-indigo-400">${parseFloat(item.curahHujan3Jam ?? 0).toFixed(1)} mm</td>
+          </tr>`).join('');
+      }
+      else if (activeTab === 'ekstrem') {
+        thead.innerHTML = `
+          <tr>
+            <th class="py-3.5 px-4 w-16">No</th>
+            <th class="py-3.5 px-4">Tanggal Observasi</th>
+            <th class="py-3.5 px-4 text-center">Suhu Maksimum (07–19 WIB)</th>
+            <th class="py-3.5 px-4 text-right">Suhu Minimum (19–07 WIB)</th>
+          </tr>`;
+        if (!currentFilteredData.length) {
+          tbody.innerHTML = `<tr><td colspan="4" class="py-6 text-center text-slate-500 font-sans">Tidak ada laporan suhu ekstrem harian.</td></tr>`;
+          return;
+        }
+        tbody.innerHTML = currentFilteredData.map((item, idx) => {
+          const maxTxt = (item.maxSuhu !== undefined && item.maxSuhu !== null)
+            ? `<span class="text-orange-400 font-bold">${parseFloat(item.maxSuhu).toFixed(1)} °C</span>`
+            : `<span class="text-slate-400 italic font-sans">Sedang Berjalan...</span>`;
+          const minTxt = (item.minSuhu !== undefined && item.minSuhu !== null)
+            ? `<span class="text-cyan-400 font-bold">${parseFloat(item.minSuhu).toFixed(1)} °C</span>`
+            : `<span class="text-slate-400 italic font-sans">Sedang Berjalan...</span>`;
+          return `
+            <tr class="hover:bg-sky-500/5 transition">
+              <td class="py-3 px-4 text-slate-400">${idx + 1}</td>
+              <td class="py-3 px-4 text-sky-400 font-semibold">${formatDisplayDate(item.tanggal)}</td>
+              <td class="py-3 px-4 text-center">${maxTxt}</td>
+              <td class="py-3 px-4 text-right">${minTxt}</td>
+            </tr>`;
+        }).join('');
+      }
+      else if (activeTab === 'hourly') {
+        thead.innerHTML = `
+          <tr>
+            <th class="py-3.5 px-4 w-14">No</th>
+            <th class="py-3.5 px-4">Waktu</th>
+            <th class="py-3.5 px-4 text-right">Kering (°C)</th>
+            <th class="py-3.5 px-4 text-right">Basah (°C)</th>
+            <th class="py-3.5 px-4 text-right">Hum (%)</th>
+            <th class="py-3.5 px-4 text-right">QFE (hPa)</th>
+            <th class="py-3.5 px-4 text-right">QFF (hPa)</th>
+            <th class="py-3.5 px-4 text-right">QNH (hPa)</th>
+            <th class="py-3.5 px-4 text-right">Hujan (mm)</th>
+          </tr>`;
+        if (!currentFilteredData.length) {
+          tbody.innerHTML = `<tr><td colspan="9" class="py-6 text-center text-slate-500 font-sans">Tidak ada log pengamatan suhu & tekanan per jam.</td></tr>`;
+          return;
+        }
+        tbody.innerHTML = currentFilteredData.map((item, idx) => `
+          <tr class="hover:bg-sky-500/5 transition">
+            <td class="py-3 px-4 text-slate-400">${idx + 1}</td>
+            <td class="py-3 px-4 text-sky-400 font-semibold">${item.waktu || '-'}</td>
+            <td class="py-3 px-4 text-right text-rose-400">${parseFloat(item.suhuKering ?? 0).toFixed(1)}</td>
+            <td class="py-3 px-4 text-right text-emerald-400">${parseFloat(item.suhuBasah ?? 0).toFixed(1)}</td>
+            <td class="py-3 px-4 text-right text-sky-300">${parseFloat(item.kelembapan ?? 0).toFixed(1)}</td>
+            <td class="py-3 px-4 text-right">${parseFloat(item.qfe ?? 0).toFixed(1)}</td>
+            <td class="py-3 px-4 text-right">${parseFloat(item.qff ?? 0).toFixed(1)}</td>
+            <td class="py-3 px-4 text-right">${parseFloat(item.qnh ?? 0).toFixed(1)}</td>
+            <td class="py-3 px-4 text-right font-bold text-indigo-400">${parseFloat(item.curahHujan ?? 0).toFixed(1)}</td>
+          </tr>`).join('');
+      } 
+      else if (activeTab === 'loss') {
+        thead.innerHTML = `
+          <tr>
+            <th class="py-3.5 px-4 w-14">No</th>
+            <th class="py-3.5 px-4">Mulai Loss</th>
+            <th class="py-3.5 px-4">Waktu Pulih</th>
+            <th class="py-3.5 px-4 text-center">Durasi</th>
+            <th class="py-3.5 px-4 text-right">Suhu Terakhir</th>
+            <th class="py-3.5 px-4 text-right">Hum Terakhir</th>
+            <th class="py-3.5 px-4 text-right">Hujan Terakhir</th>
+          </tr>`;
+        if (!currentFilteredData.length) {
+          tbody.innerHTML = `<tr><td colspan="7" class="py-6 text-center text-slate-500 font-sans">Tidak ada riwayat data loss tercatat.</td></tr>`;
+          return;
+        }
+        tbody.innerHTML = currentFilteredData.map((item, idx) => `
+          <tr class="hover:bg-sky-500/5 transition">
+            <td class="py-3 px-4 text-slate-400">${idx + 1}</td>
+            <td class="py-3 px-4 text-rose-400 font-semibold">${item.mulaiLoss || '-'}</td>
+            <td class="py-3 px-4 text-emerald-400 font-semibold">${item.waktuPulih || '-'}</td>
+            <td class="py-3 px-4 text-center text-slate-200">${item.durasi || '-'}</td>
+            <td class="py-3 px-4 text-right">${item.suhuTerakhir !== undefined ? parseFloat(item.suhuTerakhir).toFixed(1) : '-'}</td>
+            <td class="py-3 px-4 text-right">${item.humTerakhir !== undefined ? parseFloat(item.humTerakhir).toFixed(1) : '-'}</td>
+            <td class="py-3 px-4 text-right font-bold text-amber-400">${item.hujanTerakhir !== undefined ? parseFloat(item.hujanTerakhir).toFixed(1) + ' mm' : '-'}</td>
           </tr>`).join('');
       }
     }
 
     async function fetchAllArchives() {
       try {
-        const [res24, resHourly, res3h] = await Promise.all([
-          fetch(`${FIREBASE_BASE_URL}/logs_hujan_24jam.json`).then(r => r.json()),
-          fetch(`${FIREBASE_BASE_URL}/logs_pengamatan_jam.json`).then(r => r.json()),
-          fetch(`${FIREBASE_BASE_URL}/logs_hujan_3jam.json`).then(r => r.json())
+        const [res24, res3h, resEkstrem, resHourly, resLoss] = await Promise.all([
+          fetch(`${FIREBASE_BASE_URL}/logs_hujan_24jam.json`).then(r => r.json()).catch(() => null),
+          fetch(`${FIREBASE_BASE_URL}/logs_hujan_3jam.json`).then(r => r.json()).catch(() => null),
+          fetch(`${FIREBASE_BASE_URL}/logs_ekstrem_bmkg.json`).then(r => r.json()).catch(() => null),
+          fetch(`${FIREBASE_BASE_URL}/logs_pengamatan_jam.json`).then(r => r.json()).catch(() => null),
+          fetch(`${FIREBASE_BASE_URL}/logs_data_loss.json`).then(r => r.json()).catch(() => null)
         ]);
 
         records24h = res24 ? Object.keys(res24).map(k => ({ tanggal: k, ...res24[k] })).sort((a, b) => b.tanggal.localeCompare(a.tanggal)) : [];
-        recordsHourly = resHourly ? Object.values(resHourly).reverse() : [];
         records3h = res3h ? Object.values(res3h).reverse() : [];
+        recordsEkstrem = resEkstrem ? Object.keys(resEkstrem).map(k => ({ tanggal: k, ...resEkstrem[k] })).sort((a, b) => b.tanggal.localeCompare(a.tanggal)) : [];
+        recordsHourly = resHourly ? Object.values(resHourly).reverse() : [];
+        recordsLoss = resLoss ? Object.values(resLoss).reverse() : [];
 
         applyDateFilter();
       } catch (e) {}
@@ -883,10 +930,14 @@
 
       if (activeTab === '24h') {
         currentFilteredData = val ? records24h.filter(r => r.tanggal === val) : [...records24h];
-      } else if (activeTab === 'hourly') {
-        currentFilteredData = dmyFilter ? recordsHourly.filter(r => (r.waktu || '').startsWith(dmyFilter)) : [...recordsHourly];
       } else if (activeTab === '3h') {
         currentFilteredData = dmyFilter ? records3h.filter(r => (r.waktu || '').startsWith(dmyFilter)) : [...records3h];
+      } else if (activeTab === 'ekstrem') {
+        currentFilteredData = val ? recordsEkstrem.filter(r => r.tanggal === val) : [...recordsEkstrem];
+      } else if (activeTab === 'hourly') {
+        currentFilteredData = dmyFilter ? recordsHourly.filter(r => (r.waktu || '').startsWith(dmyFilter)) : [...recordsHourly];
+      } else if (activeTab === 'loss') {
+        currentFilteredData = dmyFilter ? recordsLoss.filter(r => (r.mulaiLoss || '').startsWith(dmyFilter)) : [...recordsLoss];
       }
       renderArchiveTable();
     }
@@ -909,14 +960,22 @@
         filePrefix = "Rekap_Hujan_24Jam";
         headers = ["No", "Tanggal Observasi", "Waktu Cetak", "Total Hujan 24 Jam (mm)"];
         rows = currentFilteredData.map((r, i) => [i + 1, `"${formatDisplayDate(r.tanggal)}"`, `"${r.waktuCetak || '-'}"`, parseFloat(r.totalHujan24Jam ?? 0).toFixed(1)]);
+      } else if (activeTab === '3h') {
+        filePrefix = "Log_Hujan_3Jam";
+        headers = ["No", "Waktu Pengamatan", "Jam Observasi", "Curah Hujan 3 Jam (mm)"];
+        rows = currentFilteredData.map((r, i) => [i + 1, `"${r.waktu || '-'}"`, `"${r.jamObservasi || '-'}"`, parseFloat(r.curahHujan3Jam ?? 0).toFixed(1)]);
+      } else if (activeTab === 'ekstrem') {
+        filePrefix = "Suhu_Ekstrem_Harian";
+        headers = ["No", "Tanggal Observasi", "Suhu Maksimum (C)", "Suhu Minimum (C)"];
+        rows = currentFilteredData.map((r, i) => [i + 1, `"${formatDisplayDate(r.tanggal)}"`, r.maxSuhu ?? "Sedang Berjalan", r.minSuhu ?? "Sedang Berjalan"]);
       } else if (activeTab === 'hourly') {
-        filePrefix = "Pengamatan_JamJaman";
-        headers = ["No", "Waktu", "Bola Kering (C)", "Bola Basah (C)", "Kelembapan (%)", "QFE (hPa)", "QFF (hPa)", "QNH (hPa)", "Curah Hujan (mm)"];
+        filePrefix = "Log_Suhu_Tekanan_PerJam";
+        headers = ["No", "Waktu", "Kering (C)", "Basah (C)", "Hum (%)", "QFE (hPa)", "QFF (hPa)", "QNH (hPa)", "Hujan (mm)"];
         rows = currentFilteredData.map((r, i) => [i + 1, `"${r.waktu || '-'}"`, r.suhuKering, r.suhuBasah, r.kelembapan, r.qfe, r.qff, r.qnh, r.curahHujan]);
       } else {
-        filePrefix = "Hujan_3Jam";
-        headers = ["No", "Waktu", "Jam Observasi", "Curah Hujan 3 Jam (mm)"];
-        rows = currentFilteredData.map((r, i) => [i + 1, `"${r.waktu || '-'}"`, `"${r.jamObservasi || '-'}"`, parseFloat(r.curahHujan3Jam ?? 0).toFixed(1)]);
+        filePrefix = "Log_Riwayat_Data_Loss";
+        headers = ["No", "Mulai Loss", "Waktu Pulih", "Durasi", "Suhu Terakhir", "Hum Terakhir", "Hujan Terakhir"];
+        rows = currentFilteredData.map((r, i) => [i + 1, `"${r.mulaiLoss || '-'}"`, `"${r.waktuPulih || '-'}"`, `"${r.durasi || '-'}"`, r.suhuTerakhir ?? '-', r.humTerakhir ?? '-', r.hujanTerakhir ?? '-']);
       }
 
       const csvContent = "data:text/csv;charset=utf-8," + [headers.join(","), ...rows.map(e => e.join(","))].join("\n");
