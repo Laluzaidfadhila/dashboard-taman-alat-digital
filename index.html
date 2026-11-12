@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
   <title>BMKG — Surface Synoptic Observations | Stasiun Geofisika Kelas I Deli Serdang</title>
 
-  <!-- Favicon Resmi BMKG dari File Repositori Anda -->
+  <!-- Favicon Resmi BMKG dari Repositori GitHub -->
   <link rel="icon" type="image/png" href="./logo-bmkg.png" />
   <link rel="apple-touch-icon" href="./logo-bmkg.png" />
 
@@ -42,14 +42,12 @@
         linear-gradient(90deg, rgba(30, 41, 59, 0.2) 1px, transparent 1px);
       background-size: 100% 100%, 100% 100%, 32px 32px, 32px 32px;
       color: #f8fafc;
-      /* Proteksi Anti Seleksi Teks & Anti Copy */
       -webkit-user-select: none;
       -moz-user-select: none;
       -ms-user-select: none;
       user-select: none;
     }
 
-    /* Izinkan interaksi normal khusus pada input tanggal */
     input[type="date"] {
       -webkit-user-select: auto;
       -moz-user-select: auto;
@@ -101,21 +99,21 @@
     .no-scrollbar::-webkit-scrollbar { display: none; }
     .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
 
-    ::-webkit-scrollbar { width: 6px; height: 6px; }
+    ::-webkit-scrollbar { width: 5px; height: 5px; }
     ::-webkit-scrollbar-track { background: #070d1d; }
     ::-webkit-scrollbar-thumb { background: #1e293b; border-radius: 999px; }
     ::-webkit-scrollbar-thumb:hover { background: #0284c7; }
   </style>
 </head>
-<body class="min-h-screen antialiased pb-24 md:pb-12" oncontextmenu="return false;" ondragstart="return false;">
+<body class="min-h-screen antialiased pb-10" oncontextmenu="return false;" ondragstart="return false;">
 
   <!-- HEADER STASIUN -->
-  <header id="topHeader" class="pt-6 sm:pt-7 pb-4 px-4 text-center">
+  <header id="topHeader" class="pt-5 sm:pt-7 pb-3 sm:pb-4 px-3 sm:px-4 text-center">
     <div class="max-w-5xl mx-auto flex flex-col items-center">
 
       <!-- Logo Resmi BMKG & Bendera Merah Putih -->
-      <div class="flex items-center justify-center gap-3.5 sm:gap-4 mb-3">
-        <div class="w-14 h-14 sm:w-[68px] sm:h-[68px] rounded-2xl bg-white/95 border border-sky-400/40 p-1.5 shadow-xl shadow-sky-500/10 flex items-center justify-center">
+      <div class="flex items-center justify-center gap-3 sm:gap-4 mb-2.5 sm:mb-3">
+        <div class="w-12 h-12 sm:w-[68px] sm:h-[68px] rounded-xl sm:rounded-2xl bg-white/95 border border-sky-400/40 p-1 sm:p-1.5 shadow-xl shadow-sky-500/10 flex items-center justify-center">
           <img
             src="./logo-bmkg.png"
             onerror="this.onerror=null; this.src='https://raw.githubusercontent.com/Laluzaidfadhila/dashboard-taman-alat-digital/main/logo-bmkg.png';"
@@ -125,55 +123,55 @@
         </div>
 
         <!-- Bendera Merah Putih -->
-        <div class="w-16 h-11 sm:w-[88px] sm:h-[58px] rounded-xl overflow-hidden border border-slate-600/80 shadow-xl flex flex-col">
+        <div class="w-14 h-9 sm:w-[88px] sm:h-[58px] rounded-lg sm:rounded-xl overflow-hidden border border-slate-600/80 shadow-xl flex flex-col">
           <div class="w-full h-1/2 bg-[#dc2626]"></div>
           <div class="w-full h-1/2 bg-[#ffffff]"></div>
         </div>
       </div>
 
-      <span class="text-[11px] sm:text-xs font-extrabold tracking-[0.38em] text-sky-400 uppercase">BMKG</span>
-      <h1 class="text-lg sm:text-2xl md:text-3xl font-extrabold tracking-wide text-amber-400 uppercase mt-1 leading-tight">
+      <span class="text-[10px] sm:text-xs font-extrabold tracking-[0.38em] text-sky-400 uppercase">BMKG</span>
+      <h1 class="text-base sm:text-2xl md:text-3xl font-extrabold tracking-wide text-amber-400 uppercase mt-0.5 sm:mt-1 leading-tight">
         Surface Synoptic Observations
       </h1>
-      <p class="text-[11px] sm:text-sm font-bold tracking-[0.18em] text-slate-200 uppercase mt-1">
+      <p class="text-[10px] sm:text-sm font-bold tracking-[0.16em] sm:tracking-[0.2em] text-slate-200 uppercase mt-0.5 sm:mt-1">
         Stasiun Geofisika Kelas I Deli Serdang
       </p>
 
-      <!-- Kotak Jam WIB & Kotak Jam UTC Terpisah -->
-      <div class="mt-4 sm:mt-5 grid grid-cols-2 gap-2.5 sm:gap-3.5 w-full max-w-lg">
+      <!-- Kotak Jam WIB & Kotak Jam UTC Terpisah (Berdampingan di HP maupun Desktop) -->
+      <div class="mt-3.5 sm:mt-5 grid grid-cols-2 gap-2 sm:gap-3.5 w-full max-w-lg">
         <!-- Kotak Waktu WIB -->
-        <div class="px-3 sm:px-5 py-2.5 sm:py-3 rounded-2xl bg-slate-900/95 border border-sky-500/35 shadow-lg shadow-sky-950/40 flex flex-col items-center justify-center">
-          <span class="text-[8px] sm:text-[9px] font-bold uppercase tracking-[0.2em] text-sky-400">Waktu Lokal (WIB)</span>
-          <div id="liveClockWIB" class="font-mono text-base sm:text-2xl font-extrabold text-white tracking-wider mt-0.5">
+        <div class="px-2.5 sm:px-5 py-2 sm:py-3 rounded-xl sm:rounded-2xl bg-slate-900/95 border border-sky-500/35 shadow-lg shadow-sky-950/40 flex flex-col items-center justify-center">
+          <span class="text-[7px] sm:text-[9px] font-bold uppercase tracking-[0.18em] sm:tracking-[0.22em] text-sky-400">Waktu Lokal (WIB)</span>
+          <div id="liveClockWIB" class="font-mono text-sm sm:text-2xl font-extrabold text-white tracking-wider mt-0.5">
             --:--:-- WIB
           </div>
-          <div id="liveDateWIB" class="text-[9px] sm:text-[10px] font-mono font-semibold text-amber-400 tracking-wider uppercase mt-0.5 truncate max-w-full">
+          <div id="liveDateWIB" class="text-[8px] sm:text-[10px] font-mono font-semibold text-amber-400 tracking-wider uppercase mt-0.5 truncate max-w-full">
             MEMUAT TANGGAL...
           </div>
         </div>
 
         <!-- Kotak Waktu UTC -->
-        <div class="px-3 sm:px-5 py-2.5 sm:py-3 rounded-2xl bg-slate-900/95 border border-emerald-500/35 shadow-lg shadow-emerald-950/40 flex flex-col items-center justify-center">
-          <span class="text-[8px] sm:text-[9px] font-bold uppercase tracking-[0.2em] text-emerald-400">Standar WMO (UTC)</span>
-          <div id="liveClockUTC" class="font-mono text-base sm:text-2xl font-extrabold text-emerald-300 tracking-wider mt-0.5">
+        <div class="px-2.5 sm:px-5 py-2 sm:py-3 rounded-xl sm:rounded-2xl bg-slate-900/95 border border-emerald-500/35 shadow-lg shadow-emerald-950/40 flex flex-col items-center justify-center">
+          <span class="text-[7px] sm:text-[9px] font-bold uppercase tracking-[0.18em] sm:tracking-[0.22em] text-emerald-400">Standar WMO (UTC)</span>
+          <div id="liveClockUTC" class="font-mono text-sm sm:text-2xl font-extrabold text-emerald-300 tracking-wider mt-0.5">
             --:--:-- UTC
           </div>
-          <div id="liveDateUTC" class="text-[9px] sm:text-[10px] font-mono font-semibold text-slate-400 tracking-wider uppercase mt-0.5 truncate max-w-full">
+          <div id="liveDateUTC" class="text-[8px] sm:text-[10px] font-mono font-semibold text-slate-400 tracking-wider uppercase mt-0.5 truncate max-w-full">
             MEMUAT UTC...
           </div>
         </div>
       </div>
 
       <!-- Status Alarm Otomatis WMO -->
-      <div class="mt-3 flex flex-col sm:flex-row items-center justify-center gap-2 w-full max-w-lg sm:max-w-none">
-        <div id="wmoAlarmBanner" class="px-3.5 py-1.5 rounded-full bg-slate-900/90 border border-amber-500/30 text-[10px] sm:text-[11px] font-mono text-slate-300 flex items-center justify-center gap-2">
-          <span class="relative flex h-2 w-2 flex-shrink-0">
+      <div class="mt-2.5 sm:mt-3.5 flex flex-wrap items-center justify-center gap-1.5 sm:gap-2 w-full">
+        <div id="wmoAlarmBanner" class="px-3 sm:px-4 py-1 sm:py-1.5 rounded-full bg-slate-900/90 border border-amber-500/30 text-[9px] sm:text-[11px] font-mono text-slate-300 flex items-center justify-center gap-1.5 sm:gap-2">
+          <span class="relative flex h-1.5 w-1.5 sm:h-2 sm:w-2 flex-shrink-0">
             <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-amber-400 opacity-75"></span>
-            <span class="relative inline-flex rounded-full h-2 w-2 bg-amber-500"></span>
+            <span class="relative inline-flex rounded-full h-1.5 w-1.5 sm:h-2 sm:w-2 bg-amber-500"></span>
           </span>
           <span>Alarm WMO Aktif (00, 03, 06, 09, 12 UTC) • Berikutnya: <strong id="nextWmoTarget" class="text-amber-300">--:-- UTC</strong></span>
         </div>
-        <button onclick="testWmoAlarmSound()" class="px-3.5 py-1.5 rounded-full bg-slate-800 hover:bg-slate-700 active:bg-slate-600 text-slate-200 border border-slate-700 text-[11px] font-semibold tracking-wide transition cursor-pointer">
+        <button onclick="testWmoAlarmSound()" class="px-3 py-1 sm:py-1.5 rounded-full bg-slate-800 hover:bg-slate-700 active:bg-slate-600 text-slate-200 border border-slate-700 text-[9px] sm:text-[11px] font-semibold tracking-wide transition cursor-pointer">
           Uji Audio Alarm
         </button>
       </div>
@@ -181,325 +179,320 @@
   </header>
 
   <!-- KONTEN UTAMA -->
-  <main class="max-w-6xl mx-auto px-3.5 sm:px-6 space-y-7 sm:space-y-8 mt-2">
+  <main class="max-w-6xl mx-auto px-2.5 sm:px-6 space-y-5 sm:space-y-8 mt-1.5 sm:mt-2">
 
-    <!-- 1. TEMPERATUR & KELEMBAPAN -->
+    <!-- 1. TEMPERATUR & KELEMBAPAN (3 KOLOM PRESISI DI HP & DESKTOP) -->
     <section id="secTemp">
-      <div class="flex justify-center mb-3.5 sm:mb-4">
-        <div class="section-pill px-5 sm:px-6 py-1.5 rounded-full">
-          <h2 class="text-[10px] sm:text-[11px] font-bold uppercase tracking-[0.24em] text-sky-300">
+      <div class="flex justify-center mb-2.5 sm:mb-4">
+        <div class="section-pill px-4 sm:px-6 py-1 sm:py-1.5 rounded-full">
+          <h2 class="text-[9px] sm:text-[11px] font-bold uppercase tracking-[0.22em] sm:tracking-[0.24em] text-sky-300">
             Temperatur &amp; Kelembapan
           </h2>
         </div>
       </div>
 
-      <div class="grid grid-cols-1 sm:grid-cols-3 gap-3.5 sm:gap-5">
+      <div class="grid grid-cols-3 gap-2 sm:gap-5">
         <!-- Bola Kering -->
-        <div class="glass-card rounded-2xl p-5 sm:p-6 min-h-[195px] sm:min-h-[210px] flex flex-col items-center justify-center">
-          <div class="relative w-28 h-28 sm:w-32 sm:h-32 flex items-center justify-center">
+        <div class="glass-card rounded-xl sm:rounded-2xl p-2.5 sm:p-6 min-h-[135px] sm:min-h-[210px] flex flex-col items-center justify-center">
+          <div class="relative w-[72px] h-[72px] sm:w-32 sm:h-32 flex items-center justify-center">
             <svg class="w-full h-full" viewBox="0 0 120 120">
-              <circle cx="60" cy="60" r="50" stroke="rgba(255,255,255,0.07)" stroke-width="9" fill="none" />
-              <circle id="ringDryTemp" class="gauge-progress glow-rose" cx="60" cy="60" r="50" stroke="#f43f5e" stroke-width="9" stroke-linecap="round" stroke-dasharray="314" stroke-dashoffset="314" fill="none" />
+              <circle cx="60" cy="60" r="50" stroke="rgba(255,255,255,0.07)" stroke-width="10" fill="none" />
+              <circle id="ringDryTemp" class="gauge-progress glow-rose" cx="60" cy="60" r="50" stroke="#f43f5e" stroke-width="10" stroke-linecap="round" stroke-dasharray="314" stroke-dashoffset="314" fill="none" />
             </svg>
             <div class="absolute inset-0 flex flex-col items-center justify-center">
-              <span id="valDryTemp" class="font-mono text-2xl sm:text-3xl font-extrabold text-white">--.-</span>
-              <span class="text-[11px] font-mono text-slate-400 mt-0.5">°C</span>
+              <span id="valDryTemp" class="font-mono text-sm sm:text-3xl font-extrabold text-white">--.-</span>
+              <span class="text-[8px] sm:text-[11px] font-mono text-slate-400">°C</span>
             </div>
           </div>
-          <span class="mt-3.5 sm:mt-4 text-[11px] font-bold uppercase tracking-[0.2em] text-slate-300">Bola Kering</span>
+          <span class="mt-2 sm:mt-4 text-[8px] sm:text-[11px] font-bold uppercase tracking-[0.12em] sm:tracking-[0.2em] text-slate-300 text-center leading-tight">Bola Kering</span>
         </div>
 
         <!-- Bola Basah -->
-        <div class="glass-card rounded-2xl p-5 sm:p-6 min-h-[195px] sm:min-h-[210px] flex flex-col items-center justify-center">
-          <div class="relative w-28 h-28 sm:w-32 sm:h-32 flex items-center justify-center">
+        <div class="glass-card rounded-xl sm:rounded-2xl p-2.5 sm:p-6 min-h-[135px] sm:min-h-[210px] flex flex-col items-center justify-center">
+          <div class="relative w-[72px] h-[72px] sm:w-32 sm:h-32 flex items-center justify-center">
             <svg class="w-full h-full" viewBox="0 0 120 120">
-              <circle cx="60" cy="60" r="50" stroke="rgba(255,255,255,0.07)" stroke-width="9" fill="none" />
-              <circle id="ringWetTemp" class="gauge-progress glow-emerald" cx="60" cy="60" r="50" stroke="#10b981" stroke-width="9" stroke-linecap="round" stroke-dasharray="314" stroke-dashoffset="314" fill="none" />
+              <circle cx="60" cy="60" r="50" stroke="rgba(255,255,255,0.07)" stroke-width="10" fill="none" />
+              <circle id="ringWetTemp" class="gauge-progress glow-emerald" cx="60" cy="60" r="50" stroke="#10b981" stroke-width="10" stroke-linecap="round" stroke-dasharray="314" stroke-dashoffset="314" fill="none" />
             </svg>
             <div class="absolute inset-0 flex flex-col items-center justify-center">
-              <span id="valWetTemp" class="font-mono text-2xl sm:text-3xl font-extrabold text-white">--.-</span>
-              <span class="text-[11px] font-mono text-slate-400 mt-0.5">°C</span>
+              <span id="valWetTemp" class="font-mono text-sm sm:text-3xl font-extrabold text-white">--.-</span>
+              <span class="text-[8px] sm:text-[11px] font-mono text-slate-400">°C</span>
             </div>
           </div>
-          <span class="mt-3.5 sm:mt-4 text-[11px] font-bold uppercase tracking-[0.2em] text-slate-300">Bola Basah</span>
+          <span class="mt-2 sm:mt-4 text-[8px] sm:text-[11px] font-bold uppercase tracking-[0.12em] sm:tracking-[0.2em] text-slate-300 text-center leading-tight">Bola Basah</span>
         </div>
 
         <!-- Kelembapan -->
-        <div class="glass-card rounded-2xl p-5 sm:p-6 min-h-[195px] sm:min-h-[210px] flex flex-col items-center justify-center">
-          <div class="relative w-28 h-28 sm:w-32 sm:h-32 flex items-center justify-center">
+        <div class="glass-card rounded-xl sm:rounded-2xl p-2.5 sm:p-6 min-h-[135px] sm:min-h-[210px] flex flex-col items-center justify-center">
+          <div class="relative w-[72px] h-[72px] sm:w-32 sm:h-32 flex items-center justify-center">
             <svg class="w-full h-full" viewBox="0 0 120 120">
-              <circle cx="60" cy="60" r="50" stroke="rgba(255,255,255,0.07)" stroke-width="9" fill="none" />
-              <circle id="ringHumidity" class="gauge-progress glow-cyan" cx="60" cy="60" r="50" stroke="#38bdf8" stroke-width="9" stroke-linecap="round" stroke-dasharray="314" stroke-dashoffset="314" fill="none" />
+              <circle cx="60" cy="60" r="50" stroke="rgba(255,255,255,0.07)" stroke-width="10" fill="none" />
+              <circle id="ringHumidity" class="gauge-progress glow-cyan" cx="60" cy="60" r="50" stroke="#38bdf8" stroke-width="10" stroke-linecap="round" stroke-dasharray="314" stroke-dashoffset="314" fill="none" />
             </svg>
             <div class="absolute inset-0 flex flex-col items-center justify-center">
-              <span id="valHumidity" class="font-mono text-2xl sm:text-3xl font-extrabold text-white">--.-</span>
-              <span class="text-[10px] font-mono text-slate-400 mt-0.5">% RELATIF</span>
+              <span id="valHumidity" class="font-mono text-sm sm:text-3xl font-extrabold text-white">--.-</span>
+              <span class="text-[7px] sm:text-[10px] font-mono text-slate-400">% REL</span>
             </div>
           </div>
-          <span class="mt-3.5 sm:mt-4 text-[11px] font-bold uppercase tracking-[0.2em] text-slate-300">Kelembapan</span>
+          <span class="mt-2 sm:mt-4 text-[8px] sm:text-[11px] font-bold uppercase tracking-[0.12em] sm:tracking-[0.2em] text-slate-300 text-center leading-tight">Kelembapan</span>
         </div>
       </div>
     </section>
 
-    <!-- 2. PRESIPITASI / HUJAN -->
+    <!-- 2. PRESIPITASI / HUJAN (3 KOLOM PRESISI DI HP & DESKTOP) -->
     <section id="secRain">
-      <div class="flex justify-center mb-3.5 sm:mb-4">
-        <div class="section-pill px-5 sm:px-6 py-1.5 rounded-full">
-          <h2 class="text-[10px] sm:text-[11px] font-bold uppercase tracking-[0.24em] text-sky-300">
+      <div class="flex justify-center mb-2.5 sm:mb-4">
+        <div class="section-pill px-4 sm:px-6 py-1 sm:py-1.5 rounded-full">
+          <h2 class="text-[9px] sm:text-[11px] font-bold uppercase tracking-[0.22em] sm:tracking-[0.24em] text-sky-300">
             Presipitasi / Hujan
           </h2>
         </div>
       </div>
 
-      <div class="grid grid-cols-1 sm:grid-cols-3 gap-3.5 sm:gap-5">
+      <div class="grid grid-cols-3 gap-2 sm:gap-5">
         <!-- Curah Hujan (Real-Time) -->
-        <div class="glass-card rounded-2xl p-5 sm:p-6 min-h-[195px] sm:min-h-[210px] flex flex-col items-center justify-center">
-          <div class="relative w-28 h-28 sm:w-32 sm:h-32 flex items-center justify-center">
+        <div class="glass-card rounded-xl sm:rounded-2xl p-2.5 sm:p-6 min-h-[135px] sm:min-h-[210px] flex flex-col items-center justify-center">
+          <div class="relative w-[72px] h-[72px] sm:w-32 sm:h-32 flex items-center justify-center">
             <svg class="w-full h-full" viewBox="0 0 120 120">
-              <circle cx="60" cy="60" r="50" stroke="rgba(255,255,255,0.07)" stroke-width="9" fill="none" />
-              <circle id="ringRainRT" class="gauge-progress glow-indigo" cx="60" cy="60" r="50" stroke="#818cf8" stroke-width="9" stroke-linecap="round" stroke-dasharray="314" stroke-dashoffset="314" fill="none" />
+              <circle cx="60" cy="60" r="50" stroke="rgba(255,255,255,0.07)" stroke-width="10" fill="none" />
+              <circle id="ringRainRT" class="gauge-progress glow-indigo" cx="60" cy="60" r="50" stroke="#818cf8" stroke-width="10" stroke-linecap="round" stroke-dasharray="314" stroke-dashoffset="314" fill="none" />
             </svg>
             <div class="absolute inset-0 flex flex-col items-center justify-center">
-              <span id="valRainRealtime" class="font-mono text-2xl sm:text-3xl font-extrabold text-white">0.0</span>
-              <span class="text-[11px] font-mono text-slate-400 mt-0.5">MM</span>
+              <span id="valRainRealtime" class="font-mono text-sm sm:text-3xl font-extrabold text-white">0.0</span>
+              <span class="text-[8px] sm:text-[11px] font-mono text-slate-400">MM</span>
             </div>
           </div>
-          <span class="mt-3.5 sm:mt-4 text-[11px] font-bold uppercase tracking-[0.2em] text-slate-300">Curah Hujan (Real-Time)</span>
+          <span class="mt-2 sm:mt-4 text-[8px] sm:text-[11px] font-bold uppercase tracking-[0.1em] sm:tracking-[0.2em] text-slate-300 text-center leading-tight">Hujan Real-Time</span>
         </div>
 
         <!-- Hujan 3 Jam -->
-        <div class="glass-card rounded-2xl p-5 sm:p-6 min-h-[195px] sm:min-h-[210px] flex flex-col items-center justify-center">
-          <div class="relative w-28 h-28 sm:w-32 sm:h-32 flex items-center justify-center">
+        <div class="glass-card rounded-xl sm:rounded-2xl p-2.5 sm:p-6 min-h-[135px] sm:min-h-[210px] flex flex-col items-center justify-center">
+          <div class="relative w-[72px] h-[72px] sm:w-32 sm:h-32 flex items-center justify-center">
             <svg class="w-full h-full" viewBox="0 0 120 120">
-              <circle cx="60" cy="60" r="50" stroke="rgba(255,255,255,0.07)" stroke-width="9" fill="none" />
-              <circle id="ringRain3h" class="gauge-progress glow-cyan" cx="60" cy="60" r="50" stroke="#22d3ee" stroke-width="9" stroke-linecap="round" stroke-dasharray="314" stroke-dashoffset="314" fill="none" />
+              <circle cx="60" cy="60" r="50" stroke="rgba(255,255,255,0.07)" stroke-width="10" fill="none" />
+              <circle id="ringRain3h" class="gauge-progress glow-cyan" cx="60" cy="60" r="50" stroke="#22d3ee" stroke-width="10" stroke-linecap="round" stroke-dasharray="314" stroke-dashoffset="314" fill="none" />
             </svg>
             <div class="absolute inset-0 flex flex-col items-center justify-center">
-              <span id="valRain3h" class="font-mono text-2xl sm:text-3xl font-extrabold text-white">0.0</span>
-              <span class="text-[11px] font-mono text-slate-400 mt-0.5">MM</span>
+              <span id="valRain3h" class="font-mono text-sm sm:text-3xl font-extrabold text-white">0.0</span>
+              <span class="text-[8px] sm:text-[11px] font-mono text-slate-400">MM</span>
             </div>
           </div>
-          <span class="mt-3.5 sm:mt-4 text-[11px] font-bold uppercase tracking-[0.2em] text-slate-300">Hujan 3 Jam</span>
+          <span class="mt-2 sm:mt-4 text-[8px] sm:text-[11px] font-bold uppercase tracking-[0.12em] sm:tracking-[0.2em] text-slate-300 text-center leading-tight">Hujan 3 Jam</span>
         </div>
 
         <!-- Hujan 24 Jam -->
-        <div class="glass-card rounded-2xl p-5 sm:p-6 min-h-[195px] sm:min-h-[210px] flex flex-col items-center justify-center">
-          <div class="relative w-28 h-28 sm:w-32 sm:h-32 flex items-center justify-center">
+        <div class="glass-card rounded-xl sm:rounded-2xl p-2.5 sm:p-6 min-h-[135px] sm:min-h-[210px] flex flex-col items-center justify-center">
+          <div class="relative w-[72px] h-[72px] sm:w-32 sm:h-32 flex items-center justify-center">
             <svg class="w-full h-full" viewBox="0 0 120 120">
-              <circle cx="60" cy="60" r="50" stroke="rgba(255,255,255,0.07)" stroke-width="9" fill="none" />
-              <circle id="ringRain24h" class="gauge-progress glow-fuchsia" cx="60" cy="60" r="50" stroke="#e879f9" stroke-width="9" stroke-linecap="round" stroke-dasharray="314" stroke-dashoffset="314" fill="none" />
+              <circle cx="60" cy="60" r="50" stroke="rgba(255,255,255,0.07)" stroke-width="10" fill="none" />
+              <circle id="ringRain24h" class="gauge-progress glow-fuchsia" cx="60" cy="60" r="50" stroke="#e879f9" stroke-width="10" stroke-linecap="round" stroke-dasharray="314" stroke-dashoffset="314" fill="none" />
             </svg>
             <div class="absolute inset-0 flex flex-col items-center justify-center">
-              <span id="valRain24h" class="font-mono text-2xl sm:text-3xl font-extrabold text-white">0.0</span>
-              <span class="text-[11px] font-mono text-slate-400 mt-0.5">MM</span>
+              <span id="valRain24h" class="font-mono text-sm sm:text-3xl font-extrabold text-white">0.0</span>
+              <span class="text-[8px] sm:text-[11px] font-mono text-slate-400">MM</span>
             </div>
           </div>
-          <span class="mt-3.5 sm:mt-4 text-[11px] font-bold uppercase tracking-[0.2em] text-slate-300">Hujan 24 Jam</span>
+          <span class="mt-2 sm:mt-4 text-[8px] sm:text-[11px] font-bold uppercase tracking-[0.12em] sm:tracking-[0.2em] text-slate-300 text-center leading-tight">Hujan 24 Jam</span>
         </div>
       </div>
     </section>
 
-    <!-- 3. TEKANAN UDARA BAROMETRIK -->
+    <!-- 3. TEKANAN UDARA BAROMETRIK (3 KOLOM PRESISI DI HP & DESKTOP) -->
     <section id="secPressure">
-      <div class="flex justify-center mb-3.5 sm:mb-4">
-        <div class="section-pill px-5 sm:px-6 py-1.5 rounded-full">
-          <h2 class="text-[10px] sm:text-[11px] font-bold uppercase tracking-[0.24em] text-sky-300">
+      <div class="flex justify-center mb-2.5 sm:mb-4">
+        <div class="section-pill px-4 sm:px-6 py-1 sm:py-1.5 rounded-full">
+          <h2 class="text-[9px] sm:text-[11px] font-bold uppercase tracking-[0.22em] sm:tracking-[0.24em] text-sky-300">
             Tekanan Udara Barometrik
           </h2>
         </div>
       </div>
 
-      <div class="grid grid-cols-1 sm:grid-cols-3 gap-3.5 sm:gap-5">
+      <div class="grid grid-cols-3 gap-2 sm:gap-5">
         <!-- QFE (Stasiun) -->
-        <div class="glass-card rounded-2xl p-5 sm:p-6 min-h-[195px] sm:min-h-[210px] flex flex-col items-center justify-center">
-          <div class="relative w-28 h-28 sm:w-32 sm:h-32 flex items-center justify-center">
+        <div class="glass-card rounded-xl sm:rounded-2xl p-2.5 sm:p-6 min-h-[135px] sm:min-h-[210px] flex flex-col items-center justify-center">
+          <div class="relative w-[72px] h-[72px] sm:w-32 sm:h-32 flex items-center justify-center">
             <svg class="w-full h-full" viewBox="0 0 120 120">
-              <circle cx="60" cy="60" r="50" stroke="rgba(255,255,255,0.07)" stroke-width="9" fill="none" />
-              <circle id="ringQfe" class="gauge-progress glow-cyan" cx="60" cy="60" r="50" stroke="#38bdf8" stroke-width="9" stroke-linecap="round" stroke-dasharray="314" stroke-dashoffset="314" fill="none" />
+              <circle cx="60" cy="60" r="50" stroke="rgba(255,255,255,0.07)" stroke-width="10" fill="none" />
+              <circle id="ringQfe" class="gauge-progress glow-cyan" cx="60" cy="60" r="50" stroke="#38bdf8" stroke-width="10" stroke-linecap="round" stroke-dasharray="314" stroke-dashoffset="314" fill="none" />
             </svg>
             <div class="absolute inset-0 flex flex-col items-center justify-center">
-              <span id="valQfe" class="font-mono text-xl sm:text-2xl font-extrabold text-white">----.-</span>
-              <span class="text-[10px] font-mono text-slate-400 mt-0.5">HPA</span>
+              <span id="valQfe" class="font-mono text-xs sm:text-2xl font-extrabold text-white">----.-</span>
+              <span class="text-[7px] sm:text-[10px] font-mono text-slate-400">HPA</span>
             </div>
           </div>
-          <span class="mt-3.5 sm:mt-4 text-[11px] font-bold uppercase tracking-[0.2em] text-slate-300">QFE (Stasiun)</span>
+          <span class="mt-2 sm:mt-4 text-[8px] sm:text-[11px] font-bold uppercase tracking-[0.12em] sm:tracking-[0.2em] text-slate-300 text-center leading-tight">QFE (Stasiun)</span>
         </div>
 
         <!-- QFF (Sea Level) -->
-        <div class="glass-card rounded-2xl p-5 sm:p-6 min-h-[195px] sm:min-h-[210px] flex flex-col items-center justify-center">
-          <div class="relative w-28 h-28 sm:w-32 sm:h-32 flex items-center justify-center">
+        <div class="glass-card rounded-xl sm:rounded-2xl p-2.5 sm:p-6 min-h-[135px] sm:min-h-[210px] flex flex-col items-center justify-center">
+          <div class="relative w-[72px] h-[72px] sm:w-32 sm:h-32 flex items-center justify-center">
             <svg class="w-full h-full" viewBox="0 0 120 120">
-              <circle cx="60" cy="60" r="50" stroke="rgba(255,255,255,0.07)" stroke-width="9" fill="none" />
-              <circle id="ringQff" class="gauge-progress glow-emerald" cx="60" cy="60" r="50" stroke="#2dd4bf" stroke-width="9" stroke-linecap="round" stroke-dasharray="314" stroke-dashoffset="314" fill="none" />
+              <circle cx="60" cy="60" r="50" stroke="rgba(255,255,255,0.07)" stroke-width="10" fill="none" />
+              <circle id="ringQff" class="gauge-progress glow-emerald" cx="60" cy="60" r="50" stroke="#2dd4bf" stroke-width="10" stroke-linecap="round" stroke-dasharray="314" stroke-dashoffset="314" fill="none" />
             </svg>
             <div class="absolute inset-0 flex flex-col items-center justify-center">
-              <span id="valQff" class="font-mono text-xl sm:text-2xl font-extrabold text-white">----.-</span>
-              <span class="text-[10px] font-mono text-slate-400 mt-0.5">HPA</span>
+              <span id="valQff" class="font-mono text-xs sm:text-2xl font-extrabold text-white">----.-</span>
+              <span class="text-[7px] sm:text-[10px] font-mono text-slate-400">HPA</span>
             </div>
           </div>
-          <span class="mt-3.5 sm:mt-4 text-[11px] font-bold uppercase tracking-[0.2em] text-slate-300">QFF (Sea Level)</span>
+          <span class="mt-2 sm:mt-4 text-[8px] sm:text-[11px] font-bold uppercase tracking-[0.12em] sm:tracking-[0.2em] text-slate-300 text-center leading-tight">QFF (Sea Level)</span>
         </div>
 
         <!-- QNH (Aviation) -->
-        <div class="glass-card rounded-2xl p-5 sm:p-6 min-h-[195px] sm:min-h-[210px] flex flex-col items-center justify-center">
-          <div class="relative w-28 h-28 sm:w-32 sm:h-32 flex items-center justify-center">
+        <div class="glass-card rounded-xl sm:rounded-2xl p-2.5 sm:p-6 min-h-[135px] sm:min-h-[210px] flex flex-col items-center justify-center">
+          <div class="relative w-[72px] h-[72px] sm:w-32 sm:h-32 flex items-center justify-center">
             <svg class="w-full h-full" viewBox="0 0 120 120">
-              <circle cx="60" cy="60" r="50" stroke="rgba(255,255,255,0.07)" stroke-width="9" fill="none" />
-              <circle id="ringQnh" class="gauge-progress glow-indigo" cx="60" cy="60" r="50" stroke="#818cf8" stroke-width="9" stroke-linecap="round" stroke-dasharray="314" stroke-dashoffset="314" fill="none" />
+              <circle cx="60" cy="60" r="50" stroke="rgba(255,255,255,0.07)" stroke-width="10" fill="none" />
+              <circle id="ringQnh" class="gauge-progress glow-indigo" cx="60" cy="60" r="50" stroke="#818cf8" stroke-width="10" stroke-linecap="round" stroke-dasharray="314" stroke-dashoffset="314" fill="none" />
             </svg>
             <div class="absolute inset-0 flex flex-col items-center justify-center">
-              <span id="valQnh" class="font-mono text-xl sm:text-2xl font-extrabold text-white">----.-</span>
-              <span class="text-[10px] font-mono text-slate-400 mt-0.5">HPA</span>
+              <span id="valQnh" class="font-mono text-xs sm:text-2xl font-extrabold text-white">----.-</span>
+              <span class="text-[7px] sm:text-[10px] font-mono text-slate-400">HPA</span>
             </div>
           </div>
-          <span class="mt-3.5 sm:mt-4 text-[11px] font-bold uppercase tracking-[0.2em] text-slate-300">QNH (Aviation)</span>
+          <span class="mt-2 sm:mt-4 text-[8px] sm:text-[11px] font-bold uppercase tracking-[0.12em] sm:tracking-[0.2em] text-slate-300 text-center leading-tight">QNH (Aviation)</span>
         </div>
       </div>
     </section>
 
-    <!-- 4. SUHU EKSTREM HARIAN (UKURAN SHAPE SAMA PERSIS DENGAN PARAMETER LAIN) -->
+    <!-- 4. SUHU EKSTREM HARIAN (2 KARTU BERDAMPINGAN PRESISI SEPERTI DESKTOP) -->
     <section id="secExtreme">
-      <div class="flex justify-center mb-3.5 sm:mb-4">
-        <div class="section-pill px-5 sm:px-6 py-1.5 rounded-full">
-          <h2 class="text-[10px] sm:text-[11px] font-bold uppercase tracking-[0.24em] text-sky-300">
+      <div class="flex justify-center mb-2.5 sm:mb-4">
+        <div class="section-pill px-4 sm:px-6 py-1 sm:py-1.5 rounded-full">
+          <h2 class="text-[9px] sm:text-[11px] font-bold uppercase tracking-[0.22em] sm:tracking-[0.24em] text-sky-300">
             Suhu Ekstrem Harian
           </h2>
         </div>
       </div>
 
-      <div class="flex flex-col sm:flex-row justify-center gap-3.5 sm:gap-5">
+      <div class="flex justify-center gap-2 sm:gap-5">
         <!-- Suhu Maksimum (07-19 WIB) -->
-        <div class="glass-card rounded-2xl p-5 sm:p-6 min-h-[195px] sm:min-h-[210px] w-full sm:w-[calc((100%-2.5rem)/3)] flex flex-col items-center justify-center">
-          <div class="relative w-28 h-28 sm:w-32 sm:h-32 flex items-center justify-center">
+        <div class="glass-card rounded-xl sm:rounded-2xl p-2.5 sm:p-6 min-h-[135px] sm:min-h-[210px] w-[calc((100%-0.5rem)/3)] sm:w-[calc((100%-2.5rem)/3)] flex flex-col items-center justify-center">
+          <div class="relative w-[72px] h-[72px] sm:w-32 sm:h-32 flex items-center justify-center">
             <svg class="w-full h-full" viewBox="0 0 120 120">
-              <circle cx="60" cy="60" r="50" stroke="rgba(255,255,255,0.07)" stroke-width="9" fill="none" />
-              <circle id="ringMaxTemp" class="gauge-progress glow-orange" cx="60" cy="60" r="50" stroke="#f97316" stroke-width="9" stroke-linecap="round" stroke-dasharray="314" stroke-dashoffset="314" fill="none" />
+              <circle cx="60" cy="60" r="50" stroke="rgba(255,255,255,0.07)" stroke-width="10" fill="none" />
+              <circle id="ringMaxTemp" class="gauge-progress glow-orange" cx="60" cy="60" r="50" stroke="#f97316" stroke-width="10" stroke-linecap="round" stroke-dasharray="314" stroke-dashoffset="314" fill="none" />
             </svg>
             <div class="absolute inset-0 flex flex-col items-center justify-center">
-              <span id="valMaxTemp" class="font-mono text-2xl sm:text-3xl font-extrabold text-white">--.-</span>
-              <span class="text-[11px] font-mono text-slate-400 mt-0.5">°C</span>
+              <span id="valMaxTemp" class="font-mono text-sm sm:text-3xl font-extrabold text-white">--.-</span>
+              <span class="text-[8px] sm:text-[11px] font-mono text-slate-400">°C</span>
             </div>
           </div>
-          <span class="mt-3.5 sm:mt-4 text-[11px] font-bold uppercase tracking-[0.2em] text-slate-300">
-            Suhu Maksimum (07–19 WIB)
+          <span class="mt-2 sm:mt-4 text-[7.5px] sm:text-[11px] font-bold uppercase tracking-[0.08em] sm:tracking-[0.2em] text-slate-300 text-center leading-tight">
+            Suhu Maks (07–19)
           </span>
         </div>
 
         <!-- Suhu Minimum (19-07 WIB) -->
-        <div class="glass-card rounded-2xl p-5 sm:p-6 min-h-[195px] sm:min-h-[210px] w-full sm:w-[calc((100%-2.5rem)/3)] flex flex-col items-center justify-center">
-          <div class="relative w-28 h-28 sm:w-32 sm:h-32 flex items-center justify-center">
+        <div class="glass-card rounded-xl sm:rounded-2xl p-2.5 sm:p-6 min-h-[135px] sm:min-h-[210px] w-[calc((100%-0.5rem)/3)] sm:w-[calc((100%-2.5rem)/3)] flex flex-col items-center justify-center">
+          <div class="relative w-[72px] h-[72px] sm:w-32 sm:h-32 flex items-center justify-center">
             <svg class="w-full h-full" viewBox="0 0 120 120">
-              <circle cx="60" cy="60" r="50" stroke="rgba(255,255,255,0.07)" stroke-width="9" fill="none" />
-              <circle id="ringMinTemp" class="gauge-progress glow-cyan" cx="60" cy="60" r="50" stroke="#22d3ee" stroke-width="9" stroke-linecap="round" stroke-dasharray="314" stroke-dashoffset="314" fill="none" />
+              <circle cx="60" cy="60" r="50" stroke="rgba(255,255,255,0.07)" stroke-width="10" fill="none" />
+              <circle id="ringMinTemp" class="gauge-progress glow-cyan" cx="60" cy="60" r="50" stroke="#22d3ee" stroke-width="10" stroke-linecap="round" stroke-dasharray="314" stroke-dashoffset="314" fill="none" />
             </svg>
             <div class="absolute inset-0 flex flex-col items-center justify-center">
-              <span id="valMinTemp" class="font-mono text-2xl sm:text-3xl font-extrabold text-white">--.-</span>
-              <span class="text-[11px] font-mono text-slate-400 mt-0.5">°C</span>
+              <span id="valMinTemp" class="font-mono text-sm sm:text-3xl font-extrabold text-white">--.-</span>
+              <span class="text-[8px] sm:text-[11px] font-mono text-slate-400">°C</span>
             </div>
           </div>
-          <span class="mt-3.5 sm:mt-4 text-[11px] font-bold uppercase tracking-[0.2em] text-slate-300">
-            Suhu Minimum (19–07 WIB)
+          <span class="mt-2 sm:mt-4 text-[7.5px] sm:text-[11px] font-bold uppercase tracking-[0.08em] sm:tracking-[0.2em] text-slate-300 text-center leading-tight">
+            Suhu Min (19–07)
           </span>
         </div>
       </div>
     </section>
 
-    <!-- 5. DIAGNOSTIK PERANGKAT (SISA MEMORI & WI-FI) -->
-    <section class="grid grid-cols-1 sm:grid-cols-2 gap-3.5 sm:gap-5">
+    <!-- 5. DIAGNOSTIK PERANGKAT (2 KOLOM BERDAMPINGAN DI HP & DESKTOP) -->
+    <section class="grid grid-cols-2 gap-2 sm:gap-5">
       <!-- Sisa Memori (ESP8266 RAM) -->
-      <div class="glass-card rounded-2xl p-4 sm:p-5 flex flex-col justify-center">
-        <div class="flex items-center justify-between mb-2.5">
-          <span class="text-[10px] sm:text-[11px] font-bold uppercase tracking-[0.16em] text-slate-300">Sisa Memori (ESP8266 RAM)</span>
-          <span id="ramValue" class="font-mono text-base sm:text-lg font-extrabold text-amber-400">--.- KB</span>
+      <div class="glass-card rounded-xl sm:rounded-2xl p-3 sm:p-5 flex flex-col justify-center">
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between mb-1.5 sm:mb-2.5 gap-0.5">
+          <span class="text-[8px] sm:text-[11px] font-bold uppercase tracking-[0.12em] sm:tracking-[0.18em] text-slate-300">Sisa Memori (RAM)</span>
+          <span id="ramValue" class="font-mono text-xs sm:text-lg font-extrabold text-amber-400">--.- KB</span>
         </div>
-        <div class="w-full h-2.5 bg-slate-800/90 rounded-full overflow-hidden">
+        <div class="w-full h-2 sm:h-2.5 bg-slate-800/90 rounded-full overflow-hidden">
           <div id="ramBar" class="h-full bg-gradient-to-r from-amber-500 to-yellow-400 rounded-full transition-all duration-500" style="width: 75%"></div>
         </div>
       </div>
 
       <!-- Kualitas Sinyal Wi-Fi -->
-      <div class="glass-card rounded-2xl p-4 sm:p-5 flex flex-col justify-center">
-        <div class="flex items-center justify-between mb-2.5">
-          <span class="text-[10px] sm:text-[11px] font-bold uppercase tracking-[0.16em] text-slate-300">Kualitas Sinyal Wi-Fi</span>
-          <span id="wifiValue" class="font-mono text-base sm:text-lg font-extrabold text-emerald-400">--% (-- dBm)</span>
+      <div class="glass-card rounded-xl sm:rounded-2xl p-3 sm:p-5 flex flex-col justify-center">
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between mb-1.5 sm:mb-2.5 gap-0.5">
+          <span class="text-[8px] sm:text-[11px] font-bold uppercase tracking-[0.12em] sm:tracking-[0.18em] text-slate-300">Sinyal Wi-Fi</span>
+          <span id="wifiValue" class="font-mono text-xs sm:text-lg font-extrabold text-emerald-400">--% (-- dBm)</span>
         </div>
-        <div class="w-full h-2.5 bg-slate-800/90 rounded-full overflow-hidden">
+        <div class="w-full h-2 sm:h-2.5 bg-slate-800/90 rounded-full overflow-hidden">
           <div id="wifiBar" class="h-full bg-gradient-to-r from-emerald-500 to-teal-400 rounded-full transition-all duration-500" style="width: 100%"></div>
         </div>
       </div>
     </section>
 
     <!-- STATUS TRANSMISI DATA -->
-    <div class="glass-card rounded-2xl py-3.5 px-4 flex flex-col items-center justify-center text-center">
+    <div class="glass-card rounded-xl sm:rounded-2xl py-2.5 sm:py-3.5 px-4 flex flex-col items-center justify-center text-center">
       <div class="flex items-center gap-2">
-        <span class="relative flex h-2.5 w-2.5">
+        <span class="relative flex h-2 w-2 sm:h-2.5 sm:w-2.5">
           <span id="connPing" class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
-          <span id="connDot" class="relative inline-flex rounded-full h-2.5 w-2.5 bg-emerald-500"></span>
+          <span id="connDot" class="relative inline-flex rounded-full h-2 w-2 sm:h-2.5 sm:w-2.5 bg-emerald-500"></span>
         </span>
-        <span id="connStatusText" class="text-[11px] sm:text-xs font-bold uppercase tracking-[0.2em] text-emerald-400">
+        <span id="connStatusText" class="text-[10px] sm:text-xs font-bold uppercase tracking-[0.18em] sm:tracking-[0.2em] text-emerald-400">
           STATUS: TRANSMISI DATA AKTIF
         </span>
       </div>
-      <span class="text-[10px] sm:text-[11px] font-mono text-slate-400 mt-1">
+      <span class="text-[9px] sm:text-[11px] font-mono text-slate-400 mt-0.5 sm:mt-1">
         PEMBARUAN TERAKHIR: <strong id="lastUpdateText" class="text-slate-200">--:--:--</strong>
       </span>
     </div>
 
-    <!-- 6. PANEL ARSIP & LOG LENGKAP (TATA LETAK PRESISI 2 BARIS RAPI) -->
-    <section id="secArchive" class="glass-card rounded-2xl p-4 sm:p-6">
-      <div class="space-y-3.5 pb-4 border-b border-slate-800">
+    <!-- 6. PANEL ARSIP & LOG LENGKAP (TAMPILAN TABEL SAMA PERSIS DESKTOP & MOBILE) -->
+    <section id="secArchive" class="glass-card rounded-xl sm:rounded-2xl p-3 sm:p-6">
+      <div class="space-y-3 pb-3.5 border-b border-slate-800">
         
         <!-- BARIS 1: 5 TAB ARSIP PROPORSI PRESISI -->
-        <div class="flex lg:grid lg:grid-cols-5 items-center gap-2 overflow-x-auto no-scrollbar pb-1 lg:pb-0">
-          <button onclick="switchArchiveTab('hourly')" id="tabHourly" class="h-10 px-3 rounded-xl bg-amber-500/20 border border-amber-500/40 text-amber-300 text-[10px] xl:text-[11px] font-bold uppercase tracking-wider whitespace-nowrap flex-shrink-0 text-center transition cursor-pointer">
+        <div class="flex lg:grid lg:grid-cols-5 items-center gap-1.5 sm:gap-2 overflow-x-auto no-scrollbar pb-0.5 lg:pb-0">
+          <button onclick="switchArchiveTab('hourly')" id="tabHourly" class="h-8 sm:h-10 px-2.5 sm:px-3 rounded-lg sm:rounded-xl bg-amber-500/20 border border-amber-500/40 text-amber-300 text-[9px] sm:text-[10px] xl:text-[11px] font-bold uppercase tracking-wider whitespace-nowrap flex-shrink-0 text-center transition cursor-pointer">
             Log Suhu &amp; Tekanan Per Jam
           </button>
-          <button onclick="switchArchiveTab('24h')" id="tab24h" class="h-10 px-3 rounded-xl bg-slate-900 border border-slate-700 text-slate-400 hover:text-slate-200 text-[10px] xl:text-[11px] font-bold uppercase tracking-wider whitespace-nowrap flex-shrink-0 text-center transition cursor-pointer">
+          <button onclick="switchArchiveTab('24h')" id="tab24h" class="h-8 sm:h-10 px-2.5 sm:px-3 rounded-lg sm:rounded-xl bg-slate-900 border border-slate-700 text-slate-400 hover:text-slate-200 text-[9px] sm:text-[10px] xl:text-[11px] font-bold uppercase tracking-wider whitespace-nowrap flex-shrink-0 text-center transition cursor-pointer">
             Rekap Hujan 24 Jam (07–07)
           </button>
-          <button onclick="switchArchiveTab('3h')" id="tab3h" class="h-10 px-3 rounded-xl bg-slate-900 border border-slate-700 text-slate-400 hover:text-slate-200 text-[10px] xl:text-[11px] font-bold uppercase tracking-wider whitespace-nowrap flex-shrink-0 text-center transition cursor-pointer">
+          <button onclick="switchArchiveTab('3h')" id="tab3h" class="h-8 sm:h-10 px-2.5 sm:px-3 rounded-lg sm:rounded-xl bg-slate-900 border border-slate-700 text-slate-400 hover:text-slate-200 text-[9px] sm:text-[10px] xl:text-[11px] font-bold uppercase tracking-wider whitespace-nowrap flex-shrink-0 text-center transition cursor-pointer">
             Log Hujan 3 Jam-Jaman
           </button>
-          <button onclick="switchArchiveTab('ekstrem')" id="tabEkstrem" class="h-10 px-3 rounded-xl bg-slate-900 border border-slate-700 text-slate-400 hover:text-slate-200 text-[10px] xl:text-[11px] font-bold uppercase tracking-wider whitespace-nowrap flex-shrink-0 text-center transition cursor-pointer">
+          <button onclick="switchArchiveTab('ekstrem')" id="tabEkstrem" class="h-8 sm:h-10 px-2.5 sm:px-3 rounded-lg sm:rounded-xl bg-slate-900 border border-slate-700 text-slate-400 hover:text-slate-200 text-[9px] sm:text-[10px] xl:text-[11px] font-bold uppercase tracking-wider whitespace-nowrap flex-shrink-0 text-center transition cursor-pointer">
             Suhu Ekstrem Harian
           </button>
-          <button onclick="switchArchiveTab('loss')" id="tabLoss" class="h-10 px-3 rounded-xl bg-slate-900 border border-slate-700 text-slate-400 hover:text-slate-200 text-[10px] xl:text-[11px] font-bold uppercase tracking-wider whitespace-nowrap flex-shrink-0 text-center transition cursor-pointer">
+          <button onclick="switchArchiveTab('loss')" id="tabLoss" class="h-8 sm:h-10 px-2.5 sm:px-3 rounded-lg sm:rounded-xl bg-slate-900 border border-slate-700 text-slate-400 hover:text-slate-200 text-[9px] sm:text-[10px] xl:text-[11px] font-bold uppercase tracking-wider whitespace-nowrap flex-shrink-0 text-center transition cursor-pointer">
             Riwayat Data Loss
           </button>
         </div>
 
-        <!-- BARIS 2: KONTROL FILTER TANGGAL, RESET & UNDUH CSV SEJAJAR RAPI -->
-        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2.5 pt-1">
-          <span id="activeTabSubtitle" class="text-[11px] font-mono text-slate-400 uppercase tracking-wider">
+        <!-- BARIS 2: KONTROL FILTER TANGGAL, RESET & UNDUH CSV -->
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 pt-0.5">
+          <span id="activeTabSubtitle" class="text-[9px] sm:text-[11px] font-mono text-slate-400 uppercase tracking-wider">
             Menampilkan: Log Pengamatan Suhu &amp; Tekanan Per Jam
           </span>
 
-          <div class="grid grid-cols-2 sm:flex items-center gap-2">
-            <input type="date" id="filterDateInput" class="col-span-2 h-9 bg-slate-900 border border-slate-700 text-slate-200 text-xs rounded-xl px-3 font-mono focus:outline-none focus:border-sky-500" />
-            <button onclick="applyDateFilter()" class="h-9 px-4 rounded-xl bg-sky-600 hover:bg-sky-500 active:bg-sky-700 text-white text-xs font-bold transition cursor-pointer">
+          <div class="flex flex-wrap items-center gap-1.5 sm:gap-2">
+            <input type="date" id="filterDateInput" class="h-8 sm:h-9 bg-slate-900 border border-slate-700 text-slate-200 text-[11px] sm:text-xs rounded-lg sm:rounded-xl px-2.5 sm:px-3 font-mono focus:outline-none focus:border-sky-500" />
+            <button onclick="applyDateFilter()" class="h-8 sm:h-9 px-3 sm:px-4 rounded-lg sm:rounded-xl bg-sky-600 hover:bg-sky-500 active:bg-sky-700 text-white text-[11px] sm:text-xs font-bold transition cursor-pointer">
               Filter
             </button>
-            <button onclick="resetDateFilter()" class="h-9 px-4 rounded-xl bg-slate-800 hover:bg-slate-700 active:bg-slate-600 text-slate-300 text-xs font-bold border border-slate-700 transition cursor-pointer">
+            <button onclick="resetDateFilter()" class="h-8 sm:h-9 px-3 sm:px-4 rounded-lg sm:rounded-xl bg-slate-800 hover:bg-slate-700 active:bg-slate-600 text-slate-300 text-[11px] sm:text-xs font-bold border border-slate-700 transition cursor-pointer">
               Reset
             </button>
-            <button onclick="downloadCSV()" class="col-span-2 sm:col-span-1 h-9 px-4 rounded-xl bg-emerald-600 hover:bg-emerald-500 active:bg-emerald-700 text-white text-xs font-bold transition cursor-pointer shadow-lg shadow-emerald-600/20">
+            <button onclick="downloadCSV()" class="h-8 sm:h-9 px-3 sm:px-4 rounded-lg sm:rounded-xl bg-emerald-600 hover:bg-emerald-500 active:bg-emerald-700 text-white text-[11px] sm:text-xs font-bold transition cursor-pointer shadow-lg shadow-emerald-600/20">
               Unduh CSV
             </button>
           </div>
         </div>
       </div>
 
-      <!-- TAMPILAN KARTU INTERAKTIF KHUSUS HANDPHONE (Layar < 768px) -->
-      <div id="mobileCardsContainer" class="md:hidden mt-4 space-y-3 max-h-[460px] overflow-y-auto pr-0.5">
-        <div class="py-6 text-center text-xs text-slate-500">Memuat data pengamatan...</div>
-      </div>
-
-      <!-- TAMPILAN TABEL LENGKAP KHUSUS DESKTOP/TABLET (Layar >= 768px) -->
-      <div class="hidden md:block overflow-x-auto mt-4 rounded-xl border border-slate-800/90 max-h-[420px]">
-        <table class="w-full text-left border-collapse">
-          <thead id="archiveTableHead" class="sticky top-0 bg-slate-900 border-b border-slate-800 text-[11px] font-bold uppercase tracking-wider text-sky-400">
+      <!-- TABEL DATA SINOPTIK (TAMPIL IDENTIK DI HP & DESKTOP DENGAN HORIZONTAL SWIPE SMOOTH) -->
+      <div class="overflow-x-auto mt-3.5 rounded-xl border border-slate-800/90 max-h-[420px]">
+        <table class="w-full text-left border-collapse whitespace-nowrap">
+          <thead id="archiveTableHead" class="sticky top-0 z-20 bg-slate-900 border-b border-slate-800 text-[10px] sm:text-[11px] font-bold uppercase tracking-wider text-sky-400">
           </thead>
-          <tbody id="archiveTableBody" class="divide-y divide-slate-800/70 text-xs font-mono text-slate-300">
+          <tbody id="archiveTableBody" class="divide-y divide-slate-800/70 text-[11px] sm:text-xs font-mono text-slate-300">
             <tr>
               <td colspan="9" class="py-6 text-center text-slate-500 font-sans">Memuat data pengamatan per jam dari server...</td>
             </tr>
@@ -509,25 +502,6 @@
     </section>
 
   </main>
-
-  <!-- NAVIGASI CEPAT MELAYANG KHUSUS HANDPHONE (BOTTOM DOCK) -->
-  <nav class="md:hidden fixed bottom-3 left-3.5 right-3.5 z-50 rounded-2xl bg-[#091124]/95 backdrop-blur-xl border border-sky-500/30 shadow-2xl px-2 py-2 flex items-center justify-around text-[10px] font-bold uppercase tracking-wider">
-    <a href="#secTemp" class="px-2.5 py-1.5 rounded-xl text-slate-300 hover:text-sky-400 active:bg-sky-500/15 transition">
-      Suhu &amp; RH
-    </a>
-    <a href="#secRain" class="px-2.5 py-1.5 rounded-xl text-slate-300 hover:text-sky-400 active:bg-sky-500/15 transition">
-      Hujan
-    </a>
-    <a href="#secPressure" class="px-2.5 py-1.5 rounded-xl text-slate-300 hover:text-sky-400 active:bg-sky-500/15 transition">
-      Tekanan
-    </a>
-    <a href="#secArchive" class="px-2.5 py-1.5 rounded-xl text-amber-400 hover:text-amber-300 active:bg-amber-500/15 transition">
-      Arsip Log
-    </a>
-    <a href="#topHeader" class="px-2.5 py-1.5 rounded-xl text-emerald-400 hover:text-emerald-300 active:bg-emerald-500/15 transition">
-      Atas
-    </a>
-  </nav>
 
   <script>
     // =========================================================================
@@ -546,22 +520,18 @@
     });
 
     document.addEventListener('keydown', function (e) {
-      // Blokir F12
       if (e.key === 'F12' || e.keyCode === 123) {
         e.preventDefault();
         return false;
       }
-      // Blokir Ctrl+Shift+I / Ctrl+Shift+J / Ctrl+Shift+C (Inspect Element & Console)
       if (e.ctrlKey && e.shiftKey && ['I', 'i', 'J', 'j', 'C', 'c'].includes(e.key)) {
         e.preventDefault();
         return false;
       }
-      // Blokir Ctrl+U (View Source), Ctrl+S (Save Page), Ctrl+C (Copy), Ctrl+A (Select All)
       if (e.ctrlKey && ['U', 'u', 'S', 's', 'C', 'c', 'A', 'a'].includes(e.key)) {
         e.preventDefault();
         return false;
       }
-      // Blokir Cmd+Option+I / Cmd+U (Mac)
       if (e.metaKey && ['U', 'u', 'S', 's', 'C', 'c', 'A', 'a', 'I', 'i'].includes(e.key)) {
         e.preventDefault();
         return false;
@@ -658,11 +628,11 @@
     function triggerWmoAlarmVisualAndSound(utcHour) {
       playAlarmTone();
       const banner = document.getElementById('wmoAlarmBanner');
-      banner.className = "px-4 py-1.5 rounded-full bg-rose-600/30 border border-rose-500 text-[11px] font-mono text-rose-200 flex items-center gap-2 animate-pulse";
+      banner.className = "px-4 py-1.5 rounded-full bg-rose-600/30 border border-rose-500 text-[10px] sm:text-[11px] font-mono text-rose-200 flex items-center gap-2 animate-pulse";
       banner.innerHTML = `<strong>WAKTU PENGIRIMAN WMO (${String(utcHour).padStart(2, '0')}.00 UTC) — SEGERA KIRIM LAPORAN SINOPTIK</strong>`;
       setTimeout(() => {
-        banner.className = "px-3.5 py-1.5 rounded-full bg-slate-900/90 border border-amber-500/30 text-[10px] sm:text-[11px] font-mono text-slate-300 flex items-center justify-center gap-2";
-        banner.innerHTML = `<span class="relative flex h-2 w-2 flex-shrink-0"><span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-amber-400 opacity-75"></span><span class="relative inline-flex rounded-full h-2 w-2 bg-amber-500"></span></span><span>Alarm WMO Aktif (00, 03, 06, 09, 12 UTC) • Berikutnya: <strong id="nextWmoTarget" class="text-amber-300">--:-- UTC</strong></span>`;
+        banner.className = "px-3 sm:px-4 py-1 sm:py-1.5 rounded-full bg-slate-900/90 border border-amber-500/30 text-[9px] sm:text-[11px] font-mono text-slate-300 flex items-center justify-center gap-1.5 sm:gap-2";
+        banner.innerHTML = `<span class="relative flex h-1.5 w-1.5 sm:h-2 sm:w-2 flex-shrink-0"><span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-amber-400 opacity-75"></span><span class="relative inline-flex rounded-full h-1.5 w-1.5 sm:h-2 sm:w-2 bg-amber-500"></span></span><span>Alarm WMO Aktif (00, 03, 06, 09, 12 UTC) • Berikutnya: <strong id="nextWmoTarget" class="text-amber-300">--:-- UTC</strong></span>`;
       }, 60000);
     }
 
@@ -792,13 +762,13 @@
 
       if (latestTelemetry.timestamp && diffSec <= 45) {
         connText.textContent = "STATUS: TRANSMISI DATA AKTIF";
-        connText.className = "text-[11px] sm:text-xs font-bold uppercase tracking-[0.2em] text-emerald-400";
-        connDot.className = "relative inline-flex rounded-full h-2.5 w-2.5 bg-emerald-500";
+        connText.className = "text-[10px] sm:text-xs font-bold uppercase tracking-[0.18em] sm:tracking-[0.2em] text-emerald-400";
+        connDot.className = "relative inline-flex rounded-full h-2 w-2 sm:h-2.5 sm:w-2.5 bg-emerald-500";
         connPing.className = "animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75";
       } else {
         connText.textContent = "STATUS: MENUNGGU SINKRONISASI PERANGKAT";
-        connText.className = "text-[11px] sm:text-xs font-bold uppercase tracking-[0.2em] text-amber-400";
-        connDot.className = "relative inline-flex rounded-full h-2.5 w-2.5 bg-amber-500";
+        connText.className = "text-[10px] sm:text-xs font-bold uppercase tracking-[0.18em] sm:tracking-[0.2em] text-amber-400";
+        connDot.className = "relative inline-flex rounded-full h-2 w-2 sm:h-2.5 sm:w-2.5 bg-amber-500";
         connPing.className = "hidden";
       }
     }, 5000);
@@ -884,7 +854,7 @@
       return detected;
     }
 
-    // 6. MULTI-TAB ARCHIVE VIEWER
+    // 6. TABEL ARSIP SERAGAM UNTUK DESKTOP & HANDPHONE
     function formatDisplayDate(isoDate) {
       if (!isoDate || !isoDate.includes('-')) return isoDate || '-';
       const parts = isoDate.split('-');
@@ -912,161 +882,105 @@
       Object.keys(tabs).forEach(key => {
         const el = document.getElementById(tabs[key]);
         if (key === tabName) {
-          el.className = "h-10 px-3 rounded-xl bg-amber-500/20 border border-amber-500/40 text-amber-300 text-[10px] xl:text-[11px] font-bold uppercase tracking-wider whitespace-nowrap flex-shrink-0 text-center transition cursor-pointer";
+          el.className = "h-8 sm:h-10 px-2.5 sm:px-3 rounded-lg sm:rounded-xl bg-amber-500/20 border border-amber-500/40 text-amber-300 text-[9px] sm:text-[10px] xl:text-[11px] font-bold uppercase tracking-wider whitespace-nowrap flex-shrink-0 text-center transition cursor-pointer";
         } else {
-          el.className = "h-10 px-3 rounded-xl bg-slate-900 border border-slate-700 text-slate-400 hover:text-slate-200 text-[10px] xl:text-[11px] font-bold uppercase tracking-wider whitespace-nowrap flex-shrink-0 text-center transition cursor-pointer";
+          el.className = "h-8 sm:h-10 px-2.5 sm:px-3 rounded-lg sm:rounded-xl bg-slate-900 border border-slate-700 text-slate-400 hover:text-slate-200 text-[9px] sm:text-[10px] xl:text-[11px] font-bold uppercase tracking-wider whitespace-nowrap flex-shrink-0 text-center transition cursor-pointer";
         }
       });
       applyDateFilter();
     }
 
-    function renderArchiveViews() {
+    function renderArchiveTable() {
       const thead = document.getElementById('archiveTableHead');
       const tbody = document.getElementById('archiveTableBody');
-      const mobileBox = document.getElementById('mobileCardsContainer');
 
       if (activeTab === 'hourly') {
         thead.innerHTML = `
           <tr>
-            <th class="py-3.5 px-4 w-14">No</th>
-            <th class="py-3.5 px-4">Waktu</th>
-            <th class="py-3.5 px-4 text-right">Kering (°C)</th>
-            <th class="py-3.5 px-4 text-right">Basah (°C)</th>
-            <th class="py-3.5 px-4 text-right">Hum (%)</th>
-            <th class="py-3.5 px-4 text-right">QFE (hPa)</th>
-            <th class="py-3.5 px-4 text-right">QFF (hPa)</th>
-            <th class="py-3.5 px-4 text-right">QNH (hPa)</th>
-            <th class="py-3.5 px-4 text-right">Hujan (mm)</th>
+            <th class="py-3 px-3 sm:px-4 w-12 sticky left-0 bg-slate-900">No</th>
+            <th class="py-3 px-3 sm:px-4">Waktu</th>
+            <th class="py-3 px-3 sm:px-4 text-right">Kering (°C)</th>
+            <th class="py-3 px-3 sm:px-4 text-right">Basah (°C)</th>
+            <th class="py-3 px-3 sm:px-4 text-right">Hum (%)</th>
+            <th class="py-3 px-3 sm:px-4 text-right">QFE (hPa)</th>
+            <th class="py-3 px-3 sm:px-4 text-right">QFF (hPa)</th>
+            <th class="py-3 px-3 sm:px-4 text-right">QNH (hPa)</th>
+            <th class="py-3 px-3 sm:px-4 text-right">Hujan (mm)</th>
           </tr>`;
 
         if (!currentFilteredData.length) {
           tbody.innerHTML = `<tr><td colspan="9" class="py-6 text-center text-slate-500 font-sans">Tidak ada log pengamatan suhu & tekanan per jam.</td></tr>`;
-          mobileBox.innerHTML = `<div class="py-6 text-center text-xs text-slate-500">Tidak ada log pengamatan suhu & tekanan per jam.</div>`;
           return;
         }
 
         tbody.innerHTML = currentFilteredData.map((item, idx) => `
           <tr class="hover:bg-sky-500/5 transition">
-            <td class="py-3 px-4 text-slate-400">${idx + 1}</td>
-            <td class="py-3 px-4 text-sky-400 font-semibold">${item.waktu || '-'}</td>
-            <td class="py-3 px-4 text-right text-rose-400">${parseFloat(item.suhuKering ?? 0).toFixed(1)}</td>
-            <td class="py-3 px-4 text-right text-emerald-400">${parseFloat(item.suhuBasah ?? 0).toFixed(1)}</td>
-            <td class="py-3 px-4 text-right text-sky-300">${parseFloat(item.kelembapan ?? 0).toFixed(1)}</td>
-            <td class="py-3 px-4 text-right">${parseFloat(item.qfe ?? 0).toFixed(1)}</td>
-            <td class="py-3 px-4 text-right">${parseFloat(item.qff ?? 0).toFixed(1)}</td>
-            <td class="py-3 px-4 text-right">${parseFloat(item.qnh ?? 0).toFixed(1)}</td>
-            <td class="py-3 px-4 text-right font-bold text-indigo-400">${parseFloat(item.curahHujan ?? 0).toFixed(1)}</td>
+            <td class="py-2.5 sm:py-3 px-3 sm:px-4 text-slate-400 sticky left-0 bg-[#0a1020]">${idx + 1}</td>
+            <td class="py-2.5 sm:py-3 px-3 sm:px-4 text-sky-400 font-semibold">${item.waktu || '-'}</td>
+            <td class="py-2.5 sm:py-3 px-3 sm:px-4 text-right text-rose-400">${parseFloat(item.suhuKering ?? 0).toFixed(1)}</td>
+            <td class="py-2.5 sm:py-3 px-3 sm:px-4 text-right text-emerald-400">${parseFloat(item.suhuBasah ?? 0).toFixed(1)}</td>
+            <td class="py-2.5 sm:py-3 px-3 sm:px-4 text-right text-sky-300">${parseFloat(item.kelembapan ?? 0).toFixed(1)}</td>
+            <td class="py-2.5 sm:py-3 px-3 sm:px-4 text-right">${parseFloat(item.qfe ?? 0).toFixed(1)}</td>
+            <td class="py-2.5 sm:py-3 px-3 sm:px-4 text-right">${parseFloat(item.qff ?? 0).toFixed(1)}</td>
+            <td class="py-2.5 sm:py-3 px-3 sm:px-4 text-right">${parseFloat(item.qnh ?? 0).toFixed(1)}</td>
+            <td class="py-2.5 sm:py-3 px-3 sm:px-4 text-right font-bold text-indigo-400">${parseFloat(item.curahHujan ?? 0).toFixed(1)}</td>
           </tr>`).join('');
-
-        mobileBox.innerHTML = currentFilteredData.map((item, idx) => `
-          <div class="rounded-xl bg-slate-900/90 border border-slate-800 p-3.5 font-mono text-xs space-y-2.5">
-            <div class="flex items-center justify-between border-b border-slate-800/80 pb-2">
-              <span class="text-sky-400 font-bold">#${idx + 1} • ${item.waktu || '-'}</span>
-              <span class="px-2 py-0.5 rounded bg-indigo-500/15 text-indigo-300 font-bold">${parseFloat(item.curahHujan ?? 0).toFixed(1)} mm</span>
-            </div>
-            <div class="grid grid-cols-3 gap-2 text-center">
-              <div class="bg-slate-950/70 rounded-lg p-1.5">
-                <span class="block text-[9px] text-slate-400 uppercase font-sans">Kering</span>
-                <span class="text-rose-400 font-bold">${parseFloat(item.suhuKering ?? 0).toFixed(1)}°C</span>
-              </div>
-              <div class="bg-slate-950/70 rounded-lg p-1.5">
-                <span class="block text-[9px] text-slate-400 uppercase font-sans">Basah</span>
-                <span class="text-emerald-400 font-bold">${parseFloat(item.suhuBasah ?? 0).toFixed(1)}°C</span>
-              </div>
-              <div class="bg-slate-950/70 rounded-lg p-1.5">
-                <span class="block text-[9px] text-slate-400 uppercase font-sans">Hum</span>
-                <span class="text-sky-300 font-bold">${parseFloat(item.kelembapan ?? 0).toFixed(1)}%</span>
-              </div>
-            </div>
-            <div class="grid grid-cols-3 gap-2 text-center text-[11px] text-slate-300">
-              <div><span class="text-slate-500 text-[9px] block font-sans">QFE</span>${parseFloat(item.qfe ?? 0).toFixed(1)}</div>
-              <div><span class="text-slate-500 text-[9px] block font-sans">QFF</span>${parseFloat(item.qff ?? 0).toFixed(1)}</div>
-              <div><span class="text-slate-500 text-[9px] block font-sans">QNH</span>${parseFloat(item.qnh ?? 0).toFixed(1)}</div>
-            </div>
-          </div>`).join('');
       }
       else if (activeTab === '24h') {
         thead.innerHTML = `
           <tr>
-            <th class="py-3.5 px-4 w-16">No</th>
-            <th class="py-3.5 px-4">Tanggal Observasi</th>
-            <th class="py-3.5 px-4">Waktu Cetak</th>
-            <th class="py-3.5 px-4 text-right">Total Hujan 24 Jam (mm)</th>
+            <th class="py-3 px-3 sm:px-4 w-12 sticky left-0 bg-slate-900">No</th>
+            <th class="py-3 px-3 sm:px-4">Tanggal Observasi</th>
+            <th class="py-3 px-3 sm:px-4">Waktu Cetak</th>
+            <th class="py-3 px-3 sm:px-4 text-right">Total Hujan 24 Jam (mm)</th>
           </tr>`;
 
         if (!currentFilteredData.length) {
           tbody.innerHTML = `<tr><td colspan="4" class="py-6 text-center text-slate-500 font-sans">Tidak ada data rekapitulasi curah hujan 24 jam.</td></tr>`;
-          mobileBox.innerHTML = `<div class="py-6 text-center text-xs text-slate-500">Tidak ada data rekapitulasi curah hujan 24 jam.</div>`;
           return;
         }
 
         tbody.innerHTML = currentFilteredData.map((item, idx) => `
           <tr class="hover:bg-sky-500/5 transition">
-            <td class="py-3 px-4 text-slate-400">${idx + 1}</td>
-            <td class="py-3 px-4 text-sky-400 font-semibold">${formatDisplayDate(item.tanggal)}</td>
-            <td class="py-3 px-4 text-slate-300">${item.waktuCetak || '-'}</td>
-            <td class="py-3 px-4 text-right font-bold text-amber-400">${parseFloat(item.totalHujan24Jam ?? 0).toFixed(1)} mm</td>
+            <td class="py-2.5 sm:py-3 px-3 sm:px-4 text-slate-400 sticky left-0 bg-[#0a1020]">${idx + 1}</td>
+            <td class="py-2.5 sm:py-3 px-3 sm:px-4 text-sky-400 font-semibold">${formatDisplayDate(item.tanggal)}</td>
+            <td class="py-2.5 sm:py-3 px-3 sm:px-4 text-slate-300">${item.waktuCetak || '-'}</td>
+            <td class="py-2.5 sm:py-3 px-3 sm:px-4 text-right font-bold text-amber-400">${parseFloat(item.totalHujan24Jam ?? 0).toFixed(1)} mm</td>
           </tr>`).join('');
-
-        mobileBox.innerHTML = currentFilteredData.map((item, idx) => `
-          <div class="rounded-xl bg-slate-900/90 border border-slate-800 p-3.5 font-mono text-xs flex items-center justify-between">
-            <div>
-              <div class="text-sky-400 font-bold">#${idx + 1} • ${formatDisplayDate(item.tanggal)}</div>
-              <div class="text-[11px] text-slate-400 mt-0.5">Cetak: ${item.waktuCetak || '-'}</div>
-            </div>
-            <div class="text-right">
-              <span class="text-sm font-extrabold text-amber-400">${parseFloat(item.totalHujan24Jam ?? 0).toFixed(1)} mm</span>
-              <span class="block text-[9px] text-slate-500 uppercase font-sans">Hujan 24 Jam</span>
-            </div>
-          </div>`).join('');
       } 
       else if (activeTab === '3h') {
         thead.innerHTML = `
           <tr>
-            <th class="py-3.5 px-4 w-16">No</th>
-            <th class="py-3.5 px-4">Waktu Pengamatan</th>
-            <th class="py-3.5 px-4">Jam Observasi</th>
-            <th class="py-3.5 px-4 text-right">Curah Hujan 3 Jam (mm)</th>
+            <th class="py-3 px-3 sm:px-4 w-12 sticky left-0 bg-slate-900">No</th>
+            <th class="py-3 px-3 sm:px-4">Waktu Pengamatan</th>
+            <th class="py-3 px-3 sm:px-4">Jam Observasi</th>
+            <th class="py-3 px-3 sm:px-4 text-right">Curah Hujan 3 Jam (mm)</th>
           </tr>`;
 
         if (!currentFilteredData.length) {
           tbody.innerHTML = `<tr><td colspan="4" class="py-6 text-center text-slate-500 font-sans">Tidak ada log curah hujan 3 jam-jaman.</td></tr>`;
-          mobileBox.innerHTML = `<div class="py-6 text-center text-xs text-slate-500">Tidak ada log curah hujan 3 jam-jaman.</div>`;
           return;
         }
 
         tbody.innerHTML = currentFilteredData.map((item, idx) => `
           <tr class="hover:bg-sky-500/5 transition">
-            <td class="py-3 px-4 text-slate-400">${idx + 1}</td>
-            <td class="py-3 px-4 text-sky-400 font-semibold">${item.waktu || '-'}</td>
-            <td class="py-3 px-4 text-slate-300">${item.jamObservasi || '-'}</td>
-            <td class="py-3 px-4 text-right font-bold text-indigo-400">${parseFloat(item.curahHujan3Jam ?? 0).toFixed(1)} mm</td>
+            <td class="py-2.5 sm:py-3 px-3 sm:px-4 text-slate-400 sticky left-0 bg-[#0a1020]">${idx + 1}</td>
+            <td class="py-2.5 sm:py-3 px-3 sm:px-4 text-sky-400 font-semibold">${item.waktu || '-'}</td>
+            <td class="py-2.5 sm:py-3 px-3 sm:px-4 text-slate-300">${item.jamObservasi || '-'}</td>
+            <td class="py-2.5 sm:py-3 px-3 sm:px-4 text-right font-bold text-indigo-400">${parseFloat(item.curahHujan3Jam ?? 0).toFixed(1)} mm</td>
           </tr>`).join('');
-
-        mobileBox.innerHTML = currentFilteredData.map((item, idx) => `
-          <div class="rounded-xl bg-slate-900/90 border border-slate-800 p-3.5 font-mono text-xs flex items-center justify-between">
-            <div>
-              <div class="text-sky-400 font-bold">#${idx + 1} • ${item.jamObservasi || '-'}</div>
-              <div class="text-[11px] text-slate-400 mt-0.5">${item.waktu || '-'}</div>
-            </div>
-            <div class="text-right">
-              <span class="text-sm font-extrabold text-indigo-400">${parseFloat(item.curahHujan3Jam ?? 0).toFixed(1)} mm</span>
-              <span class="block text-[9px] text-slate-500 uppercase font-sans">Hujan 3 Jam</span>
-            </div>
-          </div>`).join('');
       }
       else if (activeTab === 'ekstrem') {
         thead.innerHTML = `
           <tr>
-            <th class="py-3.5 px-4 w-16">No</th>
-            <th class="py-3.5 px-4">Tanggal Observasi</th>
-            <th class="py-3.5 px-4 text-center">Suhu Maksimum (07–19 WIB)</th>
-            <th class="py-3.5 px-4 text-right">Suhu Minimum (19–07 WIB)</th>
+            <th class="py-3 px-3 sm:px-4 w-12 sticky left-0 bg-slate-900">No</th>
+            <th class="py-3 px-3 sm:px-4">Tanggal Observasi</th>
+            <th class="py-3 px-3 sm:px-4 text-center">Suhu Maksimum (07–19 WIB)</th>
+            <th class="py-3 px-3 sm:px-4 text-right">Suhu Minimum (19–07 WIB)</th>
           </tr>`;
 
         if (!currentFilteredData.length) {
           tbody.innerHTML = `<tr><td colspan="4" class="py-6 text-center text-slate-500 font-sans">Tidak ada laporan suhu ekstrem harian.</td></tr>`;
-          mobileBox.innerHTML = `<div class="py-6 text-center text-xs text-slate-500">Tidak ada laporan suhu ekstrem harian.</div>`;
           return;
         }
 
@@ -1079,82 +993,40 @@
             : `<span class="text-slate-400 italic font-sans">Sedang Berjalan...</span>`;
           return `
             <tr class="hover:bg-sky-500/5 transition">
-              <td class="py-3 px-4 text-slate-400">${idx + 1}</td>
-              <td class="py-3 px-4 text-sky-400 font-semibold">${formatDisplayDate(item.tanggal)}</td>
-              <td class="py-3 px-4 text-center">${maxTxt}</td>
-              <td class="py-3 px-4 text-right">${minTxt}</td>
+              <td class="py-2.5 sm:py-3 px-3 sm:px-4 text-slate-400 sticky left-0 bg-[#0a1020]">${idx + 1}</td>
+              <td class="py-2.5 sm:py-3 px-3 sm:px-4 text-sky-400 font-semibold">${formatDisplayDate(item.tanggal)}</td>
+              <td class="py-2.5 sm:py-3 px-3 sm:px-4 text-center">${maxTxt}</td>
+              <td class="py-2.5 sm:py-3 px-3 sm:px-4 text-right">${minTxt}</td>
             </tr>`;
-        }).join('');
-
-        mobileBox.innerHTML = currentFilteredData.map((item, idx) => {
-          const maxVal = (item.maxSuhu !== undefined && item.maxSuhu !== null) ? `${parseFloat(item.maxSuhu).toFixed(1)} °C` : 'Berjalan...';
-          const minVal = (item.minSuhu !== undefined && item.minSuhu !== null) ? `${parseFloat(item.minSuhu).toFixed(1)} °C` : 'Berjalan...';
-          return `
-            <div class="rounded-xl bg-slate-900/90 border border-slate-800 p-3.5 font-mono text-xs space-y-2">
-              <div class="text-sky-400 font-bold border-b border-slate-800/80 pb-1.5">#${idx + 1} • ${formatDisplayDate(item.tanggal)}</div>
-              <div class="grid grid-cols-2 gap-2 text-center">
-                <div class="bg-slate-950/70 rounded-lg p-2">
-                  <span class="block text-[9px] text-slate-400 uppercase font-sans">Maksimum</span>
-                  <span class="text-orange-400 font-bold">${maxVal}</span>
-                </div>
-                <div class="bg-slate-950/70 rounded-lg p-2">
-                  <span class="block text-[9px] text-slate-400 uppercase font-sans">Minimum</span>
-                  <span class="text-cyan-400 font-bold">${minVal}</span>
-                </div>
-              </div>
-            </div>`;
         }).join('');
       }
       else if (activeTab === 'loss') {
         thead.innerHTML = `
           <tr>
-            <th class="py-3.5 px-4 w-14">No</th>
-            <th class="py-3.5 px-4">Mulai Loss</th>
-            <th class="py-3.5 px-4">Waktu Pulih</th>
-            <th class="py-3.5 px-4 text-center">Durasi</th>
-            <th class="py-3.5 px-4 text-right">Suhu Terakhir</th>
-            <th class="py-3.5 px-4 text-right">Hum Terakhir</th>
-            <th class="py-3.5 px-4 text-right">Hujan Terakhir</th>
+            <th class="py-3 px-3 sm:px-4 w-12 sticky left-0 bg-slate-900">No</th>
+            <th class="py-3 px-3 sm:px-4">Mulai Loss</th>
+            <th class="py-3 px-3 sm:px-4">Waktu Pulih</th>
+            <th class="py-3 px-3 sm:px-4 text-center">Durasi</th>
+            <th class="py-3 px-3 sm:px-4 text-right">Suhu Terakhir</th>
+            <th class="py-3 px-3 sm:px-4 text-right">Hum Terakhir</th>
+            <th class="py-3 px-3 sm:px-4 text-right">Hujan Terakhir</th>
           </tr>`;
 
         if (!currentFilteredData.length) {
           tbody.innerHTML = `<tr><td colspan="7" class="py-6 text-center text-slate-500 font-sans">Tidak ada riwayat data loss tercatat (Transmisi Stabil 100%).</td></tr>`;
-          mobileBox.innerHTML = `<div class="py-6 text-center text-xs text-slate-500">Tidak ada riwayat data loss tercatat (Transmisi Stabil 100%).</div>`;
           return;
         }
 
         tbody.innerHTML = currentFilteredData.map((item, idx) => `
           <tr class="hover:bg-sky-500/5 transition">
-            <td class="py-3 px-4 text-slate-400">${idx + 1}</td>
-            <td class="py-3 px-4 text-rose-400 font-semibold">${item.mulaiLoss || '-'}</td>
-            <td class="py-3 px-4 text-emerald-400 font-semibold">${item.waktuPulih || '-'}</td>
-            <td class="py-3 px-4 text-center text-slate-200">${item.durasi || '-'}</td>
-            <td class="py-3 px-4 text-right">${item.suhuTerakhir !== undefined ? parseFloat(item.suhuTerakhir).toFixed(1) : '-'}</td>
-            <td class="py-3 px-4 text-right">${item.humTerakhir !== undefined ? parseFloat(item.humTerakhir).toFixed(1) : '-'}</td>
-            <td class="py-3 px-4 text-right font-bold text-amber-400">${item.hujanTerakhir !== undefined ? parseFloat(item.hujanTerakhir).toFixed(1) + ' mm' : '-'}</td>
+            <td class="py-2.5 sm:py-3 px-3 sm:px-4 text-slate-400 sticky left-0 bg-[#0a1020]">${idx + 1}</td>
+            <td class="py-2.5 sm:py-3 px-3 sm:px-4 text-rose-400 font-semibold">${item.mulaiLoss || '-'}</td>
+            <td class="py-2.5 sm:py-3 px-3 sm:px-4 text-emerald-400 font-semibold">${item.waktuPulih || '-'}</td>
+            <td class="py-2.5 sm:py-3 px-3 sm:px-4 text-center text-slate-200">${item.durasi || '-'}</td>
+            <td class="py-2.5 sm:py-3 px-3 sm:px-4 text-right">${item.suhuTerakhir !== undefined ? parseFloat(item.suhuTerakhir).toFixed(1) : '-'}</td>
+            <td class="py-2.5 sm:py-3 px-3 sm:px-4 text-right">${item.humTerakhir !== undefined ? parseFloat(item.humTerakhir).toFixed(1) : '-'}</td>
+            <td class="py-2.5 sm:py-3 px-3 sm:px-4 text-right font-bold text-amber-400">${item.hujanTerakhir !== undefined ? parseFloat(item.hujanTerakhir).toFixed(1) + ' mm' : '-'}</td>
           </tr>`).join('');
-
-        mobileBox.innerHTML = currentFilteredData.map((item, idx) => `
-          <div class="rounded-xl bg-slate-900/90 border border-rose-500/25 p-3.5 font-mono text-xs space-y-2">
-            <div class="flex items-center justify-between border-b border-slate-800/80 pb-1.5">
-              <span class="text-rose-400 font-bold">#${idx + 1} • Durasi: ${item.durasi || '-'}</span>
-              <span class="text-amber-400 font-bold">${item.hujanTerakhir !== undefined ? parseFloat(item.hujanTerakhir).toFixed(1) + ' mm' : '-'}</span>
-            </div>
-            <div class="text-[11px] space-y-1">
-              <div><span class="text-slate-500 font-sans">Mulai Loss:</span> <span class="text-rose-300">${item.mulaiLoss || '-'}</span></div>
-              <div><span class="text-slate-500 font-sans">Waktu Pulih:</span> <span class="text-emerald-300">${item.waktuPulih || '-'}</span></div>
-            </div>
-            <div class="grid grid-cols-2 gap-2 text-center pt-1">
-              <div class="bg-slate-950/70 rounded-lg p-1.5">
-                <span class="block text-[9px] text-slate-400 uppercase font-sans">Suhu Terakhir</span>
-                <span class="text-slate-200 font-bold">${item.suhuTerakhir !== undefined ? parseFloat(item.suhuTerakhir).toFixed(1) + ' °C' : '-'}</span>
-              </div>
-              <div class="bg-slate-950/70 rounded-lg p-1.5">
-                <span class="block text-[9px] text-slate-400 uppercase font-sans">Hum Terakhir</span>
-                <span class="text-slate-200 font-bold">${item.humTerakhir !== undefined ? parseFloat(item.humTerakhir).toFixed(1) + ' %' : '-'}</span>
-              </div>
-            </div>
-          </div>`).join('');
       }
     }
 
@@ -1195,7 +1067,7 @@
       } else if (activeTab === 'loss') {
         currentFilteredData = dmyFilter ? recordsLoss.filter(r => (r.mulaiLoss || '').startsWith(dmyFilter)) : [...recordsLoss];
       }
-      renderArchiveViews();
+      renderArchiveTable();
     }
 
     function resetDateFilter() {
