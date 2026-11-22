@@ -348,7 +348,7 @@
       </div>
     </section>
 
-    <!-- 4. SUHU EKSTREM HARIAN -->
+    <!-- 4. SUHU EKSTREM HARIAN (MAKS: 07-19 H, MIN: 19 H s/d 07 H+1) -->
     <section id="secExtreme">
       <div class="flex justify-center mb-2.5 sm:mb-4">
         <div class="section-pill px-4 sm:px-6 py-1 sm:py-1.5 rounded-full">
@@ -376,7 +376,7 @@
           </span>
         </div>
 
-        <!-- Suhu Minimum (19.00 H-1 s/d 07.00 WIB) -->
+        <!-- Suhu Minimum (19.00 H s/d 07.00 H+1 WIB) -->
         <div class="glass-card rounded-xl sm:rounded-2xl p-2.5 sm:p-6 min-h-[135px] sm:min-h-[210px] w-[calc((100%-0.5rem)/3)] sm:w-[calc((100%-2.5rem)/3)] flex flex-col items-center justify-center">
           <div class="relative w-[72px] h-[72px] sm:w-32 sm:h-32 flex items-center justify-center">
             <svg class="w-full h-full" viewBox="0 0 120 120">
@@ -833,7 +833,10 @@
       }
     }, 5000);
 
-    // 4. PERHITUNGAN SUHU MINIMUM SIKLUS BMKG (19.00 H-1 s/d 07.00 H)
+    // =========================================================================
+    // 4. PERHITUNGAN SUHU MINIMUM (TN) UNTUK DATA TANGGAL D:
+    //    DIAMBIL DARI TANGGAL D JAM 19.00 WIB s/d TANGGAL D+1 JAM 07.00 WIB
+    // =========================================================================
     function parseIndoTimestamp(str) {
       if (!str) return null;
       const match = str.match(/(\d{2})\/(\d{2})\/(\d{4}),\s*(\d{2})[.:](\d{2})[.:](\d{2})/);
@@ -842,13 +845,14 @@
       return new Date(Number(yyyy), Number(mm) - 1, Number(dd), Number(hh), Number(min), Number(ss));
     }
 
-    function computeMinTempForCycle(targetIso) {
-      const prevIso = getShiftIsoDate(targetIso, -1);
-      const [pY, pM, pD] = prevIso.split('-').map(Number);
-      const [tY, tM, tD] = targetIso.split('-').map(Number);
+    // Ambil suhu minimum tepat pada rentang: 19.00 WIB tanggal D s/d 07.00 WIB tanggal D+1
+    function computeMinTempForDataDate(dataIso) {
+      const nextIso = getShiftIsoDate(dataIso, 1);
+      const [dY, dM, dD] = dataIso.split('-').map(Number);
+      const [nY, nM, nD] = nextIso.split('-').map(Number);
 
-      const startCycle = new Date(pY, pM - 1, pD, 19, 0, 0);
-      const endCycle   = new Date(tY, tM - 1, tD, 7, 5, 0);
+      const startCycle = new Date(dY, dM - 1, dD, 19, 0, 0); // 19.00 WIB tanggal D
+      const endCycle   = new Date(nY, nM - 1, nD, 7, 5, 0);  // 07.00 WIB tanggal D+1
 
       const tempsInWindow = [];
       recordsHourly.forEach(r => {
@@ -859,6 +863,7 @@
         }
       });
 
+      // Jika waktu saat ini berada di dalam rentang 19.00 D s/d 07.00 D+1, sertakan suhu real-time
       const now = new Date();
       const liveT = parseFloat(latestTelemetry.suhu);
       if (!isNaN(liveT) && now >= startCycle && now <= endCycle) {
@@ -871,9 +876,10 @@
       return null;
     }
 
-    function computeMaxTempForCycle(targetIso) {
-      const extRec = recordsEkstrem.find(r => r.tanggal === targetIso);
-      const dmyTarget = formatDisplayDate(targetIso);
+    // Ambil suhu maksimum pada rentang: 07.00 WIB s/d 19.00 WIB tanggal D
+    function computeMaxTempForDataDate(dataIso) {
+      const extRec = recordsEkstrem.find(r => r.tanggal === dataIso);
+      const dmyTarget = formatDisplayDate(dataIso);
       const tempsInWindow = [];
 
       if (extRec && extRec.maxSuhu !== undefined && extRec.maxSuhu !== null) {
@@ -892,7 +898,7 @@
 
       const now = new Date();
       const liveT = parseFloat(latestTelemetry.suhu);
-      if (toIsoDateLocal(now) === targetIso && !isNaN(liveT) && now.getHours() >= 7 && now.getHours() < 19) {
+      if (toIsoDateLocal(now) === dataIso && !isNaN(liveT) && now.getHours() >= 7 && now.getHours() < 19) {
         tempsInWindow.push(liveT);
       }
 
@@ -907,7 +913,8 @@
       const todayIso = toIsoDateLocal(now);
       const currentHour = now.getHours();
 
-      const maxToday = computeMaxTempForCycle(todayIso);
+      // 1. Kartu Suhu Maksimum (07–19 WIB hari ini)
+      const maxToday = computeMaxTempForDataDate(todayIso);
       if (maxToday !== null && !isNaN(maxToday)) {
         document.getElementById('valMaxTemp').textContent = maxToday.toFixed(1);
         setGauge('ringMaxTemp', maxToday, 20, 42);
@@ -916,8 +923,9 @@
         setGauge('ringMaxTemp', 20, 20, 42);
       }
 
-      const activeMinTargetIso = (currentHour >= 19) ? getShiftIsoDate(todayIso, 1) : todayIso;
-      const minCycleVal = computeMinTempForCycle(activeMinTargetIso);
+      // 2. Kartu Suhu Minimum (Siklus berjalan saat ini: jika jam < 19.00 berarti siklus kemarin 19.00 s/d hari ini 07.00; jika jam >= 19.00 berarti siklus hari ini 19.00 s/d besok 07.00)
+      const activeDataDateForMin = (currentHour < 19) ? getShiftIsoDate(todayIso, -1) : todayIso;
+      const minCycleVal = computeMinTempForDataDate(activeDataDateForMin);
 
       if (minCycleVal !== null && !isNaN(minCycleVal)) {
         document.getElementById('valMinTemp').textContent = minCycleVal.toFixed(1);
@@ -969,18 +977,21 @@
     }
 
     // 6. GENERATOR SANDI FKLIM DATA04 WIMM
+    // Untuk DATA tanggal D (dikirim tanggal D+1 jam 0000 UTC / 07.00 WIB):
+    // TN diambil dari tanggal D jam 19.00 WIB s/d tanggal D+1 jam 07.00 WIB
     const BULAN_INDO = [
       "JANUARI", "FEBRUARI", "MARET", "APRIL", "MEI", "JUNI",
       "JULI", "AGUSTUS", "SEPTEMBER", "OKTOBER", "NOVEMBER", "DESEMBER"
     ];
 
     function generateFklimReport() {
-      const dateIso = document.getElementById('fklimDateInput').value;
+      const dateIso = document.getElementById('fklimDateInput').value; // Tanggal DATA (D)
       if (!dateIso) return;
 
       const dmyData = formatDisplayDate(dateIso);
       const [yyyy, mm, dd] = dateIso.split('-').map(Number);
       
+      // Tanggal pengiriman (D+1 pukul 0000 UTC / 07.00 WIB)
       const reportDateObj = new Date(yyyy, mm - 1, dd + 1);
       const reportDD = String(reportDateObj.getDate()).padStart(2, '0');
       const dataDateLabel = `${String(dd).padStart(2, '0')} ${BULAN_INDO[mm - 1]} ${yyyy}`;
@@ -1019,8 +1030,10 @@
       const rainRec = records24h.find(r => r.tanggal === nextIso) || records24h.find(r => r.tanggal === dateIso);
       const rrVal = rainRec ? parseFloat(rainRec.totalHujan24Jam) : null;
 
-      const txVal = computeMaxTempForCycle(dateIso);
-      const tnVal = computeMinTempForCycle(dateIso);
+      // TX: tanggal D jam 07.00 - 19.00 WIB
+      const txVal = computeMaxTempForDataDate(dateIso);
+      // TN: tanggal D jam 19.00 WIB s/d tanggal D+1 jam 07.00 WIB
+      const tnVal = computeMinTempForDataDate(dateIso);
 
       let pxVal = null, pnVal = null, rhxVal = null, rhnVal = null;
       if (dayLogs.length > 0) {
@@ -1110,7 +1123,7 @@
         'hourly': 'Menampilkan: Log Pengamatan Suhu & Tekanan Per Jam',
         '24h': 'Menampilkan: Rekapitulasi Curah Hujan 24 Jam (07.00 – 07.00 WIB)',
         '3h': 'Menampilkan: Log Curah Hujan 3 Jam-Jaman',
-        'ekstrem': 'Menampilkan: Laporan Suhu Ekstrem Harian',
+        'ekstrem': 'Menampilkan: Laporan Suhu Ekstrem Harian (Maks 07–19, Min 19 H s/d 07 H+1)',
         'loss': 'Menampilkan: Log Riwayat Data Loss'
       };
       document.getElementById('activeTabSubtitle').textContent = subtitles[tabName];
@@ -1210,9 +1223,9 @@
         thead.innerHTML = `
           <tr>
             <th class="py-3 px-3 sm:px-4 w-12 sticky left-0 bg-slate-900">No</th>
-            <th class="py-3 px-3 sm:px-4">Tanggal Observasi</th>
+            <th class="py-3 px-3 sm:px-4">Tanggal Data</th>
             <th class="py-3 px-3 sm:px-4 text-center">Suhu Maksimum (07–19 WIB)</th>
-            <th class="py-3 px-3 sm:px-4 text-right">Suhu Minimum (19 H-1 – 07 WIB)</th>
+            <th class="py-3 px-3 sm:px-4 text-right">Suhu Minimum (19 H – 07 H+1 WIB)</th>
           </tr>`;
 
         if (!currentFilteredData.length) {
@@ -1221,8 +1234,8 @@
         }
 
         tbody.innerHTML = currentFilteredData.map((item, idx) => {
-          const maxCalc = computeMaxTempForCycle(item.tanggal);
-          const minCalc = computeMinTempForCycle(item.tanggal);
+          const maxCalc = computeMaxTempForDataDate(item.tanggal);
+          const minCalc = computeMinTempForDataDate(item.tanggal);
 
           const maxTxt = (maxCalc !== null && !isNaN(maxCalc))
             ? `<span class="text-orange-400 font-bold">${maxCalc.toFixed(1)} °C</span>`
@@ -1339,10 +1352,10 @@
         rows = currentFilteredData.map((r, i) => [i + 1, `"${r.waktu || '-'}"`, `"${r.jamObservasi || '-'}"`, parseFloat(r.curahHujan3Jam ?? 0).toFixed(1)]);
       } else if (activeTab === 'ekstrem') {
         filePrefix = "Suhu_Ekstrem_Harian";
-        headers = ["No", "Tanggal Observasi", "Suhu Maksimum (C)", "Suhu Minimum 19 H-1 s/d 07 (C)"];
+        headers = ["No", "Tanggal Data", "Suhu Maksimum 07-19 (C)", "Suhu Minimum 19 H s/d 07 H+1 (C)"];
         rows = currentFilteredData.map((r, i) => {
-          const maxV = computeMaxTempForCycle(r.tanggal);
-          const minV = computeMinTempForCycle(r.tanggal);
+          const maxV = computeMaxTempForDataDate(r.tanggal);
+          const minV = computeMinTempForDataDate(r.tanggal);
           return [i + 1, `"${formatDisplayDate(r.tanggal)}"`, maxV !== null ? maxV.toFixed(1) : "Sedang Berjalan", minV !== null ? minV.toFixed(1) : "Sedang Berjalan"];
         });
       } else {
