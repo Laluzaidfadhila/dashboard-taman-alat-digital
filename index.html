@@ -348,7 +348,7 @@
       </div>
     </section>
 
-    <!-- 4. SUHU EKSTREM HARIAN (SIKLUS BMKG: MAKS 07–19 WIB, MIN 19 H-1 s/d 07 WIB) -->
+    <!-- 4. SUHU EKSTREM HARIAN -->
     <section id="secExtreme">
       <div class="flex justify-center mb-2.5 sm:mb-4">
         <div class="section-pill px-4 sm:px-6 py-1 sm:py-1.5 rounded-full">
@@ -436,26 +436,20 @@
       </span>
     </div>
 
-    <!-- 6. SANDI FKLIM DATA04 WIMM (KALKULASI OTOMATIS PUKUL 07.00 WIB / 00.00 UTC) -->
-    <section id="secFklim" class="glass-card rounded-xl sm:rounded-2xl p-3.5 sm:p-6 border border-emerald-500/25">
-      <div class="flex flex-col md:flex-row md:items-center justify-between gap-3 pb-3.5 border-b border-slate-800">
+    <!-- 6. SANDI FKLIM DATA04 WIMM (TAMPILAN MINIMALIS & FUNGSIONAL) -->
+    <section id="secFklim" class="glass-card rounded-xl sm:rounded-2xl p-3.5 sm:p-5 border border-emerald-500/20">
+      <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2.5 pb-3 border-b border-slate-800">
         <div>
-          <div class="flex items-center gap-2">
-            <span class="px-2 py-0.5 rounded bg-emerald-500/20 border border-emerald-500/40 text-emerald-300 text-[9px] sm:text-[10px] font-bold uppercase tracking-widest">
-              FKLIM • STASIUN 96037
-            </span>
-            <span id="fklimStatusBadge" class="text-[10px] font-mono text-slate-400">
-              Kalkulasi Otomatis Pukul 07.00 WIB
-            </span>
-          </div>
-          <h2 class="text-xs sm:text-sm font-extrabold uppercase tracking-[0.16em] text-amber-400 mt-1">
+          <span class="text-[9px] sm:text-[10px] font-bold uppercase tracking-[0.2em] text-emerald-400 block">
+            FKLIM • STASIUN 96037
+          </span>
+          <h2 class="text-xs sm:text-sm font-extrabold uppercase tracking-[0.16em] text-amber-400">
             Sandi Klimatologi Harian (DATA04 WIMM)
           </h2>
         </div>
 
-        <!-- Pilih Tanggal Data FKLIM & Salin / Unduh TXT -->
         <div class="flex flex-wrap items-center gap-1.5 sm:gap-2">
-          <input type="date" id="fklimDateInput" onchange="generateFklimReport()" class="h-8 sm:h-9 bg-slate-900 border border-slate-700 text-slate-200 text-[11px] sm:text-xs rounded-lg sm:rounded-xl px-2.5 font-mono focus:outline-none focus:border-emerald-500" title="Pilih Tanggal Data Observasi (Default: Kemarin)" />
+          <input type="date" id="fklimDateInput" onchange="generateFklimReport()" class="h-8 sm:h-9 bg-slate-900 border border-slate-700 text-slate-200 text-[11px] sm:text-xs rounded-lg sm:rounded-xl px-2.5 font-mono focus:outline-none focus:border-emerald-500" title="Tanggal Data Observasi" />
           <button onclick="copyFklimCode()" id="btnCopyFklim" class="h-8 sm:h-9 px-3 sm:px-4 rounded-lg sm:rounded-xl bg-sky-600 hover:bg-sky-500 text-white text-[11px] sm:text-xs font-bold transition cursor-pointer">
             Salin Sandi
           </button>
@@ -465,36 +459,33 @@
         </div>
       </div>
 
-      <div class="grid grid-cols-1 lg:grid-cols-12 gap-4 mt-4">
-        <!-- Kotak Output Sandi FKLIM DATA04 WIMM -->
-        <div class="lg:col-span-7 bg-[#030712] border border-slate-800 rounded-xl p-3.5 sm:p-4 font-mono text-xs sm:text-[13px] leading-relaxed text-emerald-300 overflow-x-auto">
-          <pre id="fklimOutputBox" class="selectable-code whitespace-pre font-mono">Memuat kalkulasi DATA04 WIMM...</pre>
+      <div class="grid grid-cols-1 md:grid-cols-12 gap-3.5 mt-3.5 items-start">
+        <!-- Kotak Sandi Utama -->
+        <div class="md:col-span-7 bg-[#030712] border border-slate-800/90 rounded-xl p-3.5 sm:p-4 font-mono text-xs sm:text-[13px] leading-relaxed text-emerald-300 overflow-x-auto">
+          <pre id="fklimOutputBox" class="selectable-code whitespace-pre font-mono">Memuat DATA04 WIMM...</pre>
         </div>
 
-        <!-- Rincian Rumus & Pelengkap Parameter Manual -->
-        <div class="lg:col-span-5 flex flex-col justify-between space-y-3 bg-slate-900/60 border border-slate-800/80 rounded-xl p-3.5 sm:p-4">
+        <!-- Input Ringkas Parameter Tambahan -->
+        <div class="md:col-span-5 bg-slate-900/50 border border-slate-800/80 rounded-xl p-3.5 space-y-2.5">
+          <span class="text-[10px] font-bold uppercase tracking-wider text-slate-400 block">
+            Parameter Tambahan (Opsional)
+          </span>
           <div class="space-y-2 text-[11px] font-mono">
-            <div class="text-sky-400 font-bold uppercase tracking-wider text-[10px]">
-              Dasar Perhitungan FKLIM:
+            <div class="flex items-center gap-2">
+              <label for="inDfr" class="w-12 text-slate-400 font-bold">D/FR</label>
+              <input type="text" id="inDfr" oninput="generateFklimReport()" placeholder="CALM" class="flex-1 h-8 bg-slate-950 border border-slate-700/80 rounded-lg px-2.5 text-slate-200 placeholder-slate-600 focus:outline-none focus:border-sky-500" />
             </div>
-            <div id="fklimBreakdown" class="text-slate-300 space-y-1 text-[10px] sm:text-[11px]">
-              <div>• Jam 07.00 WIB (×2) : <span class="text-slate-400">Memuat...</span></div>
-              <div>• Jam 13.00 WIB (×1) : <span class="text-slate-400">Memuat...</span></div>
-              <div>• Jam 18.00 WIB (×1) : <span class="text-slate-400">Memuat...</span></div>
-              <div>• Siklus TN (19 H-1–07) : <span class="text-slate-400">Memuat...</span></div>
+            <div class="flex items-center gap-2">
+              <label for="inDfx" class="w-12 text-slate-400 font-bold">D/FX</label>
+              <input type="text" id="inDfx" oninput="generateFklimReport()" placeholder="-" class="flex-1 h-8 bg-slate-950 border border-slate-700/80 rounded-lg px-2.5 text-slate-200 placeholder-slate-600 focus:outline-none focus:border-sky-500" />
             </div>
-          </div>
-
-          <!-- Input Opsional Parameter Non-Sensor -->
-          <div class="pt-2.5 border-t border-slate-800 space-y-2">
-            <span class="text-[10px] font-bold uppercase tracking-wider text-slate-400 block">
-              Pelengkap Parameter Manual (Opsional):
-            </span>
-            <div class="grid grid-cols-2 gap-2 text-[11px] font-mono">
-              <input type="text" id="inDfr" oninput="generateFklimReport()" placeholder="D/FR (mis: CALM)" class="h-8 bg-slate-950 border border-slate-700 rounded-lg px-2.5 text-slate-200 placeholder-slate-600 focus:outline-none focus:border-sky-500" />
-              <input type="text" id="inDfx" oninput="generateFklimReport()" placeholder="D/FX (mis: -)" class="h-8 bg-slate-950 border border-slate-700 rounded-lg px-2.5 text-slate-200 placeholder-slate-600 focus:outline-none focus:border-sky-500" />
-              <input type="text" id="inSs" oninput="generateFklimReport()" placeholder="SS (mis: 40 %)" class="h-8 bg-slate-950 border border-slate-700 rounded-lg px-2.5 text-slate-200 placeholder-slate-600 focus:outline-none focus:border-sky-500" />
-              <input type="text" id="inEe" oninput="generateFklimReport()" placeholder="EE (mis: 7.3)" class="h-8 bg-slate-950 border border-slate-700 rounded-lg px-2.5 text-slate-200 placeholder-slate-600 focus:outline-none focus:border-sky-500" />
+            <div class="flex items-center gap-2">
+              <label for="inSs" class="w-12 text-slate-400 font-bold">SS</label>
+              <input type="text" id="inSs" oninput="generateFklimReport()" placeholder="40 %" class="flex-1 h-8 bg-slate-950 border border-slate-700/80 rounded-lg px-2.5 text-slate-200 placeholder-slate-600 focus:outline-none focus:border-sky-500" />
+            </div>
+            <div class="flex items-center gap-2">
+              <label for="inEe" class="w-12 text-slate-400 font-bold">EE</label>
+              <input type="text" id="inEe" oninput="generateFklimReport()" placeholder="7.3" class="flex-1 h-8 bg-slate-950 border border-slate-700/80 rounded-lg px-2.5 text-slate-200 placeholder-slate-600 focus:outline-none focus:border-sky-500" />
             </div>
           </div>
         </div>
@@ -611,7 +602,6 @@
       return toIsoDateLocal(d);
     }
 
-    // Set default tanggal FKLIM ke hari sebelumnya
     function initDefaultFklimDate() {
       const yesterday = new Date();
       yesterday.setDate(yesterday.getDate() - 1);
@@ -782,7 +772,6 @@
       }).format(new Date()).replace(/\./g, ':');
       document.getElementById('lastUpdateText').textContent = timeLabel;
 
-      // Perbarui kartu ekstrem jika suhu saat ini memecahkan rekor siklus
       updateExtremeCardsDisplay();
     }
 
@@ -844,9 +833,7 @@
       }
     }, 5000);
 
-    // =========================================================================
     // 4. PERHITUNGAN SUHU MINIMUM SIKLUS BMKG (19.00 H-1 s/d 07.00 H)
-    // =========================================================================
     function parseIndoTimestamp(str) {
       if (!str) return null;
       const match = str.match(/(\d{2})\/(\d{2})\/(\d{4}),\s*(\d{2})[.:](\d{2})[.:](\d{2})/);
@@ -855,14 +842,13 @@
       return new Date(Number(yyyy), Number(mm) - 1, Number(dd), Number(hh), Number(min), Number(ss));
     }
 
-    // Ambil suhu minimum tepat pada rentang: 19.00 WIB tanggal (targetIso - 1 hari) s/d 07.00 WIB tanggal targetIso
     function computeMinTempForCycle(targetIso) {
       const prevIso = getShiftIsoDate(targetIso, -1);
       const [pY, pM, pD] = prevIso.split('-').map(Number);
       const [tY, tM, tD] = targetIso.split('-').map(Number);
 
-      const startCycle = new Date(pY, pM - 1, pD, 19, 0, 0); // 19.00 WIB H-1
-      const endCycle   = new Date(tY, tM - 1, tD, 7, 5, 0);  // 07.00 WIB H (toleransi +5 menit)
+      const startCycle = new Date(pY, pM - 1, pD, 19, 0, 0);
+      const endCycle   = new Date(tY, tM - 1, tD, 7, 5, 0);
 
       const tempsInWindow = [];
       recordsHourly.forEach(r => {
@@ -873,7 +859,6 @@
         }
       });
 
-      // Jika hari ini sedang berada di rentang 19.00 H-1 s/d 07.00 H, ikutkan suhu real-time sekarang
       const now = new Date();
       const liveT = parseFloat(latestTelemetry.suhu);
       if (!isNaN(liveT) && now >= startCycle && now <= endCycle) {
@@ -886,7 +871,6 @@
       return null;
     }
 
-    // Ambil suhu maksimum pada rentang: 07.00 WIB s/d 19.00 WIB tanggal targetIso
     function computeMaxTempForCycle(targetIso) {
       const extRec = recordsEkstrem.find(r => r.tanggal === targetIso);
       const dmyTarget = formatDisplayDate(targetIso);
@@ -923,7 +907,6 @@
       const todayIso = toIsoDateLocal(now);
       const currentHour = now.getHours();
 
-      // 1. Kartu Suhu Maksimum (07–19 WIB hari ini)
       const maxToday = computeMaxTempForCycle(todayIso);
       if (maxToday !== null && !isNaN(maxToday)) {
         document.getElementById('valMaxTemp').textContent = maxToday.toFixed(1);
@@ -933,8 +916,6 @@
         setGauge('ringMaxTemp', 20, 20, 42);
       }
 
-      // 2. Kartu Suhu Minimum (Siklus 19.00 H-1 s/d 07.00 H):
-      // Jika jam >= 19.00 malam ini, siklus min baru dimulai untuk tanggal besok (19.00 malam ini s/d 07.00 besok)
       const activeMinTargetIso = (currentHour >= 19) ? getShiftIsoDate(todayIso, 1) : todayIso;
       const minCycleVal = computeMinTempForCycle(activeMinTargetIso);
 
@@ -988,29 +969,24 @@
     }
 
     // 6. GENERATOR SANDI FKLIM DATA04 WIMM
-    // TN dihitung tepat dari jam 19.00 (dateIso - 1 hari) s/d jam 07.00 (dateIso)
     const BULAN_INDO = [
       "JANUARI", "FEBRUARI", "MARET", "APRIL", "MEI", "JUNI",
       "JULI", "AGUSTUS", "SEPTEMBER", "OKTOBER", "NOVEMBER", "DESEMBER"
     ];
 
     function generateFklimReport() {
-      const dateIso = document.getElementById('fklimDateInput').value; // Tanggal data observasi (D)
+      const dateIso = document.getElementById('fklimDateInput').value;
       if (!dateIso) return;
 
-      const prevIso = getShiftIsoDate(dateIso, -1); // Tanggal H-1 (D-1)
-      const dmyData = formatDisplayDate(dateIso);   // DD/MM/YYYY
+      const dmyData = formatDisplayDate(dateIso);
       const [yyyy, mm, dd] = dateIso.split('-').map(Number);
       
-      // Tanggal pengiriman sandi (D+1 pukul 0000 UTC / 07.00 WIB)
       const reportDateObj = new Date(yyyy, mm - 1, dd + 1);
       const reportDD = String(reportDateObj.getDate()).padStart(2, '0');
       const dataDateLabel = `${String(dd).padStart(2, '0')} ${BULAN_INDO[mm - 1]} ${yyyy}`;
 
-      // Log per jam tanggal D
       const dayLogs = recordsHourly.filter(r => (r.waktu || '').startsWith(dmyData));
 
-      // Cari data spesifik jam 07.00, 13.00, dan 18.00 WIB pada tanggal D
       const findHourLog = (targetHour) => {
         const hhStr = String(targetHour).padStart(2, '0');
         return dayLogs.find(r => {
@@ -1023,7 +999,6 @@
       const log13 = findHourLog(13);
       const log18 = findHourLog(18);
 
-      // Rumus rata-rata: ((Jam 07) * 2 + Jam 13 + Jam 18) / 4
       const calcWeightedAvg = (field) => {
         if (log07 && log13 && log18) {
           const v07 = parseFloat(log07[field]);
@@ -1040,18 +1015,13 @@
       const prVal  = calcWeightedAvg('qff');
       const rhrVal = calcWeightedAvg('kelembapan');
 
-      // Curah Hujan 24 Jam
       const nextIso = toIsoDateLocal(reportDateObj);
       const rainRec = records24h.find(r => r.tanggal === nextIso) || records24h.find(r => r.tanggal === dateIso);
       const rrVal = rainRec ? parseFloat(rainRec.totalHujan24Jam) : null;
 
-      // TX (Suhu Maksimum tanggal D jam 07.00 - 19.00 WIB)
       const txVal = computeMaxTempForCycle(dateIso);
-
-      // TN (Suhu Minimum siklus BMKG: 19.00 WIB tanggal D-1 s/d 07.00 WIB tanggal D)
       const tnVal = computeMinTempForCycle(dateIso);
 
-      // Ekstrem Tekanan (PX, PN) & Kelembapan (RHX, RHN) tanggal D
       let pxVal = null, pnVal = null, rhxVal = null, rhnVal = null;
       if (dayLogs.length > 0) {
         const qffs = dayLogs.map(r => parseFloat(r.qff)).filter(v => !isNaN(v));
@@ -1067,7 +1037,6 @@
         }
       }
 
-      // Parameter manual opsional
       const dfrVal = document.getElementById('inDfr').value.trim() || "CALM";
       const dfxVal = document.getElementById('inDfx').value.trim() || "-";
       const ssVal  = document.getElementById('inSs').value.trim() || "-";
@@ -1097,17 +1066,6 @@
       ];
 
       document.getElementById('fklimOutputBox').textContent = sandiLines.join('\n');
-
-      const fmtSample = (log) => log
-        ? `T=${parseFloat(log.suhuKering).toFixed(1)}°C | QFF=${parseFloat(log.qff).toFixed(1)} | RH=${parseFloat(log.kelembapan).toFixed(1)}%`
-        : `<span class="text-rose-400">Data jam belum tersedia</span>`;
-
-      document.getElementById('fklimBreakdown').innerHTML = `
-        <div>• Jam 07.00 WIB (×2) : <span class="text-slate-200">${fmtSample(log07)}</span></div>
-        <div>• Jam 13.00 WIB (×1) : <span class="text-slate-200">${fmtSample(log13)}</span></div>
-        <div>• Jam 18.00 WIB (×1) : <span class="text-slate-200">${fmtSample(log18)}</span></div>
-        <div>• Siklus TN (${formatDisplayDate(prevIso).slice(0,5)} 19.00 – ${formatDisplayDate(dateIso).slice(0,5)} 07.00) : <span class="text-cyan-300 font-bold">${fmt(tnVal, 1)} °C</span></div>
-      `;
     }
 
     function copyFklimCode() {
@@ -1152,7 +1110,7 @@
         'hourly': 'Menampilkan: Log Pengamatan Suhu & Tekanan Per Jam',
         '24h': 'Menampilkan: Rekapitulasi Curah Hujan 24 Jam (07.00 – 07.00 WIB)',
         '3h': 'Menampilkan: Log Curah Hujan 3 Jam-Jaman',
-        'ekstrem': 'Menampilkan: Laporan Suhu Ekstrem Harian (Maks 07–19, Min 19 H-1 s/d 07)',
+        'ekstrem': 'Menampilkan: Laporan Suhu Ekstrem Harian',
         'loss': 'Menampilkan: Log Riwayat Data Loss'
       };
       document.getElementById('activeTabSubtitle').textContent = subtitles[tabName];
