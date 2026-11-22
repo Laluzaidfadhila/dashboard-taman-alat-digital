@@ -29,9 +29,7 @@
   </script>
 
   <style>
-    html {
-      scroll-behavior: smooth;
-    }
+    html { scroll-behavior: smooth; }
 
     body {
       background-color: #050a18;
@@ -48,7 +46,7 @@
       user-select: none;
     }
 
-    input[type="date"] {
+    input[type="date"], input[type="text"], pre.selectable-code {
       -webkit-user-select: auto;
       -moz-user-select: auto;
       -ms-user-select: auto;
@@ -70,11 +68,6 @@
         border-color: rgba(56, 189, 248, 0.36);
         box-shadow: 0 14px 34px rgba(2, 132, 199, 0.15), inset 0 1px 0 rgba(255, 255, 255, 0.1);
       }
-    }
-
-    .glass-card:active {
-      transform: scale(0.985);
-      border-color: rgba(56, 189, 248, 0.45);
     }
 
     .section-pill {
@@ -137,7 +130,7 @@
         Stasiun Geofisika Kelas I Deli Serdang
       </p>
 
-      <!-- Kotak Jam WIB & Kotak Jam UTC Terpisah (Berdampingan di HP maupun Desktop) -->
+      <!-- Kotak Jam WIB & Kotak Jam UTC Terpisah -->
       <div class="mt-3.5 sm:mt-5 grid grid-cols-2 gap-2 sm:gap-3.5 w-full max-w-lg">
         <!-- Kotak Waktu WIB -->
         <div class="px-2.5 sm:px-5 py-2 sm:py-3 rounded-xl sm:rounded-2xl bg-slate-900/95 border border-sky-500/35 shadow-lg shadow-sky-950/40 flex flex-col items-center justify-center">
@@ -181,7 +174,7 @@
   <!-- KONTEN UTAMA -->
   <main class="max-w-6xl mx-auto px-2.5 sm:px-6 space-y-5 sm:space-y-8 mt-1.5 sm:mt-2">
 
-    <!-- 1. TEMPERATUR & KELEMBAPAN (3 KOLOM PRESISI DI HP & DESKTOP) -->
+    <!-- 1. TEMPERATUR & KELEMBAPAN -->
     <section id="secTemp">
       <div class="flex justify-center mb-2.5 sm:mb-4">
         <div class="section-pill px-4 sm:px-6 py-1 sm:py-1.5 rounded-full">
@@ -239,7 +232,7 @@
       </div>
     </section>
 
-    <!-- 2. PRESIPITASI / HUJAN (3 KOLOM PRESISI DI HP & DESKTOP) -->
+    <!-- 2. PRESIPITASI / HUJAN -->
     <section id="secRain">
       <div class="flex justify-center mb-2.5 sm:mb-4">
         <div class="section-pill px-4 sm:px-6 py-1 sm:py-1.5 rounded-full">
@@ -297,7 +290,7 @@
       </div>
     </section>
 
-    <!-- 3. TEKANAN UDARA BAROMETRIK (3 KOLOM PRESISI DI HP & DESKTOP) -->
+    <!-- 3. TEKANAN UDARA BAROMETRIK -->
     <section id="secPressure">
       <div class="flex justify-center mb-2.5 sm:mb-4">
         <div class="section-pill px-4 sm:px-6 py-1 sm:py-1.5 rounded-full">
@@ -355,7 +348,7 @@
       </div>
     </section>
 
-    <!-- 4. SUHU EKSTREM HARIAN (2 KARTU BERDAMPINGAN PRESISI SEPERTI DESKTOP) -->
+    <!-- 4. SUHU EKSTREM HARIAN -->
     <section id="secExtreme">
       <div class="flex justify-center mb-2.5 sm:mb-4">
         <div class="section-pill px-4 sm:px-6 py-1 sm:py-1.5 rounded-full">
@@ -402,7 +395,7 @@
       </div>
     </section>
 
-    <!-- 5. DIAGNOSTIK PERANGKAT (2 KOLOM BERDAMPINGAN DI HP & DESKTOP) -->
+    <!-- 5. DIAGNOSTIK PERANGKAT -->
     <section class="grid grid-cols-2 gap-2 sm:gap-5">
       <!-- Sisa Memori (ESP8266 RAM) -->
       <div class="glass-card rounded-xl sm:rounded-2xl p-3 sm:p-5 flex flex-col justify-center">
@@ -443,7 +436,71 @@
       </span>
     </div>
 
-    <!-- 6. PANEL ARSIP & LOG LENGKAP (TAMPILAN TABEL SAMA PERSIS DESKTOP & MOBILE) -->
+    <!-- 6. SANDI FKLIM DATA04 WIMM (KALKULASI OTOMATIS PUKUL 07.00 WIB / 00.00 UTC) -->
+    <section id="secFklim" class="glass-card rounded-xl sm:rounded-2xl p-3.5 sm:p-6 border border-emerald-500/25">
+      <div class="flex flex-col md:flex-row md:items-center justify-between gap-3 pb-3.5 border-b border-slate-800">
+        <div>
+          <div class="flex items-center gap-2">
+            <span class="px-2 py-0.5 rounded bg-emerald-500/20 border border-emerald-500/40 text-emerald-300 text-[9px] sm:text-[10px] font-bold uppercase tracking-widest">
+              FKLIM • STASIUN 96037
+            </span>
+            <span id="fklimStatusBadge" class="text-[10px] font-mono text-slate-400">
+              Kalkulasi Otomatis Pukul 07.00 WIB
+            </span>
+          </div>
+          <h2 class="text-xs sm:text-sm font-extrabold uppercase tracking-[0.16em] text-amber-400 mt-1">
+            Sandi Klimatologi Harian (DATA04 WIMM)
+          </h2>
+        </div>
+
+        <!-- Pilih Tanggal Data FKLIM & Salin / Unduh TXT -->
+        <div class="flex flex-wrap items-center gap-1.5 sm:gap-2">
+          <input type="date" id="fklimDateInput" onchange="generateFklimReport()" class="h-8 sm:h-9 bg-slate-900 border border-slate-700 text-slate-200 text-[11px] sm:text-xs rounded-lg sm:rounded-xl px-2.5 font-mono focus:outline-none focus:border-emerald-500" title="Pilih Tanggal Data Observasi (Default: Kemarin)" />
+          <button onclick="copyFklimCode()" id="btnCopyFklim" class="h-8 sm:h-9 px-3 sm:px-4 rounded-lg sm:rounded-xl bg-sky-600 hover:bg-sky-500 text-white text-[11px] sm:text-xs font-bold transition cursor-pointer">
+            Salin Sandi
+          </button>
+          <button onclick="downloadFklimTxt()" class="h-8 sm:h-9 px-3 sm:px-4 rounded-lg sm:rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white text-[11px] sm:text-xs font-bold transition cursor-pointer">
+            Unduh .TXT
+          </button>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-4 mt-4">
+        <!-- Kotak Output Sandi FKLIM DATA04 WIMM -->
+        <div class="lg:col-span-7 bg-[#030712] border border-slate-800 rounded-xl p-3.5 sm:p-4 font-mono text-xs sm:text-[13px] leading-relaxed text-emerald-300 overflow-x-auto">
+          <pre id="fklimOutputBox" class="selectable-code whitespace-pre font-mono">Memuat kalkulasi DATA04 WIMM...</pre>
+        </div>
+
+        <!-- Rincian Rumus & Pelengkap Parameter Manual -->
+        <div class="lg:col-span-5 flex flex-col justify-between space-y-3 bg-slate-900/60 border border-slate-800/80 rounded-xl p-3.5 sm:p-4">
+          <div class="space-y-2 text-[11px] font-mono">
+            <div class="text-sky-400 font-bold uppercase tracking-wider text-[10px]">
+              Dasar Perhitungan Rata-Rata ((07×2 + 13 + 18) : 4):
+            </div>
+            <div id="fklimBreakdown" class="text-slate-300 space-y-1 text-[10px] sm:text-[11px]">
+              <div>• Jam 07.00 WIB : <span class="text-slate-400">Memuat...</span></div>
+              <div>• Jam 13.00 WIB : <span class="text-slate-400">Memuat...</span></div>
+              <div>• Jam 18.00 WIB : <span class="text-slate-400">Memuat...</span></div>
+            </div>
+          </div>
+
+          <!-- Input Opsional Parameter Non-Sensor (Angin, Matahari, Penguapan) -->
+          <div class="pt-2.5 border-t border-slate-800 space-y-2">
+            <span class="text-[10px] font-bold uppercase tracking-wider text-slate-400 block">
+              Pelengkap Parameter Manual (Opsional):
+            </span>
+            <div class="grid grid-cols-2 gap-2 text-[11px] font-mono">
+              <input type="text" id="inDfr" oninput="generateFklimReport()" placeholder="D/FR (mis: CALM)" class="h-8 bg-slate-950 border border-slate-700 rounded-lg px-2.5 text-slate-200 placeholder-slate-600 focus:outline-none focus:border-sky-500" />
+              <input type="text" id="inDfx" oninput="generateFklimReport()" placeholder="D/FX (mis: -)" class="h-8 bg-slate-950 border border-slate-700 rounded-lg px-2.5 text-slate-200 placeholder-slate-600 focus:outline-none focus:border-sky-500" />
+              <input type="text" id="inSs" oninput="generateFklimReport()" placeholder="SS (mis: 40 %)" class="h-8 bg-slate-950 border border-slate-700 rounded-lg px-2.5 text-slate-200 placeholder-slate-600 focus:outline-none focus:border-sky-500" />
+              <input type="text" id="inEe" oninput="generateFklimReport()" placeholder="EE (mis: 7.3)" class="h-8 bg-slate-950 border border-slate-700 rounded-lg px-2.5 text-slate-200 placeholder-slate-600 focus:outline-none focus:border-sky-500" />
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 7. PANEL ARSIP & LOG LENGKAP (TAMPILAN TABEL SERAGAM DESKTOP & MOBILE) -->
     <section id="secArchive" class="glass-card rounded-xl sm:rounded-2xl p-3 sm:p-6">
       <div class="space-y-3 pb-3.5 border-b border-slate-800">
         
@@ -487,7 +544,7 @@
         </div>
       </div>
 
-      <!-- TABEL DATA SINOPTIK (TAMPIL IDENTIK DI HP & DESKTOP DENGAN HORIZONTAL SWIPE SMOOTH) -->
+      <!-- TABEL DATA SINOPTIK -->
       <div class="overflow-x-auto mt-3.5 rounded-xl border border-slate-800/90 max-h-[420px]">
         <table class="w-full text-left border-collapse whitespace-nowrap">
           <thead id="archiveTableHead" class="sticky top-0 z-20 bg-slate-900 border-b border-slate-800 text-[10px] sm:text-[11px] font-bold uppercase tracking-wider text-sky-400">
@@ -507,35 +564,18 @@
     // =========================================================================
     // PROTEKSI KEAMANAN: ANTI KLIK KANAN, ANTI INSPECT ELEMENT, & ANTI COPY CODE
     // =========================================================================
-    document.addEventListener('contextmenu', function (e) {
-      e.preventDefault();
-    });
-
+    document.addEventListener('contextmenu', e => e.preventDefault());
     document.addEventListener('copy', function (e) {
-      e.preventDefault();
+      if (window.getSelection().toString().indexOf('DATA04 WIMM') === -1) {
+        e.preventDefault();
+      }
     });
-
-    document.addEventListener('cut', function (e) {
-      e.preventDefault();
-    });
-
+    document.addEventListener('cut', e => e.preventDefault());
     document.addEventListener('keydown', function (e) {
-      if (e.key === 'F12' || e.keyCode === 123) {
-        e.preventDefault();
-        return false;
-      }
-      if (e.ctrlKey && e.shiftKey && ['I', 'i', 'J', 'j', 'C', 'c'].includes(e.key)) {
-        e.preventDefault();
-        return false;
-      }
-      if (e.ctrlKey && ['U', 'u', 'S', 's', 'C', 'c', 'A', 'a'].includes(e.key)) {
-        e.preventDefault();
-        return false;
-      }
-      if (e.metaKey && ['U', 'u', 'S', 's', 'C', 'c', 'A', 'a', 'I', 'i'].includes(e.key)) {
-        e.preventDefault();
-        return false;
-      }
+      if (e.key === 'F12' || e.keyCode === 123) { e.preventDefault(); return false; }
+      if (e.ctrlKey && e.shiftKey && ['I', 'i', 'J', 'j', 'C', 'c'].includes(e.key)) { e.preventDefault(); return false; }
+      if (e.ctrlKey && ['U', 'u', 'S', 's', 'A', 'a'].includes(e.key)) { e.preventDefault(); return false; }
+      if (e.metaKey && ['U', 'u', 'S', 's', 'A', 'a', 'I', 'i'].includes(e.key)) { e.preventDefault(); return false; }
     });
 
     // =========================================================================
@@ -555,8 +595,20 @@
 
     const WMO_REPORT_HOURS_UTC = [0, 3, 6, 9, 12];
     let lastTriggeredWmoKey = "";
+    let lastFklimAutoDate = "";
 
-    // 1. JAM WIB & JAM UTC TERPISAH + ALARM OTOMATIS WMO
+    // Set default tanggal FKLIM ke hari sebelumnya (data kemarin yang dikalkulasi jam 07.00 WIB hari ini)
+    function initDefaultFklimDate() {
+      const yesterday = new Date();
+      yesterday.setDate(yesterday.getDate() - 1);
+      const yyyy = yesterday.getFullYear();
+      const mm = String(yesterday.getMonth() + 1).padStart(2, '0');
+      const dd = String(yesterday.getDate()).padStart(2, '0');
+      document.getElementById('fklimDateInput').value = `${yyyy}-${mm}-${dd}`;
+    }
+    initDefaultFklimDate();
+
+    // 1. JAM WIB & JAM UTC TERPISAH + ALARM OTOMATIS WMO & AUTO REFRESH FKLIM 07.00 WIB
     function updateClocksAndWmoAlarm() {
       const now = new Date();
 
@@ -600,6 +652,12 @@
         if (lastTriggeredWmoKey !== triggerKey) {
           lastTriggeredWmoKey = triggerKey;
           triggerWmoAlarmVisualAndSound(utcH);
+          // Tepat pukul 00.00 UTC (07.00 WIB), otomatis muat ulang data dan hitung FKLIM hari kemarin
+          if (utcH === 0 && lastFklimAutoDate !== triggerKey) {
+            lastFklimAutoDate = triggerKey;
+            initDefaultFklimDate();
+            setTimeout(() => fetchAllArchives(), 6000);
+          }
         }
       }
     }
@@ -854,7 +912,153 @@
       return detected;
     }
 
-    // 6. TABEL ARSIP SERAGAM UNTUK DESKTOP & HANDPHONE
+    // 6. GENERATOR SANDI FKLIM DATA04 WIMM (RUMUS: ((JAM 07)*2 + JAM 13 + JAM 18) : 4)
+    const BULAN_INDO = [
+      "JANUARI", "FEBRUARI", "MARET", "APRIL", "MEI", "JUNI",
+      "JULI", "AGUSTUS", "SEPTEMBER", "OKTOBER", "NOVEMBER", "DESEMBER"
+    ];
+
+    function generateFklimReport() {
+      const dateIso = document.getElementById('fklimDateInput').value; // Tanggal data observasi (hari sebelumnya)
+      if (!dateIso) return;
+
+      const dmyData = formatDisplayDate(dateIso); // DD/MM/YYYY
+      const [yyyy, mm, dd] = dateIso.split('-').map(Number);
+      
+      // Tanggal pengiriman sandi (H+1 pukul 0000 UTC / 07.00 WIB)
+      const reportDateObj = new Date(yyyy, mm - 1, dd + 1);
+      const reportDD = String(reportDateObj.getDate()).padStart(2, '0');
+      const dataDateLabel = `${String(dd).padStart(2, '0')} ${BULAN_INDO[mm - 1]} ${yyyy}`;
+
+      // Ambil seluruh log per jam pada tanggal data observasi (DD/MM/YYYY)
+      const dayLogs = recordsHourly.filter(r => (r.waktu || '').startsWith(dmyData));
+
+      // Cari data spesifik jam 07.00, 13.00, dan 18.00 WIB
+      const findHourLog = (targetHour) => {
+        const hhStr = String(targetHour).padStart(2, '0');
+        return dayLogs.find(r => {
+          const m = (r.waktu || '').match(/,\s*(\d{2})[.:]/);
+          return m && m[1] === hhStr;
+        });
+      };
+
+      const log07 = findHourLog(7);
+      const log13 = findHourLog(13);
+      const log18 = findHourLog(18);
+
+      // Rumus rata-rata: ((Jam 07) * 2 + Jam 13 + Jam 18) / 4
+      const calcWeightedAvg = (field) => {
+        if (log07 && log13 && log18) {
+          const v07 = parseFloat(log07[field]);
+          const v13 = parseFloat(log13[field]);
+          const v18 = parseFloat(log18[field]);
+          if (!isNaN(v07) && !isNaN(v13) && !isNaN(v18)) {
+            return ((v07 * 2) + v13 + v18) / 4.0;
+          }
+        }
+        return null;
+      };
+
+      const trVal = calcWeightedAvg('suhuKering');
+      const prVal = calcWeightedAvg('qff');
+      const rhrVal = calcWeightedAvg('kelembapan');
+
+      // Curah Hujan 24 Jam (dari rekap 24 jam tanggal cetak H+1 atau tanggal data)
+      const nextIso = `${reportDateObj.getFullYear()}-${String(reportDateObj.getMonth() + 1).padStart(2, '0')}-${reportDD}`;
+      const rainRec = records24h.find(r => r.tanggal === nextIso) || records24h.find(r => r.tanggal === dateIso);
+      const rrVal = rainRec ? parseFloat(rainRec.totalHujan24Jam) : null;
+
+      // Ekstrem Suhu (TX, TN) dari logs_ekstrem_bmkg atau dari min/max log harian
+      const extRec = recordsEkstrem.find(r => r.tanggal === dateIso);
+      let txVal = (extRec && extRec.maxSuhu !== undefined && extRec.maxSuhu !== null) ? parseFloat(extRec.maxSuhu) : null;
+      let tnVal = (extRec && extRec.minSuhu !== undefined && extRec.minSuhu !== null) ? parseFloat(extRec.minSuhu) : null;
+
+      // Ekstrem Tekanan (PX, PN) & Kelembapan (RHX, RHN) dari seluruh log per jam hari tersebut
+      let pxVal = null, pnVal = null, rhxVal = null, rhnVal = null;
+      if (dayLogs.length > 0) {
+        const temps = dayLogs.map(r => parseFloat(r.suhuKering)).filter(v => !isNaN(v));
+        const qffs  = dayLogs.map(r => parseFloat(r.qff)).filter(v => !isNaN(v));
+        const hums  = dayLogs.map(r => parseFloat(r.kelembapan)).filter(v => !isNaN(v));
+
+        if (txVal === null && temps.length) txVal = Math.max(...temps);
+        if (tnVal === null && temps.length) tnVal = Math.min(...temps);
+
+        if (qffs.length) {
+          pxVal = Math.max(...qffs);
+          pnVal = Math.min(...qffs);
+        }
+        if (hums.length) {
+          rhxVal = Math.round(Math.max(...hums));
+          rhnVal = Math.round(Math.min(...hums));
+        }
+      }
+
+      // Parameter manual opsional
+      const dfrVal = document.getElementById('inDfr').value.trim() || "CALM";
+      const dfxVal = document.getElementById('inDfx').value.trim() || "-";
+      const ssVal  = document.getElementById('inSs').value.trim() || "-";
+      const eeVal  = document.getElementById('inEe').value.trim() || "-";
+
+      const fmt = (val, dec = 1) => (val !== null && !isNaN(val)) ? val.toFixed(dec) : "-";
+
+      const sandiLines = [
+        `DATA04 WIMM ${reportDD}0000`,
+        `DATA ${dataDateLabel}`,
+        `STASIUN 96037`,
+        ``,
+        `RR   : ${fmt(rrVal, 1)}`,
+        `TR   : ${fmt(trVal, 1)}`,
+        `PR   : ${fmt(prVal, 1)}`,
+        `RHR  : ${fmt(rhrVal, 1)}`,
+        `D/FR : ${dfrVal}`,
+        `TX   : ${fmt(txVal, 1)}`,
+        `TN   : ${fmt(tnVal, 1)}`,
+        `PX   : ${fmt(pxVal, 1)}`,
+        `PN   : ${fmt(pnVal, 1)}`,
+        `RHX  : ${rhxVal !== null ? rhxVal : '-'}`,
+        `RHN  : ${rhnVal !== null ? rhnVal : '-'}`,
+        `D/FX : ${dfxVal}`,
+        `SS   : ${ssVal}`,
+        `EE   : ${eeVal}=`
+      ];
+
+      document.getElementById('fklimOutputBox').textContent = sandiLines.join('\n');
+
+      // Update rincian jam 07, 13, 18 WIB
+      const fmtSample = (log) => log
+        ? `T=${parseFloat(log.suhuKering).toFixed(1)}°C | QFF=${parseFloat(log.qff).toFixed(1)} | RH=${parseFloat(log.kelembapan).toFixed(1)}%`
+        : `<span class="text-rose-400">Data jam belum tersedia</span>`;
+
+      document.getElementById('fklimBreakdown').innerHTML = `
+        <div>• Jam 07.00 WIB (×2) : <span class="text-slate-200">${fmtSample(log07)}</span></div>
+        <div>• Jam 13.00 WIB (×1) : <span class="text-slate-200">${fmtSample(log13)}</span></div>
+        <div>• Jam 18.00 WIB (×1) : <span class="text-slate-200">${fmtSample(log18)}</span></div>
+      `;
+    }
+
+    function copyFklimCode() {
+      const codeText = document.getElementById('fklimOutputBox').textContent;
+      navigator.clipboard.writeText(codeText).then(() => {
+        const btn = document.getElementById('btnCopyFklim');
+        const orig = btn.textContent;
+        btn.textContent = "Sandi Tersalin!";
+        setTimeout(() => btn.textContent = orig, 2000);
+      });
+    }
+
+    function downloadFklimTxt() {
+      const codeText = document.getElementById('fklimOutputBox').textContent;
+      const dateIso = document.getElementById('fklimDateInput').value || new Date().toISOString().slice(0, 10);
+      const blob = new Blob([codeText], { type: "text/plain;charset=utf-8" });
+      const link = document.createElement("a");
+      link.href = URL.createObjectURL(blob);
+      link.download = `FKLIM_DATA04_WIMM_96037_${dateIso}.txt`;
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+    }
+
+    // 7. TABEL ARSIP SERAGAM UNTUK DESKTOP & HANDPHONE
     function formatDisplayDate(isoDate) {
       if (!isoDate || !isoDate.includes('-')) return isoDate || '-';
       const parts = isoDate.split('-');
@@ -1049,6 +1253,7 @@
         recordsLoss = computeDataLossFromHourly(recordsHourly, explicitLoss);
 
         applyDateFilter();
+        generateFklimReport();
       } catch (e) {}
     }
 
